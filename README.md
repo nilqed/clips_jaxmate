@@ -3,8 +3,7 @@ CLIPS node server + JaxMaTe client (:warning: :construction:)
 
 What is [CLIPS](https://en.wikipedia.org/wiki/CLIPS)?
 
-Using a variant of [JaxMaTe](https://github.com/nilqed/jaxMaTe) tailored to the [Pure programming language](https://github.com/agraef/pure-lang).
-
+Using a variant of [JaxMaTe](https://github.com/nilqed/jaxMaTe) tailored to CLIPS/COOL.
 ## Quick install
 
 Required:
