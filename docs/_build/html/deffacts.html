@@ -1,0 +1,144 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 4: Deffacts Construct &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 5: Defrule Construct" href="defrule.html" />
+    <link rel="prev" title="Section 3: Deftemplate Construct" href="deftemplate.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="defrule.html" title="Section 5: Defrule Construct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deftemplate.html" title="Section 3: Deftemplate Construct"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-4-deffacts-construct">
+<h1>Section 4: Deffacts Construct<a class="headerlink" href="#section-4-deffacts-construct" title="Permalink to this headline">¶</a></h1>
+<p>With the <strong>deffacts</strong> construct, a list of facts can be defined which
+are automatically asserted whenever the <strong>reset</strong> command is performed.
+Facts as?serted through deffacts may be retracted or pattern-matched
+like any other fact. The initial fact-list, including any defined
+deffacts, is always reconstructed after a <strong>reset</strong> command.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deffacts</span> <span class="o">&lt;</span><span class="n">deffacts</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">comment</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">RHS</span><span class="o">-</span><span class="n">pattern</span><span class="o">&gt;*</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Redefining a currently existing deffacts causes the previous deffacts
+with the same name to be removed even if the new definition has errors
+in it. There may be multiple deffacts constructs and any number of facts
+(either ordered or deftemplate) may be asserted into the initial
+fact-list by each deffacts construct.</p>
+<p>Dynamic expressions may be included in a fact by embedding the
+expression directly within the fact. All such expressions are evaluated
+when CLIPS is reset.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Example</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deffacts</span> <span class="n">startup</span> <span class="s2">&quot;Refrigerator Status&quot;</span>
+  <span class="p">(</span><span class="n">refrigerator</span> <span class="n">light</span> <span class="n">on</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">refrigerator</span> <span class="n">door</span> <span class="nb">open</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">refrigerator</span> <span class="n">temp</span> <span class="p">(</span><span class="n">get</span><span class="o">-</span><span class="n">temp</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Upon startup and after a <strong>clear</strong> command, CLIPS automatically
+constructs the following deftemplate and deffacts.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deftemplate</span> <span class="n">initial</span><span class="o">-</span><span class="n">fact</span><span class="p">)</span>
+<span class="p">(</span><span class="n">deffacts</span> <span class="n">initial</span><span class="o">-</span><span class="n">fact</span>
+<span class="p">(</span><span class="n">initial</span><span class="o">-</span><span class="n">fact</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In prior versions of CLIPS, the initial-fact deffacts provided a
+convenient method for starting the execution of a system: rules without
+conditional elements had an (initial-fact) pattern automatically added
+to their LHS. When a <strong>reset</strong> command was issued, the assertion of the
+(intial-fact) would activate these rules. Starting with version 6.3 of
+CLIPS, rules without conditional elements are automatically matched
+without the need for the (initial-fact) assertion. Usage of the
+initial-fact is now deprecated. Programs should not rely on the
+assertion of this fact when a reset is performed.</p>
+<span class="target" id="section-2"></span></div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deftemplate.html"
+                        title="previous chapter">Section 3: Deftemplate Construct</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="defrule.html"
+                        title="next chapter">Section 5: Defrule Construct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/deffacts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="defrule.html" title="Section 5: Defrule Construct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deftemplate.html" title="Section 3: Deftemplate Construct"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

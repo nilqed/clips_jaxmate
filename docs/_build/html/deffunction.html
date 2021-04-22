@@ -1,0 +1,197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 7: Deffunction Construct &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 8: Generic Functions" href="generic.html" />
+    <link rel="prev" title="Section 6: Defglobal Construct" href="defglobal.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="generic.html" title="Section 8: Generic Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="defglobal.html" title="Section 6: Defglobal Construct"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-7-deffunction-construct">
+<h1>Section 7: Deffunction Construct<a class="headerlink" href="#section-7-deffunction-construct" title="Permalink to this headline">¶</a></h1>
+<p>With the <strong>deffunction</strong> construct, new functions may be defined
+directly in CLIPS. Deffunctions are equivalent in use to other
+functions; see section 2.3.2 for more detail on calling functions in
+CLIPS. The only differences between user-defined external functions and
+deffunctions are that deffunctions are written in CLIPS and executed by
+CLIPS interpretively and user-defined external functions are written in
+an external language, such as C, and executed by CLIPS directly. Also,
+deffunctions allow the addition of new functions without having to
+recompile and relink CLIPS.</p>
+<p>A deffunction is comprised of five elements: 1) a name, 2) an optional
+comment, 3) a list of zero or more required parameters, 4) an optional
+wildcard parameter to handle a variable number of arguments and 5) a
+sequence of actions, or expressions, which will be executed in order
+when the deffunction is called.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deffunction</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">comment</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="p">(</span><span class="o">&lt;</span><span class="n">regular</span><span class="o">-</span><span class="n">parameter</span><span class="o">&gt;</span>\<span class="o">*</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">wildcard</span><span class="o">-</span><span class="n">parameter</span><span class="o">&gt;</span><span class="p">])</span>
+   <span class="o">&lt;</span><span class="n">action</span><span class="o">&gt;*</span><span class="p">)</span>
+
+ <span class="o">&lt;</span><span class="n">regular</span><span class="o">-</span><span class="n">parameter</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">single</span><span class="o">-</span><span class="n">field</span><span class="o">-</span><span class="n">variable</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="n">wildcard</span><span class="o">-</span><span class="n">parameter</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">multifield</span><span class="o">-</span><span class="n">variable</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>A deffunction must have a unique name different from all other system
+functions and generic functions. In particular, a deffunction cannot be
+overloaded like a system function (see section 8 for more detail). A
+deffunction must be declared prior to being called from another
+deffunction, generic function method, object message-handler, rule, or
+the top level. The only exception is a self recursive deffunction.</p>
+<p>A deffunction may accept <em>exactly</em> or <em>at least</em> a specified number of
+arguments, depending on whether a wildcard parameter is used or not. The
+regular parameters specify the minimum number of arguments that must be
+passed to the deffunction. Each of these parameters may be referenced
+like a normal single-field variable within the actions of the
+deffunction. If a wildcard parameter is present, the deffunction may be
+passed any number of arguments greater than or equal to the minimum. If
+no wildcard parameter is present, then the deffunction must be passed
+exactly the number of arguments specified by the regular parameters. All
+arguments to a deffunction that do not correspond to a regular parameter
+are grouped into a multifield value that can be referenced by the
+wildcard parameter. The standard CLIPS multifield functions, such as
+length and nth, can be applied to the wildcard parameter.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CLIPS&gt; (clear)
+CLIPS&gt;
+(deffunction print-args (?a ?b $?c)
+  (printout t ?a &quot; &quot; ?b &quot; and &quot; (length ?c) &quot; extras: &quot; ?c crlf))
+CLIPS&gt; (print-args 1 2)
+1 2 and 0 extras: ()
+CLIPS&gt; (print-args a b c d)
+a b and 2 extras: (c d)
+CLIPS&gt;
+</pre></div>
+</div>
+<p>When a deffunction is called, its actions are executed in order. The
+return value of a deffunction is the evaluation of the last action. If a
+deffunction has no actions, its return value is the symbol FALSE. If an
+error occurs while the deffunction is executing, any actions not yet
+executed will be aborted, and the deffunction will return the symbol
+FALSE.</p>
+<p>Deffunctions may be self and mutually recursive. Self recursion is
+accomplished simply by calling the deffunction from within its own
+actions.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(deffunction factorial (?a)
+  (if (or (not (integerp ?a)) (&lt; ?a 0)) then
+    (printout t &quot;Factorial Error!&quot; crlf)
+   else
+    (if (= ?a 0) then
+       1
+     else
+       (* ?a (factorial (- ?a 1))))))
+</pre></div>
+</div>
+<p>Mutual recursion between two deffunctions requires a forward declaration
+of one of the deffunctions. A forward declaration is simply a
+declaration of the deffunction without any actions. In the following
+example, the deffunction foo is forward declared so that it may be
+called by the deffunction bar. Then the deffunction foo is redefined
+with actions that call the deffunction bar.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deffunction</span> <span class="n">foo</span> <span class="p">())</span>
+
+<span class="p">(</span><span class="n">deffunction</span> <span class="n">bar</span> <span class="p">()</span>
+  <span class="p">(</span><span class="n">foo</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">deffunction</span> <span class="n">foo</span> <span class="p">()</span>
+  <span class="p">(</span><span class="n">bar</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Care should be taken with recursive deffunctions; too many levels of
+recursion can lead to an overflow of stack memory (especially on PC-type
+machines).</p>
+<span class="target" id="section-5"></span></div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="defglobal.html"
+                        title="previous chapter">Section 6: Defglobal Construct</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="generic.html"
+                        title="next chapter">Section 8: Generic Functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/deffunction.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="generic.html" title="Section 8: Generic Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="defglobal.html" title="Section 6: Defglobal Construct"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

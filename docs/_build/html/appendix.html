@@ -1,0 +1,3946 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appendix A: Support Information &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Section 12: Actions And Functions" href="actions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="actions.html" title="Section 12: Actions And Functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-a-support-information">
+<h1>Appendix A: Support Information<a class="headerlink" href="#appendix-a-support-information" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-1-questions-and-information">
+<h2>A.1 Questions and Information<a class="headerlink" href="#a-1-questions-and-information" title="Permalink to this headline">¶</a></h2>
+<p>The URL for the CLIPS Web page is <a class="reference external" href="http://clipsrules.sourceforge.net">http://clipsrules.sourceforge.net</a>.</p>
+<p>Questions regarding CLIPS can be posted to one of several online forums
+including the CLIPS Expert System Group,
+<a class="reference external" href="http://groups.google.com/group/CLIPSESG/">http://groups.google.com/group/CLIPSESG/</a>, the SourceForge CLIPS Forums,
+<a class="reference external" href="http://sourceforge.net/forum/?group_id=215471">http://sourceforge.net/forum/?group_id=215471</a>, and Stack Overflow,
+<a class="reference external" href="http://stackoverflow.com/questions/tagged/clips">http://stackoverflow.com/questions/tagged/clips</a>.</p>
+<p>Inquiries related to the use or installation of CLIPS can be sent via
+electronic mail to <a class="reference external" href="mailto:clipssupport&#37;&#52;&#48;secretsocietysoftware&#46;com">clipssupport<span>&#64;</span>secretsocietysoftware<span>&#46;</span>com</a>.</p>
+</div>
+<div class="section" id="a-2-documentation">
+<h2>A.2 Documentation<a class="headerlink" href="#a-2-documentation" title="Permalink to this headline">¶</a></h2>
+<p>The CLIPS Reference Manuals and User?s Guide are available in Portable
+Document Format (PDF) at
+<a class="reference external" href="http://clipsrules.sourceforge.net/OnlineDocs.html">http://clipsrules.sourceforge.net/OnlineDocs.html</a>.</p>
+<p><em>Expert Systems: Principles and Programming</em>, 4th Edition, by Giarratano
+and Riley comes with a CD-ROM containing CLIPS 6.22 executables (DOS,
+Windows XP, and Mac OS), documentation, and source code. The first half
+of the book is theory oriented and the second half covers rule-based,
+procedural, and object-oriented programming using CLIPS.</p>
+</div>
+<div class="section" id="a-3-clips-source-code-and-executables">
+<h2>A.3 CLIPS Source Code and Executables<a class="headerlink" href="#a-3-clips-source-code-and-executables" title="Permalink to this headline">¶</a></h2>
+<p>CLIPS executables and source code are available on the SourceForge web
+site at <a class="reference external" href="http://sourceforge.net/projects/clipsrules/files">http://sourceforge.net/projects/clipsrules/files</a>.</p>
+<p>Appendix B:
+Update Release Notes
+====================</p>
+<p>The following sections denote the changes and bug fixes for CLIPS
+versions 6.2. 6.21, 6.22, 6.23, 6.24, and 6.3.</p>
+</div>
+<div class="section" id="b-1-version-6-30">
+<h2>B.1 Version 6.30<a class="headerlink" href="#b-1-version-6-30" title="Permalink to this headline">¶</a></h2>
+<p>?E**Performance Improvements** ?ERule performance has been improved
+particularly in situations with large numbers of fact/instances or
+partial matches.</p>
+<p>?E**64-bit Integers** ?EIntegers in CLIPS are now represented using the
+?long long?EC data type which provides a minimum of 64 bits of
+precision.</p>
+<p>?E**Reset after Clear** ?EA reset command is now performed after a clear
+command (which includes the clear command issued internally by CLIPS
+when it is started). Since no user constructs will be present after a
+clear, the primary effect of this behavior is to create the initial-fact
+and initial-object.</p>
+<p>?E**Pattern Addition** ?EThe initial-fact and initial-object patterns
+are no longer used in triggering rules. When printing partial matches,
+the * symbol is used to indicate a not or exists pattern that is
+satisfied.</p>
+<p>?E**Module Specifiers** ?EA module specifier can be used in expressions
+to reference a deffunction or defgeneric that is exported by a module,
+but not specifically imported by the module which is referencing it. For
+example: (UTIL::my-function a 3).</p>
+<p>?E**Instance Name and Class Visibility** ?EInstance names now have
+global scope and must be unique regardless of their module. Instances of
+classes that are not in scope can be created if the module name is
+specified as part of the class name. Messages can be sent to instances
+regardless of whether the instance class is in scope.</p>
+<p>?E**Command Prompt** ?ELocal variables bound at the command prompt using
+the bind function persist until a reset or clear command is issued (see
+section 2.1.1).</p>
+<p>?E**Printout Function** ?EThe deprecated use of the symbol <em>t</em> as a
+substitute for the <em>crlf</em> symbol is no longer allowed.</p>
+<p>?E**MicroEMACS Editor** ?EThe built-in editor is no longer supported.</p>
+<p>?E**New Functions and Commands** - Several new functions and commands
+have been added. They are:</p>
+<p>?E**foreach** (see section 12.6.10)</p>
+<p>?E**operating-system** (see section 12.7.12)</p>
+<p>?E**Command and Function Changes** - The following commands and
+functions have been enhanced:</p>
+<p>?E**matches** (see section 13.6.4). This command now has a return value
+indicating the number of matches, partial matches, and activations. The
+amount of output can be controlled with a verbosity argument.</p>
+<p>?E**open** (see section 12.4.2.1). The r+ mode is no longer supported.
+New modes ab and rb have been added.</p>
+<p>?E**Help Functions** ?EThe <strong>help</strong> and <strong>help-path</strong> funtions are no
+longer supported</p>
+<p>?E**Behavior Changes** - The following changes have been made to
+behavior:</p>
+<p>?EA defgeneric redefinition warning is no longer printed when a
+defmethod is defined.</p>
+</div>
+<div class="section" id="b-2-version-6-24">
+<h2>B.2 Version 6.24<a class="headerlink" href="#b-2-version-6-24" title="Permalink to this headline">¶</a></h2>
+<p>?E**Allowed Classes Constraint Attribute** ?EThe allowed-classes
+constraint attribute allows a slot containing an instance value to be
+restricted to the specified list of classes.</p>
+<p>?E**New Functions and Commands** - Several new functions and commands
+have been added. They are:</p>
+<p>?E**deftemplate-slot-allowed-values**</p>
+<p>?E**deftemplate-slot-cardinality**</p>
+<p>?E**deftemplate-slot-defaultp**</p>
+<p>?E**deftemplate-slot-default-value**</p>
+<p>?E**deftemplate-slot-existp**</p>
+<p>?E**deftemplate-slot-multip**</p>
+<p>?E**deftemplate-slot-names**</p>
+<p>?E**deftemplate-slot-range**</p>
+<p>?E**deftemplate-slot-singlep**</p>
+<p>?E**deftemplate-slot-type**</p>
+<p>?E**get-char**</p>
+<p>?E**get-region**</p>
+<p>?E**ppfact**</p>
+<p>?E**read-number**</p>
+<p>?E**set-locale**</p>
+<p>?E**slot-allowed-classes**</p>
+<p>?E**Command and Function Changes** - The following commands and
+functions have been enhanced:</p>
+<p>?E**format** The formatting of printed numbers can be changed to use a
+native locale with the <strong>set-locale</strong> function. The documentation has
+been updated to include the effect of the precision argument on the d,
+g, o, and x format flags.</p>
+<p>?E**Behavior Changes** - The following changes have been made to
+behavior:</p>
+<p>?EThe message displayed when a construct is redefined and compilations
+are being watched is now more prominent.</p>
+<p>?E**Bug Fixes** - The following bugs were fixed by the 6.24 release:</p>
+<p>?EThe DescribeClass macros were incorrectly defined.</p>
+<p>?EThe sort function leaks memory when called with a multifield value of
+length zero.</p>
+<p>?ELink error occurred for the SlotExistError function when OBJECT_SYSTEM
+is set to 0 in setup.h.</p>
+<p>?EAn error when calling the Eval function causes a subsequent call to
+DeallocateEnvironmentData to fail.</p>
+<p>?ELoading a binary instance file from a run-time program caused a bus
+error.</p>
+<p>?EIncorrect activations could occur with the exists CE.</p>
+<p>?ECompilation errors occurred when compiling CLIPS source as C++ files.</p>
+<p>?EThe AssignFactSlotDefaults function did not correctly handle defaults
+for multifield slots.</p>
+<p>?EThe slot-default-value function crashed when no default existed for a
+slot (the ?NONE value was specified).</p>
+<p>?ECLIPS crashed on AMD64 processor in the function used to generate hash
+values for integers.</p>
+<p>?EA syntax error was not generated for the last deffunction or defmethod
+in a file if it was missing the final closing right parenthesis.</p>
+<p>?E**Compiler Support** - The following compilers are now supported. See
+the <em>Interfaces Guide</em> for more details.</p>
+<p>?EMetrowerks CodeWarrior 9.6 for Mac OS X.</p>
+<p>?EXcode 2.3 for Mac OS X.</p>
+<p>?EMicrosoft Visual C++ .NET 2003 for Windows.</p>
+</div>
+<div class="section" id="b-3-version-6-23">
+<h2>B.3 Version 6.23<a class="headerlink" href="#b-3-version-6-23" title="Permalink to this headline">¶</a></h2>
+<p>?E**Fact-Set Query Functions** ?ESix new functions similar to the
+instance set query functions have been added for determining and
+performing actions on sets of facts that satisfy user-defined queries:
+any-factp, find-fact, find-all-facts, do-for-fact, do-for-all-facts, and
+delayed-do-for-all-facts. The GetNextFactInTemplate function allows
+iteration from C over the facts belonging to a specific deftemplate.</p>
+<p>?E**Bug Fixes** - The following bugs were fixed by the 6.23 release:</p>
+<p>?EPassing the wrong number of arguments to a deffunction through the
+funcall function could cause unpredictable behavior including memory
+corruption.</p>
+<p>?EA large file name (at least 60 characters) passed into the fetch
+command causes a buffer overrun.</p>
+<p>?EA large file name (at least 60 characters) passed into the
+constructs-to-c command causes a buffer overrun.</p>
+<p>?EA large defclass or defgeneric name (at least 500 characters) causes a
+buffer overrun when the profile-info command is called.</p>
+<p>?EA large module or construct name (at least 500 characters) causes a
+buffer overrun when the get-&lt;construct&gt;-list command is called.</p>
+<p>?EThe FalseSymbol and TrueSymbol constants were not defined as described
+in the <em>Advanced Programming Guide</em>. These constants have have now been
+defined as macros so that their corresponding environment companion
+functions (EnvFalseSymbol and EnvTrueSymbol) could be defined. See the
+<em>Advanced Programming Guide</em> for more details.</p>
+<p>?EThe slot-writablep function returns TRUE for slots having
+initialize-only access.</p>
+<p>?EFiles created by the constructs-to-c function for use in a run-time
+program generate compilation errors.</p>
+<p>?E**Command and Function Changes** - The following commands and
+functions have been enhanced:</p>
+<p>?E**funcall** Multifield arguments are no longer expanded into multiple
+arguments before being passed to the target function of the funcall. The
+expand$ function can be placed around an argument to revert to the old
+behavior.</p>
+<p>?E**Compiler Support** - The following compilers are now supported. See
+the <em>Interfaces Guide</em> for more details.</p>
+<p>?EMetrowerks CodeWarrior 9.4 for Mac OS X and Windows.</p>
+<p>?EXcode 1.2 for Mac OS X.</p>
+</div>
+<div class="section" id="b-4-version-6-22">
+<h2>B.4 Version 6.22<a class="headerlink" href="#b-4-version-6-22" title="Permalink to this headline">¶</a></h2>
+<p>?E**Bug Fixes** - The following bugs were fixed by the 6.22 release:</p>
+<p>?ENumerous fixes for functions and macros that did not accept the
+correct number of arguments as specified in the <em>Advanced Programming
+Guide</em>. The following functions and macros were corrected: Agenda,
+BatchStar, EnvGetActivationSalience, EnvBatchStar, EnvFactDeftemplate,
+EnvFactExistp, EnvFactList, EnvFactSlotNames,
+EnvGetNextInstanceInClassAndSubclasses, EnvLoadInstancesFromString,
+EnvRestoreInstancesFromString, EnvSetOutOfMemoryFunction,
+FactDeftemplate, FactExistp, FactList, FactSlotNames,
+GetNextInstanceInClassAndSubclasses, LoadInstancesFromString,
+RestoreInstancesFromString, SetOutOfMemoryFunction.</p>
+</div>
+<div class="section" id="b-5-version-6-21">
+<h2>B.5 Version 6.21<a class="headerlink" href="#b-5-version-6-21" title="Permalink to this headline">¶</a></h2>
+<p>?E**Bug Fixes** - The following bugs were fixed by the 6.21 release:</p>
+<p>?EThe C GetDefglobalValue macro did not have the correct number of
+arguments.</p>
+<p>?EThe C RtnArgCount macro did not have the correct number of arguments.</p>
+<p>?EErroneous error generated for object pattern under some circumstances.</p>
+<p>?EThe C Save macro did not have the correct number of arguments.</p>
+<p>?EThe C Eval and Build functions did not have the correct number of
+arguments.</p>
+<p>?EThe progn$ index variable did not always return the correct value.</p>
+<p>?EThe member$ function did not always return the correct value.</p>
+<p>?EC++ style comments in the code caused errors when using strict ANSI C
+compilation.</p>
+<p>?EThe C LoadFactsFromString function did not have the correct number of
+arguments.</p>
+<p>?EPrior bug fix to the PutFactSlot C function prevented memory
+associated with the fact to be garbage collected after the fact had been
+retracted. The original bug is now fixed through a new API which allows
+embedded programs to temporarily disable garbage collection. See section
+1.4 of <em>The Advanced Programming Guide</em> for more details.</p>
+</div>
+<div class="section" id="b-6-version-6-2">
+<h2>B.6 Version 6.2<a class="headerlink" href="#b-6-version-6-2" title="Permalink to this headline">¶</a></h2>
+<p><strong>?EEnvironments</strong> ?EIt is now possible in an embedded application to
+create multiple environments into which programs can be loaded. See
+section 9 of <em>The Advanced Programming Guide</em> for more details</p>
+<p>?E**New Microsoft Windows and MacOS X Interfaces** ?EAn improved Windows
+95/98/NT CLIPS interface is now available for PC compatible computers.
+See section 2 of <em>The Interfaces Guide</em> for more details. An improved
+MacOS X/9.0 CLIPS interface is now available for Macintosh computers.
+See section 3 of <em>The Interfaces Guide</em> for more details.</p>
+<p>?E**COOL Default Behavior** ?EFor the purpose of role inheritance,
+system defined classes behave as concrete classes. The default value for
+the <strong>create-accessor</strong> facet is now <strong>read-write</strong>. For the purpose of
+pattern-match inheritance, system defined classes behave as reactive
+classes unless the inheriting class is <strong>abstract</strong>. This behavior can
+be restored to CLIPS 6.1 behavior using the <strong>set-class-defaults-mode</strong>
+function.</p>
+<p>?E**COOL Changes** - The following changes have been made to instance
+behavior:</p>
+<p>?ENewly created instances are sent a <strong>create</strong> message.</p>
+<p>?E**New Functions and Commands** - Several new functions and commands
+have been added. They are:</p>
+<p>?E**funcall**</p>
+<p>?E**get-class-defaults-mode**</p>
+<p>?E**set-class-defaults-mode**</p>
+<p>?E**string-to-field**</p>
+<p>?E**timer**</p>
+<p>?E**Command and Function Enhancements** - The following commands and
+functions have been enhanced:</p>
+<p>?E**switch** The requirement of having at least two case statements has
+been removed.</p>
+<p>?E**printout** The logical name <strong>nil</strong> now has special significance.</p>
+<p>?E**sort** Multifield as well as single-field values can now be sorted.</p>
+<p>?E**random** The integer value returned by the function can now be
+restricted to a specified range of values.</p>
+<p>?E**do-for-instance** Multiple actions can be specified in the action
+portion of the query (which previously required an explicit <strong>progn</strong>
+call).</p>
+<p>?E**do-for-all-instances** Multiple actions can be specified in the
+action portion of the query (which previously required an explicit
+<strong>progn</strong> call).</p>
+<p>?E**delayed-do-for-all-instances** Multiple actions can be specified in
+the action portion of the query (which previously required an explicit
+<strong>progn</strong> call).</p>
+<p>?E**Bug Fixes** - The following bugs were fixed by the 6.20 release:</p>
+<p>?EInner member variables in nested instance set queries could be
+confused with member variables from an outer query. This would happen if
+the inner member variable name shared all of its characters with the
+first N characters of the outer variable name.</p>
+<p>?ESome data structures generated by object pattern matching were not
+garbage collected until a run command was issued.</p>
+<p>?EBackspaces were not properly handled in the display window of the
+Windows interface.</p>
+<p>?EThe module name was not specified for deffunctions by the save
+command.</p>
+<p>?EGarbage collection triggered by evaluating the arguments to
+str-cat/sym-cat could change the value of the arguments already
+retrieved.</p>
+<p>?EThe PutFactSlot C function does not properly increment/decrement the
+slot value that it changes.</p>
+<p>?EDefrule data structures could end up in an invalid state during a
+retract if a fact/object matched two patterns in a rule and one pattern
+was inside two nested not conditional elements and the other pattern was
+inside one not conditional element.</p>
+<p>?EThe implode$ function does not properly handle the \ character in a
+string.</p>
+<p>?EGarbage collection triggered by expression evaluation during an
+assert-string call could corrupt the fact being asserted.</p>
+<p>?EInappropriate fact syntax for the assert-string function causes a
+crash.</p>
+<p>?EThe evaluation error flag was not reset before calling the
+AssertString C function.</p>
+<p>?EThe FindDefclass C function crashes when the specified module is not
+defined.</p>
+<p>?EThe save command did not always properly save constructs when modules
+using import/export specifications were used.</p>
+<p>Appendix C:
+Glossary
+===========</p>
+<p>This section defines some of the terminology used throughout this
+manual.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="93%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>abstraction</strong></td>
+<td>The definition of new classes to describe the common properties and behavior of a group of objects.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>action</strong></td>
+<td>A function executed by a construct (such as the RHS of a rule) which typically has no return value, but performs some useful action (such as the printout action) (see section 12).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>activation</strong></td>
+<td>A rule is activated if all of its conditional elements are satisfied and it has not yet fired based on a specific set of matching pattern entities that caused it to be activated. Note that a rule can be activated by more than one set of pattern entities. An activated rule that is placed on the agenda is called an activation.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>active instance</strong></td>
+<td>The object responding to a message which can be referred to by ?self in the message?s handlers.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>agenda</strong></td>
+<td>A list of all rules that are presently ready to fire. It is sorted by salience values and the current conflict resolution strategy. The rule at the top of the agenda is the next rule that will fire.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>antecedent</strong></td>
+<td>The LHS of a rule.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>bind</strong></td>
+<td>The action of storing a value in a variable.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>class</strong></td>
+<td>Template for describing the common properties (slots) and behavior (message-handlers) of a group of objects called instances of the class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>class precedence list</strong></td>
+<td>A linear ordering of classes which describes the path of inheritance for a class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>command</strong></td>
+<td>A function executed at the top-level command prompt (such as the reset command) typically having no return value.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>command prompt</strong></td>
+<td>In the interactive interface, the ?CLIPS&gt;?Eprompt which indicates that CLIPS is ready for a command to be entered.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>condition</strong></td>
+<td>A conditional element.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>conditional</strong></td>
+<td>A restriction on the LHS of a rule which must be satisfied in order for the rule to be applicable (also referred to as a CE).</td>
+</tr>
+<tr class="row-even"><td><strong>element</strong></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>conflict resolution</strong></td>
+<td>A method for determining the order in which rules should fire among rules with the same salience. There are seven different conflict resolution strategies: depth, breadth, simplicity, complexity, lex, mea, and random.</td>
+</tr>
+<tr class="row-even"><td><strong>strategy</strong></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>consequent</strong></td>
+<td>The RHS of a rule.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>constant</strong></td>
+<td>A non-varying single field value directly expressed as a series of characters.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>constraint</strong></td>
+<td>In patterns, a constraint is a requirement that is placed on the value of a field from a fact or instance that must be satisified in order for the pattern to be satisfied. For example, the ~red constraint is satisfied if the field to which the constraint is applied is not the symbol <em>red</em>. The term constraint is also used to refer to the legal values allowed in the slots of facts and instances.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>construct</strong></td>
+<td>A high level CLIPS abstraction used to add components to the knowledge base.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>current focus</strong></td>
+<td>The module from which activations are selected to be fired.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>current module</strong></td>
+<td>The module to which newly defined constructs that do not have a module specifier are added. Also is the default module for certain commands which accept as an optional argument a module name (such as list-defrules).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>daemon</strong></td>
+<td>A message-handler which executes implicitly whenever some action is taken upon an object, such as initialization, deletion, or slot access.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>deffunction</strong></td>
+<td>A non-overloaded function written directly in CLIPS.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>deftemplate fact</strong></td>
+<td>A deftemplate name followed by a list of named fields (slots) and specific values used to represent a deftemplate object. Note that a deftemplate fact has no inheritance. Also called a non-ordered fact.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>deftemplate object</strong></td>
+<td>An informal term for the entity described by a deftemplate. A deftemplate object is simply an informal term for the collections of slots (without specific values) which define a deftemplate. Deftemplate objects do not have inheritance</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>deftemplate pattern</strong></td>
+<td>A list of named constraints (constrained slots). A deftemplate pattern describes the attributes and associated values of a deftemplate object. Also called a non-ordered pattern.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>delimiter</strong></td>
+<td>A character which indicates the end of a symbol. The following characters act as delimiters: any non-printable ASCII character (including spaces, tabs, carriage returns, and line feeds), a double quote, opening and closing parenthesis ?E?Eand ?E?E an ampersand ?E?E a vertical bar ?|?E a less than ?E?E a semicolon ?E?E and a tilde ?~?E</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>dynamic binding</strong></td>
+<td>The deferral of which message-handlers will be called for a message until run-time.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>encapsulation</strong></td>
+<td>The requirement that all manipulation of instances of user-defined classes be done with messages.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>expression</strong></td>
+<td>A function call with arguments specified.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>external-address</strong></td>
+<td>The address of an external data structure returned by a function (written in a language such as C or Ada) that has been integrated with CLIPS (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>external function</strong></td>
+<td>A function written in an external language (such as C or Ada) defined by the user or provided by CLIPS and called from within CLIPS rules.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>facet</strong></td>
+<td>A component of a slot specification for a class, e.g. default value and cardinality.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fact</strong></td>
+<td>An ordered or deftemplate (non-ordered) fact. Facts are the data about which rules rea?son and represent the current state of the world.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fact-address</strong></td>
+<td>A pointer to a fact obtained by binding a variable to the fact which matches a pattern on the LHS of a rule.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fact-identifier</strong></td>
+<td>A shorthand notation for referring to a fact. It consists of the character ?f?E followed by a dash, followed by the fact-index of the fact.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fact-index</strong></td>
+<td>A unique integer index used to identify a particular fact.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fact-list</strong></td>
+<td>The list of current facts.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>field</strong></td>
+<td>A placeholder (named or unnamed) that has a value.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>fire</strong></td>
+<td>A rule is said to have fired if all of its conditions are satisfied and the actions then are executed.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>float</strong></td>
+<td>A number that begins with an optional sign followed optionally in order by zero or more digits, a decimal point, zero or more digits, and an exponent (consisting of an e or E followed by an integer). A floating point number must have at least one digit in it (not including the exponent) and must either contain a decimal point or an exponent (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>focus</strong></td>
+<td>As a verb, refers to changing the current focus. As a noun, refers to the current focus.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>focus stack</strong></td>
+<td>The list of modules that have been focused upon. The module at the top of the focus stack is the current focus. When all the activations from the current focus have been fired, the current focus is removed from the focus stack and the next module on the stack becomes the current focus.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>function</strong></td>
+<td>A piece of executable code identified by a specific name which returns a useful value or performs a useful side effect. Typically only used to refer to functions which do return a value (whereas commands and actions are used to refer to functions which do not return a value).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>generic dispatch</strong></td>
+<td>The process whereby applicable methods are selected and executed for a particular generic function call.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>generic function</strong></td>
+<td>A function written in CLIPS which can do different things depending on what the number and types of its arguments.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>inference engine</strong></td>
+<td>The mechanism provided by CLIPS which automatically matches patterns against the current state of the fact-list and list of instances and determines which rules are applicable.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>inheritance</strong></td>
+<td>The process whereby one class can be defined in terms of other class(es).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance</strong></td>
+<td>An object is an instance of a class. Throughout the documentation, the term instance usually refers to objects which are instances of user-defined classes.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance (of a user-defined class)</strong></td>
+<td>An object which can only be manipulated via messages, i.e all objects except symbols, strings, integers, floats, multifields and external-addresses.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance-address</strong></td>
+<td>The address of an instance of a user-defined class (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance-name</strong></td>
+<td>A symbol enclosed within left and right brackets (see section 2.3.1 for more details). An instance-name refers to an object of the specified name which is an instance of a user-defined class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance-set</strong></td>
+<td>An ordered collection of instances of user-defined classes. Each member of an instance-set is an instance of a set of classes, where the set can be different for each member.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance-set distributed action</strong></td>
+<td>A user-defined expression which is evaluated for every instance-set which satisfies an instance-set query.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>instance-set query</strong></td>
+<td>A user-defined boolean expression applied to an instance-set to see if it satisfies further user-defined criteria.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>integer</strong></td>
+<td>A number that begins with an optional sign followed by one or more digits (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>LHS</strong></td>
+<td>Left-Hand Side. The set of conditional elements that must be satisfied for the ac?tions of the RHS of a rule to be performed.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>list</strong></td>
+<td>A group of items with no implied order.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>logical name</strong></td>
+<td>A symbolic name that is associated with an I/O source or destination.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>message</strong></td>
+<td>The mechanism used to manipulate an object.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>message dispatch</strong></td>
+<td>The process whereby applicable message-handlers are selected and executed for a particular message.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>message-handler</strong></td>
+<td>An implementation of a message for a particular class of objects.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>message-handler precedence</strong></td>
+<td>The property used by the message dispatch to select between handlers when more than one is applicable to a particular message.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>method</strong></td>
+<td>An implementation of a generic function for a particular set of argument restrictions.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>method index</strong></td>
+<td>A shorthand notation for referring to a method with a particular set of parameter restrictions.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>method precedence</strong></td>
+<td>The property used by the generic dispatch to select a method when more than one is applicable to a particular generic function call.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>module</strong></td>
+<td>A workspace where a set of constructs can be grouped together such that explicit control can be maintained over restricting the access of the constructs by other modules. Also used to control the flow of execution of rules through the use of the focus command.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>module specifier</strong></td>
+<td>A notation for specifying a module. It consists of a module name followed by two colons. When placed before a construct name, it?s used to specify which module a newly defined construct is to be added to or to specify which construct a command will affect if that construct is not in the current module.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>multifield</strong></td>
+<td>A sequence of unnamed placeholders each having a value.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>multifield value</strong></td>
+<td>A sequence of zero or more single-field values.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>non-ordered fact</strong></td>
+<td>A deftemplate fact.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>number</strong></td>
+<td>An integer or float.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>object</strong></td>
+<td>A symbol, a string, a floating-point or integer number, a multifield value, an external address or an instance of a user-defined class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>order</strong></td>
+<td>Position is significant.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>ordered fact</strong></td>
+<td>A sequence of unnamed fields.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>ordered pattern</strong></td>
+<td>A sequence of constraints.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>overload</strong></td>
+<td>The process whereby a generic function can do different things depending on the types and number of its arguments, i.e. the generic function has multiple methods.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>pattern</strong></td>
+<td>A conditional element on the LHS of a rule which is used to match facts in the fact-list.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>pattern entity</strong></td>
+<td>An item that is capable of matching a pattern on the LHS of a rule. Facts and instances are the only types of pattern entities available.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>pattern-matching</strong></td>
+<td>The process of matching facts or instances to patterns on the LHS of rules.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>polymorphism</strong></td>
+<td>The ability of different objects to respond to the same message in a specialized manner.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>primitive type object</strong></td>
+<td>A symbol, string, integer, float, multifield or external-address.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>relation</strong></td>
+<td>The first field in a fact or fact pattern. Synonomous with the associated deftemplate name.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>RHS</strong></td>
+<td>Right-Hand Side. The actions to be performed when the LHS of a rule is satisfied.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>rule</strong></td>
+<td>A collection of conditions and actions. When all patterns are satisfied, the actions will be taken.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>salience</strong></td>
+<td>A priority number given to a rule. When multiple rules are ready for firing, they are fired in order of priority. The default salience is zero (0). Rules with the same salience are fired according to the current conflict resolution strategy.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>sequence</strong></td>
+<td>An ordered list.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>shadowed message-handler</strong></td>
+<td>A message-handler that must be explicitly called by another message-handler in order to execute.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>shadowed method</strong></td>
+<td>A method that must be explicitly called by another method in order to execute.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>single-field value</strong></td>
+<td>One of the primitive data types: float, integer, symbol, string, external-address, instance-name, or instance-address.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>slot</strong></td>
+<td>Named single-field or multifield. To write a slot give the field name (attribute) followed by the field value. A single-field slot has one value, while a multifield slot has zero or more values. Note that a multifield slot with one value is strictly not the same as a single field slot. However, the value of a single-field slot (or variable) may match a multifield slot (or multifield variable) that has one field.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>slot-accessor</strong></td>
+<td>Implicit message-handlers which provide read and write access to slots of an object.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>specificity (class)</strong></td>
+<td>A class that precedes another class in a class precedence list is said to be more specific. A class is more specific than any of its superclasses.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>specificity (rule)</strong></td>
+<td>A measure of how ?specific?Ethe LHS of a rule is in the pattern-matching process. The specificity is determined by the number of constants, variables, and function calls used within LHS conditional elements.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>string</strong></td>
+<td>A set of characters that starts with double quotes (“) and is followed by zero or more printable characters and ends with double quotes (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>subclass</strong></td>
+<td>If a class inherits from a second class, the first class is a subclass of the second class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>superclass</strong></td>
+<td>If a class inherits from a second class, the second class is a superclass of the first class.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>symbol</strong></td>
+<td>Any sequence of characters that starts with any printable ASCII character and is followed by zero or more characters (see section 2.3.1 for more details).</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>top level</strong></td>
+<td>In the interactive interface, the ?CLIPS&gt;?Eprompt which indicates that CLIPS is ready for a command to be entered.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>value</strong></td>
+<td>A single or multifield value.</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><strong>variable</strong></td>
+<td>An symbolic location which can store a value.</td>
+</tr>
+</tbody>
+</table>
+<p>Appendix D:
+Performance Considerations
+==========================</p>
+<p>This appendix explains various techniques that the user can apply to a
+CLIPS program to maximize performance. Included are discussions of
+pattern ordering in rules, use of deffunctions in lieu of non-overloaded
+generic functions, parameter restriction ordering in generic function
+methods, and various approaches to improving the speed of
+message-passing and reading slots of instances.</p>
+</div>
+<div class="section" id="d-1-ordering-of-patterns-on-the-lhs">
+<h2>D.1 Ordering of Patterns on the LHS<a class="headerlink" href="#d-1-ordering-of-patterns-on-the-lhs" title="Permalink to this headline">¶</a></h2>
+<p>The issues which affect performance of a rule-based system are
+considerably different from those which affect conventional programs.
+This section discusses the single most important issue: the ordering of
+patterns on the LHS of a rule.</p>
+<p>CLIPS is a rule language based on the RETE algorithm. The RETE algorithm
+was de?signed specifically to provide very efficient pattern-matching.
+CLIPS has attempted to implement this algorithm in a manner that
+combines efficient performance with powerful features. When used
+properly, CLIPS can provide very reasonable performance, even on
+microcomputers. However, to use CLIPS properly requires some
+under?stand?ing of how the pattern-matcher works.</p>
+<p>Prior to initiating execution, each rule is loaded into the system and a
+network of all patterns that appear on the LHS of any rule is
+constructed. As facts and instances of reactive classes (referred to
+collectively as pattern entities) are created, they are filtered through
+the pattern network. If the pattern entities match any of the patterns
+in the network, the rules associated with those patterns are partially
+instantiated. When pattern entities exist that match all patterns on the
+LHS of the rule, variable bindings (if any) are considered. They are
+considered from the top to the bottom; i.e., the first pattern on the
+LHS of a rule is con?sidered, then the second, and so on. If the
+variable bindings for all patterns are consis?tent with the constraints
+applied to the variables, the rules are activated and placed on the
+agenda.</p>
+<p>This is a very simple description of what occurs in CLIPS, but it gives
+the basic idea. A number of important considerations come out of this.
+Basic pattern-matching is done by filtering through the pattern network.
+The time involved in doing this is fairly constant. The slow portion of
+basic pattern-matching comes from comparing variable bindings across
+patterns. Therefore, the single most important performance factor is the
+ordering of patterns on the LHS of the rule. Unfortunately, there are no
+hard and fast methods that will al?ways order the patterns properly. At
+best, there seem to be three ?quasi?Emethods for ordering the patterns.</p>
+<p>1) Most specific to most general. The more wildcards or unbound
+variables there are in a pattern, the lower it should go. If the rule
+firing can be controlled by a single pattern, place that pattern first.
+This technique often is used to provide control structure in an expert
+system; e.g., some kind of ?phase?Efact. Putting this kind of pattern
+first will <em>guarantee</em> that the rest of the rule will not be considered
+until that pattern exists. This is most effective if the single pattern
+consists only of literal constraints. If multiple patterns with variable
+bindings control rule firing, arrange the patterns so the most important
+variables are bound first and compared as soon as possible to the other
+pattern constraints. The use of phase facts is not recommended for large
+programs if they are used solely for controlling the flow of execution
+(use modules instead).</p>
+<p>2) Patterns with the lowest number of occurrences in the fact-list or
+instance-list should go near the top. A large number of patterns of a
+particular form in the fact-list or instance-list can cause numerous
+partial instantiations of a rule that have to be ?weeded?Eout by
+comparing the variable bindings, a slower operation.</p>
+<p>3) Volatile patterns (ones that are retracted and asserted continuously)
+should go last, particularly if the rest of the patterns are mostly
+independent. Every time a pattern entity is created, it must be filtered
+through the network. If a pattern entity causes a partial rule
+instan?tiation, the variable bindings must be considered. By putting
+volatile patterns last, the variable bindings only will be checked if
+all of the rest of the patterns already exist.</p>
+<p>These rules are <em>not</em> independent and commonly conflict with each other.
+At best, they provide some rough guidelines. Since all systems have
+these characteristics in different proportions, at a glance the most
+efficient manner of ordering patterns for a given system is not evident.
+The best approach is to develop the rules with minimal consideration of
+ordering. When the reasoning is fairly well verified, experiment with
+the patterns until the optimum configuration is found.</p>
+<p>Another performance issue is the use of multifield variables and
+wildcards ($?). Although they provide a powerful capability, they must
+be used very carefully. Since they can bind to zero or more fields, they
+can cause multiple instantiations of a single rule. In particular, the
+use of multiple multifield variables in one pattern can cause a very
+large number of instantiations.</p>
+<p>Some final notes on rule performance. Experience suggests that the user
+should keep the expert system ?lean and mean.?EThe list of pattern
+entities should not be used as a data base for storage of ex?traneous
+information. Store and pattern-match only on that information necessary
+for reasoning. Keep the pattern-matching to a minimum and be as specific
+as possible. Many short, simple rules perform better than long, complex
+rules and have the added benefit of being easier to understand and
+maintain.</p>
+</div>
+<div class="section" id="d-2-deffunctions-versus-generic-functions">
+<h2>D.2 Deffunctions versus Generic Functions<a class="headerlink" href="#d-2-deffunctions-versus-generic-functions" title="Permalink to this headline">¶</a></h2>
+<p>Deffunctions execute more quickly than generic function because generic
+functions must first examine their arguments to determine which methods
+are applicable. If a generic function has only one method, a deffunction
+probably would be better. Care should be taken when determining if a
+particular function truly needs to be overloaded. In addition, if
+recompiling and relinking CLIPS is not prohibitive, user-defined
+external functions are even more efficient than deffunctions. This is
+because deffunction are interpreted whereas external functions are
+directly executed. For more details, see sections 7 and 8.2.</p>
+</div>
+<div class="section" id="d-3-ordering-of-method-parameter-restrictions">
+<h2>D.3 Ordering of Method Parameter Restrictions<a class="headerlink" href="#d-3-ordering-of-method-parameter-restrictions" title="Permalink to this headline">¶</a></h2>
+<p>When the generic dispatch examines a generic function?s method to
+determine if it is applicable to a particular set of arguments, it
+examines that method?s parameter restrictions from left to right. The
+programmer can take advantage of this by placing parameter restrictions
+which are less frequently satisfied than others first in the list. Thus,
+the generic dispatch can conclude as quickly as possible when a method
+is not applicable to a generic function call. If a group of restrictions
+are all equally likely to be satisfied, placing the simpler restrictions
+first, such as those without queries, will also allow the generic
+dispatch to conclude more quickly for a method that is not applicable.
+For more details, see section 8.4.3.</p>
+</div>
+<div class="section" id="d-4-instance-addresses-versus-instance-names">
+<h2>D.4 Instance-Addresses versus Instance-Names<a class="headerlink" href="#d-4-instance-addresses-versus-instance-names" title="Permalink to this headline">¶</a></h2>
+<p>COOL allows instances of user-defined classes to be referenced either by
+address or by name in functions which manipulate instances, such as
+message-passing with the <strong>send</strong> function. However, when an instance is
+referenced by name, CLIPS must perform an internal lookup to find the
+instance-address anyway. If the same instance is going to be manipulated
+many times, it might be advantageous to store the instance-address and
+use that as a reference. This will allow CLIPS to always go directly to
+the instance. For more details, see sections 2.4.2 and 12.16.4.6.</p>
+</div>
+<div class="section" id="d-5-reading-instance-slots-directly">
+<h2>D.5 Reading Instance Slots Directly<a class="headerlink" href="#d-5-reading-instance-slots-directly" title="Permalink to this headline">¶</a></h2>
+<p>Normally, message-passing must be used to read or set a slot of an
+instance. However, slots can be read directly within instance-set
+queries and message-handlers, and they can be set directly within
+message-handlers. Accessing slots directly is significantly faster than
+message-passing. Unless message-passing is required (because of slot
+daemons), direct access should be used when allowed. For more details,
+see sections 9.4.2, 9.4.3, 9.4.4, 9.6.3, 9.6.4 and 9.7.3.</p>
+<p>Appendix E:
+CLIPS Warning Messages
+======================</p>
+<p>CLIPS typically will display two kinds of warning messages: those
+associated with executing constructs and those associated with loading
+constructs. This appendix describes some of the more common warning
+messages and what they mean. Each message begins with a unique
+identifier enclosed in brackets followed by the keyword <strong>WARNING</strong>; the
+messages are listed here in alphabetic order according to the
+identifier.</p>
+<p>[CONSCOMP1] WARNING: Base file name exceeds 3 characters.</p>
+<p>This may cause files to be overwritten if file name length</p>
+<p>is limited on your platform.</p>
+<p>The constructs-to-c command generates file names using the file name
+prefix supplied as an argument. If this base file name is longer than
+three characters, then the possibility exists that files may be
+overwritten if file name length is limited on your platform.</p>
+<p>[CONSCOMP2] WARNING: Array name &lt;arrayName&gt; exceeds 6 characters in
+length. This variable may be indistinguishable from another by the
+linker.</p>
+<p>The constructs-to-c command generates arrays for storing data
+structures. If the SHORT_LINK_NAMES compiler flag is enabled, then this
+warning message is displayed if generated array names exceed six
+characters in length.</p>
+<p>[CSTRCPSR1] WARNING: Redefining &lt;constructType&gt;: &lt;constructName&gt;</p>
+<p>This indicates that a previously defined construct of the specified type
+has been redefined.</p>
+<p>[CSTRNBIN1] WARNING: Constraints are not saved with a binary image when
+dynamic constraint checking is disabled</p>
+<p>or</p>
+<p>[CSTRNCMP1] WARNING: Constraints are not saved with a constructs-to-c
+image when dynamic constraint checking is disabled</p>
+<p>These warnings occur when dynamic constraint checking is disabled and
+the <strong>constructs-to-c</strong> or <strong>bsave</strong> commands are executed. Constraints
+attached to deftemplate and defclass slots will not be saved with the
+runtime or binary image in these cases since it is assumed that dynamic
+constraint checking is not required. Enable dynamic constraint checking
+with the <strong>set-dynamic-constraint-checking</strong> function before calling
+<strong>constructs-to-c</strong> or <strong>bsave</strong> in order to include constraints in the
+runtime or binary image.</p>
+<p>[DFFNXFUN1] WARNING: Deffunction &lt;name&gt; only partially deleted due to
+usage by other constructs.</p>
+<p>During a clear or deletion of all deffunctions, only the actions of a
+deffunction were deleted because another construct which also could not
+be deleted referenced the deffunction.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(deffunction foo ()</p>
+<p>(printout t “Hi there!” crlf))</p>
+<p>CLIPS&gt;</p>
+<p>(deffunction bar ()</p>
+<p>(foo)</p>
+<p>(undeffunction *))</p>
+<p>CLIPS&gt; (bar)</p>
+<p>[GENRCBIN1] WARNING: COOL not installed! User-defined class in method
+restriction substituted with OBJECT.</p>
+<p>This warning occurs when a generic function method restricted by
+defclasses is loaded using the <strong>bload</strong> command into a CLIPS
+configuration where the object language is not enabled. The restriction
+containing the defclass will match any of the primitive types.</p>
+<p>[OBJBIN1] WARNING: Around message-handlers are not supported in this
+environment.</p>
+<p>This warning occurs when an <strong>around</strong> message-handler is loaded using
+the <strong>bload</strong> command into a CLIPS configuration not supporting
+imperative message-handlers.</p>
+<p>[OBJBIN2] WARNING: Before and after message-handlers are not supported
+in this environment.</p>
+<p>This warning occurs when a <strong>before</strong> or an <strong>after</strong> message-handler is
+loaded using the <strong>bload</strong> command into a CLIPS configuration not
+supporting auxiliary message-handlers.</p>
+<p>Appendix F:
+CLIPS Error Messages
+====================</p>
+<p>CLIPS typically will display two kinds of error messages: those
+associated with executing constructs and those associated with loading
+constructs. This appendix describes some of the more common error
+messages and what they mean. Each message begins with a unique
+identifier enclosed in brackets; the messages are listed here in
+alphabetic order according to the identifier.</p>
+<p>[AGENDA1] Salience value must be an integer value.</p>
+<p>Salience requires a integer argument and will otherwise result in this
+error message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (declare (salience a)) =&gt;)</p>
+<p>[AGENDA2] Salience value out of range &lt;min&gt; to &lt;max&gt;</p>
+<p>The range of allowed salience has an explicit limit; this error message
+will result if the value is out of that range.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (declare (salience 20000)) =&gt;)</p>
+<p>[AGENDA3] This error occurred while evaluating the salience [for rule
+&lt;name&gt;]</p>
+<p>When an error results from evaluating a salience value for a rule, this
+error message is given.</p>
+<p>[ANALYSIS1] Duplicate pattern-address &lt;variable name&gt; found in CE &lt;CE
+number&gt;.</p>
+<p>This message occurs when two facts or instances are bound to the same
+pattern-address variable.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error ?f &lt;- (a) ?f &lt;- (b) =&gt;)</p>
+<p>[ANALYSIS2] Pattern-address &lt;variable name&gt; used in CE #2 was previously
+bound within a pattern CE.</p>
+<p>A variable first bound within a pattern cannot be later bound to a
+fact-address.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (a ?f) ?f &lt;- (b) =&gt;)</p>
+<p>[ANALYSIS3] Variable &lt;variable name&gt; is used as both a single and
+multifield variable.</p>
+<p>Variables on the LHS of a rule cannot be bound to both single and
+multifield variables.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (a ?x $?x) =&gt;)</p>
+<p>[ANALYSIS4] Variable &lt;variable name&gt; [found in the expression
+&lt;expression&gt;]</p>
+<p>was referenced in CE &lt;CE number&gt; &lt;field or slot identifier&gt; before being
+defined</p>
+<p>A variable cannot be referenced before it is defined and, thus, results
+in this error message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule foo (a ~?x) =&gt;)</p>
+<p>[ARGACCES1] Function &lt;name&gt; expected at least &lt;minimum&gt; and no more than
+&lt;maximum&gt; argument(s)</p>
+<p>This error occurs when a function receives less than the minimum number
+or more than the maximum number of argu?ment(s) expected.</p>
+<p>[ARGACCES2] Function &lt;function-name&gt; was unable to open file &lt;file-name&gt;</p>
+<p>This error occurs when the specified function cannot open a file.</p>
+<p>[ARGACCES3] Function &lt;name1&gt; received a request from function &lt;name2&gt;
+for argument #&lt;number&gt; which is non-existent</p>
+<p>This error occurs when a function is passed fewer arguments than were
+expected.</p>
+<p>[ARGACCES4] Function &lt;name&gt; expected exactly &lt;number&gt; argument(s)</p>
+<p>This error occurs when a function that expects a precise number of
+argument(s) re?ceives an incorrect number of arguments.</p>
+<p>[ARGACCES4] Function &lt;name&gt; expected at least &lt;number&gt; argument(s)</p>
+<p>This error occurs when a function does not receive the minimum number of
+argu?ment(s) that it expected.</p>
+<p>[ARGACCES4] Function &lt;name&gt; expected no more than &lt;number&gt; argument(s)</p>
+<p>This error occurs when a function receives more than the maximum number
+of argu?ment(s) expected.</p>
+<p>[ARGACCES5] Function &lt;name&gt; expected argument #&lt;number&gt; to be of type
+&lt;data-type&gt;</p>
+<p>This error occurs when a function is passed the wrong type of argument.</p>
+<p>[ARGACCES6] Function &lt;name1&gt; received a request from function &lt;name2&gt;
+for argument #&lt;number&gt; which is not of type &lt;data-type&gt;</p>
+<p>This error occurs when a function requests from another function the
+wrong type of ar?gument, typically a <strong>string</strong> or <strong>symbol</strong>, when
+expecting a <strong>number</strong> or vice versa.</p>
+<p>[BLOAD1] Cannot load &lt;construct type&gt; construct with binary load in
+effect.</p>
+<p>If the bload command was used to load in a binary image, then the named
+construct cannot be entered until a clear command has been performed to
+remove the binary image.</p>
+<p>[BLOAD2] File &lt;file-name&gt; is not a binary construct file</p>
+<p>This error occurs when the bload command is used to load a file that was
+not cre?ated with the bsave command.</p>
+<p>[BLOAD3] File &lt;file-name&gt; is an incompatible binary construct file</p>
+<p>This error occurs when the bload command is used to load a file that was
+cre?ated with the bsave command using a different version of CLIPS.</p>
+<p>[BLOAD4] The CLIPS environment could not be cleared.</p>
+<p>Binary load cannot continue.</p>
+<p>A binary load cannot be performed unless the current CLIPS environment
+can be cleared.</p>
+<div class="line-block">
+<div class="line">[BLOAD5] Some constructs are still in use by the current binary image:</div>
+<div class="line">&lt;construct-name 1&gt;</div>
+<div class="line">&lt;construct-name 2&gt;</div>
+<div class="line">…</div>
+<div class="line">&lt;construct-name N&gt;</div>
+</div>
+<p>Binary &lt;operation&gt; cannot continue.</p>
+<p>This error occurs when the current binary image cannot be cleared
+because some constructs are still being used. The &lt;operation&gt; in
+progress may either be a binary load or a binary clear.</p>
+<div class="line-block">
+<div class="line">[BLOAD6] The following undefined functions are referenced by this
+binary image:</div>
+<div class="line">&lt;function-name 1&gt;</div>
+<div class="line">&lt;function-name 2&gt;</div>
+<div class="line">…</div>
+<div class="line">&lt;function-name N&gt;</div>
+</div>
+<p>This error occurs when a binary image is loaded that calls functions
+which were available in the CLIPS executable that originally created the
+binary image, but which are not available in the CLIPS executable that
+is loading the binary image.</p>
+<p>[BSAVE1] Cannot perform a binary save while a binary load is in effect.</p>
+<p>The bsave command does not work when a binary image is loaded.</p>
+<p>[CLASSEXM1] Inherited slot &lt;slot-name&gt; from class &lt;slot-name&gt; is not
+valid for function slot-publicp</p>
+<p>This error message occurs when the function <strong>slot-publicp</strong> is given an
+inherited slot. This function can only be used on slots defined in the
+given class.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a USER)</p>
+<p>(slot woz (visibility private)))</p>
+<p>CLIPS&gt;</p>
+<p>(defclass BAR (is-a FOO))</p>
+<p>CLIPS&gt; (slot-publicp BAR woz)</p>
+<p>[CLASSFUN1] Unable to find class &lt;class name&gt; in function &lt;function
+name&gt;.</p>
+<p>This error message occurs when a function is given a non-existent class
+name.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (class-slots FOO)</p>
+<p>[CLASSFUN2] Maximum number of simultaneous class hierarchy traversals
+exceeded &lt;number&gt;.</p>
+<p>This error is usually caused by too many simultaneously active
+instance-set queries, e.g., <strong>do-for-all-instances</strong>. The direct or
+indirect nesting of instance-set query functions is limited in the
+following way:</p>
+<p>Ci is the number of members in an instance-set for the ith nested
+instance-set query function.</p>
+<p>N is the number of nested instance-set query functions.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="media/image8.emf"><img alt="image7" src="media/image8.emf" style="width: 0.38889in; height: 0.47222in;" /></a></td>
+<td>&lt;= 128 (the default upper limit)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(deffunction my-func ()</p>
+<p>(do-for-instance ((?a USER) (?b USER) (?c USER)) TRUE</p>
+<p>(printout t ?a ” ” ?b ” ” ?c crlf))</p>
+<p>; The sum here is C1 = 3 which is OK.</p>
+<p>CLIPS&gt;</p>
+<p>(do-for-all-instances ((?a OBJECT) (?b OBJECT)) TRUE</p>
+<p>(my-func))</p>
+<p>; The sum here is C1 + C2 = 2 + 3 = 5 which is OK.</p>
+<p>The default upper limit of 128 should be sufficient for most if not all
+applications. However, the limit may be increased by editing the header
+file OBJECT.H and recompiling CLIPS.</p>
+<p>[CLASSPSR1] An abstract class cannot be reactive.</p>
+<p>Only concrete classes can be reactive.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a USER)</p>
+<p>(role abstract)</p>
+<p>(pattern-match reactive))</p>
+<p>[CLASSPSR2] Cannot redefine a predefined system class.</p>
+<p>Predefined system classes cannot be modified by the user.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass STRING (is-a NUMBER))</p>
+<p>[CLASSPSR3] &lt;name&gt; class cannot be redefined while outstanding
+references to it still exist.</p>
+<p>This error occurs when an attempt to redefine a class is made under one
+or both of the following two circumstances:</p>
+<ol class="arabic simple">
+<li>The class (or any of its subclasses) has instances.</li>
+</ol>
+<p>2) The class (or any of its subclasses) appear in the parameter
+restrictions of any generic function method.</p>
+<p>Before the class can be redefined, all such instances and methods must
+be deleted.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (defmethod foo ((?a A LEXEME)))</p>
+<p>CLIPS&gt; (defclass A (is-a OBJECT)))</p>
+<p>[CLASSPSR4] Class &lt;attribute&gt; already declared.</p>
+<p>Only one specification of a class attribute is allowed.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(role abstract)</p>
+<p>(role concrete))</p>
+<p>[CLSLTPSR1] Duplicate slots not allowed.</p>
+<p>Slots in a defclass must be unique.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo)</p>
+<p>(slot foo))</p>
+<p>[CLSLTPSR2] &lt;name&gt; facet already specified.</p>
+<p>Only one occurrence of a facet per slot is allowed.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (access read-only)</p>
+<p>(access read-write)))</p>
+<p>[CLSLTPSR3] Cardinality facet can only be used with multifield slots</p>
+<p>Single-field slots by definition have a cardinality of one.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (cardinality 3 5)))</p>
+<p>[CLSLTPSR4] read-only slots must have a default value</p>
+<p>Since slots cannot be unbound and <strong>read-only</strong> slots cannot be set
+after initial creation of the instance, <strong>read-only</strong> slots must have a
+default value.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (access read-only)</p>
+<p>(default ?NONE)))</p>
+<p>[CLSLTPSR5] read-only slots cannot have a write accessor</p>
+<p>Since <strong>read-only</strong> slots cannot be changed after initializationof the
+instance, a <strong>write</strong> accessor (<strong>put-</strong> message-handler) is not
+allowed.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (access read-only)</p>
+<p>(create-accessor write)))</p>
+<p>[CLSLTPSR6] no-inherit slots cannot also be public</p>
+<p><strong>no-inherit</strong> slots are by definition not accessible to subclasses and
+thus only visible to the parent class.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (propagation no-inherit)</p>
+<p>(visibility public)))</p>
+<p>[COMMLINE1] Expected a ‘(‘, constant, or global variable</p>
+<p>This message occurs when a top-level command does not begin with a ‘(‘,
+constant, or global variable.</p>
+<p>Example:</p>
+<p>CLIPS&gt; )</p>
+<p>[COMMLINE2] Expected a command.</p>
+<p>This message occurs when a top-level command is not a symbol.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (“facts”</p>
+<p>[CONSCOMP1] Invalid file name &lt;fileName&gt; contains ‘.’</p>
+<p>A ‘.’ cannot be used in the file name prefix that is passed to the
+constructs-to-c command since this prefix is used to generate file names
+and some operating systems do not allow more than one ‘.’ to appear in a
+file name.</p>
+<p>[CONSTRCT1] Some constructs are still in use. Clear cannot continue.</p>
+<p>This error occurs when the clear command is issued when a construct is
+in use (such as a rule that is firing).</p>
+<p>[CSTRCPSR1] Expected the beginning of a construct.</p>
+<p>This error occurs when the load command expects a left parenthesis
+followed a construct type and these token types are not found.</p>
+<p>[CSTRCPSR2] Missing name for &lt;construct-type&gt; construct</p>
+<p>This error occurs when the name is missing for a construct that requires
+a name.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defgeneric ())</p>
+<p>[CSTRCPSR3] Cannot define &lt;construct-type&gt; &lt;construct-name&gt; because of
+an import/export conflict.</p>
+<p>or</p>
+<p>[CSTRCPSR3] Cannot define defmodule &lt;defmodule-name&gt; because of an
+import/export conflict cause by the &lt;construct-type&gt; &lt;construct-name&gt;.</p>
+<p>A construct cannot be defined if defining the construct would allow two
+different definitions of the same construct type and name to both be
+visible to any module.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmodule MAIN (export ?ALL))</p>
+<p>CLIPS&gt; (deftemplate MAIN::foo)</p>
+<p>CLIPS&gt; (defmodule BAR (import MAIN ?ALL))</p>
+<p>CLIPS&gt; (deftemplate BAR::foo (slot x))</p>
+<p>[CSTRCPSR4] Cannot redefine &lt;construct-type&gt; &lt;construct-name&gt; while it
+is in use.</p>
+<p>A construct cannot be redefined while it is being used by another
+construct or other data structure (such as a fact or instance).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (deftemplate bar)</p>
+<p>CLIPS&gt; (assert (bar))</p>
+<p>&lt;Fact-0&gt;</p>
+<p>CLIPS&gt; (deftemplate (bar (slot x)))</p>
+<p>[CSTRNCHK1] <em>Message Varies</em></p>
+<p>This error ID covers a range of messages indicating a type, value,
+range, or cardinality violation.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (type SYMBOL)))</p>
+<p>CLIPS&gt; (assert (foo (x 3)))</p>
+<p>[CSTRNPSR1] The &lt;first attribute name&gt; attribute conflicts with the
+&lt;second attribute name&gt; attribute.</p>
+<p>This error message occurs when two slot attributes conflict.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (type SYMBOL) (range 0 2)))</p>
+<p>[CSTRNPSR2] Minimum &lt;attribute&gt; value must be less than</p>
+<p>or equal to the maximum &lt;attribute&gt; value.</p>
+<p>The minimum attribute value for the range and cardinality attributes
+must be less than or equal to the maximum attribute value for the
+attribute.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (range 8 1)))</p>
+<p>[CSTRNPSR3] The &lt;first attribute name&gt; attribute cannot be used in
+conjunction with the &lt;second attribute name&gt; attribute.</p>
+<p>The use of some slot attributes excludes the use of other slot
+attributes.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (allowed-values a)</p>
+<p>(allowed-symbols b)))</p>
+<p>[CSTRNPSR4] Value does not match the expected type for the &lt;attribute
+name&gt; attribute.</p>
+<p>The arguments to an attribute must match the type expected for that
+attribute (e.g. integers must be used for the allowed-integers
+attribute).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate example (slot x (allowed-integers 3.0)))</p>
+<p>[CSTRNPSR5] The cardinality attribute can only be used with multifield
+slots.</p>
+<p>The cardinality attribute can only be used for slots defined with the
+multislot keyword.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (cardinality 1 1)))</p>
+<p>[CSTRNPSR6] Minimum cardinality value must be greater than or equal to
+zero.</p>
+<p>A multislot with no value has a cardinality of 0. It is not possible to
+have a lower cardinality.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (multislot x (cardinality -3 1)))</p>
+<p>[DEFAULT1] The default value for a single field slot must be a single
+field value.</p>
+<p>This error occurs when the default or default-dynamic attribute for a
+single-field slot does not contain a single value or an expression
+returning a single value.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate error (slot x (default)))</p>
+<p>[DFFNXPSR1] Deffunctions are not allowed to replace constructs.</p>
+<p>A deffunction cannot have the same name as any construct.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffunction defgeneric ())</p>
+<p>[DFFNXPSR2] Deffunctions are not allowed to replace external functions.</p>
+<p>A deffunction cannot have the same name as any system or user-defined
+external function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffunction + ())</p>
+<p>[DFFNXPSR3] Deffunctions are not allowed to replace generic functions.</p>
+<p>A deffunction cannot have the same name as any generic function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defgeneric foo)</p>
+<p>CLIPS&gt; (deffunction foo ())</p>
+<p>[DFFNXPSR4] Deffunction &lt;name&gt; may not be redefined while it is
+executing.</p>
+<p>A deffunction can be loaded at any time except when a deffunction of the
+same name is already executing.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(deffunction foo ()</p>
+<p>(build “(deffunction foo ())”))</p>
+<p>CLIPS&gt; (foo)</p>
+<p><strong>[DFFNXPSR5] Defgeneric &lt;name&gt; imported from module &lt;module name&gt;
+conflicts with this deffunction.</strong></p>
+<p>A deffunction cannot have the same name as any generic function imported
+from another module.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmodule MAIN (export ?ALL))</p>
+<p>CLIPS&gt; (defmethod foo ())</p>
+<p>CLIPS&gt; (defmodule FOO (import MAIN ?ALL))</p>
+<p>CLIPS&gt; (deffunction foo)</p>
+<p>[DRIVE1] This error occurred in the join network</p>
+<p>Problem resides in join #&lt;pattern-number&gt; in rule(s):</p>
+<p>&lt;problem-rules&gt;+</p>
+<p>This error pinpoints other evaluation errors associated with evaluating
+an expression within the join network. The specific pattern of the
+problem rules is identified.</p>
+<p>[EMATHFUN1] Domain error for &lt;function-name&gt; function</p>
+<p>This error occurs when an argument passed to a math function is not in
+the domain of values for which a return value exists.</p>
+<p>[EMATHFUN2] Argument overflow for &lt;function-name&gt; function</p>
+<p>This error occurs when an argument to an extended math function would
+cause a numeric overflow.</p>
+<p>[EMATHFUN3] Singularity at asymptote in &lt;function-name&gt; function</p>
+<p>This error occurs when an argument to a trigonometric math function
+would cause a singularity.</p>
+<p>[EVALUATN1] Variable &lt;name&gt; is unbound</p>
+<p>This error occurs when a local variable not set by a previous call to
+<strong>bind</strong> is accessed at the top level.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (progn ?error)</p>
+<p>[EVALUATN2] No function, generic function or deffunction of name &lt;name&gt;
+exists for external call.</p>
+<p>IThis error occurs only when an invalid function name is passed to the
+external C access routine CLIPSFunctionCall.</p>
+<p>[EXPRNPSR1] A function name must be a symbol</p>
+<p>In the following example, ‘<strong>~</strong>’ is recognized by CLIPS as an operator,
+not a function:</p>
+<p>Example:</p>
+<p>CLIPS&gt; (+ (~ 3 4) 4)</p>
+<p>[EXPRNPSR2] Expected a constant, variable, or expression</p>
+<p>In the following example, ‘<strong>~</strong>’ is an operator and is illegal as an
+argument to a function call:</p>
+<p>Example:</p>
+<p>CLIPS&gt; (&lt;= ~ 4)</p>
+<p>[EXPRNPSR3] Missing function declaration for &lt;name&gt;</p>
+<p>CLIPS does not recognize &lt;name&gt; as a declared function and gives this
+error message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (xyz)</p>
+<p>[EXPRNPSR4] $ Sequence operator not a valid argument for &lt;name&gt;.</p>
+<p>The sequence expansion operator cannot be used with certain functions.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (set-sequence-operator-recognition TRUE)</p>
+<p>FALSE</p>
+<p>CLIPS&gt; (defrule foo (x $?y) =&gt; (assert (x1 $?y)))</p>
+<p>[FACTMCH1] This error occurred in the pattern network</p>
+<p>Currently active fact: &lt;newly assert fact&gt;</p>
+<p>Problem resides in slot &lt;slot name&gt;</p>
+<p>Of pattern #&lt;pattern-number&gt; in rule(s):</p>
+<p>&lt;problem-rules&gt;+</p>
+<p>This error pinpoints other evaluation errors associated with evaluating
+an expression within the pattern network. The specific pattern and field
+of the problem rules are identified.</p>
+<p>[FACTMNGR1] Facts may not be retracted during pattern-matching</p>
+<p>or</p>
+<p>[FACTMNGR2] Facts may not be retracted during pattern-matching</p>
+<p>Functions used on the LHS of a rule should not have side effects (such
+as the creation of a new instance or fact).</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defrule error</p>
+<p>(test (assert (blah)))</p>
+<p>=&gt;)</p>
+<p>CLIPS&gt; (reset)</p>
+<p>[FACTRHS1] Template &lt;name&gt; does not exist for assert.</p>
+<p>This error occurs when an assert is attempted for a deftemplate which
+does not exist in a runtime or active <strong>bload</strong> image. In other
+situations, CLIPS will create an implied deftemplate if one does not
+already exist.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (bsave error.bin)</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (bload error.bin)</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (assert (error))</p>
+<p>[GENRCCOM1] No such generic function &lt;name&gt; in function undefmethod.</p>
+<p>This error occurs when the generic function name passed to the
+undefmethod function does not exist.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (undefmethod yak 3)</p>
+<p>[GENRCCOM2] Expected a valid method index in function undefmethod.</p>
+<p>This error occurs when an invalid method index is passed to undefmethod
+(e.g. a negative integer or a symbol other than *).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ())</p>
+<p>CLIPS&gt; (undefmethod foo a))</p>
+<p>[GENRCCOM3] Incomplete method specification for deletion.</p>
+<p>It is illegal to specify a non-wildcard method index when a wildcard is
+given for the generic function in the function <strong>undefmethod</strong>.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (undefmethod * 1)</p>
+<p>[GENRCCOM4] Cannot remove implicit system function method for generic
+function &lt;name&gt;.</p>
+<p>A method corresponding to a system defined function cannot be deleted.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod integer ((?x SYMBOL)) 0)</p>
+<p>CLIPS&gt; (list-defmethods integer)</p>
+<p>integer #SYS1 (NUMBER)</p>
+<p>integer #2 (SYMBOL)</p>
+<p>For a total of 2 methods.</p>
+<p>CLIPS&gt; (undefmethod integer 1)</p>
+<p>[GENRCEXE1] No applicable methods for &lt;name&gt;.</p>
+<p>The generic function call arguments do not satisfy any method?s
+parameter restrictions.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ())</p>
+<p>CLIPS&gt; (foo 1 2)</p>
+<p>[GENRCEXE2] Shadowed methods not applicable in current context.</p>
+<p>No shadowed method is available when the function <strong>call-next-method</strong>
+is called.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (call-next-method)</p>
+<p>[GENRCEXE3] Unable to determine class of &lt;value&gt; in generic function
+&lt;name&gt;.</p>
+<p>The class or type of a generic function argument could not be determined
+for comparison to a method type restriction.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a INTEGER)))</p>
+<p>CLIPS&gt; (foo [bogus-instance])</p>
+<p>[GENRCEXE4] Generic function &lt;name&gt; method #&lt;index&gt; is not applicable to
+the given arguments.</p>
+<p>This error occurs when <strong>call-specific-method</strong> is called with an
+inappropriate set of arguments for the specified method.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ())</p>
+<p>CLIPS&gt; (call-specific-method foo 1 abc)</p>
+<p>[GENRCFUN1] Defgeneric &lt;name&gt; cannot be modified while one of its
+methods is executing.</p>
+<p>Defgenerics can?t be redefined while one of their methods is currently
+executing.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defgeneric foo)</p>
+<p>CLIPS&gt; (defmethod foo () (build “(defgeneric foo)”))</p>
+<p>CLIPS&gt; (foo)</p>
+<p>[GENRCFUN2] Unable to find method &lt;name&gt; #&lt;index&gt; in function &lt;name&gt;.</p>
+<p>No generic function method of the specified index could be found by the
+named function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo 1 ())</p>
+<p>CLIPS&gt; (ppdefmethod foo 2)</p>
+<p>[GENRCFUN3] Unable to find generic function &lt;name&gt; in function &lt;name&gt;.</p>
+<p>No generic function method of the specified index could be found by the
+named function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (preview-generic balh)</p>
+<p>[GENRCPSR1] Expected ‘)’ to complete defgeneric.</p>
+<p>A right parenthesis completes the definition of a generic function
+header.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defgeneric foo ())</p>
+<p>[GENRCPSR2] New method #&lt;index1&gt; would be indistinguishable from method
+#&lt;index2&gt;.</p>
+<p>An explicit index has been specified for a new method that does not
+match that of an older method which has identical parameter
+restrictions.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo 1 ((?a INTEGER)))</p>
+<p>CLIPS&gt; (defmethod foo 2 ((?a INTEGER)))</p>
+<p>[GENRCPSR3] Defgenerics are not allowed to replace constructs.</p>
+<p>A generic function cannot have the same name as any construct.</p>
+<p><strong>[GENRCPSR4] Deffunction &lt;name&gt; imported from module &lt;module name&gt;
+conflicts with this defgeneric.</strong></p>
+<p>A deffunction cannot have the same name as any generic function imported
+from another module.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmodule MAIN (export ?ALL))</p>
+<p>CLIPS&gt; (deffunction foo ())</p>
+<p>CLIPS&gt; (defmodule FOO (import MAIN ?ALL))</p>
+<p>CLIPS&gt; (defmethod foo)</p>
+<p>[GENRCPSR5] Generic functions are not allowed to replace deffunctions.</p>
+<p>A generic function cannot have the same name as any deffunction.</p>
+<p>[GENRCPSR6] Method index out of range.</p>
+<p>A method index cannot be greater than the maximum value of an integer or
+less than 1.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo 0 ())</p>
+<p>[GENRCPSR7] Expected a ‘(‘ to begin method parameter restrictions.</p>
+<p>A left parenthesis must begin a parameter restriction list for a method.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo)</p>
+<p>[GENRCPSR8] Expected a variable for parameter specification.</p>
+<p>A method parameter with restrictions must be a variable.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((abc)))</p>
+<p>[GENRCPSR9] Expected a variable or ‘(‘ for parameter specification.</p>
+<p>A method parameter must be a variable with or without restrictions.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo (abc))</p>
+<p>[GENRCPSR10] Query must be last in parameter restriction.</p>
+<p>A query parameter restriction must follow a type parameter restriction
+(if any).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a (&lt; ?a 1) INTEGER)))</p>
+<p>[GENRCPSR11] Duplicate classes/types not allowed in parameter
+restriction.</p>
+<p>A method type parameter restriction may have only a single occurrence of
+a particular class.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a INTEGER INTEGER)))</p>
+<p>[GENRCPSR12] Binds are not allowed in query expressions.</p>
+<p>Binding new variables in a method query parameter restriction is
+illegal.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a (bind ?b 1))))</p>
+<p>[GENRCPSR13] Expected a valid class/type name or query.</p>
+<p>Method parameter restrictions consist of zero or more class names and an
+optional query expression.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a 34)))</p>
+<p>[GENRCPSR14] Unknown class/type in method.</p>
+<p>Classes in method type parameter restrictions must already be defined.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a bogus-class)))</p>
+<p>[GENRCPSR15] &lt;name&gt; class is redundant.</p>
+<p>All classes in a method type parameter restriction should be unrelated.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?a INTEGER NUMBER)))</p>
+<p>[GENRCPSR16] The system function &lt;name&gt; cannot be overloaded.</p>
+<p>Some system functions canot be overloaded.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod if ())</p>
+<p>[GENRCPSR17] Cannot replace the implicit system method #&lt;integer&gt;.</p>
+<p>A system function can not be overloaded with a method that has the exact
+number and types of arguments.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod integer ((?x NUMBER)) (* 2 ?x))</p>
+<p>[GLOBLDEF1] Global variable &lt;variable name&gt; is unbound.</p>
+<p>A global variable must be defined before it can be accessed at the
+command prompt or elsewhere.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; ?*x*</p>
+<p>[GLOBLPSR1] Global variable &lt;variable name&gt; was referenced, but is not
+defined.</p>
+<p>A global variable must be defined before it can be accessed at the
+command prompt or elsewhere.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; ?*x*</p>
+<p>[INCRRSET1] The incremental reset behavior cannot be changed with rules
+loaded.</p>
+<p>The incremental reset behaviour can only be changed when there are no
+currently defined rules.</p>
+<p>[INHERPSR1] A class may not have itself as a superclass.</p>
+<p>A class may not inherit from itself.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a A))</p>
+<p>[INHERPSR2] A class may inherit from a superclass only once.</p>
+<p>All direct superclasses of a class must be unique.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER USER))</p>
+<p>[INHERPSR3] A class must be defined after all its superclasses.</p>
+<p>Subclasses must be defined last.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass B (is-a A))</p>
+<p>[INHERPSR4] Must have at least one superclass.</p>
+<p>All user-defined classes must have at least one direct superclass.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a))</p>
+<p>[INHERPSR5] Partial precedence list formed: &lt;classa&gt; &lt;classb&gt; ?E&lt;classc&gt;</p>
+<p>Precedence loop in superclasses: &lt;class1&gt; &lt;class2&gt; ?E&lt;classn&gt; &lt;class1&gt;</p>
+<p>No class precedence list satisfies the rules specified in section
+9.3.1.1 for the given direct superclass list. The message shows a
+conflict for &lt;class1&gt; because the precedence implies that &lt;class1&gt; must
+both precede and succeed &lt;class2&gt; through &lt;classn&gt;. The full loop can be
+used to help identify which particular classes are causing the problem.
+This loop is not necessarily the only loop in the precedence list; it is
+the first one detected. The part of the precedence list which was
+successfully formed is also listed.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a MULTIFIELD FLOAT SYMBOL))</p>
+<p>CLIPS&gt; (defclass B (is-a SYMBOL FLOAT))</p>
+<p>CLIPS&gt; (defclass C (is-a A B))</p>
+<p>[INHERPSR6] A user-defined class cannot be a subclass of &lt;name&gt;.</p>
+<p>The INSTANCE, INSTANCE-NAME, and INSTANCE-ADDRESS classes cannot have
+any subclasses.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a INSTANCE))</p>
+<p>[INSCOM1] Undefined type in function &lt;name&gt;.</p>
+<p>The evaluation of an expression yielded something other than a
+recognized class or primitive type.</p>
+<p>[INSFILE1] Function &lt;function-name&gt; could not completely process file
+&lt;name&gt;.</p>
+<p>This error occurs when an instance definition is improperly formed in
+the input file for the <strong>load-instances</strong>, <strong>restore-instances</strong>, or
+<strong>bload-instances</strong> command.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (load-instances bogus.txt)</p>
+<p>[INSFILE2] &lt;file-name&gt; file is not a binary instances file.</p>
+<p>or</p>
+<p>[INSFILE3] &lt;file-name&gt; file is not a compatible binary instances file.</p>
+<p>This error occurs when bload-instances attempts to load a file that was
+not created with bsave-instances or when the file being loaded was
+created by a different version of CLIPS.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (save-instances foo.ins)</p>
+<p>1</p>
+<p>CLIPS&gt; (bload-instances foo.ins)</p>
+<p>[INSFILE4] Function bload-instances unable to load instance
+&lt;instance-name&gt;.</p>
+<p>This error occurs when an instance specification in the input file for
+the <strong>bload-instances</strong> command could not be created.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER) (role concrete))</p>
+<p>CLIPS&gt; (make-instance of A)</p>
+<p>[gen1]</p>
+<p>CLIPS&gt; (bsave-instances foo.bin)</p>
+<p>1</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (bload-instances foo.bin)</p>
+<p>[INSFUN1] Expected a valid instance in function &lt;name&gt;.</p>
+<p>The named function expected an instance-name or address as an argument.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (initialize-instance 34)</p>
+<p>[INSFUN2] No such instance &lt;name&gt; in function &lt;name&gt;.</p>
+<p>This error occurs when the named function cannot find the specified
+instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (instance-address [bogus-instance])</p>
+<p>[INSFUN3] No such slot &lt;name&gt; in function &lt;name&gt;.</p>
+<p>This error occurs when the named function cannot find the specified slot
+in an instance or class.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (slot-writablep A b)</p>
+<p>[INSFUN4] Invalid instance-address in function &lt;name&gt;.</p>
+<p>This error occurs when an attempt is made to use the address of a
+deleted instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (defglobal ?*x* = (instance-address a))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (class ?*x*)</p>
+<p>[INSFUN5] Cannot modify reactive instance slots while pattern-matching
+is in process.</p>
+<p>CLIPS does not allow reactive instance slots to be changed while
+pattern-matching is taking place. Functions used on the LHS of a rule
+should not have side effects (such as the changing slot values).</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a USER)</p>
+<p>(role concrete)</p>
+<p>(pattern-match reactive)</p>
+<p>(slot x (create-accessor read-write)))</p>
+<p>CLIPS&gt; (make-instance x of FOO)</p>
+<p>[x]</p>
+<p>CLIPS&gt; (defrule BAR (x) (test (send [x] put-x 3)) =&gt;)</p>
+<p>CLIPS&gt; (assert (x))</p>
+<p>[INSFUN6] Unable to pattern-match on shared slot &lt;name&gt; in class &lt;name&gt;.</p>
+<p>This error occurs when the number of simultaneous class hierarchy
+traversals is exceeded while pattern-matching on a shared slot. See the
+related error message [CLASSFUN2] for more details.</p>
+<p>[INSFUN7] &lt;multifield-value&gt; illegal for single-field slot &lt;name&gt; of
+instance &lt;name&gt; found in &lt;function-call or message-handler&gt;.</p>
+<p>Single-field slots in an instance can hold only one atomic value.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (set-static-constraint-checking FALSE)</p>
+<p>TRUE</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a USER)</p>
+<p>(role concrete)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler FOO error ()</p>
+<p>(bind ?self:foo 1 2 3))</p>
+<p>CLIPS&gt; (make-instance foo of FOO)</p>
+<p>[foo]</p>
+<p>CLIPS&gt; (send [foo] error)</p>
+<p>[INSFUN8] Void function illegal value for slot &lt;name&gt; of instance &lt;name&gt;
+found in &lt;function-call or message-handler&gt;.</p>
+<p>Only functions which have a return value can be used to generate values
+for an instance slot.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (set-static-constraint-checking FALSE)</p>
+<p>TRUE</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a USER)</p>
+<p>(role concrete)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler FOO error ()</p>
+<p>(bind ?self:foo (instances)))</p>
+<p>CLIPS&gt; (make-instance foo of FOO)</p>
+<p>[foo]</p>
+<p>CLIPS&gt; (send [foo] error)</p>
+<p>[INSMNGR1] Expected a valid name for new instance.</p>
+<p><strong>make-instance</strong> expects a symbol or an instance-name for the name of a
+new instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (make-instance 34 of A)</p>
+<p>[INSMNGR2] Expected a valid class name for new instance.</p>
+<p><strong>make-instance</strong> expects a symbol for the class of a new instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (make-instance a of 34)</p>
+<p>[INSMNGR3] Cannot create instances of abstract class &lt;name&gt;.</p>
+<p>Direct instances of abstract classes, such as the predefined system
+classes, are illegal.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (make-instance [foo] of USER)</p>
+<p>[INSMGNR4] The instance &lt;name&gt; has a slot-value which depends on the
+instance definition.</p>
+<p>The initialization of an instance is recursive in that a slot-override
+or default-value tries to create or reinitialize the same instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(make-instance a of A (foo (make-instance a of A)))</p>
+<p>[INSMNGR5] Unable to delete old instance &lt;name&gt;.</p>
+<p><strong>make-instance</strong> will attempt to delete an old instance of the same
+name if it exists. This error occurs if that deletion fails.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler A delete around ()</p>
+<p>(if (neq (instance-name ?self) [a]) then</p>
+<p>(call-next-handler)))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[INSMNGR6] Cannot delete instance &lt;name&gt; during initialization.</p>
+<p>The evaluation of a slot-override in <strong>make-instance</strong> or
+<strong>initialize-instance</strong> attempted to delete the instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler A put-foo after ($?any)</p>
+<p>(delete-instance))</p>
+<p>CLIPS&gt; (make-instance a of A (foo 2))</p>
+<p>[INSMNGR7] Instance &lt;name&gt; is already being initialized.</p>
+<p>An instance cannot be reinitialized during initialization.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler A init after ()</p>
+<p>(initialize-instance ?self))</p>
+<p>CLIPS&gt; (initialize-instance a)</p>
+<p>CLIPS&gt; (send [a] try)</p>
+<p>[INSMNGR8] An error occurred during the initialization of instance
+&lt;name&gt;.</p>
+<p>This message is displayed when an evaluation error occurs while the
+<strong>init</strong> message is executing for an instance.</p>
+<p>[INSMNGR9] Expected a valid slot name for slot-override.</p>
+<p><strong>make-instance</strong> and <strong>initialize-instance</strong> expect symbols for slot
+names.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (make-instance a of A (34 override-value))</p>
+<p>[INSMNGR10] Cannot create instances of reactive classes while
+pattern-matching is in process.</p>
+<p>CLIPS does not allow instances of reactive classes to be created while
+pattern-matching is taking place. Functions used on the LHS of a rule
+should not have side effects (such as the creation of a new instance or
+fact).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete) (pattern-match
+reactive))</p>
+<p>CLIPS&gt; (defrule BAR (x) (test (make-instance of FOO)) =&gt;)</p>
+<p>CLIPS&gt; (assert (x))</p>
+<p>[INSMNGR11] Invalid module specifier in new instance name.</p>
+<p>This error occurs when the module specifier in the instance-name is
+illegal (such as an undefined module name).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete))</p>
+<p>CLIPS&gt; (make-instance BOGUS::x of FOO)</p>
+<p>[INSMNGR12] Cannot delete instances of reactive classes while
+pattern-matching is in process.</p>
+<p>CLIPS does not allow instances of reactive classes to be deleted while
+pattern-matching is taking place. Functions used on the LHS of a rule
+should not have side effects (such as the deletion of a new instance or
+the retraction of a fact).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete) (pattern-match
+reactive))</p>
+<p>CLIPS&gt; (make-instance x of FOO)</p>
+<p>[x]</p>
+<p>CLIPS&gt; (defrule BAR (x) (test (send [x] delete)) =&gt;)</p>
+<p>CLIPS&gt; (assert (x))</p>
+<p>[INSMNGR13] Slot &lt;slot-name&gt; does not exist in instance &lt;instance-name&gt;.</p>
+<p>This error occurs when the slot name of a slot override does not
+correspond to any of the valid slot names for an instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete))</p>
+<p>CLIPS&gt; (make-instance of FOO (x 3))</p>
+<p>[INSMNGR14] Override required for slot &lt;slot-name&gt; in instance
+&lt;instance-name&gt;.</p>
+<p>If the ?NONE keyword was specified with the default attribute for a
+slot, then a slot override must be provided when an instance containing
+that slot is created.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER)</p>
+<p>(role concrete)</p>
+<p>(slot x (default ?NONE)))</p>
+<p>CLIPS&gt; (make-instance of FOO)</p>
+<p>[INSMNGR15] init-slots not valid in this context.</p>
+<p>The special function <strong>init-slots</strong> (for initializing slots of an
+instance to the class default values) can only be called during the
+dispatch of an <strong>init</strong> message for an instance, i.e., in an <strong>init</strong>
+message-handler.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler INITIAL-OBJECT error ()</p>
+<p>(init-slots))</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (send [initial-object] error)</p>
+<p>[INSMODDP1] Direct/message-modify message valid only in modify-instance.</p>
+<p>The <strong>direct-modify</strong> and <strong>message-modify</strong> message-handlers attached
+to the class <strong>USER</strong> can only be called as a result of the appropriate
+message being sent.by the <strong>modify-instance</strong> or
+<strong>message-modify-instance</strong> functions. Additional handlers may be
+defined, but the message can only be sent in this context.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (send [initial-object] direct-modify 0)</p>
+<p>[INSMODDP2] Direct/message-duplicate message valid only in
+duplicate-instance.</p>
+<p>The <strong>direct-duplicate</strong> and <strong>message-duplicate</strong> message-handlers
+attached to the class <strong>USER</strong> can only be called as a result of the
+appropriate message being sent.by the <strong>duplicate-instance</strong> or
+<strong>message-duplicate-instance</strong> functions. Additional handlers may be
+defined, but the message can only be sent in this context.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (send [initial-object] direct-duplicate 0 0)</p>
+<p>[INSMODDP3] Instance copy must have a different name in
+duplicate-instance.</p>
+<p>If an instance-name is specified for the new instance in the call to
+<strong>duplicate-instance</strong>, it must be different from the source instance?s
+name.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (duplicate-instance initial-object to initial-object)</p>
+<p>[INSMULT1] Function &lt;name&gt; cannot be used on single-field slot &lt;name&gt; in
+instance &lt;name&gt;.</p>
+<p>The functions described in section 12.13.4.12, such as <strong>slot-insert$</strong>,
+can only operate on multifield slots.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (slot-insert$ a foo 1 abc def)</p>
+<p>[INSQYPSR1] Duplicate instance-set member variable name in function
+&lt;name&gt;.</p>
+<p>Instance-set member variables in an instance-set query function must be
+unique.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (any-instancep ((?a OBJECT) (?a OBJECT)) TRUE)</p>
+<p>[INSQYPSR2] Binds are not allowed in instance-set query in function
+&lt;name&gt;.</p>
+<p>An instance-set query cannot bind variables.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(any-instancep ((?a OBJECT) (?b OBJECT))</p>
+<p>(bind ?c 1))</p>
+<p>[INSQYPSR3] Cannot rebind instance-set member variable &lt;name&gt; in
+function &lt;name&gt;.</p>
+<p>Instance-set member variables cannot be changed within the actions of an
+instance-set query function.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(do-for-all-instances ((?a USER))</p>
+<p>(if (slot-existp ?a age) then</p>
+<p>(&gt; ?a:age 30))</p>
+<p>(bind ?a (send ?a get-brother)))</p>
+<p>[IOFUN1] Illegal logical name used for &lt;function name&gt; function.</p>
+<p>A logical name must be either a symbol, string, instance-name, float, or
+integer.</p>
+<p>Example:</p>
+<p>(printout (create$ a b c) x)</p>
+<p>[IOFUN2] Logical name &lt;logical name&gt; already in use.</p>
+<p>A logical name cannot be associated with two different files.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (open “foo.txt” foo “w”)</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (open “foo2.txt” foo “w”)</p>
+<p>[MEMORY1] Out of memory</p>
+<p>This error indicates insufficient memory exists to expand internal
+struc?tures enough to allow continued operation (causing an exit to the
+operating system).</p>
+<p>[MEMORY2] Release error in genfree</p>
+<p>This error indicates a problem in the memory management routines.</p>
+<p>[MEMORY3] Unable to allocate memory block &gt; 32K</p>
+<p>This error occurs when the bload function attempts to allocate a block
+of memory larger than 32K and the operating system does not permit
+blocks greater than 32K to be allocated. This will only occur on
+machines which have 2 byte integers (excluding the Macintosh and IBM PC
+which have machine dependent code provided so that they can allocate
+more than 32K). When this error occurs, CLIPS exits to the operating
+system.</p>
+<p>[MISCFUN1] expand$ must be used in the argument list of a function call.</p>
+<p>The expand$ function may not be called unless it is within the argument
+list of another function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (expand$ (create$ a b c))</p>
+<p>[MODULDEF1] Illegal use of the module specifier.</p>
+<p>The module specifier can only be used as part of a defined construct?s
+name or as an argument to a function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffunction y ())</p>
+<p>CLIPS&gt; (MAIN::y)</p>
+<p>[MODULPSR1] Module &lt;module name&gt; does not export any constructs.</p>
+<p>or</p>
+<p>[MODULPSR1] Module &lt;module name&gt; does not export any &lt;construct type&gt;
+constructs.</p>
+<p>or</p>
+<p>[MODULPSR1] Module &lt;module name&gt; does not export the &lt;construct type&gt;
+&lt;construct name&gt;.</p>
+<p>A construct cannot be imported from a module unless the defmodule
+exports that construct.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (defmodule BAR)</p>
+<p>CLIPS&gt; (deftemplate BAR::bar)</p>
+<p>CLIPS&gt; (defmodule FOO (import BAR deftemplate bar)))</p>
+<p>[MSGCOM1] Incomplete message-handler specification for deletion.</p>
+<p>It is illegal to specify a non-wildcard handler index when a wildcard is
+given for the class in the external C function
+<strong>UndefmessageHandler()</strong>. This error can only be generated when a
+user-defined external function linked with CLIPS calls this function
+incorrectly.</p>
+<p>[MSGCOM2] Unable to find message-handler &lt;name&gt; &lt;type&gt; for class &lt;name&gt;
+in function &lt;name&gt;.</p>
+<p>This error occurs when the named function cannot find the specified
+message-handler.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (ppdefmessage-handler USER foo around)</p>
+<p>[MSGCOM3] Unable to delete message-handlers.</p>
+<p>This error occurs when a message-handler can?t be deleted (such as when
+a binary image is loaded).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete))</p>
+<p>CLIPS&gt; (defmessage-handler FOO bar ())</p>
+<p>CLIPS&gt; (bsave foo.bin)</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (bload foo.bin)</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (undefmessage-handler FOO bar)</p>
+<p>[MSGFUN1] No applicable primary message-handlers found for &lt;message&gt;.</p>
+<p>No primary message-handler attached to the object?s classes matched the
+name of the message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (send [a] bogus-message)</p>
+<p>[MSGFUN2] Message-handler &lt;name&gt; &lt;type&gt; in class &lt;name&gt; expected
+exactly/at least &lt;number&gt; argument(s).</p>
+<p>The number of message arguments was inappropriate for one of the
+applicable message-handlers.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (defmessage-handler USER foo (?a ?b))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (send [a] foo)</p>
+<p>[MSGFUN3] &lt;name&gt; slot in instance &lt;name&gt;: write access denied.</p>
+<p>This error occurs when an attempt is made to change the value of a
+read-only slot.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo (default 100)</p>
+<p>(read-only)))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt; (send [a] put-foo)</p>
+<p>[MSGFUN4] &lt;function&gt; may only be called from within message-handlers.</p>
+<p>The named function operates on the active instance of a message and thus
+can only be called by message-handlers.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (ppinstance)</p>
+<p>[MSGFUN5] &lt;function&gt; operates only on instances.</p>
+<p>The named function operates on the active instance of a message and can
+only handle instances of user-defined classes (not primitive type
+objects).</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler INTEGER print ()</p>
+<p>(ppinstance))</p>
+<p>CLIPS&gt; (send 34 print)</p>
+<p>[MSGFUN6] Private slot &lt;slot-name&gt; of class &lt;class-name&gt; cannot be
+accessed directly by handlers attached to class &lt;class-name&gt;</p>
+<p>A subclass which inherits private slots from a superclass may not access
+those slots using the ?self variable. This error can also occur when a
+superclass tries to access via <strong>dynamic-put</strong> or <strong>dynamic-get</strong> a
+private slot in a subclass.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete) (slot x))</p>
+<p>CLIPS&gt; (defclass BAR (is-a FOO))</p>
+<p>CLIPS&gt; (defmessage-handler BAR yak () ?self:x)</p>
+<p>[MSGFUN7] Unrecognized message-handler type in defmessage-handler.</p>
+<p>Allowed message-handler types include primary, before, after, and
+around.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmessage-handler USER foo behind ())</p>
+<p>[MSGFUN8] Unable to delete message-handler(s) from class &lt;name&gt;.</p>
+<p>This error occurs when an attempt is made to delete a message-handler
+attached to a class for which any of the message-handlers are executing.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler INITIAL-OBJECT error ()</p>
+<p>(undefmessage-handler INITIAL-OBJECT error primary))</p>
+<p>CLIPS&gt; (send [initial-object] error)</p>
+<p>[MSGPASS1] Shadowed message-handlers not applicable in current context.</p>
+<p>No shadowed message-handler is available when the function
+<strong>call-next-handler</strong> or <strong>override-next-handler</strong> is called.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (call-next-handler)</p>
+<p>[MSGPASS2] No such instance &lt;name&gt; in function &lt;name&gt;.</p>
+<p>This error occurs when the named function cannot find the specified
+instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (instance-address [bogus-instance])</p>
+<p>[MSGPASS3] Static reference to slot &lt;name&gt; of class &lt;name&gt; does not
+apply to &lt;instance-name&gt; of &lt;class-name&gt;.</p>
+<p>This error occurs when a static reference to a slot in a superclass by a
+message-handler attached to that superclass is incorrectly applied to an
+instance of a subclass which redefines that slot. Static slot references
+always refer to the slot defined in the class to which the
+message-handler is attached.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass A (is-a USER)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(defclass B (is-a A)</p>
+<p>(role concrete)</p>
+<p>(slot foo))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler A access-foo ()</p>
+<p>?self:foo)</p>
+<p>CLIPS&gt; (make-instance b of B)</p>
+<p>[b]</p>
+<p>CLIPS&gt; (send [b] access-foo)</p>
+<p>[MSGPSR1] A class must be defined before its message-handlers.</p>
+<p>A message-handler can only be attached to an existing class.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmessage-handler bogus-class foo ())</p>
+<p>[MSGPSR2] Cannot (re)define message-handlers during execution of other
+message-handlers for the same class.</p>
+<p>No message-handlers for a class can be loaded while any current
+message-handlers attached to the class are executing.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (make-instance a of A)</p>
+<p>[a]</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler A build-new ()</p>
+<p>(build “(defmessage-handler A new ())”))</p>
+<p>CLIPS&gt; (send [a] build-new)</p>
+<p>[MSGPSR3] System message-handlers may not be modified.</p>
+<p>There are four primary message-handlers attached to the class USER which
+cannot be modified: init, delete, create and print.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmessage-handler USER init ())</p>
+<p>[MSGPSR4] Illegal slot reference in parameter list.</p>
+<p>Direct slot references are allowed only within message-handler bodies.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmessage-handler USER foo (?self:bar))</p>
+<p>[MSGPSR5] Active instance parameter cannot be changed.</p>
+<p>?self is a reserved parameter for the active instance.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler USER foo ()</p>
+<p>(bind ?self 1))</p>
+<p>[MSGPSR6] No such slot &lt;name&gt; in class &lt;name&gt; for ?self reference.</p>
+<p>The symbol following the ?self: reference must be a valid slot for the
+class.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete) (slot x))</p>
+<p>CLIPS&gt; (defmessage-handler FOO bar () ?self:y)</p>
+<p>[MSGPSR7] Illegal value for ?self reference.</p>
+<p>The symbol following the ?self: reference must be a symbol.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass FOO (is-a USER) (role concrete) (slot x))</p>
+<p>CLIPS&gt; (defmessage-handler FOO bar () ?self:7)</p>
+<p>[MSGPSR8] Message-handlers cannot be attached to the class &lt;name&gt;.</p>
+<p>Message-handlers cannot be attached to the INSTANCE, INSTANCE-ADDRESS,
+or INSTANCE-NAME classes.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmessage-handler INSTANCE foo ())</p>
+<p>[MULTIFUN1] Multifield index &lt;index&gt; out of range 1..&lt;end range&gt; in
+function &lt;name&gt;</p>
+<p>or</p>
+<p>[MULTIFUN1] Multifield index range &lt;start&gt;…&lt;end&gt; out of range 1..&lt;end
+range&gt; in function &lt;name&gt;</p>
+<p>This error occurs when a multifield manipulation function is passed a
+single index or range of indices that does not fall within the specified
+range of allowed indices.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (delete$ (create$ a b c) 4 4)</p>
+<p>[MULTIFUN2] Cannot rebind field variable in function progn$.</p>
+<p>The field variable (if specified) cannot be rebound within the body of
+the progn$ function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (progn$ (?field (create$ a)) (bind ?field 3))</p>
+<p>[OBJRTBLD1] No objects of existing classes can satisfy pattern.</p>
+<p>No objects of existing classes could possibly satisfy the pattern. This
+error usually occurs when a restriction placed on the is-a attribute is
+incompatible with slot restrictions before it in the pattern.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defclass A (is-a INITIAL-OBJECT) (slot foo))</p>
+<p>CLIPS&gt; (defrule error (object (foo ?) (is-a ~A)) =&gt;)</p>
+<p>[OBJRTBLD2] No objects of existing classes can satisfy &lt;attribute-name&gt;
+restriction in object pattern.</p>
+<p>The restrictions on &lt;attribute&gt; are such that no objects of existing
+classes (which also satisfy preceding restrictions) could possibly
+satisfy the pattern.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (object (bad-slot ?)) =&gt;)</p>
+<p>[OBJRTBLD3] No objects of existing classes can satisfy pattern
+#&lt;pattern-num&gt;.</p>
+<p>No objects of existing classes could possibly satisfy the pattern. This
+error occurs when the constraints for a slot as given in the
+defclass(es) are incompatible with the constraints imposed by the
+pattern.</p>
+<p>Example:</p>
+<p>CLIPS&gt;</p>
+<p>(defclass FOO (is-a INITIAL-OBJECT)</p>
+<p>(slot bar (type INTEGER)))</p>
+<p>CLIPS&gt;</p>
+<p>(defclass BAR (is-a INITIAL-OBJECT)</p>
+<p>(slot bar (type SYMBOL))</p>
+<p>(slot woz))</p>
+<p>CLIPS&gt;</p>
+<p>(defrule error</p>
+<p>(x abc)</p>
+<p>(object (bar 100) (woz ?))</p>
+<p>(y def)</p>
+<p>=&gt;)</p>
+<p>[OBJRTBLD4] Multiple restrictions on attribute &lt;attribute-name&gt; not
+allowed.</p>
+<p>Only one restriction per attribute is allowed per object pattern.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (object (is-a ?) (is-a ?)) =&gt;)</p>
+<p>[OBJRTBLD5] Undefined class in object pattern.</p>
+<p>Object patterns are applicable only to classes of objects which are
+already defined.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (object (is-a BOGUS)) =&gt;)</p>
+<p>[OBJRTMCH1] This error occurred in the object pattern network</p>
+<p>Currently active instance: &lt;instance-name&gt;</p>
+<p>Problem resides in slot &lt;slot name&gt; field #&lt;field-index&gt;</p>
+<p>Of pattern #&lt;pattern-number&gt; in rule(s):</p>
+<p>&lt;problem-rules&gt;+</p>
+<p>This error pinpoints other evaluation errors associated with evaluating
+an expression within the object pattern network. The specific pattern
+and field of the problem rules are identified.</p>
+<p>[PATTERN1] The symbol &lt;symbol name&gt; has special meaning and may not be
+used as a &lt;use name&gt;.</p>
+<p>Certain keywords have special meaning to CLIPS and may not be used in
+situations that would cause an ambiguity.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate exists (slot x))</p>
+<p>[PATTERN2] Single and multifield constraints cannot be mixed in a field
+constraint</p>
+<p>Single and multifield variable constraints cannot be mixed in a field
+constraint (this restriction does not include variables passed to
+functions with the predicate or return value constraints).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule foo (a ?x $?y ?x&amp;~$?y) =&gt;)</p>
+<p>[PRCCODE1] Attempted to call a &lt;construct&gt; which does not exist.</p>
+<p>In a CLIPS configuration without deffunctions and/or generic functions,
+an attempt was made to call a deffunction or generic function from a
+binary image generated by the <strong>bsave</strong> command.</p>
+<p>[PRCCODE2] Functions without a return value are illegal as &lt;construct&gt;
+arguments.</p>
+<p>An evaluation error occurred while examining the arguments for a
+deffunction, generic function or message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo (?a))</p>
+<p>CLIPS&gt; (foo (instances))</p>
+<p>[PRCCODE3] Undefined variable &lt;name&gt; referenced in &lt;where&gt;.</p>
+<p>Local variables in the actions of a deffunction, method,
+message-handler, or defrule must reference parameters, variables bound
+within the actions with the <strong>bind</strong> function, or variables bound on the
+LHS of a rule.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule foo =&gt; (+ ?a 3))</p>
+<p>[PRCCODE4] Execution halted during the actions of &lt;construct&gt; &lt;name&gt;.</p>
+<p>This error occurs when the actions of a rule, deffunction, generic
+function method or message-handler are prematurely aborted due to an
+error.</p>
+<p>[PRCCODE5] Variable &lt;name&gt; unbound [in &lt;construct&gt; &lt;name&gt;].</p>
+<p>This error occurs when local variables in the actions of a deffunction,
+method, message-handler, or defrule becomes unbound during execution as
+a result of calling the <strong>bind</strong> function with no arguments.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffunction foo () (bind ?a) ?a)</p>
+<p>CLIPS&gt; (foo)</p>
+<p>[PRCCODE6] This error occurred while evaluating arguments for the
+&lt;construct&gt; &lt;name&gt;.</p>
+<p>An evaluation error occurred while examining the arguments for a
+deffunction, generic function method or message-handler.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffunction foo (?a))</p>
+<p>CLIPS&gt; (foo (+ (eval “(gensym)”) 2))</p>
+<p>[PRCCODE7] Duplicate parameter names not allowed.</p>
+<p>Deffunction, method or message-handler parameter names must be unique.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo ((?x INTEGER) (?x FLOAT)))</p>
+<p>[PRCCODE8] No parameters allowed after wildcard parameter.</p>
+<p>A wildcard parameter for a deffunction, method or message-handler must
+be the last parameter.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defmethod foo (($?x INTEGER) (?y SYMBOL)))</p>
+<p>[PRCDRPSR1] Cannot rebind count variable in function loop-for-count.</p>
+<p>The special variable ?count cannot be rebound within the body of the
+loop-for-count function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (loop-for-count (?count 10) (bind ?count 3))</p>
+<p>[PRCDRPSR2] The return function is not valid in this context.</p>
+<p>or</p>
+<p>[PRCDRPSR2] The break function is not valid in this context.</p>
+<p>The return and break functions can only be used within certain contexts
+(e.g. the break function can only be used within a while loop and
+certain instance set query functions).</p>
+<p>Example:</p>
+<p>CLIPS&gt; (return 3)</p>
+<p>[PRCDRPSR3] Duplicate case found in switch function.</p>
+<p>A case may be specified only once in a switch statement.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (switch a (case a then 8) (case a then 9))</p>
+<p>[PRNTUTIL1] Unable to find &lt;item&gt; &lt;item-name&gt;</p>
+<p>This error occurs when CLIPS cannot find the named item (check for
+typos).</p>
+<p>[PRNTUTIL2] Syntax Error: Check appropriate syntax for &lt;item&gt;</p>
+<p>This error occurs when the appropriate syntax is not used.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (if (&gt; 3 4))</p>
+<p>[PRNTUTIL3]</p>
+<p>*** CLIPS SYSTEM ERROR ***</p>
+<p>ID = &lt;error-id&gt;</p>
+<p>CLIPS data structures are in an inconsistent or corrupted state.</p>
+<p>This error may have occurred from errors in user defined code.</p>
+<p>**************************</p>
+<p>This error indicates an internal problem within CLIPS (which may have
+been caused by user defined functions or other user code). If the
+problem cannot be located within user defined code, then the &lt;error-id&gt;
+should be reported.</p>
+<p>[PRNTUTIL4] Unable to delete &lt;item&gt; &lt;item-name&gt;</p>
+<p>This error occurs when CLIPS cannot delete the named item (e.g. a
+construct might be in use). One example which will cause this error is
+an attempt to delete a deffunction or generic function which is used in
+another construct (such as the RHS of a defrule or a default-dynamic
+facet of a defclass slot).</p>
+<p>[PRNTUTIL5] The &lt;item&gt; has already been parsed.</p>
+<p>This error occurs when CLIPS has already parsed an attribute or
+declaration.</p>
+<p>[PRNTUTIL6] Local variables cannot be accessed by &lt;function or
+construct&gt;.</p>
+<p>This error occurs when a local variable is used by a function or
+construct that cannot use global variables.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deffacts info (fact ?x))</p>
+<p>[PRNTUTIL7] Attempt to divide by zero in &lt;function-name&gt; function.</p>
+<p>This error occurs when a function attempts to divide by zero.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (/ 3 0)</p>
+<p>[ROUTER1] Logical name &lt;logical_name&gt; was not recognized by any routers</p>
+<p>This error results because “Hello” is not recognized as a valid router
+name.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (printout “Hello” crlf)</p>
+<p>[RULECSTR1] Variable &lt;variable name&gt; in CE #&lt;integer&gt; slot &lt;slot name&gt;</p>
+<p>has constraint conflicts which make the pattern unmatchable.</p>
+<p>or</p>
+<p>[RULECSTR1] Variable &lt;variable name&gt; in CE #&lt;integer&gt; field #&lt;integer&gt;</p>
+<p>has constraint conflicts which make the pattern unmatchable.</p>
+<p>or</p>
+<p>[RULECSTR1] CE #&lt;integer&gt; slot &lt;slot name&gt;</p>
+<p>has constraint conflicts which make the pattern unmatchable.</p>
+<p>or</p>
+<p>[RULECSTR1] CE #&lt;integer&gt; field #&lt;integer&gt;</p>
+<p>has constraint conflicts which make the pattern unmatchable.</p>
+<p>This error occurs when slot value constraints (such as allowed types)
+prevents any value from matching the slot constraint for a pattern.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (type SYMBOL)))</p>
+<p>CLIPS&gt; (deftemplate bar (slot x (type FLOAT)))</p>
+<p>CLIPS&gt; (defrule yak (foo (x ?x)) (bar (x ?x)) =&gt;)</p>
+<p>[RULECSTR2] Previous variable bindings of &lt;variable name&gt; caused the
+type restrictions</p>
+<p>for argument #&lt;integer&gt; of the expression &lt;expression&gt;</p>
+<p>found in CE#&lt;integer&gt; slot &lt;slot name&gt; to be violated.</p>
+<p>This error occurs when previous variable bindings and constraints
+prevent a variable from containing a value which satisfies the type
+constraints for one of a function?s parameters.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (type SYMBOL)))</p>
+<p>CLIPS&gt; (defrule bar (foo (x ?x&amp;:(&gt; ?x 3))) =&gt;)</p>
+<p>[RULECSTR3] Previous variable bindings of &lt;variable name&gt; caused the
+type restrictions</p>
+<p>for argument #&lt;integer&gt; of the expression &lt;expression&gt;</p>
+<p>found in the rule’s RHS to be violated.</p>
+<p>This error occurs when previous variable bindings and constraints
+prevent a variable from containing a value which satisfies the type
+constraints for one of a function?s parameters.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (type SYMBOL)))</p>
+<p>CLIPS&gt; (defrule bar (foo (x ?x)) =&gt; (printout t (+ ?x 1) crlf))</p>
+<p>[RULELHS1] The logical CE cannot be used with a not/exists/forall CE.</p>
+<p>Logical CEs can be placed outside, but not inside, a not/exists/forall
+CE.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (not (logical (x))) =&gt;)</p>
+<p>[RULELHS2] A pattern CE cannot be bound to a pattern-address within a
+not CE</p>
+<p>This is an illegal operation and results in an error message.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (not ?f &lt;- (fact)) =&gt;)</p>
+<p>[RULEPSR1] Logical CEs must be placed first in a rule</p>
+<p>If logical CEs are used, then the first CE must be a logical CE.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (a) (logical (b)) =&gt;)</p>
+<p>[RULEPSR2] Gaps may not exist between logical CEs</p>
+<p>Logical CEs found within a rule must be contiguous.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule error (logical (a)) (b) (logical (c)) =&gt;)</p>
+<p>[STRNGFUN1] Function build does not work in run time modules.</p>
+<p>or</p>
+<p>[STRNGFUN1] Function eval does not work in run time modules.</p>
+<p>The build and eval functions do not work in run time modules because the
+code required for parsing is not available.</p>
+<p>[STRNGFUN2] Some variables could not be accessed by the eval function.</p>
+<p>Local variables cannot be accessed by the eval function.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (eval “?x”)</p>
+<p>[SYSDEP1] No file found for -f option</p>
+<p>This message occurs if the -f option is used when executing CLIPS, but
+no arguments are provided.</p>
+<p>Example:</p>
+<p>clips -f</p>
+<p>[TEXTPRO1] Could not open file &lt;file-name&gt;.</p>
+<p>This error occurs when the external text-processing system command
+<strong>fetch</strong> encounters an error when loading a file.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (fetch ?bogus.txt?E</p>
+<p>[TMPLTDEF1] Invalid slot &lt;slot name&gt; not defined in corresponding
+deftemplate &lt;deftemplate name&gt;</p>
+<p>The slot name supplied does not correspond to a slot name defined in the
+corre?sponding deftemplate</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate example (slot x))</p>
+<p>CLIPS&gt; (defrule error (example (z 3)) =&gt;)</p>
+<p>[TMPLTDEF2] The single field slot &lt;slot name&gt; can only contain a single
+field value.</p>
+<p>If a slot definition is specified in a template pattern or fact, the
+contents of the slot must be capable of matching against or evaluating
+to a single value.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate example (slot x))</p>
+<p>CLIPS&gt; (assert (example (x)))</p>
+<p>[TMPLTFUN1] Fact-indexes can only be used by &lt;command name&gt; as a top
+level command.</p>
+<p>Fact indexes may only be used with the modify and duplicate commands
+when the command is issued from the top-level command prompt.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (defrule foo =&gt; (modify 1 (x 3))</p>
+<p>[TMPLTFUN2] Attempted to assert a multifield value into the single field
+slot &lt;slot name&gt; of deftemplate &lt;deftemplate name&gt;.</p>
+<p>A multifield value cannot be stored in a single field slot.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x))</p>
+<p>CLIPS&gt;</p>
+<p>(defrule foo</p>
+<p>=&gt;</p>
+<p>(bind ?x (create$ a b))</p>
+<p>(assert (foo (x ?x))))</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (run)</p>
+<p>[TMPLTRHS1] Slot &lt;slot name&gt; requires a value because of its (default
+?NONE) attribute.</p>
+<p>The (default ?NONE) attribute requires that a slot value be supplied
+whenever a new fact is created.</p>
+<p>Example:</p>
+<p>CLIPS&gt; (deftemplate foo (slot x (default ?NONE)))</p>
+<p>CLIPS&gt; (assert (foo))</p>
+<p>Appendix G:
+CLIPS BNF
+===========</p>
+<p>Data Types</p>
+<p>&lt;symbol&gt; ::= <strong>A valid symbol as specified</strong></p>
+<p><strong>in section 2.3.1</strong></p>
+<p>&lt;string&gt; ::= <strong>A valid string as specified</strong></p>
+<p><strong>in section 2.3.1</strong></p>
+<p>&lt;float&gt; ::= <strong>A valid float as specified</strong></p>
+<p><strong>in section 2.3.1</strong></p>
+<p>&lt;integer&gt; ::= <strong>A valid integer as specified</strong></p>
+<p><strong>in section 2.3.1</strong></p>
+<p>&lt;instance-name&gt; ::= <strong>A valid instance-name as specified</strong></p>
+<p><strong>in section 2.3.1</strong></p>
+<p>&lt;number&gt; ::= &lt;float&gt; | &lt;integer&gt;</p>
+<p>&lt;lexeme&gt; ::= &lt;symbol&gt; | &lt;string&gt;</p>
+<p>&lt;constant&gt; ::= &lt;symbol&gt; | &lt;string&gt; | &lt;integer&gt; |</p>
+<p>&lt;float&gt; | &lt;instance-name&gt;</p>
+<p>&lt;comment&gt; ::= &lt;string&gt;</p>
+<p>&lt;variable-symbol&gt; ::= <strong>A symbol beginning with an</strong></p>
+<p><strong>alphabetic character</strong></p>
+<p>&lt;function-name&gt; ::= <strong>Any symbol which corresponds to a</strong></p>
+<p><strong>system or user defined function, a</strong></p>
+<p><strong>deffunction name, or a defgeneric</strong></p>
+<p><strong>name</strong></p>
+<p>&lt;file-name&gt; ::= <strong>A symbol or string which is a valid</strong></p>
+<p><strong>file name (including path</strong></p>
+<p><strong>information) for the operating</strong></p>
+<p><strong>system under which CLIPS is running</strong></p>
+<p>&lt;slot-name&gt; ::= <strong>A valid deftemplate slot name</strong></p>
+<p>&lt;…-name&gt; ::= <strong>A &lt;symbol&gt; where the ellipsis</strong></p>
+<p><strong>indicate what the symbol represents.</strong></p>
+<p><strong>For example, &lt;rule-name&gt; is a symbol</strong></p>
+<p><strong>which represents the name of a rule.</strong></p>
+<p>Variables and Expressions</p>
+<p>&lt;single-field-variable&gt; ::= ?&lt;variable-symbol&gt;</p>
+<p>&lt;multifield-variable&gt; ::= $?&lt;variable-symbol&gt;</p>
+<p>&lt;global-variable&gt; ::= ?*&lt;symbol&gt;*</p>
+<p>&lt;variable&gt; ::= &lt;single-field-variable&gt; |</p>
+<p>&lt;multifield-variable&gt; |</p>
+<p>&lt;global-variable&gt;</p>
+<p>&lt;function-call&gt; ::= (&lt;function-name&gt; &lt;expression&gt;*)</p>
+<p>&lt;expression&gt; ::= &lt;constant&gt; | &lt;variable&gt; |</p>
+<p>&lt;function-call&gt;</p>
+<p>&lt;action&gt; ::= &lt;expression&gt;</p>
+<p>&lt;…-expression&gt; ::= <strong>An &lt;expression&gt; which returns</strong></p>
+<p><strong>the type indicated by the</strong></p>
+<p><strong>ellipsis. For example,</strong></p>
+<p><strong>&lt;integer-expression&gt; should</strong></p>
+<p><strong>return an integer.</strong></p>
+<p>Constructs</p>
+<p>&lt;CLIPS-program&gt; ::= &lt;construct&gt;*</p>
+<p>&lt;construct&gt; ::= &lt;deffacts-construct&gt; |</p>
+<p>&lt;deftemplate-construct&gt; |</p>
+<p>&lt;defglobal-construct&gt; |</p>
+<p>&lt;defrule-construct&gt; |</p>
+<p>&lt;deffunction-construct&gt; |</p>
+<p>&lt;defgeneric-construct&gt; |</p>
+<p>&lt;defmethod-construct&gt; |</p>
+<p>&lt;defclass-construct&gt; |</p>
+<p>&lt;definstance-construct&gt; |</p>
+<p>&lt;defmessage-handler-construct&gt; |</p>
+<p>&lt;defmodule-construct&gt;</p>
+<p>Deffacts Construct</p>
+<div class="line-block">
+<div class="line">&lt;deffacts-construct&gt; ::= (deffacts &lt;deffacts-name&gt; [&lt;comment&gt;]</div>
+<div class="line">&lt;RHS-pattern&gt;*)</div>
+</div>
+<p>Deftemplate Construct</p>
+<p>&lt;deftemplate-construct&gt;</p>
+<p>::= (deftemplate &lt;deftemplate-name&gt;</p>
+<p>[&lt;comment&gt;]</p>
+<p>&lt;slot-definition&gt;*)</p>
+<p>&lt;slot-definition&gt; ::= &lt;single-slot-definition&gt; |</p>
+<p>&lt;multislot-definition&gt;</p>
+<p>&lt;single-slot-definition&gt;</p>
+<p>::= (slot &lt;slot-name&gt; &lt;template-attribute&gt;*)</p>
+<p>&lt;multislot-definition&gt;</p>
+<p>::= (multislot &lt;slot-name&gt;</p>
+<p>&lt;template-attribute&gt;*)</p>
+<p>&lt;template-attribute&gt;</p>
+<p>::= &lt;default-attribute&gt; |</p>
+<p>&lt;constraint-attribute&gt;</p>
+<p>&lt;default-attribute&gt;</p>
+<p>::= (default ?DERIVE | ?NONE | &lt;expression&gt;*) |</p>
+<p>(default-dynamic &lt;expression&gt;*)</p>
+<p>Fact Specification</p>
+<p>&lt;RHS-pattern&gt; ::= &lt;ordered-RHS-pattern&gt; |</p>
+<p>&lt;template-RHS-pattern&gt;</p>
+<p>&lt;ordered-RHS-pattern&gt; ::= (&lt;symbol&gt; &lt;RHS-field&gt;+)</p>
+<p>&lt;template-RHS-pattern&gt; ::= (&lt;deftemplate-name&gt; &lt;RHS-slot&gt;*)</p>
+<p>&lt;RHS-slot&gt; ::= &lt;single-field-RHS-slot&gt; |</p>
+<p>&lt;multifield-RHS-slot&gt;</p>
+<p>&lt;single-field-RHS-slot&gt; ::= (&lt;slot-name&gt; &lt;RHS-field&gt;)</p>
+<p>&lt;multifield-RHS-slot&gt; ::= (&lt;slot-name&gt; &lt;RHS-field&gt;*)</p>
+<p>&lt;RHS-field&gt; ::= &lt;variable&gt; |</p>
+<p>&lt;constant&gt; |</p>
+<p>&lt;function-call&gt;</p>
+<p>Defrule Construct</p>
+<p>&lt;defrule-construct&gt; ::= (defrule &lt;rule-name&gt; [&lt;comment&gt;]</p>
+<p>[&lt;declaration&gt;]</p>
+<div class="line-block">
+<div class="line">&lt;conditional-element&gt;*</div>
+<div class="line">=&gt;</div>
+<div class="line">&lt;action&gt;*)</div>
+</div>
+<p>&lt;declaration&gt; ::= (declare &lt;rule-property&gt;+)</p>
+<p>&lt;rule-property&gt; ::= (salience &lt;integer-expression&gt;) |</p>
+<p>(auto-focus &lt;boolean-symbol&gt;)</p>
+<p>&lt;boolean-symbol&gt; ::= TRUE | FALSE</p>
+<p>&lt;conditional-element&gt; ::= &lt;pattern-CE&gt; |</p>
+<p>&lt;assigned-pattern-CE&gt; |</p>
+<p>&lt;not-CE&gt; | &lt;and-CE&gt; | &lt;or-CE&gt; |</p>
+<p>&lt;logical-CE&gt; | &lt;test-CE&gt; |</p>
+<p>&lt;exists-CE&gt; | &lt;forall-CE&gt;</p>
+<p>&lt;pattern-CE&gt; ::= &lt;ordered-pattern-CE&gt; |</p>
+<p>&lt;template-pattern-CE&gt; |</p>
+<p>&lt;object-pattern-CE&gt;</p>
+<p>&lt;assigned-pattern-CE&gt; ::= &lt;single-field-variable&gt; &lt;- &lt;pattern-CE&gt;</p>
+<p>&lt;not-CE&gt; ::= (not &lt;conditional-element&gt;)</p>
+<p>&lt;and-CE&gt; ::= (and &lt;conditional-element&gt;+)</p>
+<p>&lt;or-CE&gt; ::= (or &lt;conditional-element&gt;+)</p>
+<p>&lt;logical-CE&gt; ::= (logical &lt;conditional-element&gt;+)</p>
+<p>&lt;test-CE&gt; ::= (test &lt;function-call&gt;)</p>
+<p>&lt;exists-CE&gt; ::= (exists &lt;conditional-element&gt;+)</p>
+<p>&lt;forall-CE&gt; ::= (forall &lt;conditional-element&gt;</p>
+<p>&lt;conditional-element&gt;+)</p>
+<p>&lt;ordered-pattern-CE&gt; ::= (&lt;symbol&gt; &lt;constraint&gt;*)</p>
+<p>&lt;template-pattern-CE&gt; ::= (&lt;deftemplate-name&gt; &lt;LHS-slot&gt;*)</p>
+<p>&lt;object-pattern-CE&gt; ::= (object &lt;attribute-constraint&gt;*)</p>
+<p>&lt;attribute-constraint&gt; ::= (is-a &lt;constraint&gt;) |</p>
+<p>(name &lt;constraint&gt;) |</p>
+<p>(&lt;slot-name&gt; &lt;constraint&gt;*)</p>
+<p>&lt;LHS-slot&gt; ::= &lt;single-field-LHS-slot&gt; |</p>
+<p>&lt;multifield-LHS-slot&gt;</p>
+<p>&lt;single-field-LHS-slot&gt; ::= (&lt;slot-name&gt; &lt;constraint&gt;)</p>
+<p>&lt;multifield-LHS-slot&gt; ::= (&lt;slot-name&gt; &lt;constraint&gt;*)</p>
+<p>&lt;constraint&gt; ::= ? | $? | &lt;connected-constraint&gt;</p>
+<p>&lt;connected-constraint&gt;</p>
+<p>::= &lt;single-constraint&gt; |</p>
+<p>&lt;single-constraint&gt; <strong>&amp;</strong> &lt;connected-constraint&gt; |</p>
+<p>&lt;single-constraint&gt; <strong>|</strong> &lt;connected-constraint&gt;</p>
+<p>&lt;single-constraint&gt; ::= &lt;term&gt; | ~&lt;term&gt;</p>
+<p>&lt;term&gt; ::= &lt;constant&gt; |</p>
+<p>&lt;single-field-variable&gt; |</p>
+<p>&lt;multifield-variable&gt; |</p>
+<p>:&lt;function-call&gt; |</p>
+<p>=&lt;function-call&gt;</p>
+<p>Defglobal Construct</p>
+<p>&lt;defglobal-construct&gt; ::= (defglobal [&lt;defmodule-name&gt;]</p>
+<p>&lt;global-assignment&gt;*)</p>
+<p>&lt;global-assignment&gt; ::= &lt;global-variable&gt; = &lt;expression&gt;</p>
+<p>&lt;global-variable&gt; ::= ?*&lt;symbol&gt;*</p>
+<p>Deffunction Construct</p>
+<p>&lt;deffunction-construct&gt;</p>
+<p>::= (deffunction &lt;name&gt; [&lt;comment&gt;]</p>
+<p>(&lt;regular-parameter&gt;* [&lt;wildcard-parameter&gt;])</p>
+<p>&lt;action&gt;*)</p>
+<p>&lt;regular-parameter&gt; ::= &lt;single-field-variable&gt;</p>
+<p>&lt;wildcard-parameter&gt; ::= &lt;multifield-variable&gt;</p>
+<p>Defgeneric Construct</p>
+<p>&lt;defgeneric-construct&gt; ::= (defgeneric &lt;name&gt; [&lt;comment&gt;])</p>
+<p>Defmethod Construct</p>
+<p>&lt;defmethod-construct&gt;</p>
+<p>::= (defmethod &lt;name&gt; [&lt;index&gt;] [&lt;comment&gt;]</p>
+<p>(&lt;parameter-restriction&gt;*</p>
+<p>[&lt;wildcard-parameter-restriction&gt;])</p>
+<p>&lt;action&gt;*)</p>
+<p>&lt;parameter-restriction&gt;</p>
+<p>::= &lt;single-field-variable&gt; |</p>
+<p>(&lt;single-field-variable&gt; &lt;type&gt;* [&lt;query&gt;])</p>
+<p>&lt;wildcard-parameter-restriction&gt;</p>
+<p>::= &lt;multifield-variable&gt; |</p>
+<p>(&lt;multifield-variable&gt; &lt;type&gt;* [&lt;query&gt;])</p>
+<p>&lt;type&gt; ::= &lt;class-name&gt;</p>
+<p>&lt;query&gt; ::= &lt;global-variable&gt; | &lt;function-call&gt;</p>
+<p>Defclass Construct</p>
+<p>&lt;defclass-construct&gt; ::= (defclass &lt;name&gt; [&lt;comment&gt;]</p>
+<p>(is-a &lt;superclass-name&gt;+)</p>
+<p>[&lt;role&gt;]</p>
+<p>[&lt;pattern-match-role&gt;]</p>
+<p>&lt;slot&gt;*</p>
+<p>&lt;handler-documentation&gt;*)</p>
+<p>&lt;role&gt; ::= (role concrete | abstract)</p>
+<p>&lt;pattern-match-role&gt;</p>
+<p>::= (pattern-match reactive | non-reactive)</p>
+<p>&lt;slot&gt; ::= (slot &lt;name&gt; &lt;facet&gt;*) |</p>
+<p>(single-slot &lt;name&gt; &lt;facet&gt;*) |</p>
+<p>(multislot &lt;name&gt; &lt;facet&gt;*)</p>
+<p>&lt;facet&gt; ::= &lt;default-facet&gt; | &lt;storage-facet&gt; |</p>
+<p>&lt;access-facet&gt; | &lt;propagation-facet&gt; |</p>
+<p>&lt;source-facet&gt; | &lt;pattern-match-facet&gt; |</p>
+<p>&lt;visibility-facet&gt; | &lt;create-accessor-facet&gt;</p>
+<p>&lt;override-message-facet&gt; | &lt;constraint-attribute&gt;</p>
+<p>&lt;default-facet&gt; ::=</p>
+<p>(default ?DERIVE | ?NONE | &lt;expression&gt;*) |</p>
+<p>(default-dynamic &lt;expression&gt;*)</p>
+<p>&lt;storage-facet&gt; ::= (storage local | shared)</p>
+<p>&lt;access-facet&gt;</p>
+<p>::= (access read-write | read-only | initialize-only)</p>
+<p>&lt;propagation-facet&gt; ::= (propagation inherit | no-inherit)</p>
+<p>&lt;source-facet&gt; ::= (source exclusive | composite)</p>
+<p>&lt;pattern-match-facet&gt;</p>
+<p>::= (pattern-match reactive | non-reactive)</p>
+<p>&lt;visibility-facet&gt; ::= (visibility private | public)</p>
+<p>&lt;create-accessor-facet&gt;</p>
+<p>::= (create-accessor ?NONE | read | write | read-write)</p>
+<p>&lt;override-message-facet&gt;</p>
+<p>::= (override-message ?DEFAULT | &lt;message-name&gt;)</p>
+<p>&lt;handler-documentation&gt;</p>
+<p>::= (message-handler &lt;name&gt; [&lt;handler-type&gt;])</p>
+<p>&lt;handler-type&gt; ::= primary | around | before | after</p>
+<p>Defmessage-handler Construct</p>
+<p>&lt;defmessage-handler-construct&gt;</p>
+<p>::= (defmessage-handler &lt;class-name&gt;</p>
+<p>&lt;message-name&gt; [&lt;handler-type&gt;] [&lt;comment&gt;]</p>
+<p>(&lt;parameter&gt;* [&lt;wildcard-parameter&gt;])</p>
+<p>&lt;action&gt;*)</p>
+<p>&lt;handler-type&gt; ::= around | before | primary | after</p>
+<p>&lt;parameter&gt; ::= &lt;single-field-variable&gt;</p>
+<p>&lt;wildcard-parameter&gt; ::= &lt;multifield-variable&gt;</p>
+<p>Definstances Construct</p>
+<p>&lt;definstances-construct&gt;</p>
+<p>::= (definstances &lt;definstances-name&gt;</p>
+<p>[active] [&lt;comment&gt;]</p>
+<p>&lt;instance-template&gt;*)</p>
+<p>&lt;instance-template&gt; ::= (&lt;instance-definition&gt;)</p>
+<div class="line-block">
+<div class="line">&lt;instance-definition&gt; ::= &lt;instance-name-expression&gt; of</div>
+<div class="line">&lt;class-name-expression&gt;</div>
+<div class="line">&lt;slot-override&gt;*</div>
+</div>
+<p>&lt;slot-override&gt; ::= (&lt;slot-name-expression&gt; &lt;expression&gt;*)</p>
+<p>Defmodule Construct</p>
+<p>&lt;defmodule-construct&gt; ::= (defmodule &lt;module-name&gt; [&lt;comment&gt;]</p>
+<p>&lt;port-specification&gt;*)</p>
+<p>&lt;port-specification&gt; ::= (export &lt;port-item&gt;) |</p>
+<p>(import &lt;module-name&gt; &lt;port-item&gt;)</p>
+<p>&lt;port-item&gt; ::= ?ALL |</p>
+<p>?NONE |</p>
+<p>&lt;port-construct&gt; ?ALL |</p>
+<p>&lt;port-construct&gt; ?NONE |</p>
+<p>&lt;port-construct&gt; &lt;construct-name&gt;+</p>
+<p>&lt;port-construct&gt; ::= deftemplate | defclass |</p>
+<p>defglobal | deffunction |</p>
+<p>defgeneric</p>
+<p>Constraint Attributes</p>
+<p>&lt;constraint-attribute&gt;</p>
+<p>::= &lt;type-attribute&gt;?|</p>
+<p>&lt;allowed-constant-attribute&gt; |</p>
+<p>&lt;range-attribute&gt; |</p>
+<p>&lt;cardinality-attribute&gt;</p>
+<p>&lt;type-attribute&gt; ::= (type &lt;type-specification&gt;)</p>
+<p>&lt;type-specification&gt; ::= &lt;allowed-type&gt;+ | ?VARIABLE</p>
+<p>&lt;allowed-type&gt; ::= SYMBOL | STRING | LEXEME |</p>
+<p>INTEGER | FLOAT | NUMBER |</p>
+<p>INSTANCE-NAME | INSTANCE-ADDRESS |</p>
+<p>INSTANCE | EXTERNAL-ADDRESS |</p>
+<p>FACT-ADDRESS</p>
+<p>&lt;allowed-constant-attribute&gt;</p>
+<p>::= (allowed-symbols?&lt;symbol-list&gt;) |</p>
+<p>(allowed-strings &lt;string-list&gt;) |</p>
+<p>(allowed-lexemes &lt;lexeme-list&gt; |</p>
+<p>(allowed-integers?&lt;integer-list&gt;) |</p>
+<p>(allowed-floats?&lt;float-list&gt;) |</p>
+<p>(allowed-numbers?&lt;number-list&gt;) |</p>
+<p>(allowed-instance-names &lt;instance-list&gt;) |</p>
+<p>(allowed-classes &lt;class-name-list&gt;) |</p>
+<p>(allowed-values?&lt;value-list&gt;)</p>
+<p>&lt;symbol-list&gt; ::= &lt;symbol&gt;+ | ?VARIABLE</p>
+<p>&lt;string-list&gt; ::= &lt;string&gt;+ | ?VARIABLE</p>
+<p>&lt;lexeme-list&gt; ::= &lt;lexeme&gt;+ | ?VARIABLE</p>
+<p>&lt;integer-list&gt; ::= &lt;integer&gt;+ | ?VARIABLE</p>
+<p>&lt;float-list&gt; ::= &lt;float&gt;+ | ?VARIABLE</p>
+<p>&lt;number-list&gt; ::= &lt;number&gt;+ | ?VARIABLE</p>
+<p>&lt;instance-name-list&gt; ::= &lt;instance-name&gt;+ | ?VARIABLE</p>
+<p>&lt;class-name-list&gt; ::= &lt;class-name&gt;+ | ?VARIABLE</p>
+<p>&lt;value-list&gt; ::= &lt;constant&gt;+ | ?VARIABLE</p>
+<p>&lt;range-attribute&gt; ::= (range &lt;range-specification&gt;</p>
+<p>&lt;range-specification&gt;)</p>
+<p>&lt;range-specification&gt; ::= &lt;number&gt; | ?VARIABLE</p>
+<p>&lt;cardinality-attribute&gt;</p>
+<p>::= (cardinality &lt;cardinality-specification&gt;</p>
+<p>&lt;cardinality-specification&gt;)</p>
+<p>&lt;cardinality-specification&gt;</p>
+<p>::= &lt;integer&gt; | ?VARIABLE</p>
+<p>Appendix H:
+Reserved Function Names
+=======================</p>
+<p>This appendix lists all of the functions provided by either standard
+CLIPS or various CLIPS extensions. They should be considered reserved
+function names, and users should not create user-defined functions with
+any of these names.</p>
+<p>!=</p>
+<p>*</p>
+<p>**</p>
+<ul class="simple">
+<li></li>
+</ul>
+<ul class="simple">
+<li></li>
+</ul>
+<p>/</p>
+<p>&lt;</p>
+<p>&lt;=</p>
+<p>&lt;&gt;</p>
+<p>=</p>
+<p>&gt;</p>
+<p>&gt;=</p>
+<p>abs</p>
+<p>acos</p>
+<p>acosh</p>
+<p>acot</p>
+<p>acoth</p>
+<p>acsc</p>
+<p>acsch</p>
+<p>active-duplicate-instance</p>
+<p>active-initialize-instance</p>
+<p>active-make-instance</p>
+<p>active-message-duplicate-instance</p>
+<p>active-message-modify-instance</p>
+<p>active-modify-instance</p>
+<p>agenda</p>
+<p>and</p>
+<p>any-instancep</p>
+<p>apropos</p>
+<p>asec</p>
+<p>asech</p>
+<p>asin</p>
+<p>asinh</p>
+<p>assert</p>
+<p>assert-string</p>
+<p>atan</p>
+<p>atanh</p>
+<p>batch</p>
+<p>batch*</p>
+<p>bind</p>
+<p>bload</p>
+<p>bload-instances</p>
+<p>break</p>
+<p>browse-classes</p>
+<p>bsave</p>
+<p>bsave-instances</p>
+<p>build</p>
+<p>call-next-handler</p>
+<p>call-next-method</p>
+<p>call-specific-method</p>
+<p>class</p>
+<p>class-abstractp</p>
+<p>class-existp</p>
+<p>class-reactivep</p>
+<p>class-slots</p>
+<p>class-subclasses</p>
+<p>class-superclasses</p>
+<p>clear</p>
+<p>clear-focus-stack</p>
+<p>close</p>
+<p>conserve-mem</p>
+<p>constructs-to-c</p>
+<p>cos</p>
+<p>cosh</p>
+<p>cot</p>
+<p>coth</p>
+<p>create$</p>
+<p>csc</p>
+<p>csch</p>
+<p>defclass-module</p>
+<p>deffacts-module</p>
+<p>deffunction-module</p>
+<p>defgeneric-module</p>
+<p>defglobal-module</p>
+<p>definstances-module</p>
+<p>defrule-module</p>
+<p>deftemplate-module</p>
+<p>deg-grad</p>
+<p>deg-rad</p>
+<p>delayed-do-for-all-instances</p>
+<p>delete$</p>
+<p>delete-instance</p>
+<p>dependencies</p>
+<p>dependents</p>
+<p>describe-class</p>
+<p>direct-mv-delete</p>
+<p>direct-mv-insert</p>
+<p>direct-mv-replace</p>
+<p>div</p>
+<p>do-for-all-instances</p>
+<p>do-for-instance</p>
+<p>dribble-off</p>
+<p>dribble-on</p>
+<p>duplicate</p>
+<p>duplicate-instance</p>
+<p>duplicate-instance</p>
+<p>dynamic-get</p>
+<p>dynamic-put</p>
+<p>edit</p>
+<p>eq</p>
+<p>eval</p>
+<p>evenp</p>
+<p>exit</p>
+<p>exp</p>
+<p>expand$</p>
+<p>explode$</p>
+<p>fact-existp</p>
+<p>fact-index</p>
+<p>fact-relation</p>
+<p>fact-slot-names</p>
+<p>fact-slot-value</p>
+<p>facts</p>
+<p>fetch</p>
+<p>find-all-instances</p>
+<p>find-instance</p>
+<p>first$</p>
+<p>float</p>
+<p>floatp</p>
+<p>focus</p>
+<p>format</p>
+<p>gensym</p>
+<p>gensym*</p>
+<p>get</p>
+<p>get-auto-float-dividend</p>
+<p>get-current-module</p>
+<p>get-defclass-list</p>
+<p>get-deffacts-list</p>
+<p>get-deffunction-list</p>
+<p>get-defgeneric-list</p>
+<p>get-defglobal-list</p>
+<p>get-definstances-list</p>
+<p>get-defmessage-handler-list</p>
+<p>get-defmethod-list</p>
+<p>get-defmodule-list</p>
+<p>get-defrule-list</p>
+<p>get-deftemplate-list</p>
+<p>get-dynamic-constraint-checking</p>
+<p>get-fact-duplication</p>
+<p>get-fact-list</p>
+<p>get-focus</p>
+<p>get-focus-stack</p>
+<p>get-function-restrictions</p>
+<p>get-incremental-reset</p>
+<p>get-method-restrictions</p>
+<p>get-reset-globals</p>
+<p>get-salience-evaluation</p>
+<p>get-sequence-operator-recognition</p>
+<p>get-static-constraint-checking</p>
+<p>get-strategy</p>
+<p>grad-deg</p>
+<p>halt</p>
+<p>if</p>
+<p>implode$</p>
+<p>init-slots</p>
+<p>initialize-instance</p>
+<p>initialize-instance</p>
+<p>insert$</p>
+<p>instance-address</p>
+<p>instance-addressp</p>
+<p>instance-existp</p>
+<p>instance-name</p>
+<p>instance-name-to-symbol</p>
+<p>instance-namep</p>
+<p>instancep</p>
+<p>instances</p>
+<p>integer</p>
+<p>integerp</p>
+<p>length</p>
+<p>length$</p>
+<p>lexemep</p>
+<p>list-defclasses</p>
+<p>list-deffacts</p>
+<p>list-deffunctions</p>
+<p>list-defgenerics</p>
+<p>list-defglobals</p>
+<p>list-definstances</p>
+<p>list-defmessage-handlers</p>
+<p>list-defmethods</p>
+<p>list-defmodules</p>
+<p>list-defrules</p>
+<p>list-deftemplates</p>
+<p>list-focus-stack</p>
+<p>list-watch-items</p>
+<p>load</p>
+<p>load*</p>
+<p>load-facts</p>
+<p>load-instances</p>
+<p>log</p>
+<p>log10</p>
+<p>loop-for-count</p>
+<p>lowcase</p>
+<p>make-instance</p>
+<p>make-instance</p>
+<p>matches</p>
+<p>max</p>
+<p>mem-requests</p>
+<p>mem-used</p>
+<p>member</p>
+<p>member$</p>
+<p>message-duplicate-instance</p>
+<p>message-duplicate-instance</p>
+<p>message-handler-existp</p>
+<p>message-modify-instance</p>
+<p>message-modify-instance</p>
+<p>min</p>
+<p>mod</p>
+<p>modify</p>
+<p>modify-instance</p>
+<p>modify-instance</p>
+<p>multifieldp</p>
+<p>mv-append</p>
+<p>mv-delete</p>
+<p>mv-replace</p>
+<p>mv-slot-delete</p>
+<p>mv-slot-insert</p>
+<p>mv-slot-replace</p>
+<p>mv-subseq</p>
+<p>neq</p>
+<p>next-handlerp</p>
+<p>next-methodp</p>
+<p>not</p>
+<p>nth</p>
+<p>nth$</p>
+<p>numberp</p>
+<p>object-pattern-match-delay</p>
+<p>oddp</p>
+<p>open</p>
+<p>options</p>
+<p>or</p>
+<p>override-next-handler</p>
+<p>override-next-method</p>
+<p>pi</p>
+<p>pointerp</p>
+<p>pop-focus</p>
+<p>ppdefclass</p>
+<p>ppdeffacts</p>
+<p>ppdeffunction</p>
+<p>ppdefgeneric</p>
+<p>ppdefglobal</p>
+<p>ppdefinstances</p>
+<p>ppdefmessage-handler</p>
+<p>ppdefmethod</p>
+<p>ppdefmodule</p>
+<p>ppdefrule</p>
+<p>ppdeftemplate</p>
+<p>ppinstance</p>
+<p>preview-generic</p>
+<p>preview-send</p>
+<p>primitives-info</p>
+<p>print-region</p>
+<p>printout</p>
+<p>progn</p>
+<p>progn$</p>
+<p>put</p>
+<p>rad-deg</p>
+<p>random</p>
+<p>read</p>
+<p>readline</p>
+<p>refresh</p>
+<p>refresh-agenda</p>
+<p>release-mem</p>
+<p>remove</p>
+<p>remove-break</p>
+<p>rename</p>
+<p>replace$</p>
+<p>reset</p>
+<p>rest$</p>
+<p>restore-instances</p>
+<p>retract</p>
+<p>return</p>
+<p>round</p>
+<p>rule-complexity</p>
+<p>rules</p>
+<p>run</p>
+<p>save</p>
+<p>save-facts</p>
+<p>save-instances</p>
+<p>sec</p>
+<p>sech</p>
+<p>seed</p>
+<p>send</p>
+<p>sequencep</p>
+<p>set-auto-float-dividend</p>
+<p>set-break</p>
+<p>set-current-module</p>
+<p>set-dynamic-constraint-checking</p>
+<p>set-fact-duplication</p>
+<p>set-incremental-reset</p>
+<p>set-reset-globals</p>
+<p>set-salience-evaluation</p>
+<p>set-sequence-operator-recognition</p>
+<p>set-static-constraint-checking</p>
+<p>set-strategy</p>
+<p>setgen</p>
+<p>show-breaks</p>
+<p>show-defglobals</p>
+<p>show-fht</p>
+<p>show-fpn</p>
+<p>show-joins</p>
+<p>show-opn</p>
+<p>sin</p>
+<p>sinh</p>
+<p>slot-allowed-values</p>
+<p>slot-cardinality</p>
+<p>slot-delete$</p>
+<p>slot-direct-accessp</p>
+<p>slot-direct-delete$</p>
+<p>slot-direct-insert$</p>
+<p>slot-direct-replace$</p>
+<p>slot-existp</p>
+<p>slot-facets</p>
+<p>slot-initablep</p>
+<p>slot-insert$</p>
+<p>slot-publicp</p>
+<p>slot-range</p>
+<p>slot-replace$</p>
+<p>slot-sources</p>
+<p>slot-types</p>
+<p>slot-writablep</p>
+<p>sqrt</p>
+<p>str-assert</p>
+<p>str-cat</p>
+<p>str-compare</p>
+<p>str-explode</p>
+<p>str-implode</p>
+<p>str-index</p>
+<p>str-length</p>
+<p>stringp</p>
+<p>sub-string</p>
+<p>subclassp</p>
+<p>subseq$</p>
+<p>subset</p>
+<p>subsetp</p>
+<p>superclassp</p>
+<p>switch</p>
+<p>sym-cat</p>
+<p>symbol-to-instance-name</p>
+<p>symbolp</p>
+<p>system</p>
+<p>tan</p>
+<p>tanh</p>
+<p>time</p>
+<p>toss</p>
+<p>type</p>
+<p>type</p>
+<p>undefclass</p>
+<p>undeffacts</p>
+<p>undeffunction</p>
+<p>undefgeneric</p>
+<p>undefglobal</p>
+<p>undefinstances</p>
+<p>undefmessage-handler</p>
+<p>undefmethod</p>
+<p>undefrule</p>
+<p>undeftemplate</p>
+<p>unmake-instance</p>
+<p>unwatch</p>
+<p>upcase</p>
+<p>watch</p>
+<p>while</p>
+<p>wordp</p>
+<p>Appendix I:
+Bibliography of CLIPS Publications
+==================================</p>
+<p>Programming</p>
+<p>Giarratano, J., and Riley, G. <em>Expert Systems: Principles and
+Programming</em>, 3rd Edition, Boston, PWS Publishing Company, 1998.</p>
+<p>Gonzalez, A. J., and Dankel, D. D. <em>Engineering of
+Knowledge-basedSystems: Theory and Practice</em>, Prentice Hall, 1993.</p>
+<p>Jackson, P. <em>Introduction to Expert Systems</em>, 3rd Edition, Reading,
+Addison-Wesley, 1998.</p>
+<p>Reviews</p>
+<p>Brooke, T. ?The Art of Production Systems,?E*AI Expert*, January 1992.</p>
+<p>Brooke, T. ?Software Review,?E*AI Expert*, April 1988.</p>
+<p>Golden, J. ?Shell Review Monthly,?E*AI Today*, March/April 1988.</p>
+<p>Mettrey, W. ?A Comparative Evaluation of Expert System Tools,?E
+<em>Computer</em>, February 1991.</p>
+<p>Popolizio, J. ?CLIPS: NASA?s COSMIC Shell,?E*Artificial Intelligence
+Research*, August 1, 1988.</p>
+<p>Raeth, P. ?Two PC?based Expert System Shells for the First?time
+Developer,?E*Computer*, November 1988.</p>
+<p>Overviews</p>
+<p>Culbert, C., et al., ?A Solution to the Expert System Delivery Problem,?E
+<em>Proceedings of the ISA/88</em>, Houston, TX, October 1988.</p>
+<p>Riley, G. ?C Language Integrated Production System,?Ein <em>Encyclopedia of
+Computer Science and Technology</em>, Volume 37. Edited by A. Kent and J.G.
+Williams. New York, Marcel Dekker, Inc., 1997.</p>
+<p>Riley, G. ?Expert Systems Methodology,?Ein <em>The Industrial Electronics
+Handbook</em>. Edited by J.D. Irwin. Boca Raton, CRC Press, 1997.</p>
+<p>Riley, G. ?CLIPS: An Expert System Building Tool,?E*Proceedings of the
+Technology 2001 Conference*, San Jose, CA, December 1991.</p>
+<p>Riley, G. ?CLIPS: A Tool for the Development and Delivery of Expert
+Systems,?E*Proceedings of the Technology 2000 Conference*, Washington,
+DC, November 1990.</p>
+<p>Riley G., and Donnell, B. ?Advanced CLIPS Capabilities,?E*Proceedings of
+The Fourth Annual Workshop on Space Operations Applications and Research
+(SOAR ?E0)*, Albuquerque, NM, June 1990.</p>
+<p>Riley, G., et al. ?CLIPS: An Expert System Tool for Training,
+Development, and Delivery,?Ein <em>Intelligent Systems Review</em>, Volume 1,
+Number 1, Fall 1988.</p>
+<p>Riley, G., et al., ?CLIPS: An Expert System Tool for Delivery and
+Training,?E*Proceedings of the Third Conference on Artificial
+Intelligence for Space Applications*, Huntsville, AL, November 1987.</p>
+<p>Applications</p>
+<p>Carreno, L. A. and Steel, R. A. ?Life Insurance Risk Assessment using a
+Fuzzy Logic Expert System,?E*Proceedings of the North American Fuzzy
+Logic Processing Society (NAFIPS 1992)*, Houston, TX, December 1992.</p>
+<p>Cheatham, J. B., et al. ?A Multi?Sensor System for Robotics Proximity
+Operations,?E*Proceedings of The Second Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E8)*, Albuquerque, NM, July
+1988.</p>
+<p>Chen, Y. ?Applying Knowledge?Based Expert System to Meat Grading,?E
+<em>Proceedings of The Annual AI Systems in Government Conference</em>,
+Washington, D.C., March 1989.</p>
+<p>?CLIPS: A NASA Developed Expert System Tool,?E*NASA Tech Briefs*,
+November/December 1987.</p>
+<p>Dutton, T. ?HUB SIAASHING: A Knowledge?Based System for Severe,
+Temporary Airline Schedule Reduction,?E*Innovative Applications of
+Artificial Intelligence 4*, Klahr, Philip, and Scott, A. Carlisle ed.,
+1992.</p>
+<p>Ehler, G. B. ?A Multiple Knowledge-Based Spatial Decision Support System
+for Industrial Site Selection,?EM.S. Thesis, Department of Geography,
+University of South Carolina, Columbia, SC.</p>
+<p>Fink, P., and Herren, L. T. ?An Intelligent Tutoring System to Teach
+Interdependent Cognitive and High Performance Skills,?E*Proceedings of
+Contributed Sessions 1991 Conference on Intelligent Computer Aided
+Training*, Houston, TX, November 1991.</p>
+<p>Fink, P. ?NESSUS/EXPERT: Bridging the Gap between Artificial
+Intelligence and FORTRAN,?E*Proceedings of The Second Annual Workshop on
+Space Operations Automation and Robotics (SOAR ?E8)*, Albuquerque, NM,
+July 1988.</p>
+<p>Flamm, R. O., et al. ?The Integrated Southern Pine Beetle Expert System:
+ISPBEX,?E*Expert Systems with Applications*, Vol. 2, 1991.</p>
+<p>Franier, R., et al. ?PI?in?a?Box: A Knowledge?based System for Space
+Science Experimentation,?E*Proceedings of the Fifth Innovative
+Applications of Artificial Intelligence Conference*, July 11?E5, 1993,
+Washington, D.C.</p>
+<p>Frainier, R., et al. ?PI-in-a-Box: A Knowledge-Based System for Space
+Science Experimentation,?E*AI magazine*, Volume 15, No. 1, Spring, 1994.</p>
+<p>Frainier, R., et al. ?PI in the Sky: The Astronaut Science Advisor on
+SLS-2,?E*Proceedings of The Seventh Annual Workshop on Space Operations
+Applications and Research (SOAR ?E3)*, Houston, TX, August 1993.</p>
+<p>Germain, D., and Desrosiers, S. ?Turning Up the Heat on Space Station
+Training: The Active Thermal Control System ICAT,?E*Proceedings of
+Contributed Sessions 1991 Conference on Intelligent Computer Aided
+Training*, Houston, TX, November 1991.</p>
+<p>Grinstein, G. G., et al. ?Virtual Environment Architecture for Rapid
+Application Development,?E*Proceedings of The Contributed Sessions 1993
+Conference on Intelligent Computer Aided Training and Virtual
+Environment Technology* (ICAT-VET ?E3), Houston, TX, May 1993.</p>
+<p>Haymann?Haber, G., et al. ?An Expert System to Advise Astronauts During
+Experiments: The Protocol Manager Module,?E*Proceedings of The Third
+Annual Workshop on Space Operations Automation and Robotics (SOAR ?E9)*,
+Houston, TX, July 1989.</p>
+<p>Hill, T., and Faltisco, R. ?Intelligent Fault Management for the Space
+Station Active Thermal Control System,?E*Proceedings of The Fifth Annual
+Workshop on Space Operations Applications and Research (SOAR ?E1)*,
+Houston, TX, July 1991.</p>
+<p>Hipwell, D. P. ?Developing Realistic Cooperative Behaviors for
+Autonomous Agents in Air Combat Simuation,?EM.S. Thesis, Air Force
+Institute of Technology, Wright Patternson AFB, Ohio, 1993.</p>
+<p>Hughes, P. M. ?CLEAR: Automating Control Centers with Expert System
+Technology,?E*Proceedings of The Third Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E9)*, Houston, TX, July 1989.</p>
+<p>Johnson, W. B., et al. ?An Intelligent Tutoring System for Space Shuttle
+Diagnosis,?E*Proceedings of The Second Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E8)*, Albuquerque, NM, July
+1988.</p>
+<p>Kahn, M. G., et al. ?An Expert System for Culture-Based Infection
+Control Surveillance,?E*Proceedings of The Seventeenth Annual Symposium
+on Computer Applications in Medical Care* (SCAMC ?E3), Washington, D.C.,
+October 1993.</p>
+<p>Kingston, J. ?Pragmatic KADS: A methodological approach to a small
+knowledge based systems project,?E*Expert Systems: The International
+Journal of Knowledge Engineering*, 4, 4, November 1992.</p>
+<p>Kosta, C. P., and Krolak, P. D. ?Rapid Prototyping 3D Virtual World
+Interfaces within a Virtual Factory Environment,?E*Proceedings of The
+Contributed Sessions 1993 Conference on Intelligent Computer Aided
+Training and Virtual Environment Technology* (ICAT-VET ?E3), Houston,
+TX, May 1993.</p>
+<p>Kosta, C. P., and Krolak, P. D. ?An Artificial Reality Environment for
+Remote Factory Control and Monitoring,?E*Vision 21: Interdisciplinary
+Science and Engineering in the Era of Cyberspace*, NASA/Lewis Research
+Center, December 1993.</p>
+<p>Kovarik, V. J. ?Autonomously Acquiring Declarative and Procedural Domain
+Knowledge for ICAT Systems,?E*Proceedings of The Contributed Sessions
+1993 Conference on Intelligent Computer Aided Training and Virtual
+Environment Technology* (ICAT-VET ?E3), Houston, TX, May 1993.</p>
+<p>Lauriente, M., et al. ?Diagnosing Anomalies of Spacecraft for Space
+Maintenance and Servicing,?E*Proceedings of The Seventh Annual Workshop
+on Space Operations Applications and Research (SOAR ?E3)*, Houston, TX,
+August 1993.</p>
+<p>Lee, L., and Hill, R. W., ?Process Control and Recovery in the Link
+Monitor and Control Operator Assistant,?E*Proceedings of The Sixth
+Annual Workshop on Space Operations Applications and Research (SOAR
+?E2)*, Houston, TX, August 1992.</p>
+<p>Leinweber, D. ?Finance,?E*Expert Systems and Artificial Intelligence:
+Applications and Management,* Howard W. Sams &amp; Company, Bartee, T. C.
+ed., 1988.</p>
+<p>Loftin, K. C., et al. ?The Application of Integrated Knowledge?Based
+Systems for the Biomedical Risk Accessment Intelligent Network (BRAIN),?E
+<em>Proceedings of Technology 2002: The Third National Technology Transfer
+Conference and Exposition</em>, Washington D.C., February 1993.</p>
+<p>Loftin, R. B., and Savely, R.T. ?Intelligent Computer Aided Training and
+Tutoring,?E*Proceedings of the Technology 2000 Conference*, Washington,
+DC, November 1990.</p>
+<p>Loftin, R. B., et al. ?An Intelligent Training System for Space Shuttle
+Flight Controllers,?E*Innovative Applications of Artificial
+Intelligence*, 1989, AAAI Press/The MIT Press, Menlo Press, Schoor,
+Herbert, and Rappaport, Alain ed.</p>
+<p>Loftin, R. B., et al. ?An Intelligent Training System for Payload?Assist
+Module Deploys,?E*Proceedings of The First Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E7)*, Houston, TX, August
+1987.</p>
+<p>Lucas, T. S., and Lewis, G. ?DISPLAVAL: An Expert System Approach for
+the Training of Display Builders,?E*Proceedings of Contributed Sessions
+1991 Conference on Intelligent Computer Aided Training*, Houston, TX,
+November 1991.</p>
+<p>McCarthy, L., et al. ?Spatial Considerations for Instructional
+Development in a Virtual Environment,?E*Proceedings of The Contributed
+Sessions 1993 Conference on Intelligent Computer Aided Training and
+Virtual Environment Technology* (ICAT-VET ?E3), Houston, TX, May 1993.</p>
+<p>?Mission Accomplished,?E*NASA Tech Briefs*, September 1993.</p>
+<p>Mitchell, P. ?An Expert System for Shuttle and Satellite Radar Tracker
+Scheduling,?E*Proceedings of The Second Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E8)*, Albuquerque, NM, July
+1988.</p>
+<p>Mitchell, R. ?Expert Systems and Air?Combat Simulation,?E*AI Expert*,
+September 1989.</p>
+<p>Mortenson, P. ?Predicting Wind Shear from the Dispatch Office,?E*Airline
+Executive*, April 1988.</p>
+<p>Mueller, S. ?Development of a Personal?Computer?Based Intelligent
+Tutoring System,?E*Proceedings of The Second Annual Workshop on Space
+Operations Automation and Robotics (SOAR ?E8)*, Albuquerque, NM, July
+1988.</p>
+<p>Muratore, J., et al. ?Space Shuttle Telemetry Monitoring,?E*Innovative
+Applications of Artificial Intelligence*, 1989, AAAI Press/The MIT
+Press, Menlo Press, Schoor, Herbert, and Rappaport, Alain ed.</p>
+<p>Nash, J. ?Expert Systems: A New Partnership,?E*AI Expert*, December
+1992.</p>
+<p>Norton, J. E., et al. ?Microcomputer Intelligence for Technical Training
+(MITT): The Evolution of an Intelligent Tutoring System,?E*Proceedings
+of Contributed Sessions 1991 Conference on Intelligent Computer Aided
+Training,* Houston, TX, November 1991.</p>
+<p><em>Proceedings of the First CLIPS Conference</em>, Houston, Texas, August
+1990.</p>
+<p><em>Proceedings of the Second CLIPS Conference</em>, Houston, Texas, September
+1991.</p>
+<p><em>Proceedings of the Third CLIPS Conference</em>, Houston, Texas, September
+1994.</p>
+<p>Robey, B., et al. ?The DRAIR Advisor: A Knowledge?Based System for
+Materiel Deficiency Analysis,?E*Proceedings of the Fifth Innovative
+Applications of Artificial Intelligence Conference*, July 11?E5, 1993,
+Washington, D.C.</p>
+<p>Robey, B., et al. ?DRAIR Advisor: A Knowledge-Based System for
+Materiel-Deficiency Analysis,?E*AI magazine*, Volume 15, No. 2, Summer,
+1994.</p>
+<p>Rolincik, M, et al. ?An On?line Expert System for Diagnosing
+Environmentally Induced Spacecraft Anomalies using CLIPS,?E*Proceedings
+of The Sixth Annual Workshop on Space Operations Applications and
+Research (SOAR ?E2)*, Houston, TX, August 1992.</p>
+<p>Rolincik, M., et al. ?An Expert System for Diagnosing Environmentally
+Induced Spacecraft Anomolies,?E*Proceedings of The Fifth Annual Workshop
+on Space Operations Applications and Research (SOAR ?E1)*, Houston, TX,
+July 1991.</p>
+<p>Saito, T., et al. ?Acquiring Knowledge within an ICAT (Intelligent
+Computer?Aided Training) Environment: Factors and Issues,?E*Proceedings
+of Contributed Sessions 1991 Conference on Intelligent Computer Aided
+Training*, Houston, TX, November 1991.</p>
+<p>Saito, T., et al. ?On the Acquisition and Representation of Procedural
+Knowledge,?E*Proceedings of The Fifth Annual Workshop on Space
+Operations Applications and Research (SOAR ?E1)*, Houston, TX, July
+1991.</p>
+<p>Scholtz, T. ?The State Transition Diagram with Path Priority and it?s
+Applications,?EM.S. Thesis, Naval Postgraduate School, Monterey, CA,
+September 1993.</p>
+<p>Schultz, R. D, and Stobie, I. ?The AI Bus Architecture for Distributed
+Knowledge?Based Systems,?E*Proceedings of The Fourth Annual Workshop on
+Space Operations Applications and Research (SOAR ?E0)*, Albuquerque, NM,
+June 1990.</p>
+<p>Spelt, P. F. ?Learning by an Autonomous Robot at a Process Control
+Panel,?E*IEEE Expert*, Winter 1989.</p>
+<p><em>Spinoff 1993</em>, NASA, pp. 88, 102, 120?E21, 1994.</p>
+<p><em>Spinoff 1992</em>, NASA, p. 121, 1993.</p>
+<p><em>Spinoff 1991</em>, NASA, pp. 110?E11, 1992.</p>
+<p>Swartz, M., et al. ?Intelligent Help for Radar Maintenance
+Troubleshooters,?E*Proceedings of Contributed Sessions 1991 Conference
+on Intelligent Computer Aided Training*, Houston, TX, November 1991.</p>
+<p>Szatkowski, G. P., and Levin, B. E. ?Expert System Decision Support for
+Low?cost Launch Vehicle Operations,?E*Proceedings of The Fourth Annual
+Workshop on Space Operations Applications and Research (SOAR ?E0)*,
+Albuquerque, NM, June 1990.</p>
+<p>Truszkowski, W. ?Advances in Knowledge?Based Software Engineering,?E
+<em>Proceedings of the Technology 2001Conference</em>, San Jose, CA, December
+1991.</p>
+<p>Wallfesh, S. K. ?Infantry Load Planning with LES,?E*Artificial
+Intelligence Applications for Logistics, Aerospace Systems, Robotics &amp;
+Personnel,* American Defense Preparedness Association, WIlliamsburg, VA,
+8?E0 March 1993.</p>
+<p>Wang, L., and Bochsler, D. ?Space Shuttle Onboard Navigation Console
+Expert/Trainer System,?E*Proceedings of The First Annual Workshop on
+Space Operations Automation and Robotics (SOAR ?E7)*, Houston, TX,
+August 1987.</p>
+<p>Warren, K. C., and Goodman, B. A. ?Engineering Intelligent Tutoring
+Systems,?EProceedings of The Contributed Sessions 1993 Conference on
+Intelligent Computer Aided Training and Virtual Environment Technology
+(ICAT-VET ?E3), Houston, TX, May 1993.</p>
+<p>Wiederholt, B. J. ?MITT Writer: An Authoring System for Developing
+Intelligent Tutors for Complex Technical Domains,?E*Proceedings of
+Contributed Sessions 1991 Conference on Intelligent Computer Aided
+Training*, Houston, TX, November 1991.</p>
+<p>Woods, D. ?Space Station Freedom: Embedding AI,?E*AI Expert*, April
+1992.</p>
+<p>Enhancements/Implementation</p>
+<p>Donnell, B., ?Object/rule Integration in CLIPS,?E*Expert Systems: The
+International Journal of Knowledge Engineering and Neural Networks*,
+Learned Information, New Jersey, February 1994, Vol. 11, No. 1, ISSN
+0266-4720, pp. 29-45.</p>
+<p>Franke, J. L., et al. ?A General Purpose Certainty Processing Extension
+to CLIPS,?E*Proceedings of The 7th Florida Artificial Intelligence
+Research Symposium*, Florida AI Research Society, 1994.</p>
+<p>Le, T., and Homeier, P. ?Portable Inference Engine: An Extended CLIPS
+for Real?Time Production Systems,?E*Proceedings of The Second Annual
+Workshop on Space Operations Automation and Robotics (SOAR ?E8)*,
+Albuquerque, NM, July 1988.</p>
+<p>Li, Y. P. ?DCLIPS?A Distributed CLIPS Implementation,?E*Proceedings of
+the 9th AIAA Computing in Aerospace Conference*, American Institute of
+Aeronautics and Astronautics, San Diego, CA, October 1993.</p>
+<p>Odette, L. L., <em>Intelligent Embedded Systems</em>, Addison?Wesley Publishing
+Company, pp.?63?E10,?1991.</p>
+<p>Riley, G. ?Implementing CLIPS on a Parallel Computer,?E*Proceedings of
+The First Annual Workshop on Space Operations Automation and Robotics
+(SOAR ?E7)*, Houston, TX, August 1987.</p>
+<p>Riley, G. ?Implementation of an Expert System Shell on a Parallel
+Computer,?E*Proceedings of The Third Annual Artificial Intelligence &amp;
+Advanced Computer Technology Conference*, Long Beach Convention Center,
+Long Beach, CA, April 1987.</p>
+<p>Salzgeber, M. J., et al. ?Managing Uncertainty in CLIPS: A System Level
+Approach,?E*Proceedings of The 6th Florida Artificial Intelligence
+Research Symposium*, Florida AI Research Society, 1993.</p>
+<p>Eick, C. F., et al. ?DALI?A Knowledge Base Management System,?E
+<em>Proceedings of the 1st Conference on Industrial and Engineering
+Applications of AI &amp; Expert Systems</em>.</p>
+<p>Rete Pattern Matching Algorithm</p>
+<p>Forgy, C. ?Rete: A Fast Algorithm for the Many Pattern/Many Object
+Pattern Match Problem,?EArtificial Intelligence, 19, pp. 17?E7, 1982.</p>
+<p>Forgy, C. ?On the Efficient Implementation of Production Systems,?EPh.
+D. Thesis, Carnegie-Mellon University, 1979.</p>
+<p>Schneier, B. ?The Rete Matching Algorithm,?E*AI Expert*, pp. 24-29,
+December 1992.</p>
+</div>
+</div>
+<div class="section" id="index">
+<h1>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><strong>190</strong>: <strong>44</strong>? 7?DERIVE 22?NONE 22?self 109, <strong>110</strong>( 7) 7*</li>
+</ul>
+<p><strong>190</strong>** <strong>197</strong>/ <strong>191</strong>&amp; 7, <strong>41</strong>+ <strong>189</strong>&lt; 7, <strong>164</strong>&lt;=
+<strong>165</strong>&lt;&gt; <strong>163</strong>= <strong>46</strong>, <strong>162=&gt;</strong> <strong>27</strong>&gt; <strong>163</strong>&gt;= <strong>164</strong>|
+7, <strong>41</strong>~ 7, <strong>41</strong>$? 7abs <strong>192</strong>abstraction <strong>18</strong>action 16,
+27, <strong>159</strong>activated 28active-duplicate-instance 83, 115,
+<strong>130</strong>active-initialize-instance 83, <strong>124</strong>active-make-instance
+83, <strong>121</strong>, 123active-message-duplicate-instance 83, 115,
+<strong>132</strong>active-message-modify-instance 83, 115,
+<strong>129</strong>active-modify-instance 83, 114, <strong>128</strong>Ada iv, 8, 9, 15,
+16Advanced Programming Guide v, 1, 3, 5, 8, 51, 161, 178, 194, 309agenda
+28, <strong>29</strong>, 33, 62, 289, 290, 291allowed-classes
+154allowed-instance-names 155allowed-instances 155ampersand 7and
+<strong>165</strong>antecedent <strong>15</strong>any-factp <strong>230</strong>, 324any-instancep 83,
+<strong>139</strong>apropos <strong>275</strong>arrow <strong>27</strong>ART iiiArtificial Intelligence
+Section iiiassert 11, 22, 83, 211, <strong>217</strong>, 220, 266assert-string
+<strong>220</strong>attributedefault 22auto-focus <strong>63</strong>backslash 7, 180, 185,
+186, 220Basic Programming Guide iv, v, 1batch 3, 5, <strong>272</strong>batch* 5,
+<strong>272</strong>bind 39, 65, 83, 110, 126, <strong>199</strong>bload <strong>270</strong>, 271,
+274bload-instances 307, <strong>308</strong>break 83, 139, 202, <strong>204</strong>,
+230browse-classes <strong>302</strong>bsave 153, 270, <strong>271</strong>bsave-instances
+<strong>307</strong>, 308build <strong>175</strong>, 326C iii, 8, 9, 12, 15, 16,
+21call-next-handler 83, 117, 118, <strong>255</strong>call-next-method 83, 86,
+<strong>241</strong>, 242call-specific-method 75, 83, 86, <strong>242</strong>carriage return
+7case sensitive 7check-syntax 177class 8, <strong>13</strong>, 78, 258, 299,
+302abstract 90, <strong>95</strong>, 253, 299concrete 91, <strong>95</strong>, 253existence
+<strong>245</strong>immediate <strong>95</strong>, 107non-reactive <strong>95</strong>precedence 93reactive
+91, <strong>95</strong>, 253specific <strong>92</strong>, 95, 100, 118system <strong>89</strong>ADDRESS
+<strong>89</strong>EXTERNAL-ADDRESS <strong>89</strong>FACT-ADDRESS <strong>89</strong>FLOAT
+<strong>89</strong>INITIAL-OBJECT <strong>89</strong>INSTANCE <strong>89</strong>INSTANCE-ADDRESS
+<strong>89</strong>INSTANCE-NAME <strong>89</strong>INTEGER <strong>89</strong>LEXEME <strong>89</strong>MULTIFIELD
+<strong>89</strong>NUMBER <strong>89</strong>OBJECT <strong>89</strong>, 92, 302PRIMITIVE <strong>89</strong>STRING
+<strong>89</strong>SYMBOL <strong>89</strong>USER <strong>89</strong>, 92, 112, 124, 257, 306user-defined
+8, 14, <strong>306</strong>class function 240, <strong>258</strong>class-abstractp
+<strong>247</strong>class-existp <strong>245</strong>class-reactivep <strong>247</strong>class-slots
+<strong>248</strong>class-subclasses <strong>248</strong>class-superclasses <strong>247</strong>clear 11,
+25, 65, 123, 145, 147, 151, 270, <strong>271</strong>clear-focus-stack
+<strong>292</strong>CLIPS iiiCLOS 75, 89close <strong>180</strong>command 3, <strong>159</strong>,
+269command prompt <strong>3</strong>comment 7, 10Common Lisp Object System
+ivcondition <strong>16</strong>conditional element <strong>16</strong>, 25, 27, 33, 62and 27,
+33, <strong>53</strong>exists 33, <strong>55</strong>forall 33, <strong>56</strong>logical 33,
+<strong>58</strong>not 33, <strong>54</strong>or 33, <strong>52</strong>pattern 27, 33, <strong>34</strong>literal
+<strong>35</strong>test 30, 33, <strong>51</strong>conflict resolution strategy 16, <strong>28</strong>,
+29, 271, 272, 291breadth <strong>29</strong>complexity <strong>30</strong>depth <strong>29</strong>lex
+<strong>30</strong>mea <strong>31</strong>random <strong>32</strong>simplicity <strong>29</strong>consequent
+<strong>15</strong>conservation 253conserve-mem 270, <strong>310</strong>constant 3,
+<strong>9</strong>constraint 33, 34, <strong>41</strong>, 44connective 34, <strong>41</strong>field
+<strong>34</strong>literal <strong>35</strong>predicate 34, <strong>44</strong>, 51return value 34,
+<strong>46</strong>construct 3, <strong>10</strong>, 175constructs 316constructs-to-c 274, 324,
+325convenience 253COOL iv, 8, 14, 17, 18, 19, 75, 78, <strong>89</strong>, 240, 244,
+298create$ <strong>166</strong>crlf <strong>181</strong>daemon <strong>111</strong>, 121, 137deactivated
+28declarative technique <strong>86</strong>, <strong>107</strong>, 118declare
+<strong>62</strong>default-dynamic 22defclass 8, 10, <strong>91</strong>, 105,
+<strong>298</strong>defclass-module <strong>244</strong>deffacts 10, <strong>13</strong>, <strong>25</strong>,
+283deffacts-module <strong>234</strong>deffunction <strong>9</strong>, 10, 16, <strong>71</strong>, 75, 294,
+295action <strong>72</strong>advantages over generic functions <strong>341</strong>execution
+error <strong>72</strong>recursion <strong>72</strong>regular parameter <strong>71</strong>return value
+<strong>72</strong>wildcard parameter <strong>71</strong>deffunction-module
+<strong>238</strong>defgeneric 10, <strong>75</strong>, 76defgeneric-module <strong>239</strong>defglobal
+10, <strong>15</strong>, <strong>65</strong>, 293defglobal-module <strong>238</strong>definstances 10,
+<strong>15</strong>, 91, <strong>122</strong>, 305initial-object <strong>91</strong>definstances-module
+<strong>256</strong>defmessage-handler 10, 105, <strong>106</strong>, <strong>303</strong>defmethod 10,
+<strong>75</strong>, 76defmodule 10, <strong>145</strong>, 308, <strong>309</strong>defmodules 17defrule 10,
+<strong>27</strong>, <strong>283</strong>defrule-module <strong>235</strong>deftemplate 10, <strong>12</strong>, <strong>21</strong>,
+279deftemplate fact <strong>12</strong>, 21, 220deftemplate-module
+<strong>212</strong>deftemplate-slot-allowed-values <strong>212</strong>,
+322deftemplate-slot-cardinality <strong>212</strong>, 322deftemplate-slot-defaultp
+<strong>213</strong>, 322deftemplate-slot-default-value <strong>214</strong>,
+322deftemplate-slot-existp <strong>214</strong>, 322deftemplate-slot-multip <strong>215</strong>,
+322deftemplate-slot-names <strong>215</strong>, 322deftemplate-slot-range <strong>216</strong>,
+322deftemplate-slot-singlep <strong>216</strong>, 323deftemplate-slot-type
+323deftemplate-slot-types <strong>216</strong>deg-grad <strong>195</strong>deg-rad
+<strong>195</strong>delayed-do-for-all-facts 230, <strong>233</strong>,
+324delayed-do-for-all-instances 83, 139, <strong>142</strong>, 204, 327delete$
+<strong>168</strong>delete-instance 126, <strong>257</strong>delete-member$ <strong>172</strong>delimiter
+<strong>7</strong>dependencies <strong>289</strong>dependents <strong>289</strong>describe-class 92,
+<strong>299</strong>direct-insert$ <strong>262</strong>div <strong>191</strong>do-for-all-facts 230,
+<strong>232</strong>, 233, 324do-for-all-instances 83, 139, <strong>141</strong>, 142, 204,
+327do-for-fact 230, <strong>232</strong>, 324do-for-instance 83, 139, <strong>141</strong>, 204,
+327double quote 7dribble-off <strong>276</strong>dribble-on <strong>275</strong>duplicate 11,
+13, 23, 83, <strong>220</strong>, 266duplicate-instance 83, 115, <strong>130</strong>dynamic
+binding <strong>18</strong>dynamic-get 125, <strong>260</strong>, 371dynamic-put 125, <strong>261</strong>,
+371embedded application 5encapsulation <strong>18</strong>, 89, 109,
+120EnvFalseSymbol 325EnvTrueSymbol 325EOF <strong>182</strong>, 183, <strong>187</strong>eq
+<strong>161</strong>eval <strong>175</strong>, 326evenp <strong>160</strong>exit 4, 180, <strong>271</strong>exp
+<strong>197</strong>expand$ 83, 108, 266, 325explode$ <strong>168</strong>exponential notation
+6exporting constructs 147expression <strong>10</strong>external-address 6, <strong>8</strong>,
+9, 181-f 4-f2 5facet 91, <strong>96</strong>, 299accessinitialize-only
+<strong>98</strong>read-only <strong>98</strong>read-write <strong>98</strong>create-accessor <strong>103</strong>,
+253, 326?NONE <strong>103</strong>read <strong>103</strong>read-write <strong>103</strong>write
+<strong>103</strong>default <strong>96</strong>default-dynamic <strong>96</strong>multislot
+<strong>96</strong>override-message <strong>104</strong>pattern-matchnon-reactive
+<strong>101</strong>reactive <strong>101</strong>propagationinherit <strong>99</strong>no-inherit 95,
+<strong>99</strong>shared 96single-slot <strong>96</strong>slot <strong>96</strong>sourcecomposite 95,
+<strong>100</strong>exclusive <strong>100</strong>storagelocal <strong>97</strong>shared
+<strong>97</strong>visibility <strong>102</strong>private <strong>102</strong>public <strong>102</strong>fact
+<strong>11</strong>, 13, 25, 280fact identifier <strong>11</strong>fact-address 6, 8, 9, <strong>11</strong>,
+50, 181, 227fact-existp <strong>222</strong>fact-index <strong>11</strong>, 23, 218, 219, 220,
+<strong>221</strong>, 289fact-list <strong>11</strong>, 13, 25, 27fact-relation <strong>222</strong>facts
+<strong>280</strong>fact-set <strong>226</strong>action 229distributed action <strong>229</strong>member
+<strong>226</strong>member variable <strong>226</strong>, 229query <strong>228</strong>, 229query execution
+error <strong>230</strong>query functions <strong>230</strong>template <strong>226</strong>template
+restriction <strong>226</strong>fact-slot-names <strong>222</strong>fact-slot-value
+<strong>223</strong>FALSE 44FalseSymbol 325fetch <strong>312</strong>, 324ff 181field <strong>9</strong>,
+12find-all-facts <strong>231</strong>, 233, 324find-all-instances 83, <strong>140</strong>,
+142find-fact <strong>231</strong>, 324find-instance 83, <strong>140</strong>fire 27first$
+<strong>171</strong>float 6, 8, <strong>193</strong>floatp <strong>159</strong>focus 28, 63, 151,
+<strong>291</strong>foreach 83, 204, <strong>206</strong>, 266, 322format <strong>183</strong>, 188,
+323FORTRAN 9funcall <strong>211</strong>, 324, 325, 327function 3, <strong>9</strong>, 16, 75,
+138, 159, 229call 3, <strong>10</strong>external 5, 39, 46, 51predicate <strong>44</strong>, 51,
+159, 259reserved names <strong>393</strong>system defined <strong>9</strong>, 393user defined 8,
+<strong>9</strong>, 51, 378generic dispatch <strong>75</strong>, 76, 79, <strong>81</strong>, 341generic
+function 14, 16, 17, <strong>75</strong>, <strong>295</strong>disadvantages <strong>341</strong>header 76,
+<strong>77</strong>order dependence <strong>76</strong>ordering of method parameter
+restrictions <strong>341</strong>performance penalty <strong>76</strong>return value
+<strong>87</strong>gensym <strong>207</strong>, 208gensym* 121, 129, <strong>207</strong>,
+208get-auto-float-dividend <strong>274</strong>get-char <strong>186</strong>,
+323get-class-defaults-mode <strong>253</strong>, 327get-current-module
+<strong>263</strong>get-defclass-list <strong>244</strong>get-deffacts-list
+<strong>234</strong>get-deffunction-list <strong>238</strong>get-defgeneric-list
+<strong>239</strong>get-defglobal-list <strong>237</strong>GetDefglobalValue
+325get-definstances-list <strong>256</strong>get-defmessage-handler-list
+<strong>248</strong>get-defmethod-list <strong>239</strong>get-defmodule-list
+<strong>263</strong>get-defrule-list <strong>235</strong>get-deftemplate-list
+<strong>217</strong>get-dynamic-constraint-checking <strong>274</strong>get-fact-duplication
+<strong>282</strong>get-fact-list <strong>224</strong>get-focus <strong>236</strong>get-focus-stack
+<strong>236</strong>get-function-restrictions 83, <strong>210</strong>get-incremental-reset
+<strong>288</strong>get-method-restrictions 83, <strong>243</strong>GetNextFactInTemplate
+324get-profile-percent-threshold 315get-region <strong>314</strong>,
+323get-reset-globals <strong>294</strong>get-salience-evaluation
+<strong>292</strong>get-sequence-operator-recognition
+<strong>267</strong>get-static-constraint-checking <strong>275</strong>get-strategy
+<strong>291</strong>grad-deg <strong>195</strong>halt <strong>291</strong>help 322help-path 322I/O router
+178if 83, <strong>200</strong>, 266if portion <strong>15</strong>imperative technique <strong>86</strong>,
+<strong>107</strong>, 118implode$ <strong>169</strong>importing constructs 147incremental reset
+28, 272, 288Inference Corporation iiiinference engine <strong>16</strong>, 27,
+28inheritance 14, <strong>18</strong>, 91, 95class precedence list <strong>19</strong>, 91,
+<strong>92</strong>, 93, 95, 100, 118, 299class precedence list 106is-a 92multiple
+14, <strong>19</strong>, 89, <strong>92</strong>, <strong>93</strong>, 302initialize-instance 83, 97, 104, 112,
+<strong>124</strong>, 257init-slots 112, 121, 124, <strong>257</strong>insert$ <strong>170</strong>instance
+8, <strong>13</strong>, <strong>14</strong>, 15, 95, 97, 299, <strong>306</strong>active <strong>109</strong>, 116, 118,
+125, 126, 257, 260, 306creation 116, <strong>120</strong>deletion 113direct 90, 91,
+<strong>95</strong>, 99initialization 112, 120, 124, 257manipulation
+<strong>120</strong>printing 113instance-address 6, <strong>8</strong>, 9, 50, 181, 258, 259,
+341instance-addressp <strong>260</strong>instance-existp 260instance-list 15,
+27instance-name 6, <strong>8</strong>, 135, <strong>258</strong>, 259, <strong>260</strong>instance-namep
+260instance-name-to-symbol <strong>259</strong>instancep <strong>259</strong>instances
+<strong>306</strong>instance-set <strong>135</strong>action 138class restriction
+<strong>135</strong>distributed action <strong>137</strong>member <strong>135</strong>member variable
+<strong>135</strong>, 138query 19, <strong>137</strong>, 138, 341query execution error
+<strong>139</strong>query functions <strong>139</strong>template <strong>135</strong>integer 6, 8,
+<strong>193</strong>integerp <strong>159</strong>integration 5Interfaces Guide v, 3Jess 207-l
+5left-hand side <strong>15</strong>length <strong>209</strong>length$ 96, 108, <strong>172</strong>,
+209less than 7lexemep <strong>160</strong>LHS <strong>27</strong>line feed 7LISP iii,
+15list-defclasses 298list-deffacts <strong>283</strong>list-deffunctions
+<strong>295</strong>list-defgenerics <strong>296</strong>list-defglobals
+<strong>293</strong>list-definstances <strong>305</strong>list-defmessage-handlers
+<strong>303</strong>list-defmethods 77, 83, 84, <strong>296</strong>, 297list-defmodules
+<strong>309</strong>list-defrules <strong>284</strong>list-deftemplates
+<strong>279</strong>list-focus-stack <strong>292</strong>list-watch-items <strong>278</strong>load 5,
+<strong>269</strong>, 270, 272load* <strong>269</strong>load-facts <strong>280</strong>LoadFactsFromString
+326load-instances <strong>308</strong>local 281log <strong>197</strong>log10 <strong>198</strong>logical
+name <strong>179</strong>, 275nil 181, 183stdin 182, 183, 186, 187, 275stdout 181,
+183, 275t 181, 182, 183, 186, 187wclips 275wdialog 275wdisplay 275werror
+275wtrace 275wwarning 275logical support <strong>58</strong>, 218, 219,
+289loop-for-count 83, <strong>202</strong>, 204, 266lowcase <strong>176</strong>make-instance 8,
+48, 83, 95, 97, 99, 104, 112, <strong>120</strong>, 122, 257, 308matches
+<strong>285</strong>math functions <strong>189</strong>, <strong>194</strong>max
+<strong>192</strong>max-number-of-elements 156member$ <strong>167</strong>, 326mem-requests
+<strong>309</strong>mem-used <strong>309</strong>message 14, 16, <strong>17</strong>, 18, 19, 75, 89, 97,
+106, 108, 109, 116, 118, <strong>120</strong>, 121, 124dispatch <strong>107</strong>execution
+error 108, 118, 254execution error <strong>119</strong>implementation <strong>106</strong>,
+107return value <strong>120</strong>message dispatch
+<strong>116</strong>message-duplicate-instance 83, 104, 115,
+<strong>131</strong>message-handler 14, 16, <strong>17</strong>, 19, 76, 89, 91, 92, 99,
+<strong>106</strong>, 109, 118, 120, 125, 199, 257, 299, 306, 341action
+<strong>109</strong>applicability 107, 108, 116, <strong>118</strong>, <strong>304</strong>documentation
+<strong>105</strong>existence <strong>246</strong>forward declaration <strong>105</strong>regular
+parameter <strong>108</strong>return value <strong>120</strong>shadow <strong>118</strong>, 254specific
+116, 118, 120systemcreate <strong>116</strong>, 120, 121, 326delete <strong>113</strong>, 121,
+122, <strong>126</strong>, 129direct-duplicate <strong>115</strong>, 130direct-modify <strong>114</strong>,
+127, 128init 99, <strong>112</strong>, 120, 121, 124, 256message-duplicate <strong>115</strong>,
+131, 132message-modify <strong>115</strong>, 128, 129print <strong>113</strong>typeafter
+<strong>106</strong>, 118, 120around <strong>106</strong>, 118, 120, 254before <strong>106</strong>, 118,
+120primary <strong>106</strong>, 118, 120wildcard parameter
+<strong>108</strong>message-handler-existp <strong>246</strong>message-modify-instance 83,
+104, 115, <strong>128</strong>method 17, <strong>75</strong>, 76, 89action <strong>76</strong>applicability
+<strong>79</strong>, 86, 297execution error <strong>86</strong>, 240explicit <strong>75</strong>, 79,
+<strong>82</strong>implicit <strong>75</strong>, 76, 79index <strong>77</strong>, 296parameter query
+restriction <strong>78</strong>parameter restriction 76, 77, <strong>78</strong>, 82,
+84parameter type restriction <strong>78</strong>precedence 78, 79, <strong>84</strong>,
+296regular parameter <strong>78</strong>, 79return value <strong>87</strong>shadow <strong>86</strong>, 240,
+304wildcard parameter <strong>79</strong>wildcard parameter restriction 76min
+<strong>192</strong>min-number-of-elements 156mod <strong>198</strong>modify 11, 13, 23, 83,
+<strong>219</strong>, 266modify-instance 83, 114, <strong>127</strong>module specifier
+147multifield value 8, <strong>9</strong>multifield wildcard 36multifieldp
+<strong>161</strong>named fields <strong>12</strong>NASA iiineq <strong>162</strong>next-handlerp 83,
+<strong>254</strong>next-methodp 83, <strong>240</strong>non-FALSE 44non-ordered fact <strong>12</strong>,
+21not <strong>166</strong>nth$ 96, <strong>166</strong>numberp <strong>159</strong>object 8, <strong>13</strong>, 17,
+18behavior <strong>13</strong>, 16, <strong>17</strong>, 18, 75, 91, <strong>106</strong>, 107primitive type
+<strong>14</strong>properties <strong>13</strong>, 14, 17, <strong>18</strong>, <strong>91</strong>reference <strong>8</strong>, 13,
+19object-pattern-match-delay 48, 83, <strong>126</strong>, 266oddp <strong>161</strong>off
+316open <strong>179</strong>, 180operating-system <strong>211</strong>, 322OPS5 30options
+<strong>273</strong>or <strong>165</strong>ordered fact <strong>12</strong>, 21overload 10, <strong>17</strong>, 71,
+<strong>75</strong>, 76, 341override-next-handler 83, 117, 118,
+<strong>255</strong>override-next-method 83, 86, <strong>241</strong>, 242parenthesis 7,
+10Pascal 12, 16, 21pattern <strong>16</strong>, 27pattern entity
+<strong>27</strong>pattern-address 50pattern-matching <strong>16</strong>, 65, 66performance
+<strong>339</strong>pi <strong>196</strong>pointerp <strong>161</strong>polymorphism <strong>18</strong>pop-focus
+<strong>237</strong>ppdefclass <strong>298</strong>ppdeffacts <strong>283</strong>ppdeffunction
+<strong>295</strong>ppdefgeneric <strong>295</strong>ppdefglobal <strong>293</strong>ppdefinstances
+<strong>305</strong>ppdefmessage-handler <strong>303</strong>ppdefmethod <strong>296</strong>ppdefmodule
+<strong>309</strong>ppdefrule 147, 271, <strong>284</strong>ppdeftemplate <strong>279</strong>ppfact
+<strong>282</strong>, 323ppinstance <strong>306</strong>pprule 284prefix notation
+10preview-generic <strong>297</strong>preview-send <strong>304</strong>printout <strong>181</strong>, 183,
+327print-region <strong>313</strong>profile 316profile-info 315, 316profile-reset
+315progn 83, 126, 138, <strong>203</strong>, 204, 266, 316, 327progn$ 83, <strong>203</strong>,
+204, 207, 266, 326quote 7rad-deg <strong>196</strong>random <strong>208</strong>, 327read 178,
+<strong>182</strong>, 183, 272readline <strong>182</strong>, 272read-number <strong>187</strong>, 188,
+323Reference Manual v, viirefresh <strong>288</strong>refresh-agenda
+<strong>292</strong>release-mem <strong>310</strong>remove <strong>186</strong>remove-break
+<strong>287</strong>rename <strong>185</strong>replace$ <strong>170</strong>replace-member$
+<strong>172</strong>reset 11, 13, 15, 25, 65, 91, 120, 122, 151, 159, 271, 272,
+283, 294rest$ <strong>171</strong>restore-instances <strong>308</strong>RETE algorithm
+<strong>339</strong>retract 11, 50, <strong>218</strong>return 28, 83, 139, 151, 202, <strong>204</strong>,
+230, 266RHS <strong>27</strong>right-hand side <strong>15</strong>round <strong>198</strong>roundoff
+6RtnArgCount 326rule <strong>15</strong>, <strong>27</strong>run 151, <strong>290</strong>, 291salience 28,
+29, <strong>62</strong>, 292dynamic 28, <strong>63</strong>, 292save <strong>270</strong>, 310, 326save-facts
+<strong>281</strong>save-instances <strong>307</strong>, 308scientific math functions
+<strong>194</strong>seed 33, <strong>209</strong>semicolon 7, 10send 17, 19, 106, 116, 119,
+120, 304, 341sequence expansion 39sequencep 161set-auto-float-dividend
+191, <strong>274</strong>set-break <strong>287</strong>set-class-defaults-mode <strong>253</strong>, 326,
+327set-current-module 147, <strong>263</strong>, 290set-dynamic-constraint-checking
+23, 105, 153, 271, <strong>274</strong>set-fact-duplication <strong>281</strong>setgen
+<strong>208</strong>set-incremental-reset <strong>288</strong>set-locale 187, <strong>188</strong>,
+323set-profile-percent-threshold 315set-reset-globals 65,
+<strong>294</strong>set-salience-evaluation 63,
+<strong>292</strong>set-sequence-operator-recognition
+<strong>267</strong>set-static-constraint-checking 23, 105, 153,
+<strong>274</strong>set-strategy 29, 159, <strong>291</strong>show-breaks
+<strong>288</strong>show-defglobals <strong>294</strong>significant digits 6single-field value
+<strong>9</strong>single-field wildcard 36slot <strong>12</strong>, 14, 19, 91, 92, <strong>95</strong>, 100,
+120, 245, 299access 98, 103, 245, 246accessor <strong>103</strong>,
+137put-&lt;slot-name&gt; 121default value 96, 97, 121, 124, 257, 307direct
+access <strong>110</strong>, 125, 137, 199existence <strong>245</strong>facet 96,
+<strong>100</strong>inheritance propagation 99multifield <strong>261</strong>overlay
+<strong>100</strong>override 99visibility <strong>246</strong>slot daemons
+341slot-allowed-classes <strong>254</strong>, 323slot-allowed-values
+<strong>251</strong>slot-cardinality <strong>251</strong>slot-default-value
+<strong>252</strong>slot-delete$ <strong>262</strong>slot-direct-accessp
+<strong>246</strong>slot-direct-delete$ <strong>262</strong>slot-direct-replace$
+<strong>261</strong>slot-existp <strong>245</strong>slot-facets <strong>249</strong>slot-initablep
+<strong>246</strong>slot-insert$ 96, <strong>262</strong>slot-override 121, 124, 257,
+307slot-publicp <strong>246</strong>slot-range <strong>252</strong>slot-replace$
+<strong>261</strong>slot-sources <strong>250</strong>slot-types <strong>250</strong>slot-writablep
+<strong>246</strong>, 325Smalltalk iv, 75, 89sort <strong>210</strong>, 327space 7specificity
+<strong>29</strong>sqrt <strong>196</strong>standard math functions <strong>189</strong>str-cat
+<strong>173</strong>str-compare <strong>176</strong>str-index <strong>174</strong>string 6, <strong>7</strong>,
+8stringp <strong>160</strong>string-to-field <strong>178</strong>, 327str-length
+<strong>177</strong>subclass <strong>92</strong>, 116, 245, 299, 302subclassp <strong>245</strong>subseq$
+<strong>169</strong>subsetp <strong>167</strong>sub-string <strong>174</strong>superclass 91, <strong>92</strong>, 95,
+106, 245, 299direct <strong>92</strong>superclassp <strong>245</strong>switch 83, <strong>205</strong>,
+266, 327symbol 6, <strong>7</strong>, 8, 258, 259reserved 12and 12declare 12exists
+12forall 12logical 12not 12object 12or 12test 12symbolp
+<strong>160</strong>symbol-to-instance-name <strong>259</strong>sym-cat <strong>173</strong>system
+<strong>273</strong>tab 7, 181template 219then portion <strong>15</strong>tilde 7time
+<strong>209</strong>timer <strong>211</strong>timer 327top level <strong>3</strong>toss
+<strong>315</strong>trigonometric math functions <strong>194</strong>TrueSymbol 325truth
+maintenance <strong>58</strong>type function <strong>240</strong>, 258unconditional support
+<strong>58</strong>undefclass <strong>298</strong>undeffacts <strong>283</strong>undeffunction
+<strong>295</strong>undefgeneric <strong>296</strong>undefglobal 65, <strong>293</strong>undefinstances
+<strong>306</strong>undefmessage-handler <strong>304</strong>undefmethod <strong>297</strong>undefrule
+147, <strong>284</strong>undeftemplate <strong>279</strong>unmake-instance 50,
+<strong>257</strong>unwatch <strong>278</strong>upcase <strong>176</strong>User?s Guide v,
+viiuser-functions 316value <strong>9</strong>variable 5, 7, <strong>9</strong>, 11, 15, 34, 35,
+38, 54, 175, <strong>199</strong>global 3, 15, 62, <strong>65</strong>, 199, 271vertical bar
+7visible 281vtab 181watch <strong>276</strong>, 278watch itemactivations 28,
+<strong>277</strong>all <strong>277</strong>compilations 269, <strong>276</strong>deffunctions
+<strong>277</strong>facts 217, 218, <strong>276</strong>focus <strong>277</strong>generic-functions
+<strong>277</strong>globals 65, <strong>277</strong>instances <strong>277</strong>message-handlers
+<strong>277</strong>messages <strong>277</strong>methods <strong>277</strong>rules <strong>277</strong>, 290slots
+<strong>277</strong>statistics <strong>277</strong>, 290while 83, <strong>201</strong>, 266wildcard 34, 35,
+<strong>36</strong>wordp 160</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Appendix A: Support Information</a><ul>
+<li><a class="reference internal" href="#a-1-questions-and-information">A.1 Questions and Information</a></li>
+<li><a class="reference internal" href="#a-2-documentation">A.2 Documentation</a></li>
+<li><a class="reference internal" href="#a-3-clips-source-code-and-executables">A.3 CLIPS Source Code and Executables</a></li>
+<li><a class="reference internal" href="#b-1-version-6-30">B.1 Version 6.30</a></li>
+<li><a class="reference internal" href="#b-2-version-6-24">B.2 Version 6.24</a></li>
+<li><a class="reference internal" href="#b-3-version-6-23">B.3 Version 6.23</a></li>
+<li><a class="reference internal" href="#b-4-version-6-22">B.4 Version 6.22</a></li>
+<li><a class="reference internal" href="#b-5-version-6-21">B.5 Version 6.21</a></li>
+<li><a class="reference internal" href="#b-6-version-6-2">B.6 Version 6.2</a></li>
+<li><a class="reference internal" href="#d-1-ordering-of-patterns-on-the-lhs">D.1 Ordering of Patterns on the LHS</a></li>
+<li><a class="reference internal" href="#d-2-deffunctions-versus-generic-functions">D.2 Deffunctions versus Generic Functions</a></li>
+<li><a class="reference internal" href="#d-3-ordering-of-method-parameter-restrictions">D.3 Ordering of Method Parameter Restrictions</a></li>
+<li><a class="reference internal" href="#d-4-instance-addresses-versus-instance-names">D.4 Instance-Addresses versus Instance-Names</a></li>
+<li><a class="reference internal" href="#d-5-reading-instance-slots-directly">D.5 Reading Instance Slots Directly</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#index">Index</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="actions.html"
+                        title="previous chapter">Section 12: Actions And Functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/appendix.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="actions.html" title="Section 12: Actions And Functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

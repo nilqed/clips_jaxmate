@@ -1,0 +1,456 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 10: Defmodule Construct &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 11: Constraint Attributes" href="constraints.html" />
+    <link rel="prev" title="Section 9: CLIPS Object Oriented Language" href="cool.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="constraints.html" title="Section 11: Constraint Attributes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cool.html" title="Section 9: CLIPS Object Oriented Language"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-10-defmodule-construct">
+<h1>Section 10: Defmodule Construct<a class="headerlink" href="#section-10-defmodule-construct" title="Permalink to this headline">¶</a></h1>
+<p>CLIPS provides support for the modular development and execution of
+knowledge bases with the <strong>defmodule</strong> construct. CLIPS modules allow a
+set of constructs to be grouped together such that explicit control can
+be maintained over restricting the access of the constructs by other
+modules. This type of control is similar to global and local scoping
+used in languages such as C or Ada (note, however, that the global
+scoping used by CLIPS is strictly hierarchical and in one direction
+only?if module A can see constructs from module B, then it is not
+possible for module B to see any of module A?s constructs). By
+restricting access to deftemplate and defclass constructs, modules can
+function as blackboards, permitting only certain facts and instances to
+be seen by other modules. Modules are also used by rules to provide
+execution control.</p>
+<div class="section" id="defining-modules">
+<h2>10.1 Defining Modules<a class="headerlink" href="#defining-modules" title="Permalink to this headline">¶</a></h2>
+<p>Modules are defined using the defmodule construct.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defmodule &lt;module-name&gt; [&lt;comment&gt;] &lt;port-specification&gt;*)
+
+&lt;port-specification&gt; ::= (export &lt;port-item&gt;) |
+  (import &lt;module-name&gt; &lt;port-item&gt;)
+  &lt;port-item&gt; ::= ?ALL |
+  ?NONE |
+  &lt;port-construct&gt; ?ALL |
+  &lt;port-construct&gt; ?NONE |
+  &lt;port-construct&gt; &lt;construct-name&gt;+
+  &lt;port-construct&gt; ::= deftemplate | defclass |
+  defglobal | deffunction |
+  defgeneric
+</pre></div>
+</div>
+<p>A defmodule cannot be redefined or even deleted once it is defined (with
+the exception of the MAIN module which can be redefined once). The only
+way to delete a module is with the <strong>clear</strong> command. Upon startup and
+after a <strong>clear</strong> command, CLIPS automatically constructs the following
+defmodule.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">defmodule</span> <span class="n">MAIN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All of the predefined system classes (see section 9.2) belong to the
+MAIN module. However, it is not necessary to import or export the system
+classes; they are always in scope. Discounting the previous exception,
+the predefined MAIN module does not import or export any constructs.
+However, unlike other modules, the MAIN module can be redefined once
+after startup or a <strong>clear</strong> command.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defmodule FOO
+  (import BAR ?ALL)
+  (import YAK deftemplate ?ALL)
+  (import GOZ defglobal x y z)
+  (export defgeneric +)
+  (export defclass ?ALL))
+</pre></div>
+</div>
+</div>
+<div class="section" id="specifying-a-construct-s-module">
+<h2>10.2 Specifying a Construct?s Module<a class="headerlink" href="#specifying-a-construct-s-module" title="Permalink to this headline">¶</a></h2>
+<p>The module in which a construct is placed can be specified when the
+construct is defined. The deffacts, deftemplate, defrule, deffunction,
+defgeneric, defclass, and definstances constructs all specify the module
+for the construct by including it as part of the name. The module of a
+defglobal construct is indicated by specifying the module name after the
+defglobal keyword. The module of a defmessage-handler is specified as
+part of the class specifier. The module of a defmethod is specified as
+part of the generic function specifier. For example, the following
+constructs would be placed in the DETECTION module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule DETECTION::Find-Fault
+  (sensor (name ?name) (value bad))
+  =&gt;
+  (assert (fault (name ?name))))
+  (defglobal DETECTION ?*count* = 0)
+  (defmessage-handler DETECTION::COMPONENT get-charge ()
+  (* ?self:flux ?self:flow))
+  (defmethod DETECTION::+ ((?x STRING) (?y STRING))
+  (str-cat ?x ?y))
+</pre></div>
+</div>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defrule</span> <span class="n">foo</span> <span class="o">=&gt;</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defrule</span> <span class="n">A</span><span class="p">::</span><span class="n">bar</span> <span class="o">=&gt;</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">list</span><span class="o">-</span><span class="n">defrules</span><span class="p">)</span>
+<span class="n">bar</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">1</span> <span class="n">defrule</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">set</span><span class="o">-</span><span class="n">current</span><span class="o">-</span><span class="n">module</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">A</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">list</span><span class="o">-</span><span class="n">defrules</span><span class="p">)</span>
+<span class="n">foo</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">1</span> <span class="n">defrule</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="specifying-modules">
+<h2>10.3 Specifying Modules<a class="headerlink" href="#specifying-modules" title="Permalink to this headline">¶</a></h2>
+<p>Commands such as <strong>undefrule</strong> and <strong>ppdefrule</strong> require the name of a
+construct on which to operate. In previous versions of CLIPS, constructs
+were always referred to by their name only, so it was sufficient just to
+pass the name of the construct to these commands. With modules, however,
+it is possible to have a construct with the same name in two different
+modules. The modules associated with a name can be specified either
+explicitly or implicitly. To explicitly specify a name?s module the
+module name (a symbol) is listed followed by two colons, ::, and then
+the name is listed. The module name followed by :: is referred to as a
+<strong>module specifier</strong>. For example, MAIN::find-stuff, refers to the
+find-stuff construct in the MAIN module. A module can also be implicitly
+specified since there is always a ?current? module. The current module
+is changed whenever a defmodule construct is defined or the
+<strong>set-current-module</strong> function is used. The MAIN module is
+automatically defined by CLIPS and by default is the current module when
+CLIPS is started or after a <strong>clear</strong> command is issued. Thus the name
+find-stuff would implicitly have the MAIN module as its module when
+CLIPS is first started.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CLIPS&gt; (clear)
+CLIPS&gt; (defmodule A)
+CLIPS&gt; (defglobal A ?*x* = 0)
+CLIPS&gt; (defmodule B)
+CLIPS&gt; (defglobal B ?*y* = 1)
+CLIPS&gt; (ppdefglobal y)
+(defglobal B ?*y* = 1)
+CLIPS&gt; (ppdefglobal B::y)
+(defglobal B ?*y* = 1)
+CLIPS&gt; (ppdefglobal x)
+[PRNTUTIL1] Unable to find defglobal x.
+CLIPS&gt; (ppdefglobal A::x)
+(defglobal A ?*x* = 0)
+CLIPS&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="importing-and-exporting-constructs">
+<h2>10.4 Importing and Exporting Constructs<a class="headerlink" href="#importing-and-exporting-constructs" title="Permalink to this headline">¶</a></h2>
+<p>Unless specifically <strong>exported</strong> and <strong>imported</strong>, the constructs of one
+module may not be used by another module. A construct is said to be
+visible or within scope of a module if that construct can be used by the
+module. For example, if module <em>B</em> wants to use the <em>foo</em> deftemplate
+defined in module <em>A</em>, then module <em>A</em> must export the <em>foo</em> deftemplate
+and module <em>B</em> must import the <em>foo</em> deftemplate from module <em>A</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">deftemplate</span> <span class="n">A</span><span class="p">::</span><span class="n">foo</span> <span class="p">(</span><span class="n">slot</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defrule</span> <span class="n">B</span><span class="p">::</span><span class="n">bar</span> <span class="p">(</span><span class="n">foo</span> <span class="p">(</span><span class="n">x</span> <span class="mi">3</span><span class="p">))</span> <span class="o">=&gt;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">PRNTUTIL2</span><span class="p">]</span> <span class="n">Syntax</span> <span class="n">Error</span><span class="p">:</span> <span class="n">Check</span> <span class="n">appropriate</span> <span class="n">syntax</span> <span class="k">for</span> <span class="n">defrule</span>
+<span class="n">ERROR</span><span class="p">:</span>
+<span class="p">(</span><span class="n">defrule</span> <span class="n">B</span><span class="p">::</span><span class="n">bar</span>
+<span class="p">(</span><span class="n">foo</span> <span class="p">(</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">A</span> <span class="p">(</span><span class="n">export</span> <span class="n">deftemplate</span> <span class="n">foo</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">deftemplate</span> <span class="n">A</span><span class="p">::</span><span class="n">foo</span> <span class="p">(</span><span class="n">slot</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">B</span> <span class="p">(</span><span class="kn">import</span> <span class="nn">A</span> <span class="n">deftemplate</span> <span class="n">foo</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defrule</span> <span class="n">B</span><span class="p">::</span><span class="n">bar</span> <span class="p">(</span><span class="n">foo</span> <span class="p">(</span><span class="n">x</span> <span class="mi">3</span><span class="p">))</span> <span class="o">=&gt;</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>CLIPS will <strong>not</strong> allow a module or other construct to be defined that
+causes two constructs with the same name to be visible within the same
+module.</p>
+<div class="section" id="exporting-constructs">
+<h3>10.4.1 Exporting Constructs<a class="headerlink" href="#exporting-constructs" title="Permalink to this headline">¶</a></h3>
+<p>The export specification in a defmodule definition is used to indicate
+which constructs will be accessible to other modules importing from the
+module being defined. Only deftemplates, defclasses, defglobals,
+deffunctions, and defgenerics may be exported. A module may export any
+valid constructs that are visible to it (not just constructs that it
+defines).</p>
+<p>There are three different types of export specifications. First, a
+module may export all valid constructs that are visible to it. This
+accomplished by following the <em>export</em> keyword with the <em>?ALL</em> keyword.
+Second, a module may export all valid constructs of a particular type
+that are visible to it. This accomplished by following the <em>export</em>
+keyword with the name of the construct type followed by the <em>?ALL</em>
+keyword. Third, a module may export specific constructs of a particular
+type that are visible to it. This accomplished by following the <em>export</em>
+keyword with the name of the construct type followed by the name of one
+or more visible constructs of the specified type. In the following code,
+defmodule <em>A</em> exports all of its constructs; defmodule <em>B</em> exports all
+of its deftemplates; and defmodule <em>C</em> exports the <em>foo</em>, <em>bar</em>, and
+<em>yak</em> defglobals.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defmodule A (export ?ALL))
+
+(defmodule B (export deftemplate ?ALL))
+
+(defmodule C (export defglobal foo bar yak))
+</pre></div>
+</div>
+<p>The ?NONE keyword may be used in place of the ?ALL keyword to indicate
+either that no constructs are exported from a module or that no
+constructs of a particular type are exported from a module.</p>
+<p>Defmethods and defmessage-handlers cannot be explicitly exported.
+Exporting a defgeneric automatically exports all associated defmethods.
+Exporting a defclass automatically exports all associated
+defmessage-handlers. Deffacts, definstances, and defrules cannot be
+exported.</p>
+</div>
+<div class="section" id="importing-constructs">
+<h3>10.4.2 Importing Constructs<a class="headerlink" href="#importing-constructs" title="Permalink to this headline">¶</a></h3>
+<p>The import specification in a defmodule definition is used to indicate
+which constructs the module being defined will use from other modules.
+Only deftemplates, defclasses, defglobals, deffunctions, and defgenerics
+may be imported.</p>
+<p>There are three different types of import specifications. First, a
+module may import all valid constructs that are visible to a specified
+module. This accomplished by following the <em>import</em> keyword with a
+module name followed by the <em>?ALL</em> keyword. Second, a module may import
+all valid constructs of a particular type that are visible to a
+specified module. This accomplished by following the <em>import</em> keyword
+with a module name followed by the name of the construct type followed
+by the <em>?ALL</em> keyword. Third, a module may import specific constructs of
+a particular type that are visible to it. This accomplished by following
+the <em>import</em> keyword with a module name followed by the name of the
+construct type followed by the name of one or more visible constructs of
+the specified type. In the following code, defmodule <em>A</em> imports all of
+module <em>D</em>?s constructs; defmodule <em>B</em> imports all of module <em>D</em>?s
+deftemplates; and defmodule <em>C</em> imports the foo, bar, and <em>yak</em>
+defglobals from module <em>D</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defmodule A (import D ?ALL))
+
+(defmodule B (import D deftemplate ?ALL))
+
+(defmodule C (import D defglobal foo bar yak))
+</pre></div>
+</div>
+<p>The ?NONE keyword may be used in place of the ?ALL keyword to indicate
+either that no constructs are imported from a module or that no
+constructs of a particular type are imported from a module.</p>
+<p>Defmethods and defmessage-handlers cannot be explicitly imported.
+Importing a defgeneric automatically imports all associated defmethods.
+Importing a defclass automatically imports all associated
+defmessage-handlers. Deffacts, definstances, and defrules cannot be
+imported.</p>
+<p>A module must be defined before it is used in an import specification.
+In addition, if specific constructs are listed in the import
+specification, they must already be defined in the module exporting
+them. It is not necessary to import a construct from the module in which
+it is defined in order to use it. A construct can be indirectly imported
+from a module that directly imports and then exports the module to be
+used.</p>
+</div>
+</div>
+<div class="section" id="importing-and-exporting-facts-and-instances">
+<h2>10.5 Importing and Exporting Facts and Instances<a class="headerlink" href="#importing-and-exporting-facts-and-instances" title="Permalink to this headline">¶</a></h2>
+<p>Facts and instances are ?owned? by the module in which their
+corresponding deftemplate or defclass is defined, <em>not</em> by the module
+which creates them. Facts and instances are thus visible only to those
+modules that import the corresponding deftemplate or defclass. This
+allows a knowledge base to be partitioned such that rules and other
+constructs can only ?see? those facts and instances that are of interest
+to them. Instance names, however, are global in scope, so it is still
+possible to send messages to an instance of a class that is not in
+scope.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">A</span> <span class="p">(</span><span class="n">export</span> <span class="n">deftemplate</span> <span class="n">foo</span> <span class="n">bar</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">deftemplate</span> <span class="n">A</span><span class="p">::</span><span class="n">foo</span> <span class="p">(</span><span class="n">slot</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">deftemplate</span> <span class="n">A</span><span class="p">::</span><span class="n">bar</span> <span class="p">(</span><span class="n">slot</span> <span class="n">y</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">deffacts</span> <span class="n">A</span><span class="p">::</span><span class="n">info</span> <span class="p">(</span><span class="n">foo</span> <span class="p">(</span><span class="n">x</span> <span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="n">bar</span> <span class="p">(</span><span class="n">y</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">B</span> <span class="p">(</span><span class="kn">import</span> <span class="nn">A</span> <span class="n">deftemplate</span> <span class="n">foo</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">reset</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">facts</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">f</span><span class="o">-</span><span class="mi">1</span> <span class="p">(</span><span class="n">foo</span> <span class="p">(</span><span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">f</span><span class="o">-</span><span class="mi">2</span> <span class="p">(</span><span class="n">bar</span> <span class="p">(</span><span class="n">y</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">facts</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">facts</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">f</span><span class="o">-</span><span class="mi">1</span> <span class="p">(</span><span class="n">foo</span> <span class="p">(</span><span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">1</span> <span class="n">fact</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="specifying-instance-names">
+<h3>10.5.1 Specifying Instance-Names<a class="headerlink" href="#specifying-instance-names" title="Permalink to this headline">¶</a></h3>
+<p>Instance-names are required to be unique regardless of the module that
+owns them. The syntax of instance-names has been extended to allow
+module specifications (note that the left and right brackets in bold are
+to be typed and do not indicate an optional part of the syntax).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">instance</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">symbol</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">|</span> <span class="p">[::</span><span class="o">&lt;</span><span class="n">symbol</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">|</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">::</span><span class="n">symbol</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Specifying just a symbol as the instance-name, such as [Rolls-Royce],
+will search for the instance in all modules. Specifying only the <code class="docutils literal notranslate"><span class="pre">::</span></code>
+before the name, such as <code class="docutils literal notranslate"><span class="pre">[::Rolls-Royce]</span></code>, will search for the instance
+first in the current module and then recursively in the imported modules
+as defined in the module definition. Specifying both a symbol and a
+module name, such as <code class="docutils literal notranslate"><span class="pre">[CARS::Rolls-Royce]</span></code>, searches for the instance only
+in the specified module.</p>
+</div>
+</div>
+<div class="section" id="modules-and-rule-execution">
+<h2>10.6 Modules and Rule Execution<a class="headerlink" href="#modules-and-rule-execution" title="Permalink to this headline">¶</a></h2>
+<p>Each module has its own pattern-matching network for its rules and its
+own agenda. When a <strong>run</strong> command is given, the agenda of the module
+that is the current focus is executed (note that the <strong>reset</strong> and
+<strong>clear</strong> commands make the MAIN module the current focus). Rule
+execution continues until another module becomes the current focus, no
+rules are left on the agenda, or the <strong>return</strong> function is used from
+the RHS of a rule. Whenever a module that was focused on runs out of
+rules on its agenda, the current focus is removed from the focus stack
+and the next module on the focus stack becomes the current focus. Before
+a rule executes, the current module is changed to the module in which
+the executing rule is defined (the current focus). The current focus can
+be changed by using the <strong>focus</strong> command. See sections 5.2, 5.4.10.2,
+12.12, and 13.12 for more details.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">MAIN</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="n">defrule</span> <span class="n">MAIN</span><span class="p">::</span><span class="n">focus</span><span class="o">-</span><span class="n">example</span>
+  <span class="o">=&gt;</span>
+  <span class="p">(</span><span class="n">printout</span> <span class="n">t</span> <span class="s2">&quot;Firing rule in module MAIN.&quot;</span> <span class="n">crlf</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">focus</span> <span class="n">A</span> <span class="n">B</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="n">defrule</span> <span class="n">A</span><span class="p">::</span><span class="n">example</span><span class="o">-</span><span class="n">rule</span>
+  <span class="o">=&gt;</span>
+  <span class="p">(</span><span class="n">printout</span> <span class="n">t</span> <span class="s2">&quot;Firing rule in module A.&quot;</span> <span class="n">crlf</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defmodule</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+<span class="p">(</span><span class="n">defrule</span> <span class="n">B</span><span class="p">::</span><span class="n">example</span><span class="o">-</span><span class="n">rule</span>
+  <span class="o">=&gt;</span>
+  <span class="p">(</span><span class="n">printout</span> <span class="n">t</span> <span class="s2">&quot;Firing rule in module B.&quot;</span> <span class="n">crlf</span><span class="p">))</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">reset</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">run</span><span class="p">)</span>
+<span class="n">Firing</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">MAIN</span><span class="o">.</span>
+<span class="n">Firing</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">A</span><span class="o">.</span>
+<span class="n">Firing</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">B</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<span class="target" id="section-8"></span></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Section 10: Defmodule Construct</a><ul>
+<li><a class="reference internal" href="#defining-modules">10.1 Defining Modules</a></li>
+<li><a class="reference internal" href="#specifying-a-construct-s-module">10.2 Specifying a Construct?s Module</a></li>
+<li><a class="reference internal" href="#specifying-modules">10.3 Specifying Modules</a></li>
+<li><a class="reference internal" href="#importing-and-exporting-constructs">10.4 Importing and Exporting Constructs</a><ul>
+<li><a class="reference internal" href="#exporting-constructs">10.4.1 Exporting Constructs</a></li>
+<li><a class="reference internal" href="#importing-constructs">10.4.2 Importing Constructs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importing-and-exporting-facts-and-instances">10.5 Importing and Exporting Facts and Instances</a><ul>
+<li><a class="reference internal" href="#specifying-instance-names">10.5.1 Specifying Instance-Names</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modules-and-rule-execution">10.6 Modules and Rule Execution</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cool.html"
+                        title="previous chapter">Section 9: CLIPS Object Oriented Language</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="constraints.html"
+                        title="next chapter">Section 11: Constraint Attributes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/defmodule.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="constraints.html" title="Section 11: Constraint Attributes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cool.html" title="Section 9: CLIPS Object Oriented Language"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

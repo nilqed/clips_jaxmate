@@ -1,0 +1,364 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 6: Defglobal Construct &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 7: Deffunction Construct" href="deffunction.html" />
+    <link rel="prev" title="Section 5: Defrule Construct" href="defrule.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="deffunction.html" title="Section 7: Deffunction Construct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="defrule.html" title="Section 5: Defrule Construct"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-6-defglobal-construct">
+<h1>Section 6: Defglobal Construct<a class="headerlink" href="#section-6-defglobal-construct" title="Permalink to this headline">¶</a></h1>
+<p>With the <strong>defglobal</strong> construct, global variables can be defined, set,
+and accessed within the CLIPS environment. Global variables can be
+accessed as part of the pattern-matching process, but changing them does
+not invoke the pattern-matching process. The <strong>bind</strong> function is used
+to set the value of global variables. Global variables are reset to
+their original value when the <strong>reset</strong> command is performed or when
+<strong>bind</strong> is called for the global with no values. This behavior can be
+changed using the <strong>set-reset-globals</strong> function. Global variables can
+be removed by using the <strong>clear</strong> command or the <strong>undefglobal</strong>
+command. If the globals item is being watched (see section 13.2), then
+an informational message will be displayed each time the value of a
+global variable is changed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal [&lt;defmodule-name&gt;] &lt;global-assignment&gt;*)
+
+ &lt;global-assignment&gt; ::= &lt;global-variable&gt; = &lt;expression&gt;
+
+ &lt;global-variable&gt; ::= ?*&lt;symbol&gt;*
+</pre></div>
+</div>
+<p>There may be multiple defglobal constructs and any number of global
+variables may be defined in each defglobal statement. The optional
+&lt;defmodule-name&gt; indicates the module in which the defglobals will be
+defined. If none is specified, the globals will be placed in the current
+module. If a variable was defined in a previous defglobal construct, its
+value will be replaced by the value found in the new defglobal
+construct. If an error is encountered when defining a defglobal
+construct, any global variable definitions that occurred before the
+error was encountered will still remain in effect.</p>
+<p>Commands that operate on defglobals such as ppdefglobal and undefglobal
+expect the symbolic name of the global without the astericks (e.g. use
+the symbol <em>max</em> when you want to refer to the global variable ?*max*).</p>
+<p>Global variables may be used anyplace that a local variable could be
+used (with two exceptions). Global variables may not be used as a
+parameter variable for a deffunction, defmethod, or message-handler.
+Global variables may not be used in the same way that a local variable
+is used on the LHS of a rule to bind a value. Therefore, the following
+rule is <strong>illegal</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule example
+  (fact ?*x*)
+  =&gt;)
+</pre></div>
+</div>
+<p>The following rule, however, is legal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule example
+  (fact ?y&amp;:(&gt; ?y ?*x*))
+  =&gt;)
+</pre></div>
+</div>
+<p>Note that this rule will not necessarily be updated when the value of
+?*x* is changed. For example, if ?*x* is 4 and the fact (fact 3) is
+added, then the rule is not satisfied. If the value of ?*x* is now
+changed to 2, the rule will not be activated.</p>
+<p>Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal
+  ?*x* = 3
+  ?*y* = ?*x*
+  ?*z* = (+ ?*x* ?*y*)
+  ?*q* = (create$ a b c))
+</pre></div>
+</div>
+<p>Usage Note</p>
+<p>The inappropriate use of globals within rules is quite often the first
+resort of beginning programmers who have reached an impasse in
+developing a program because they do not fully understand how rules and
+pattern-matching work. As it relates to this issue, the following
+sentence from the beginning of this section is important enough to
+repeat:</p>
+<p><em>Global variables can be accessed as part of the pattern-matching
+process, but changing them does not invoke the pattern-matching
+process.</em></p>
+<p>Facts and instances are the primary mechanism that should be used to
+pass information from one rule to another specifically because they <em>do</em>
+invoke pattern-matching. A change to a slot value of a fact or instance
+will trigger pattern-matching ensuring that a rule is aware of the
+current state of that fact or instance. Since a change to a global
+variable does not trigger pattern-matching, it is possible for a rule to
+remain activated based on a past value of a global variable that is
+undesirable in most situations.</p>
+<p>It’s worth pointing out that facts and instances are no less ?global’ in
+nature than global variables. Just as a rule can access any global
+variable that’s visible (i.e. it hasn’t been hidden through the use of
+modules), so too can it access any fact or instance belonging to a
+deftemplate or defclass that’s visible. In the case of a fact, one can
+either pattern-match for the fact on the LHS of a rule or use the
+fact-set query functions from the RHS of a rule. In the case of an
+instance, pattern-matching and instance-set query functions can also be
+used, and in addition an instance can be directly referenced by name
+just as a global variable can.</p>
+<p>Common Problem</p>
+<p>One of the more common situations in which it is tempting to use global
+variables is collecting a group of slot values from a fact. First
+attempts at rules to accomplish this task often loop endlessly because
+of rules inadvertently retriggered by changes. For example, the
+following rule will loop endlessly because the new <em>collection</em> fact
+asserted will create an activation with the same <em>factoid</em> fact that was
+just added to the <em>collection</em> fact:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule add-factoid
+  (factoid ?data)
+  ?c &lt;- (collection $?collection)
+  =&gt;
+  (retract ?c)
+  (assert (collection ?collection ?data)))
+</pre></div>
+</div>
+<p>This problem can be corrected by removing the <em>factoid</em> fact just added
+to the <em>collection</em> fact:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule add-factoid
+  ?f &lt;- (factoid ?data)
+  ?c &lt;- (collection $?collection)
+  =&gt;
+  (retract ?f ?c)
+  (assert (collection ?collection ?data)))
+</pre></div>
+</div>
+<p>Retracting the <em>factoid</em> facts, however, isn’t a viable solution if
+these facts are needed by other rules. A non-destructive approach makes
+use of temporary facts created by a helper rule:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule add-factoid-helper
+  (factoid ?data)
+  =&gt;
+ (assert (temp-factoid ?data)))
+
+(defrule add-factoid
+  ?f &lt;- (temp-factoid ?data)
+  ?c &lt;- (collection $?collection)
+  =&gt;
+ (retract ?f ?c)
+ (assert (collection ?collection ?data)))
+</pre></div>
+</div>
+<p>It certainly looks simpler, however, to use a global variable to collect
+the slot values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal ?*collection* = (create$))
+
+(defrule add-factoid
+  (factoid ?data)
+  =&gt;
+  (bind ?*collection* (create$ ?*collection* ?data)))
+</pre></div>
+</div>
+<p>Again, the drawback to this approach is that changes to a global
+variable do not trigger pattern-matching, so in spite of its greater
+complexity the fact-based approach is still preferable.</p>
+<p>Although it’s important to understand how each of the previous
+approaches work, they’re not practical solutions. If there are 1000
+<em>factoid</em> facts, the add-factoid/add-factoid-helper rules will each fire
+1000 times generating and retracting 2000 facts. The best solution is to
+use the fact-set query functions to iterate over all of the <em>factoid</em>
+facts and generate the <em>collection</em> fact as the result of a single rule
+firing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule collect-factoids
+  (collect-factoids)
+  =&gt;
+  (bind ?data (create$))
+  (do-for-all-facts ((?f factoid)) TRUE
+  (bind ?data (create$ ?data ?f:implied)))
+  (assert (collection ?data)))
+</pre></div>
+</div>
+<p>With this approach, the <em>collection</em> fact is available for
+pattern-matching with the added benefit that there are no intermediate
+results generated in creating the fact. Typically if other rules are
+waiting for the finished result of the collection, they would need to
+have lower salience so that they aren’t fired for the intermediate
+results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule print-factoids
+  (declare (salience -10))
+  (collection $?data)
+  =&gt;
+  (printout t &quot;The collected data is &quot; ?data crlf))
+</pre></div>
+</div>
+<p>If the <em>factoid</em> facts are collected by a single rule firing, then the
+salience declaration is unnecessary.</p>
+<p>Appropriate Uses</p>
+<p>The primary use of global variables (in conjunction with rules) is in
+making a program easier to maintain. It is a rare situation where a
+global variable is required in order to solve a problem. One appropriate
+use of global variables is defining salience values shared among
+multiple rules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal ?*high-priority* = 100)
+
+(defrule rule-1
+  (declare (salience ?*high-priority*))
+  =&gt;)
+
+(defrule rule-2
+  (declare (salience ?*high-priority*))
+  =&gt;)
+</pre></div>
+</div>
+<p>Another use is defining constants used on the LHS or RHS of a rule:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal ?*week-days* =
+
+(create$ monday tuesday wednesday thursday friday saturday sunday))
+
+(defrule invalid-day
+  (day ?day&amp;:(not (member$ ?day ?*week-days*)))
+  =&gt;
+ (printout t ?day &quot; is invalid&quot; crlf))
+
+(defrule valid-day
+  (day ?day&amp;:(member$ ?day ?*week-days*))
+  =&gt;
+  (printout t ?day &quot; is valid&quot; crlf))
+</pre></div>
+</div>
+<p>A third use is passing information to a rule when it is desirable <em>not</em>
+to trigger pattern-matching. In the following rule, a global variable is
+used to determine whether additional debugging information is printed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defglobal ?*debug-print* = nil)
+
+(defrule rule-debug
+  ?f &lt;- (info ?info)
+  =&gt;
+  (retract ?f)
+  (printout ?*debug-print* &quot;Retracting info &quot; ?info crlf))
+</pre></div>
+</div>
+<p>If ?*debug-print* is set to nil, then the printout statement will not
+display any information. If the ?*debug-print* is set to t, then
+debugging information will be sent to the screen. Because
+?*debug-print* is a global, it can be changed interactively without
+causing rules to be reactivated. This is useful when stepping through a
+program because it allows the level of information displayed to be
+changed without effecting the normal flow of the program.</p>
+<p>It’s possible, but a little more verbose, to achieve this same
+functionality using instances rather than global variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defclass DEBUG-INFO
+  (is-a USER)
+  (slot debug-print))
+
+(definstances debug
+([debug-info] of DEBUG-INFO (debug-print nil)))
+
+(defrule rule-debug
+  ?f &lt;- (info ?info)
+  =&gt;
+  (retract ?f)
+  (printout (send [debug-info] get-debug-print) &quot;Retracting info &quot; ?info
+  crlf))
+</pre></div>
+</div>
+<p>Unlike fact slots, changes to a slot of an instance won’t trigger
+pattern matching in a rule unless the slot is specified on the LHS of
+that rule, thus you have explicit control over whether an instance slot
+triggers pattern-matching. The following rule won’t be retriggered if a
+change is made to the <em>debug-print</em> slot:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(defrule rule-debug
+  ?f &lt;- (info ?info)
+  (object (is-a DEBUG-INFO) (name ?name))
+  =&gt;
+  (retract ?f)
+  (printout (send ?name get-debug-print) &quot;Retracting info &quot; ?info crlf))
+</pre></div>
+</div>
+<p>This is a generally applicable technique and can be used in many
+situations to prevent rules from inadvertently looping when slot values
+are changed.</p>
+<span class="target" id="section-4"></span></div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="defrule.html"
+                        title="previous chapter">Section 5: Defrule Construct</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deffunction.html"
+                        title="next chapter">Section 7: Deffunction Construct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/defglobal.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="deffunction.html" title="Section 7: Deffunction Construct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="defrule.html" title="Section 5: Defrule Construct"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

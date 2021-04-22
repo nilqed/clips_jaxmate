@@ -1,0 +1,267 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 3: Deftemplate Construct &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 4: Deffacts Construct" href="deffacts.html" />
+    <link rel="prev" title="Section 2: CLIPS Overview" href="overview.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="deffacts.html" title="Section 4: Deffacts Construct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Section 2: CLIPS Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-3-deftemplate-construct">
+<h1>Section 3: Deftemplate Construct<a class="headerlink" href="#section-3-deftemplate-construct" title="Permalink to this headline">¶</a></h1>
+<p>Ordered facts encode information positionally. To access that
+information, a user must know not only what data is stored in a fact but
+also which field contains the data. Non-ordered (or deftemplate) facts
+provide the user with the ability to abstract the structure of a fact by
+assign?ing names to each field found within the fact. The
+<strong>deftemplate</strong> construct is used to create a template that can then be
+used by non-ordered facts to access fields of the fact by name. The
+deftemplate construct is analogous to a record or structure definition
+in programming languages such as Pascal and C.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(deftemplate &lt;deftemplate-name&gt; [&lt;comment&gt;] &lt;slot-definition&gt;*)
+
+   &lt;slot-definition&gt; ::= &lt;single-slot-definition&gt; | &lt;multislot-definition&gt;
+
+   &lt;single-slot-definition&gt; ::= (slot &lt;slot-name&gt; &lt;template-attribute&gt;*)
+
+   &lt;multislot-definition&gt; ::= (multislot &lt;slot-name&gt; &lt;template-attribute&gt;*)
+
+   &lt;template-attribute&gt; ::= &lt;default-attribute&gt; | &lt;constraint-attribute&gt;
+
+   &lt;default-attribute&gt; ::= (default ?DERIVE | ?NONE | &lt;expression&gt;*) |
+                             (default-dynamic &lt;expression&gt;*)
+</pre></div>
+</div>
+<p>Redefining a deftemplate will result in the previous definition being
+discarded. A deftemplate can not be redefined while it is being used
+(for example, by a fact or pattern in a rule). A deftemplate can have
+any number of single or multifield slots. CLIPS always enforces the
+single and multifield definitions of the deftemplate. For example, it is
+an error to store (or match) multiple values in a single-field slot.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Example</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">deftemplate</span> <span class="nb">object</span>
+  <span class="p">(</span><span class="n">slot</span> <span class="n">name</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">slot</span> <span class="n">location</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">slot</span> <span class="n">on</span><span class="o">-</span><span class="n">top</span><span class="o">-</span><span class="n">of</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">slot</span> <span class="n">weight</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">multislot</span> <span class="n">contents</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="slot-default-values">
+<h2>3.1 Slot Default Values<a class="headerlink" href="#slot-default-values" title="Permalink to this headline">¶</a></h2>
+<p>The &lt;default-attribute&gt; specifies the value to be used for unspecified
+slots of a template fact when an <strong>assert</strong> action is performed. One of
+two types of default selections can be chosen: default or
+dynamic-default.</p>
+<p>The <strong>default</strong> attribute specifies a static default value. The
+specified expressions are evaluated once when the deftemplate is defined
+and the result is stored with the deftemplate. The result is assigned to
+the appropriate slot when a new template fact is asserted. If the
+keyword ?DERIVE is used for the default value, then a default value is
+derived from the constraints for the slot (see section 11.5 for more
+details). By default, the default attribute for a slot is (default
+?DERIVE). If the keyword ?NONE is used for the default value, then a
+value must explicitly be assigned for a slot when an assert is
+performed. It is an error to assert a template fact without specifying
+the values for the (default ?NONE) slots.</p>
+<p>The <strong>default-dynamic</strong> attribute is a dynamic default. The specified
+expressions are evaluated every time a template fact is asserted, and
+the result is assigned to the appropriate slot.</p>
+<p>A single-field slot may only have a single value for its default. Any
+number of values may be specified as the default for a multifield slot
+(as long as the number of values satisfies the cardinality attribute for
+the slot).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Example</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CLIPS&gt; (clear)
+CLIPS&gt;
+(deftemplate foo
+  (slot w (default ?NONE))
+  (slot x (default ?DERIVE))
+  (slot y (default (gensym*)))
+  (slot z (default-dynamic (gensym*))))
+CLIPS&gt; (assert (foo))
+
+[TMPLTRHS1] Slot w requires a value because of its (default ?NONE)
+attribute.
+
+CLIPS&gt; (assert (foo (w 3)))
+&lt;Fact-1&gt;
+CLIPS&gt; (assert (foo (w 4)))
+&lt;Fact-2&gt;
+CLIPS&gt; (facts)
+f-0 (initial-fact)
+f-1 (foo (w 3) (x nil) (y gen1) (z gen2))
+f-2 (foo (w 4) (x nil) (y gen1) (z gen3))
+For a total of 3 facts.
+CLIPS&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="slot-default-constraints-for-pattern-matching">
+<h2>3.2 Slot Default Constraints for Pattern-Matching<a class="headerlink" href="#slot-default-constraints-for-pattern-matching" title="Permalink to this headline">¶</a></h2>
+<p>Single-field slots that are not specified in a pattern on the LHS of a
+rule are defaulted to single-field wildcards (?) and multifield slots
+are defaulted to multifield wildcards ($?).</p>
+</div>
+<div class="section" id="slot-value-constraint-attributes">
+<h2>3.3 Slot Value Constraint Attributes<a class="headerlink" href="#slot-value-constraint-attributes" title="Permalink to this headline">¶</a></h2>
+<p>The syntax and functionality of single and multifield constraint
+attributes are described in detail in Section 11. Static and dynamic
+constraint checking for deftemplates is supported. Static checking is
+performed when constructs or commands using deftemplates slots are being
+parsed (and the specific deftemplate associated with the construct or
+command can be immediately determined). Template patterns used on the
+LHS of a rule are also checked to determine if constraint conflicts
+exist among variables used in more than one slot. Errors for
+inappropriate values are immediately signaled. References to
+fact-indexes made in commands such as <strong>modify</strong> and <strong>duplicate</strong> are
+considered to be ambiguous and are never checked using static checking.
+Static checking is enabled by default. This behavior can be changed
+using the <strong>set-static-constraint-checking</strong> function. Dynamic checking
+is also supported. If dynamic checking is enabled, then new deftemplate
+facts have their values checked when added to the fact-list. This
+dynamic checking is disabled by default. This behavior can be changed
+using the <strong>set-dynamic-constraint-checking</strong> function. If a violation
+occurs when dynamic checking is being performed, then execution will be
+halted.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Example</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(deftemplate object
+  (slot name (type SYMBOL) (default ?DERIVE))
+  (slot location (type SYMBOL) (default ?DERIVE))
+  (slot on-top-of (type SYMBOL) (default floor))
+  (slot weight (allowed-values light heavy) (default light))
+  (multislot contents (type SYMBOL) (default ?DERIVE)))
+</pre></div>
+</div>
+</div>
+<div class="section" id="implied-deftemplates">
+<h2>3.4 Implied Deftemplates<a class="headerlink" href="#implied-deftemplates" title="Permalink to this headline">¶</a></h2>
+<p>Asserting or referring to an ordered fact (such as in a LHS pattern)
+creates an ?implied? deftemplate with a single implied multifield slot.
+The implied multifield slot?s name is not printed when the fact is
+printed. The implied deftemplate can be manipulated and examined
+identically to any user defined deftemplate (although it has no pretty
+print form).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Example</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="n">foo</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="n">Fact</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">defrule</span> <span class="n">yak</span> <span class="p">(</span><span class="n">bar</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">)</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="nb">list</span><span class="o">-</span><span class="n">deftemplates</span><span class="p">)</span>
+<span class="n">initial</span><span class="o">-</span><span class="n">fact</span>
+<span class="n">foo</span>
+<span class="n">bar</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">3</span> <span class="n">deftemplates</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">facts</span><span class="p">)</span>
+<span class="n">f</span><span class="o">-</span><span class="mi">0</span> <span class="p">(</span><span class="n">initial</span><span class="o">-</span><span class="n">fact</span><span class="p">)</span>
+<span class="n">f</span><span class="o">-</span><span class="mi">1</span> <span class="p">(</span><span class="n">foo</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">For</span> <span class="n">a</span> <span class="n">total</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">facts</span><span class="o">.</span>
+<span class="n">CLIPS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<span class="target" id="section-1"></span></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Section 3: Deftemplate Construct</a><ul>
+<li><a class="reference internal" href="#slot-default-values">3.1 Slot Default Values</a></li>
+<li><a class="reference internal" href="#slot-default-constraints-for-pattern-matching">3.2 Slot Default Constraints for Pattern-Matching</a></li>
+<li><a class="reference internal" href="#slot-value-constraint-attributes">3.3 Slot Value Constraint Attributes</a></li>
+<li><a class="reference internal" href="#implied-deftemplates">3.4 Implied Deftemplates</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">Section 2: CLIPS Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deffacts.html"
+                        title="next chapter">Section 4: Deffacts Construct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/deftemplate.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="deffacts.html" title="Section 4: Deffacts Construct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Section 2: CLIPS Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

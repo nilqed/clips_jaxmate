@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 2: CLIPS Overview &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Section 3: Deftemplate Construct" href="deftemplate.html" />
+    <link rel="prev" title="Section 1: Introduction" href="introduction.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="deftemplate.html" title="Section 3: Deftemplate Construct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Section 1: Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-2-clips-overview">
+<h1>Section 2: CLIPS Overview<a class="headerlink" href="#section-2-clips-overview" title="Permalink to this headline">¶</a></h1>
+<p>This section gives a general overview of CLIPS and of the basic concepts
+used through?out this manual.</p>
+<div class="section" id="interacting-with-clips">
+<h2>2.1 Interacting with CLIPS<a class="headerlink" href="#interacting-with-clips" title="Permalink to this headline">¶</a></h2>
+<p>CLIPS expert systems may be executed in three ways: interactively using
+a simple, text-oriented, command prompt interface; interactively using a
+window/menu/mouse interface on certain ma?chines; or as embedded expert
+systems in which the user provides a main pro?gram and controls
+execution of the expert system. Embedded applications are dis?cussed in
+the <em>Advanced Programming Guide</em>. In addition, a series of commands can
+be automatically read di?rectly from a file when CLIPS is first started
+or as the result of the <strong>batch</strong> command.</p>
+<p>The generic CLIPS interface is a simple, interactive, text-oriented,
+command prompt interface for high porta?bility. The stan?dard usage is
+to create or edit a knowledge base using any standard text editor, save
+the knowledge base as one or more text files, exit the editor and
+execute CLIPS, then load the knowledge base into CLIPS. The in?terface
+provides commands for viewing the current state of the sys?tem, tracing
+execu?tion, adding or removing information, and clearing CLIPS.</p>
+<p>A more sophisticated window interface is available for the Macintosh,
+Windows 3.1, and X Window environments. All interface commands described
+in this section are available in the window interfaces. These interfaces
+are described in more detail in the <em>Interfaces Guide</em>.</p>
+<div class="section" id="top-level-commands">
+<h3>2.1.1 Top Level Commands<a class="headerlink" href="#top-level-commands" title="Permalink to this headline">¶</a></h3>
+<p>The primary method for interacting with CLIPS in a non-embedded
+environment is through the CLIPS <strong>command prompt</strong> (or <strong>top level</strong>).
+When the ?CLIPS&gt;? prompt is printed, a command may be entered for
+evaluation. Commands may be function calls, constructs, local or global
+variables, or constants. If a function call is entered (see section
+2.3.2), that function is evaluated and its return value is printed.
+Function calls in CLIPS use a prefix notation?the operands to a function
+always appear after the function name. Entering a construct definition
+(see section 2.3.3) at the CLIPS prompt creates a new construct of the
+appropriate type. Entering a global variable (see section 2.4.3) causes
+the value of the global variable to be printed. Local variables can be
+set at the command prompt using the bind function and retain their value
+until a reset or clear command is issued. Entering a local variable at
+the command prompt causes the value of the local variable to be printed.
+Entering a constant (see section 2.3.1) at the top level causes the
+constant to be printed (which is not very useful). For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CLIPS (V6.30 3/11/15)
+
+CLIPS&gt; (+ 3 4)
+
+7
+
+CLIPS&gt; (defglobal ?*x\* = 3)
+
+CLIPS&gt; ?*x\*
+
+3
+
+CLIPS&gt; red
+
+red
+
+CLIPS&gt; (bind ?a 5)
+
+5
+
+CLIPS&gt; (+ ?a 3)
+
+8
+
+CLIPS&gt; (reset)
+
+CLIPS&gt; ?a
+
+[EVALUATN1] Variable a is unbound
+
+FALSE
+
+CLIPS&gt;
+</pre></div>
+</div>
+<p>The previous example first called the addition function adding the
+numbers 3 and 4 to yield the result 7. A global variable ?*x* was then
+defined and given the value 3. The variable ?*x* was then entered at
+the prompt and its value of 3 was returned. Finally the constant symbol
+<em>red</em> was entered and was returned (since a constant evaluates to
+itself).</p>
+</div>
+<div class="section" id="automated-command-entry-and-loading">
+<h3>2.1.2 Automated Command Entry and Loading<a class="headerlink" href="#automated-command-entry-and-loading" title="Permalink to this headline">¶</a></h3>
+<p>Some operating systems allow additional arguments to be specified to a
+program when it begins execution. When the CLIPS executable is started
+under such an operating system, CLIPS can be made to automatically
+execute a series of commands read directly from a file or to load
+constructs from a file. The command-line syntax for starting CLIPS and
+automatically reading commands or loading constructs from a file is as
+follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Syntax</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clips</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;*</span>
+
+<span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> <span class="o">|</span>
+
+<span class="o">-</span><span class="n">f2</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span> <span class="o">|</span>
+
+<span class="o">-</span><span class="n">l</span> <span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For the <strong>-f</strong> option, &lt;filename&gt; is a file that contains CLIPS
+commands. If the <strong>exit</strong> command is included in the file, CLIPS will
+halt and the user is returned to the operat?ing system after executing
+the commands in the file. If an <strong>exit</strong> command is not in the file,
+CLIPS will enter in its interactive state after executing the commands
+in the file. Commands in the file should be entered exactly as they
+would be interactively (i.e. opening and closing parentheses must be
+included and a carriage return must be at the end of the command). The
+<strong>-f</strong> command line option is equivalent to interactively entering a
+<strong>batch</strong> command as the first command to the CLIPS prompt.</p>
+<p>The <strong>-f2</strong> option is similar to the <strong>-f</strong> option, but is equivalent to
+interactively entering a <strong>batch*</strong> command. The commands stored in
+&lt;filename&gt; are immediately executed, but the commands and their return
+values are not displayed as they would be for a <strong>batch</strong> command.</p>
+<p>For the <strong>-l</strong> option, &lt;filename&gt; should be a file containing CLIPS
+constructs. This file will be loaded into the environment. The <strong>-l</strong>
+command line option is equivalent to interactively entering a <strong>load</strong>
+command.</p>
+<p>Files specified using the <strong>?f</strong> option are not processed until the
+command prompt appears, so these files will always be processed after
+files specified using the <strong>?f2</strong> and <strong>?l</strong> options.</p>
+</div>
+<div class="section" id="integration-with-other-programming-languages">
+<h3>2.1.3 Integration with Other Programming Languages<a class="headerlink" href="#integration-with-other-programming-languages" title="Permalink to this headline">¶</a></h3>
+<p>When using an expert system, two kinds of integration are important:
+embedding CLIPS in other systems, and calling external functions from
+CLIPS. CLIPS was designed to allow both kinds of integration.</p>
+<p>Using CLIPS as an embedded application allows the easy integration of
+CLIPS with existing systems. This is useful in cases where the expert
+system is a small part of a larger task or needs to share data with
+other functions. In these situations, CLIPS can be called as a
+subroutine and information may be passed to and from CLIPS. Em?bedded
+applications are discussed in the <em>Advanced Programming Guide</em>.</p>
+<p>It also may be useful to call external functions while executing a CLIPS
+construct or from the top-level of the interactive interface. CLIPS
+variables or literal values may be passed to an external function, and
+functions may return val?ues to CLIPS. The easy addition of external
+functions allows CLIPS to be extended or customized in almost any way.
+The <em>Advanced Programming Guide</em> describes how to integrate CLIPS with
+functions or systems written in C as well as in other lan?guages.</p>
+</div>
+</div>
+<div class="section" id="reference-manual-syntax">
+<h2>2.2 Reference Manual Syntax<a class="headerlink" href="#reference-manual-syntax" title="Permalink to this headline">¶</a></h2>
+<p>The terminology used throughout this manual to describe the CLIPS syntax
+is fairly com?mon to computer reference manuals. Plain words or
+characters, particularly paren?theses, are to be typed exactly as they
+appear. Bolded words or characters, however, represent a verbal
+description of what is to be entered. Sequences of words enclosed in
+single-angle brackets (called terms or non-terminal symbols), such as
+&lt;string&gt;, represent a single entity of the named class of items to be
+supplied by the user. A non-terminal symbol followed by a *, represents
+<em>zero or more</em> entities of the named class of items which must be
+supplied by the user. A non-terminal symbol followed by a +, represents
+<em>one or more</em> entities of the named class of items which must be
+supplied by the user. A * or + by itself is to be typed as it appears.
+Vertical and horizontal ellipsis (three dots arranged respectively
+vertically and horizontally) are also used between non-terminal symbols
+to indicate the occurrence of one or more entities. A term enclosed
+within square brackets, such as [&lt;comment&gt;], is optional (i.e. it may or
+may not be included). Vertical bars indicate a choice between multiple
+terms. White spaces (tabs, spaces, carriage re?turns) are used by CLIPS
+only as delimiters between terms and are ignored otherwise (unless
+inside double quotes). The ::= symbol is used to indicate how a
+non-terminal symbol can be replaced. For example, the following syntax
+description indicates that a &lt;lexeme&gt; can be replaced with either a
+&lt;symbol&gt; or a &lt;string&gt;.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">lexeme</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">symbol</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>A complete BNF listing for CLIPS constructs along with some commonly
+used replacements for non-terminal symbols are listed in appendix G.</p>
+</div>
+<div class="section" id="basic-programming-elements">
+<h2>2.3 Basic Programming Elements<a class="headerlink" href="#basic-programming-elements" title="Permalink to this headline">¶</a></h2>
+<p>CLIPS provides three basic elements for writing programs: primitive data
+types, functions for manipulating data, and constructs for adding to a
+knowledge base.</p>
+<div class="section" id="data-types">
+<h3>2.3.1 Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h3>
+<p>CLIPS provides eight primitive data types for representing information.
+These types are <strong>float</strong>, <strong>integer</strong>, <strong>symbol</strong>, <strong>string</strong>,
+<strong>external-address</strong>, <strong>fact-address</strong>, <strong>instance-name</strong> and
+<strong>instance-address</strong>. Numeric information can be represented using
+floats and integers. Symbolic information can be represented using
+symbols and strings.</p>
+<p>A <strong>number</strong>; consists <em>only</em> of digits (0-9), a decimal point
+(.), a sign (+ or -), and, optionally, an (e) for exponential notation
+with its corresponding sign. A number is either stored as a float; or an
+integer. Any number consisting of an optional sign followed by only
+digits is stored as an <strong>integer</strong> (represented internally by CLIPS as a
+C long integer). All other numbers are stored as <strong>floats</strong> (represented
+internally by CLIPS as a C double-precision float). The number of
+significant digits will de?pend on the machine implementation. Roundoff
+errors also may occur, again depend?ing on the machine implementation.
+As with any computer language, care should be taken when comparing
+floating-point values to each other or comparing integers to
+floating-point values. Some examples of integers are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">237</span> <span class="mi">15</span> <span class="o">+</span><span class="mi">12</span> <span class="o">-</span><span class="mi">32</span>
+</pre></div>
+</div>
+<p>Some examples of floats are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">237e3</span> <span class="mf">15.09</span> <span class="o">+</span><span class="mf">12.0</span> <span class="o">-</span><span class="mf">32.3e-7</span>
+</pre></div>
+</div>
+<p>Specifically, integers use the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="p">[</span><span class="o">+</span> \<span class="o">|</span> <span class="o">-</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">digit</span><span class="o">&gt;+</span>
+
+<span class="o">&lt;</span><span class="n">digit</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="mi">0</span> \<span class="o">|</span> <span class="mi">1</span> \<span class="o">|</span> <span class="mi">2</span> \<span class="o">|</span> <span class="mi">3</span> \<span class="o">|</span> <span class="mi">4</span> \<span class="o">|</span> <span class="mi">5</span> \<span class="o">|</span> <span class="mi">6</span> \<span class="o">|</span> <span class="mi">7</span> \<span class="o">|</span> <span class="mi">8</span> \<span class="o">|</span> <span class="mi">9</span>
+</pre></div>
+</div>
+<p>Floating point numbers use the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">float</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">exponent</span><span class="o">&gt;</span> \<span class="o">|</span>
+
+<span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span> <span class="o">.</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&gt;</span><span class="p">]</span> \<span class="o">|</span>
+
+<span class="o">.</span> <span class="o">&lt;</span><span class="n">unsigned</span> <span class="n">integer</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&gt;</span><span class="p">]</span> \<span class="o">|</span>
+
+<span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">unsigned</span> <span class="n">integer</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">exponent</span><span class="o">&gt;</span><span class="p">]</span>
+
+<span class="o">&lt;</span><span class="n">unsigned</span><span class="o">-</span><span class="n">integer</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="o">&lt;</span><span class="n">digit</span><span class="o">&gt;+</span>
+
+<span class="o">&lt;</span><span class="n">exponent</span><span class="o">&gt;</span> <span class="p">::</span><span class="o">=</span> <span class="n">e</span> \<span class="o">|</span> <span class="n">E</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>A sequence of characters which does not exactly follow the format of a
+number is treated as a symbol (see the next paragraph).</p>
+<p>A <strong>symbol</strong> in CLIPS is any sequence of characters that starts with any
+printable ASCII character and is followed by zero or more printable
+ASCII characters. When a delimiter is found, the symbol is ended. The
+following characters act as <strong>delimiters</strong>: any non-printable ASCII
+character (including spaces, tabs, carriage returns, and line feeds), a
+double quote, opening and closing parentheses ?(? and ?)?, an ampersand
+?&amp;?, a vertical bar ?|?, a less than ?&lt;?, and a tilde ?~?. A semicolon
+?;? starts a CLIPS comment (see section 2.3.3) and also acts as a
+de?limiter. Delimiters may not be included in symbols with the exception
+of the ?&lt;? character which may be the first character in a symbol. In
+addition, a symbol may not begin with either the ??? character or the
+?$?? sequence of characters (although a symbol may contain these
+characters). These characters are reserved for variables (which are
+discussed later in this section). CLIPS is case sensitive (i.e.
+uppercase letters will match only uppercase let?ters). Note that numbers
+are a special case of symbols (i.e. they satisfy the definition of a
+symbol, but they are treated as a different data type). Some simple
+examples of symbols are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="n">Hello</span> <span class="n">B76</span><span class="o">-</span><span class="n">HI</span> <span class="n">bad_value</span>
+
+<span class="mi">127</span><span class="n">A</span> <span class="mi">456</span><span class="o">-</span><span class="mi">93</span><span class="o">-</span><span class="mi">039</span> <span class="o">@+=-%</span> <span class="mi">2</span><span class="n">each</span>
+</pre></div>
+</div>
+<p>A <strong>string</strong> is a set of characters that starts with a double quote (“)
+and is followed by zero or more printable characters. A string ends with
+double quotes. Double quotes may be embedded within a string by placing
+a backslash () in front of the character. A backslash may be embedded
+by placing two consecutive back?slash characters in the string. Some
+examples are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;foo&quot;</span> <span class="s2">&quot;a and b&quot;</span> <span class="s2">&quot;1 number&quot;</span> <span class="s2">&quot;a</span><span class="se">\&quot;</span><span class="s2">quote&quot;</span>
+</pre></div>
+</div>
+<p>Note that the string ?abcd” is not the same as the symbol <em>abcd</em>. They
+both contain the same characters, but are of different types. The same
+holds true for the instance name [abcd].</p>
+<p>An <strong>external-address</strong> is the address of an external data structure
+returned by a function (written in a language such as C or Ada) that has
+been integrated with CLIPS. This data type can only be created by
+calling a function (i.e. it is not possible to specify an
+external-address by typing the value). In the basic version of CLIPS
+(which has no user defined external functions), it is not possible to
+create this data type. External-addresses are discussed in further
+detail in the <em>Advanced Programming Guide</em>;. Within CLIPS, the printed
+representation of an external-address is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Pointer</span><span class="o">-</span><span class="n">XXXXXX</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where XXXXXX is the external-address.</p>
+<p>A <strong>fact</strong> is a list of atomic values that are either referenced
+positionally (ordered facts) or by name (non-ordered or template facts).
+Facts are referred to by index or address; section 2.4.1 gives more
+details. The printed format of a <strong>fact-address</strong> is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Fact</span><span class="o">-</span><span class="n">XXX</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where XXX is the fact-index.</p>
+<p>An <strong>instance</strong> is an <strong>object</strong> that is an instantiation or specific
+example of a <strong>class</strong>. Objects in CLIPS are defined to be floats,
+integers, symbols, strings, multifield values, external-addresses,
+fact-addresses or instances of a user-defined class. A user-defined
+class is created using the <strong>defclass</strong> construct. An instance of a
+user-defined class is created with the <strong>make-instance</strong> function, and
+such an instance can be referred to uniquely by address. Within the
+scope of a module (see section 10.5.1), an instance can also be uniquely
+referred to by name. All of these definitions will be covered in more
+detail in Sections 2.4.2, 2.5.2.3, 2.6 and 9. An <strong>instance-name</strong> is
+formed by enclosing a symbol within left and right brackets. Thus, pure
+symbols may not be surrounded by brackets. If the CLIPS Object Oriented
+Language (COOL) is not included in a particular CLIPS configuration,
+then brackets may be wrapped around symbols. Some examples of
+instance-names are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">pump</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">[</span><span class="n">foo</span><span class="p">]</span> <span class="p">[</span><span class="o">+++</span><span class="p">]</span> <span class="p">[</span><span class="mi">123</span><span class="o">-</span><span class="mi">890</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that the brackets are not part of the name of the instance; they
+merely indicate that the enclosed symbol is an instance-name. An
+<strong>instance-address</strong> can only be obtained by binding the return value of
+a function called <strong>instance-address</strong> or by binding a variable to an
+instance matching an object pattern on the LHS of a rule (i.e., it is
+not possible to specify an instance-address by typing the value). A
+reference to an instance of a user-defined class can either be by name
+or address; instance-addresses should only be used when speed is
+critical. Within CLIPS, the printed representation of an
+instance-address is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Instance</span><span class="o">-</span><span class="n">XXX</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where XXX is the name of the instance.</p>
+<p>In CLIPS, a placeholder that has a value (one of the primitive data
+types) is referred to as a <strong>field</strong>. The primitive data types are
+referred to as <strong>single-field values</strong>. A <strong>constant</strong> is a non-varying
+single field value directly expressed as a series of characters (which
+means that external-addresses, fact-addresses and instance-addresses
+cannot be expressed as constants because they can only be obtained
+through function calls and variable bindings). A <strong>multifield value</strong> is
+a sequence of zero or more single field values. When displayed by CLIPS,
+multifield values are enclosed in parentheses. Collectively, single and
+multifield values are referred to as <strong>values</strong>. Some examples of
+multifield values are</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="n">bar</span> <span class="n">foo</span><span class="p">)</span> <span class="p">()</span> <span class="p">(</span><span class="n">x</span> <span class="mf">3.0</span> <span class="s2">&quot;red&quot;</span> <span class="mi">567</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the multifield value (a) is not the same as the single field
+value <em>a</em>. Multifield values are created either by calling functions
+which return multifield values, by using wildcard arguments in a
+deffunction, object message-handler, or method, or by binding variables
+during the pattern-matching process for rules. In CLIPS, a <strong>variable</strong>
+is a symbolic location that is used to store values. Variables are used
+by many of the CLIPS constructs (such as defrule, deffunction,
+defmethod, and defmessage-handler) and their usage is explained in the
+sections describing each of these constructs.</p>
+</div>
+<div class="section" id="functions">
+<h3>2.3.2 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>function</strong> in CLIPS is a piece of executable code identified by a
+specific name which returns a useful value or performs a useful side
+effect (such as displaying information). Throughout the CLIPS
+documentation, the word function is generally used to refer only to
+functions which return a value (whereas commands and actions are used to
+refer to functions which have a side effect but generally do not return
+a value).</p>
+<p>There are several types of functions. <strong>User defined functions</strong> and
+<strong>system defined functions</strong> are pieces of code that have been written
+in an external language (such as C, FORTRAN, or Ada) and linked with the
+CLIPS environment. System defined functions are those functions that
+have been defined internally by the CLIPS environment. User defined
+functions are functions that have been defined externally of the CLIPS
+environment. A complete list of system defined functions can be found in
+appendix H.</p>
+<p>The <strong>deffunction</strong> construct allows users to define new functions
+directly in the CLIPS environment using CLIPS syntax. Functions defined
+in this manner appear and act like other functions, however, instead of
+being directly executed (as code written in an external language would
+be) they are interpreted by the CLIPS environment. Deffunctions are also
+discussed in section 2.5.2.1 in the context of procedural knowledge
+representation.</p>
+<p>Generic functions can be defined using the <strong>defgeneric</strong> and
+<strong>defmethod</strong> constructs. Generic functions allow different pieces of
+code to be executed depending upon the arguments passed to the generic
+function. Thus, a single function name can be <strong>overloaded</strong> with more
+than one piece of code. Generic functions are also discussed in section
+2.5.2.2 in the context of procedural knowledge representation.</p>
+<p>Function calls in CLIPS use a prefix notation ? the arguments to a
+function always appear after the function name. Function calls begin
+with a left parenthesis, followed by the name of the function, then the
+arguments to the function follow (each argument separated by one or more
+spaces). Arguments to a function can be primitive data types, variables,
+or another function call. The function call is then closed with a right
+parenthesis. Some examples of function calls using the addition (+) and
+multiplication (*) functions are shown following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">+</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="p">(</span>\<span class="o">*</span> <span class="mi">5</span> <span class="mf">6.0</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="p">(</span><span class="o">+</span> <span class="mi">3</span> <span class="p">(</span>\<span class="o">*</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="p">(</span>\<span class="o">*</span> <span class="mi">8</span> <span class="p">(</span><span class="o">+</span> <span class="mi">3</span> <span class="p">(</span>\<span class="o">*</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span>\<span class="o">*</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>While a function refers to a piece of executable code identified by a
+specific name, an <strong>expression</strong> refers to a function which has its
+arguments specified (which may or may not be functions calls as well).
+Thus the previous examples are expressions which make calls to the *
+and + functions.</p>
+</div>
+<div class="section" id="constructs">
+<h3>2.3.3 Constructs<a class="headerlink" href="#constructs" title="Permalink to this headline">¶</a></h3>
+<p>Several defining <strong>constructs</strong> appear in CLIPS: <strong>defmodule</strong>,
+<strong>defrule</strong>, <strong>deffacts</strong>, <strong>deftemplate</strong>, <strong>defglobal</strong>,
+<strong>deffunction</strong>, <strong>defclass</strong>, <strong>definstances</strong>, <strong>defmessage-handler</strong>,
+<strong>defgeneric</strong>, and <strong>defmethod</strong>. All constructs in CLIPS are
+surrounded by parentheses. The construct opens with a left parenthe?sis
+and closes with a right parenthesis. Defining a construct differs from
+calling a function primarily in effect. Typically a function call leaves
+the CLIPS environment unchanged (with some notable exceptions such as
+resetting or clearing the environment or opening a file). Defining a
+construct, however, is explicitly intended to alter the CLIPS
+environment by adding to the CLIPS knowledge base. Unlike function
+calls, constructs never have a return value.</p>
+<p>As with any programming language, it is highly beneficial to comment
+CLIPS code. All constructs (with the exception of defglobal) allow a
+comment directly following the construct name. Comments also can be
+placed within CLIPS code by using a semicolon (;). Everything from the
+semicolon until the next return character will be ignored by CLIPS. If
+the semicolon is the first character in the line, the entire line will
+be treated as a comment. Examples of commented code will be pro?vided
+throughout the reference manual. Semicolon commented text is not saved
+by CLIPS when loading constructs (however, the optional comment string
+within a construct is saved).</p>
+</div>
+</div>
+<div class="section" id="data-abstraction">
+<h2>2.4 Data Abstraction<a class="headerlink" href="#data-abstraction" title="Permalink to this headline">¶</a></h2>
+<p>There are three primary formats for representing information in CLIPS:
+facts, objects and global variables.</p>
+<div class="section" id="facts">
+<h3>2.4.1 Facts<a class="headerlink" href="#facts" title="Permalink to this headline">¶</a></h3>
+<p>Facts are one of the basic high-level forms for representing information
+in a CLIPS system. Each <strong>fact</strong> represents a piece of information that
+has been placed in the current list of facts, called the <strong>fact-list</strong>.
+Facts are the fundamental unit of data used by rules (see section
+2.5.1).</p>
+<p>Facts may be added to the fact-list (using the <strong>assert</strong> command),
+removed from the fact-list (using the <strong>retract</strong> command), modified
+(using the <strong>modify</strong> command), or duplicated (using the <strong>duplicate</strong>
+command) through explicit user interaction or as a CLIPS program
+executes;. The number of facts in the fact-list and the amount of
+information that can be stored in a fact is limited only by the amount
+of memory in the computer. If a fact is asserted into the fact-list that
+exactly matches an already existing fact, the new assertion will be
+ignored (however, this behavior can be changed, see sections 13.4.4 and
+13.4.5).</p>
+<p>Some commands, such as the <strong>retract</strong>, <strong>modify</strong>, and <strong>duplicate</strong>
+commands, require a fact to be specified. A fact can be specified either
+by <strong>fact-index</strong> or <strong>fact-address</strong>. Whenever a fact is added (or
+modified) it is given a unique integer index called a fact-index.
+Fact-indices start at zero and are incremented by one for each new or
+changed fact. Whenever a <strong>reset</strong> or <strong>clear</strong> command is given, the
+fact-indices restart at zero. A fact may also be specified through the
+use of a fact-address. A fact-address can be obtained by capturing the
+return value of commands which return fact addresses (such as
+<strong>assert</strong>, <strong>modify</strong>, and <strong>duplicate</strong>) or by binding a variable to
+the fact address of a fact which matches a pattern on the LHS of a rule
+(see section 5.4.1.8 for details).</p>
+<p>A <strong>fact identifier</strong> is a shorthand notation for displaying a fact. It
+consists of the character ?f?, followed by a dash, followed by the
+fact-index of the fact. For example, f-10 refers to the fact with
+fact-index 10.</p>
+<p>A fact is stored in one of two formats: ordered or non-ordered.</p>
+<div class="section" id="ordered-facts">
+<h4>2.4.1.1 Ordered Facts<a class="headerlink" href="#ordered-facts" title="Permalink to this headline">¶</a></h4>
+<p><strong>Ordered facts</strong> consist of a symbol followed by a sequence of zero or
+more fields separated by spaces and delimited by an opening parenthesis
+on the left and a closing parenthesis on the right. The first field of
+an ordered fact specifies a ?relation? that applied to the remaining
+fields in the ordered fact. For example, (father-of jack bill) states
+that bill is the father of jack.</p>
+<p>Some examples of ordered facts are shown following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">the</span> <span class="n">pump</span> <span class="ow">is</span> <span class="n">on</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">altitude</span> <span class="ow">is</span> <span class="mi">10000</span> <span class="n">feet</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">grocery</span><span class="o">-</span><span class="nb">list</span> <span class="n">bread</span> <span class="n">milk</span> <span class="n">eggs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fields in a non-ordered fact may be of any of the primitive data types
+(with the exception of the first field which must be a symbol), and no
+restriction is placed on the ordering of fields. The following symbols
+are reserved and should not be used as the <em>first</em> field in any fact
+(ordered or non-ordered): <em>test</em>, <em>and</em>, <em>or</em>, <em>not</em>, <em>declare</em>,
+<em>logical</em>, <em>object</em>, exists, and forall. These words are reserved only
+when used as a deftemplate name (whether explicitly defined or implied).
+These symbols may be used as slot names, however, this is not
+recommended.</p>
+</div>
+<div class="section" id="non-ordered-facts">
+<h4>2.4.1.2 Non-ordered Facts<a class="headerlink" href="#non-ordered-facts" title="Permalink to this headline">¶</a></h4>
+<p>Ordered facts encode information positionally. To access that
+information, a user must know not only what data is stored in a fact but
+which field contains the data. <strong>Non-ordered (or deftemplate) facts</strong>
+provide the user with the ability to abstract the structure of a fact by
+assign?ing names to each field in the fact. The <strong>deftemplate</strong>
+construct (see section 3) is used to create a template that can then be
+used to access fields by name. The deftemplate construct is analogous to
+a record or structure definition in programming languages such as Pascal
+and C.</p>
+<p>The deftemplate construct allows the name of a template to be defined
+along with zero or more definitions of <strong>named fields</strong> or <strong>slots</strong>.
+Unlike ordered facts, the slots of a deftemplate fact may be constrained
+by type, value, and numeric range. In addition, default values can be
+specified for a slot. A slot consists of an opening parenthesis followed
+by the name of the slot, zero or more fields, and a closing parenthesis.
+Note that slots may not be used in an ordered fact and that positional
+fields may not be used in a deftemplate fact.</p>
+<p>Deftemplate facts are distinguished from ordered facts by the first
+field within the fact. The first field of all facts must be a symbol,
+however, if that symbol corresponds to the name of a deftemplate, then
+the fact is a deftemplate fact. The first field of a deftemplate fact is
+followed by a list of zero or more slots. As with ordered facts,
+deftemplate facts are enclosed by an opening parenthesis on the left and
+a closing parenthesis on the right.</p>
+<p>Some examples of deftemplate facts are shown following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(client (name &quot;Joe Brown&quot;) (id X9345A))
+
+(point-mass (x-velocity 100) (y-velocity -200))
+
+(class (teacher &quot;Martha Jones&quot;) (#-students 30) (Room &quot;37A&quot;))
+
+(grocery-list (#-of-items 3) (items bread milk eggs))
+</pre></div>
+</div>
+<p>Note that the order of slots in a deftemplate fact is not important. For
+example the following facts are all identical:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(class (teacher &quot;Martha Jones&quot;) (#-students 30) (Room &quot;37A&quot;))
+
+(class (#-students 30) (teacher &quot;Martha Jones&quot;) (Room &quot;37A&quot;))
+
+(class (Room &quot;37A&quot;) (#-students 30) (teacher &quot;Martha Jones&quot;))
+</pre></div>
+</div>
+<p>In contrast, note that the following ordered fact <em>are not</em> identical.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(class &quot;Martha Jones&quot; 30 &quot;37A&quot;)
+
+(class 30 &quot;Martha Jones&quot; &quot;37A&quot;)
+
+(class &quot;37A&quot; 30 &quot;Martha Jones&quot;)
+</pre></div>
+</div>
+<p>The im?mediate advantages of clarity and slot order independence for
+deftemplate facts should be readily apparent.</p>
+<p>In addition to being asserted and retracted, deftemplate facts can also
+be modified and duplicated (using the <strong>modify</strong> and <strong>duplicate</strong>
+commands). Modifying a fact changes a set of specified slots within that
+fact. Duplicating a fact creates a new fact identical to the original
+fact and then changes a set of specified slots within the new fact. The
+benefit of using the modify and duplicate commands is that slots which
+don?t change, don?t have to be specified.</p>
+</div>
+<div class="section" id="initial-facts">
+<h4>2.4.1.3 Initial Facts<a class="headerlink" href="#initial-facts" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>deffacts</strong> construct allows a set of <em>a priori</em> or initial
+knowledge to be specified as a collection of facts. When the CLIPS
+environment is reset (using the <strong>reset</strong> command) every fact specified
+within a deffacts construct in the CLIPS knowledge base is added to the
+fact-list.</p>
+</div>
+</div>
+<div class="section" id="objects">
+<h3>2.4.2 Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h3>
+<p>An <strong>object</strong> in CLIPS is defined to be a symbol, a string, a
+floating-point or integer number, a multifield value, an
+external-address or an instance of a user-defined class. Section 2.3.1
+explains how to reference instances of user-defined classes. Objects are
+described in two basic parts: properties and behavior. A <strong>class</strong> is a
+template for common properties and behavior of objects that are
+<strong>instances</strong> of that class. Some examples of objects and their classes
+are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Object (Printed Representation)</strong></th>
+<th class="head"><strong>Class</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Rolls-Royce</td>
+<td>SYMBOL</td>
+</tr>
+<tr class="row-odd"><td>“Rolls-Royce”</td>
+<td>STRING</td>
+</tr>
+<tr class="row-even"><td>8.0</td>
+<td>FLOAT</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>INTEGER</td>
+</tr>
+<tr class="row-even"><td>(8.0 Rolls-Royce 8 [Rolls-Royce])</td>
+<td>MULTIFIELD</td>
+</tr>
+<tr class="row-odd"><td>&lt;Pointer-00CF61AB&gt;</td>
+<td>EXTERNAL-ADDRESS</td>
+</tr>
+<tr class="row-even"><td>[Rolls-Royce]</td>
+<td>CAR (a user-defined class)</td>
+</tr>
+</tbody>
+</table>
+<p>Objects in CLIPS are split into two important categories: primitive
+types and instances of <em>user-defined</em> classes. These two types of
+objects differ in the way they are referenced, created and deleted as
+well as how their properties are specified.</p>
+<p>Primitive type objects are referenced simply by giving their value, and
+they are created and deleted implicitly by CLIPS as they are needed.
+Primitive type objects have no names or slots, and their classes are
+predefined by CLIPS. The behavior of primitive type objects is like that
+of instances of user-defined classes, however, in that you can define
+message-handlers and attach them to the primitive type classes. It is
+anticipated that primitive types will not be used often in an
+object-oriented programming (OOP) context; the main reason classes are
+provided for them is for use in generic functions. Generic functions use
+the classes of their arguments to determine which methods to execute;
+sections 2.3.2, 2.5.2.2 and 8 give more detail.</p>
+<p>An instance of a user-defined class is referenced by name or address,
+and they are created and deleted explicitly via messages and special
+functions. The properties of an instance of a <em>user-defined</em> class are
+expressed by a set of slots, which the object obtains from its class. As
+previously defined, slots are named single field or multifield values.
+For example, the object Rolls-Royce is an instance of the class CAR. One
+of the slots in class CAR might be ?price?, and the Rolls-Royce object?s
+value for this slot might be $75,000.00. The behavior of an object is
+specified in terms of procedural code called message-handlers, which are
+attached to the object?s class. Message-handlers and manipulation of
+objects are described in Section 2.5.2.3. All instances of a
+user-defined class have the same set of slots, but each instance may
+have different values for those slots. However, two instances that have
+the same set of slots do not necessarily belong to the same class, since
+two different classes can have identical sets of slots.</p>
+<p>The primary difference between object slots and template (or
+non-ordered) facts is the notion of inheritance. Inheritance allows the
+properties and behavior of a class to be described in terms of other
+classes. COOL supports multiple inheritance: a class may directly
+inherit slots and message-handlers from more than one class. Since
+inheritance is only useful for slots and message-handlers, it is often
+not meaningful to inherit from one of the primitive type classes, such
+as MULTIFIELD or NUMBER. This is because these classes cannot have slots
+and usually do not have message-handlers.</p>
+<p>Further discussion on these topics can be found in Section 2.6, and a
+comprehensive description of the CLIPS Object-Oriented Language (COOL)
+can be found in Section 9.</p>
+<div class="section" id="initial-objects">
+<h4>2.4.2.1 Initial Objects<a class="headerlink" href="#initial-objects" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>definstances</strong> construct allows a set of <em>a priori</em> or initial
+knowledge to be specified as a collection of instances of user-defined
+classes. When the CLIPS environment is reset (using the <strong>reset</strong>
+command) every instance specified within a definstances construct in the
+CLIPS knowledge base is added to the instance-list.</p>
+</div>
+</div>
+<div class="section" id="global-variables">
+<h3>2.4.3 Global Variables<a class="headerlink" href="#global-variables" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>defglobal</strong> construct allows variables to be defined which are
+global in scope throughout the CLIPS environment. That is, a global
+variable can be accessed anywhere in the CLIPS environment and retains
+its value independent of other constructs. In contrast, some constructs
+(such as defrule and deffunction) allow local variables to be defined
+within the definition of the construct. These local variables can be
+referred to within the construct, but have no meaning outside the
+construct. A CLIPS global variable is similar to global variables found
+in procedural programming languages such as LISP, C and Ada. Unlike C
+and Ada, however, CLIPS global variables are weakly typed (they are not
+restricted to holding a value of a single data type).</p>
+</div>
+</div>
+<div class="section" id="knowledge-representation">
+<h2>2.5 Knowledge Representation<a class="headerlink" href="#knowledge-representation" title="Permalink to this headline">¶</a></h2>
+<p>CLIPS provides heuristic and procedural paradigms for representing
+knowledge. These two paradigms are discussed in this section.
+Object-oriented programming (which combines aspects of both data
+abstraction and procedural knowledge) is discussed in section 2.6.</p>
+<div class="section" id="heuristic-knowledge-rules">
+<h3>2.5.1 Heuristic Knowledge ? Rules<a class="headerlink" href="#heuristic-knowledge-rules" title="Permalink to this headline">¶</a></h3>
+<p>One of the primary methods of representing knowledge in CLIPS is a rule.
+Rules are used to represent heuristics, or ?rules of thumb?, which
+specify a set of actions to be performed for a given situation. The
+de?veloper of an expert system defines a set of rules that collectively
+work together to solve a problem. A <strong>rule</strong> is composed of an
+<strong>antecedent</strong> and a <strong>consequent</strong>. The antecedent of a rule is also
+referred to as the <strong>if portion</strong> or the <strong>left-hand side</strong> (LHS) of the
+rule. The consequent of a rule is also referred to as the <strong>then
+portion</strong> or the <strong>right-hand side</strong> (RHS) of the rule.</p>
+<p>The antecedent of a rule is a set of <strong>conditions</strong> (or <strong>conditional
+elements</strong>) that must be satisfied for the rule to be applicable. In
+CLIPS, the conditions of a rule are satisfied based on the existence or
+non-existence of specified facts in the fact-list or specified instances
+of user-defined classes in the instance-list. One type of condition that
+can be specified is a <strong>pattern</strong>. Patterns consist of a set of
+restrictions that are used to determine which facts or objects satisfy
+the condition specified by the pattern. The process of matching facts
+and objects to patterns is called <strong>pattern-matching</strong>. CLIPS provides a
+mechanism, called the <strong>inference engine</strong>, which automatically matches
+patterns against the current state of the fact-list and instance-list
+and determines which rules are applicable.</p>
+<p>The consequent of a rule is the set of actions to be executed when the
+rule is applicable. The actions of applicable rules are executed when
+the CLIPS inference engine is instructed to begin execution of
+applicable rules. If more than one rule is applicable, the inference
+engine uses a <strong>conflict resolution strategy</strong> to select which rule
+should have its actions executed. The actions of the selected rule are
+executed (which may affect the list of applicable rules) and then the
+inference engine selects another rule and executes its actions. This
+process continues until no applicable rules remain.</p>
+<p>In many ways, rules can be thought of as IF-THEN statements found in
+procedural programming languages such as C and Ada. However, the
+conditions of an IF-THEN statement in a procedural language are only
+evaluated when the program flow of control is directly at the IF-THEN
+statement. In contrast, rules act like WHENEVER-THEN statements. The
+inference engine always keeps track of rules that have their conditions
+satisfied and thus rules can immediately be executed when they are
+applicable. In this sense, rules are similar to exception handlers found
+in languages such as Ada.</p>
+</div>
+<div class="section" id="procedural-knowledge">
+<h3>2.5.2 Procedural Knowledge<a class="headerlink" href="#procedural-knowledge" title="Permalink to this headline">¶</a></h3>
+<p>CLIPS also supports a procedural paradigm for representing knowledge
+like that of more conventional languages, such as Pascal and C.
+Deffunctions and generic functions allow the user to define new
+executable elements to CLIPS that perform a useful side-effect or return
+a useful value. These new functions can be called just like the built-in
+functions of CLIPS. Message-handlers allow the user to define the
+behavior of objects by specifying their response to messages.
+Deffunctions, generic functions and message-handlers are all procedural
+pieces of code specified by the user that CLIPS executes interpretively
+at the appropriate times. Defmodules allow a knowledge base to be
+partitioned.</p>
+<div class="section" id="deffunctions">
+<h4>2.5.2.1 Deffunctions<a class="headerlink" href="#deffunctions" title="Permalink to this headline">¶</a></h4>
+<p>Deffunctions allow you to define new functions in CLIPS directly. In
+previous versions of CLIPS, the only way to have user-defined functions
+was to write them in some external language, such as C or Ada, and then
+recompile and relink CLIPS with the new functions. The body of a
+deffunction is a series of expressions similar to the RHS of a rule that
+are executed in order by CLIPS when the deffunction is called. The
+return value of a deffunction is the value of the last expression
+evaluated within the deffunction. Calling a deffunction is identical to
+calling any other function in CLIPS. Deffunctions are covered
+comprehensively in Section 7.</p>
+</div>
+<div class="section" id="generic-functions">
+<h4>2.5.2.2 Generic Functions<a class="headerlink" href="#generic-functions" title="Permalink to this headline">¶</a></h4>
+<p>Generic functions are similar to deffunctions in that they can be used
+to define new procedural code directly in CLIPS, and they can be called
+like any other function. However, generic functions are much more
+powerful because they can be <strong>overloaded</strong>. A generic function will do
+different things depending on the types (or classes) and number of its
+arguments. Generic functions are comprised of multiple components called
+methods, where each method handles different cases of arguments for the
+generic function. For example, you might overload the ?+? operator to do
+string concatenation when it is passed strings as arguments. However,
+the ?+? operator will still perform arithmetic addition when passed
+numbers. There are two methods in this example: an explicit one for
+strings defined by the user and an implicit one which is the standard
+CLIPS arithmetic addition operator. The return value of a generic
+function is the evaluation of the last expression in the method
+executed. Generic functions are covered comprehensively in Section 8.</p>
+</div>
+<div class="section" id="object-message-passing">
+<h4>2.5.2.3 Object Message-Passing<a class="headerlink" href="#object-message-passing" title="Permalink to this headline">¶</a></h4>
+<p>Objects are described in two basic parts: properties and behavior.
+Object properties are specified in terms of slots obtained from the
+object?s class; slots are discussed in more detail in Section 2.4.2.
+Object behavior is specified in terms of procedural code called
+message-handlers which are attached to the object?s class. Objects are
+manipulated via message-passing. For example, to cause the Rolls-Royce
+object, which is an instance of the class CAR, to start its engine, the
+user must call the <strong>send</strong> function to send the message ?start-engine?
+to the Rolls-Royce. How the Rolls-Royce responds to this message will be
+dictated by the execution of the message-handlers for ?start-engine?
+attached to the CAR class and any of its superclasses. The result of a
+message is similar to a function call in CLIPS: a useful return value or
+side-effect.</p>
+<p>Further discussion on message-handlers can be found in Section 2.6, and
+a comprehensive description of the CLIPS Object-Oriented Language (COOL)
+can be found in Section 9.</p>
+</div>
+<div class="section" id="defmodules">
+<h4>2.5.2.4 Defmodules<a class="headerlink" href="#defmodules" title="Permalink to this headline">¶</a></h4>
+<p>Defmodules allow a knowledge base to be partitioned. Every construct
+defined must be placed in a module. The programmer can explicitly
+control which constructs in a module are visible to other modules and
+which constructs from other modules are visible to a module. The
+visibility of facts and instances between modules can be controlled in a
+similar manner. Modules can also be used to control the flow of
+execution of rules. Defmodules are covered comprehensively in Section
+10.</p>
+</div>
+</div>
+</div>
+<div class="section" id="clips-object-oriented-language">
+<h2>2.6 CLIPS Object-Oriented Language<a class="headerlink" href="#clips-object-oriented-language" title="Permalink to this headline">¶</a></h2>
+<p>This section gives a brief overview of the programming elements of the
+CLIPS Object-Oriented Language (COOL). COOL includes elements of data
+abstraction and knowledge representation. This section gives an overview
+of COOL as a whole, incorporating the elements of both concepts.
+References to instanes of user-defined classes are discussed in Section
+2.3.1, and the structure of objects is discussed in Sections 2.4.2 and
+2.5.2.3. The comprehensive details of COOL are given in Section 9.</p>
+<div class="section" id="cool-deviations-from-a-pure-oop-paradigm">
+<h3>2.6.1 COOL Deviations from a Pure OOP Paradigm<a class="headerlink" href="#cool-deviations-from-a-pure-oop-paradigm" title="Permalink to this headline">¶</a></h3>
+<p>In a pure OOP language, <em>all</em> programming elements are objects which can
+only be manipulated via messages. In CLIPS, the definition of an object
+is much more constrained: floating-point and integer numbers, symbols,
+strings, multifield values, external-addresses, fact-addresses and
+instances of user-defined classes. All objects <em>may</em> be manipulated with
+messages, except instances of user-defined classes, which <em>must</em> be. For
+example, in a pure OOP system, to add two numbers together, you would
+send the message ?add? to the first number object with the second number
+object as an argument. In CLIPS, you may simply call the ?+? function
+with the two numbers as arguments, or you can define message-handlers
+for the NUMBER class which allow you to do it in the purely OOP fashion.</p>
+<p>All programming elements that are not objects must be manipulated in a
+non-OOP utilizing function tailored for those programming elements. For
+example, to print a rule, you call the function <strong>ppdefrule</strong>; you do
+not send a message ?print? to a rule, since it is not an object.</p>
+</div>
+<div class="section" id="primary-oop-features">
+<h3>2.6.2 Primary OOP Features<a class="headerlink" href="#primary-oop-features" title="Permalink to this headline">¶</a></h3>
+<p>There are five primary characteristics that an OOP system must possess:
+<strong>abstraction</strong>, <strong>encapsulation</strong>, <strong>inheritance</strong>, <strong>polymorphism</strong>
+and <strong>dynamic binding</strong>. An abstraction is a higher level, more
+intuitive representation for a complex concept. Encapsulation is the
+process whereby the implementation details of an object are masked by a
+well-defined external interface. Classes may be described in terms of
+other classes by use of inheritance. Polymorphism is the ability of
+different objects to respond to the same message in a specialized
+manner. Dynamic binding is the ability to defer the selection of which
+specific message-handlers will be called for a message until run-time.</p>
+<p>The definition of new classes allows the abstraction of new data types
+in COOL. The slots and message-handlers of these classes describe the
+properties and behavior of a new group of objects.</p>
+<p>COOL supports encapsulation by requiring message-passing for the
+manipulation of instances of user-defined classes. An instance cannot
+respond to a message for which it does not have a defined
+message-handler.</p>
+<p>COOL allows the user to specify some or all of the properties and
+behavior of a class in terms of one or more unrelated superclasses. This
+process is called <strong>multiple inheritance</strong>. COOL uses the existing
+hierarchy of classes to establish a linear ordering called the <strong>class
+precedence list</strong> for a new class. Objects that are instances of this
+new class can inherit properties (slots) and behavior (message-handlers)
+from each of the classes in the class precedence list. The word
+precedence implies that properties and behavior of a class first in the
+list override conflicting definitions of a class later in the list.</p>
+<p>One COOL object can respond to a message in a completely different way
+than another object; this is polymorphism. This is accomplished by
+attaching message-handlers with differing actions but which have the
+same name to the classes of these two objects respectively.</p>
+<p>Dynamic binding is supported in that an object reference (see section
+2.3.1) in a <strong>send</strong> function call is not bound until run-time. For
+example, an instance-name or variable might refer to one object at the
+time a message is sent and another at a later time.</p>
+</div>
+<div class="section" id="instance-set-queries-and-distributed-actions">
+<h3>2.6.3 Instance-set Queries and Distributed Actions<a class="headerlink" href="#instance-set-queries-and-distributed-actions" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the ability of rules to directly pattern-match on
+objects, COOL provides a useful query system for determining, grouping
+and performing actions on sets of instances of user-defined classes that
+meet user-defined criteria. The query system allows you to associate
+instances that are either related or not. You can simply use the query
+system to determine if a particular association set exists, you can save
+the set for future reference, or you can iterate an action over the set.
+An example of the use of the query system might be to find the set of
+all pairs of boys and girls that have the same age.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Section 2: CLIPS Overview</a><ul>
+<li><a class="reference internal" href="#interacting-with-clips">2.1 Interacting with CLIPS</a><ul>
+<li><a class="reference internal" href="#top-level-commands">2.1.1 Top Level Commands</a></li>
+<li><a class="reference internal" href="#automated-command-entry-and-loading">2.1.2 Automated Command Entry and Loading</a></li>
+<li><a class="reference internal" href="#integration-with-other-programming-languages">2.1.3 Integration with Other Programming Languages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference-manual-syntax">2.2 Reference Manual Syntax</a></li>
+<li><a class="reference internal" href="#basic-programming-elements">2.3 Basic Programming Elements</a><ul>
+<li><a class="reference internal" href="#data-types">2.3.1 Data Types</a></li>
+<li><a class="reference internal" href="#functions">2.3.2 Functions</a></li>
+<li><a class="reference internal" href="#constructs">2.3.3 Constructs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-abstraction">2.4 Data Abstraction</a><ul>
+<li><a class="reference internal" href="#facts">2.4.1 Facts</a><ul>
+<li><a class="reference internal" href="#ordered-facts">2.4.1.1 Ordered Facts</a></li>
+<li><a class="reference internal" href="#non-ordered-facts">2.4.1.2 Non-ordered Facts</a></li>
+<li><a class="reference internal" href="#initial-facts">2.4.1.3 Initial Facts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#objects">2.4.2 Objects</a><ul>
+<li><a class="reference internal" href="#initial-objects">2.4.2.1 Initial Objects</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-variables">2.4.3 Global Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#knowledge-representation">2.5 Knowledge Representation</a><ul>
+<li><a class="reference internal" href="#heuristic-knowledge-rules">2.5.1 Heuristic Knowledge ? Rules</a></li>
+<li><a class="reference internal" href="#procedural-knowledge">2.5.2 Procedural Knowledge</a><ul>
+<li><a class="reference internal" href="#deffunctions">2.5.2.1 Deffunctions</a></li>
+<li><a class="reference internal" href="#generic-functions">2.5.2.2 Generic Functions</a></li>
+<li><a class="reference internal" href="#object-message-passing">2.5.2.3 Object Message-Passing</a></li>
+<li><a class="reference internal" href="#defmodules">2.5.2.4 Defmodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clips-object-oriented-language">2.6 CLIPS Object-Oriented Language</a><ul>
+<li><a class="reference internal" href="#cool-deviations-from-a-pure-oop-paradigm">2.6.1 COOL Deviations from a Pure OOP Paradigm</a></li>
+<li><a class="reference internal" href="#primary-oop-features">2.6.2 Primary OOP Features</a></li>
+<li><a class="reference internal" href="#instance-set-queries-and-distributed-actions">2.6.3 Instance-set Queries and Distributed Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Section 1: Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="deftemplate.html"
+                        title="next chapter">Section 3: Deftemplate Construct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/overview.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="deftemplate.html" title="Section 3: Deftemplate Construct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Section 1: Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

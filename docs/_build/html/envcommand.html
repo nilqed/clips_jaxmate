@@ -1,0 +1,2366 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Section 13: Commands &#8212; CLIPS-BPG  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="section-13-commands">
+<h1>Section 13: Commands<a class="headerlink" href="#section-13-commands" title="Permalink to this headline">¶</a></h1>
+<p>This section describes commands primarily intended for use from the
+top-level command prompt. These commands may also be used from
+constructs and other places where functions can be used.</p>
+<div class="section" id="environment-commands">
+<h2>13.1 Environment Commands<a class="headerlink" href="#environment-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands control the CLIPS environment.</p>
+<div class="section" id="loading-constructs-from-a-file">
+<h3>13.1.1 Loading Constructs From A File<a class="headerlink" href="#loading-constructs-from-a-file" title="Permalink to this headline">¶</a></h3>
+<p>.Loads the constructs stored in the file specified by &lt;file-name&gt; into
+the environment. If the compilations item is being watched (see section
+13.2), then an informational message (including the type and name of the
+construct) will be displayed for each construct loaded. If the
+compilations item is not being watched, then a character is printed for
+each construct loaded (?*? for defrule, ?$? for deffacts, ?%? for
+deftemplate, ?:? for defglobal, ?!? for deffunction, ?^? for defgeneric,
+?&amp;? for defmethod, ?#? for defclass, ?~? for defmessage-handler, ?&#64;? for
+definstances, and ?+? for defmodule). This function returns TRUE if the
+file was successfully loaded, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(load &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="loading-constructs-from-a-file-without-progress-information">
+<h3>13.1.2 Loading Constructs From A File without Progress Information<a class="headerlink" href="#loading-constructs-from-a-file-without-progress-information" title="Permalink to this headline">¶</a></h3>
+<p>Loads the constructs stored in the file specified by &lt;file-name&gt; into
+the environment, however, unlike the load command informational
+messsages are not printed to show the progress of loading the file.
+Error messages are still printed if errors are encountered while loading
+the file. This function returns TRUE if the file was successfully
+loaded, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(load* &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="saving-all-constructs-to-a-file">
+<h3>13.1.3 Saving All Constructs To A File<a class="headerlink" href="#saving-all-constructs-to-a-file" title="Permalink to this headline">¶</a></h3>
+<p>Saves all of the constructs (defrules, deffacts, deftemplates, etc.) in
+the current envi?ronment into the file specified by &lt;file-name&gt;. Note
+that deffunctions and generic functions are saved twice to the file.
+Because it is possible to create circular references among deffunctions
+and generic functions by redefining them, a forward declaration
+(containing no actions) of each function is saved first to the file, and
+then the actual declaration (containing the actions) is saved. This
+function returns TRUE if the file was successfully saved, otherwise
+FALSE is returned. This function uses the pretty-print forms of the
+constructs. If pretty-printing has been disabled by the <strong>conserve-mem</strong>
+command, then the <strong>save</strong> command will have no output.</p>
+<p>Syntax</p>
+<p>(save &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="loading-a-binary-image">
+<h3>13.1.4 Loading a Binary Image<a class="headerlink" href="#loading-a-binary-image" title="Permalink to this headline">¶</a></h3>
+<p>Loads the constructs stored in the binary file specified by &lt;file-name&gt;
+into the environment. The specified file must have been created by
+<strong>bsave</strong>. Loading a binary image is quicker than using the <strong>load</strong>
+command to load a ASCII text file. A <strong>bload</strong> clears all constructs
+from the current CLIPS environment (as well as all facts and instances).
+<strong>Bload</strong> can be called at any time unless some constructs that
+<strong>bload</strong> will affect are in use (e.g. a deffunction is currently
+executing). The only constructive/destructive operation that can occur
+after a <strong>bload</strong> is the <strong>clear</strong> command or the <strong>bload</strong> command
+(which clears the current binary image). This means that constructs
+cannot be loaded or deleted while a <strong>bload</strong> is in effect. In order to
+add constructs to a binary image, the original ASCII text file must be
+reloaded, the new constructs added, and then another <strong>bsave</strong> must be
+performed. This function returns TRUE if the file was successfully
+bloaded, otherwise FALSE is returned.</p>
+<p>Binary images can be loaded into different compile-time configurations
+of CLIPS, as long as the same version of CLIPS is used and all the
+functions and constructs needed by the binary image are supported. In
+addition, binary images should theoretically work across different
+hardware platforms if internal data representations are equivalent (e.g.
+same integer size, same byte order, same floating-point format, etc).
+However, it is NOT recommended that this be attempted.</p>
+<p>Syntax</p>
+<p>(bload &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="saving-a-binary-image">
+<h3>13.1.5 Saving a Binary Image<a class="headerlink" href="#saving-a-binary-image" title="Permalink to this headline">¶</a></h3>
+<p>Saves all of the constructs in the current envi?ronment into the file
+specified by &lt;file-name&gt;. The save file is written using a binary format
+which results in faster load time. The save file must be loaded via the
+<strong>bload</strong> command. A <strong>bsave</strong> may be performed at any time (except when
+a <strong>bload</strong> is in effect). The pretty print representation of a
+construct is not saved with a binary image (thus, commands like
+<strong>ppdefrule</strong> will show no output for any of the rules associated with
+the binary image). In addition, constraint information associated with
+constructs is not saved to the binary image unless dynamic constraint
+checking is enabled (using the <strong>set-dynamic-constraint-checking</strong>
+command). This function returns TRUE if the file was successfully
+bsaved, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(bsave &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="clearing-clips">
+<h3>13.1.6 Clearing CLIPS<a class="headerlink" href="#clearing-clips" title="Permalink to this headline">¶</a></h3>
+<p>Clears CLIPS. Removes all constructs and all associated data structures
+(such as facts and instances) from the CLIPS environment. A clear may be
+performed safely at any time, however, certain constructs will not allow
+themselves to be deleted while they are in use. For example, while
+deffacts are being reset (by the <strong>reset</strong> command), it is not possible
+to remove them using the <strong>clear</strong> command. Note that the <strong>clear</strong>
+command does not effect many environment characteristics (such as the
+current conflict resolution strategy). This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(clear)</p>
+</div>
+<div class="section" id="exiting-clips">
+<h3>13.1.7 Exiting CLIPS<a class="headerlink" href="#exiting-clips" title="Permalink to this headline">¶</a></h3>
+<p>Quits CLIPS. This function has no return value.</p>
+<p>Syntax</p>
+<p>(exit [&lt;integer-expression&gt;])</p>
+<p>The optional &lt;integer-expression&gt; argument allows the exit status code
+to be specified which is eventually passed to the C exit function.</p>
+</div>
+<div class="section" id="resetting-clips">
+<h3>13.1.8 Resetting CLIPS<a class="headerlink" href="#resetting-clips" title="Permalink to this headline">¶</a></h3>
+<p>Resets CLIPS. Removes all activations from the agenda, all facts from
+the fact-list and all instances of user-defined classes, then assigns
+global variables their initial values, asserts all facts listed in
+def?facts statements into the fact-list, creates all instances listed in
+definstances statements, sets the current module to the MAIN module and
+automatically focuses on the same module. Incremental reset is supported
+for rules. This means that rules can be activated from facts that were
+asserted before the rule was defined without performing a reset. A reset
+can be performed while rules are executing. Note that the <strong>reset</strong>
+command does not effect many environment characteristics (such as the
+current conflict resolution strategy). This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(reset)</p>
+</div>
+<div class="section" id="executing-commands-from-a-file">
+<h3>13.1.9 Executing Commands From a File<a class="headerlink" href="#executing-commands-from-a-file" title="Permalink to this headline">¶</a></h3>
+<p>Allows ?batch? processing of CLIPS interactive com?mands by replacing
+standard input with the contents of a file. Any command or function can
+be used in a batch file, as well as construct definitions and re?sponses
+to <strong>read</strong> or <strong>readline</strong> function calls. The <strong>load</strong>?command should
+be used in batch files rather than defining constructs directly. The
+<strong>load</strong> command expects only constructs and hence moves to the next
+construct when an error occurs. The <strong>batch</strong> command, however, moves on
+until it finds the next construct <em>or</em> command (and in the case of a
+construct this is likely to generate more errors as the remaining
+commands and functions in the construct are parsed). This function
+returns TRUE if the batch file was successfully executed, otherwise
+FALSE is returned. Note that the <strong>batch</strong> command operates by replacing
+standard input rather than by immediately executing the commands found
+in the batch file. In effect, if you execute a batch command from the
+RHS of a rule, the commands in that batch file will not be processed
+until control is returned to the top-level prompt.</p>
+<p>Syntax</p>
+<p>(batch &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="executing-commands-from-a-file-without-replacing-standard-input">
+<h3>13.1.10 Executing Commands From a File Without Replacing Standard Input<a class="headerlink" href="#executing-commands-from-a-file-without-replacing-standard-input" title="Permalink to this headline">¶</a></h3>
+<p>Evaluates the series of commands stored in the file specified by
+&lt;file-name&gt;. Unlike the <strong>batch</strong> command, <strong>batch*</strong> evaluates all of
+the commands in the specified file before returning. The <strong>batch*</strong>
+command does not replace standard input and thus a <strong>batch*</strong> file
+cannot be used to provide input to functions such as <strong>read</strong> and
+<strong>readline</strong>. In addition, commands stored in the <strong>batch*</strong> file and
+the return value of these commands are not echoed to standard output.</p>
+<p>The <strong>batch*</strong> command is not available for binary-load only or
+run-time CLIPS configurations (see the <em>Advanced Programming Guide</em>).</p>
+<p>Syntax</p>
+<p>(batch* &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="determining-clips-compilation-options">
+<h3>13.1.11 Determining CLIPS Compilation Options<a class="headerlink" href="#determining-clips-compilation-options" title="Permalink to this headline">¶</a></h3>
+<p>Generates a textual description of the settings of the CLIPS compiler
+flags. This function has no return value.</p>
+<p>Syntax</p>
+<p>(options)</p>
+</div>
+<div class="section" id="calling-the-operating-system">
+<h3>13.1.12 Calling the Operating System<a class="headerlink" href="#calling-the-operating-system" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>system</strong> function allows a call to the operating system. It is
+patterned after the <strong>system</strong> function provided to C on most UNIX
+systems. This function has no return value.</p>
+<p>Syntax</p>
+<p>(system &lt;lexeme-expression&gt;*)</p>
+<p>Example</p>
+<div class="line-block">
+<div class="line">(defrule print-directory</div>
+<div class="line">(print-directory ?directory)</div>
+<div class="line">=&gt;</div>
+<div class="line">(system “dir ” ?directory)); Note space =&gt; “dir&lt;space&gt;”</div>
+</div>
+<p>Note that any spaces needed for a proper parsing of the <strong>system</strong>
+command must be added by the user in the call to system. Also note that
+the system command is not guaranteed to execute (e.g., the operating
+system may not have enough memory to spawn a new process).</p>
+<p>? Portability Note</p>
+<p>Not all operating systems/compilers provide this function. The code is
+stored in the <strong>sysdep.c</strong> file, and the default coding for generic
+CLIPS is a non?functional stub that will compile on any machine. On some
+machines (such as an IBM PC running DOS), there may be insufficient
+memory available to spawn a subprocess to execute the system command. In
+such a case, the command will not be executed and the system command
+will return with no action taken.</p>
+</div>
+<div class="section" id="setting-the-auto-float-dividend-behavior">
+<h3>13.1.13 Setting The Auto-Float Dividend Behavior<a class="headerlink" href="#setting-the-auto-float-dividend-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function sets auto-float dividend behavior. When this behavior is
+enabled (TRUE by default) the dividend of the division function is
+automatically converted to a floating point number. The return value for
+this function is the old value for the behavior.</p>
+<p>Syntax</p>
+<p>(set-auto-float-dividend &lt;boolean-expression&gt;)</p>
+</div>
+<div class="section" id="getting-the-auto-float-dividend-behavior">
+<h3>13.1.14 Getting The Auto-Float Dividend Behavior<a class="headerlink" href="#getting-the-auto-float-dividend-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the auto-float dividend
+behavior (TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-auto-float-dividend)</p>
+</div>
+<div class="section" id="setting-the-dynamic-constraint-checking-behavior">
+<h3>13.1.15 Setting the Dynamic Constraint Checking Behavior<a class="headerlink" href="#setting-the-dynamic-constraint-checking-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function sets dynamic constraint checking behavior. When this
+behavior is disabled (FALSE by default), newly created data objects
+(such as deftemplate facts and instances) do not have their slot values
+checked for constraint violations. When this behavior is enabled (TRUE),
+the slot values are checked for constraint violations. The return value
+for this function is the old value for the behavior. Constraint
+information is not saved when using the <strong>bload</strong> and
+<strong>constructs-to-c</strong> command if dynamic constraint checking is disabled.</p>
+<p>Syntax</p>
+<p>(set-dynamic-constraint-checking &lt;boolean-expression&gt;)</p>
+</div>
+<div class="section" id="getting-the-dynamic-constraint-checking-behavior">
+<h3>13.1.16 Getting the Dynamic Constraint Checking Behavior<a class="headerlink" href="#getting-the-dynamic-constraint-checking-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the dynamic constraint
+checking behavior (TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-dynamic-constraint-checking)</p>
+</div>
+<div class="section" id="setting-the-static-constraint-checking-behavior">
+<h3>13.1.17 Setting the Static Constraint Checking Behavior<a class="headerlink" href="#setting-the-static-constraint-checking-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function sets static constraint checking behavior. When this
+behavior is disabled (FALSE), constraint violations are not checked when
+function calls and constructs are parsed. When this behavior is enabled
+(TRUE by default), constraint violations are checked when function calls
+and constructs are parsed. The return value for this function is the old
+value for the behavior.</p>
+<p>Syntax</p>
+<p>(set-static-constraint-checking &lt;boolean-expression&gt;)</p>
+</div>
+<div class="section" id="getting-the-static-constraint-checking-behavior">
+<h3>13.1.18 Getting the Static Constraint Checking Behavior<a class="headerlink" href="#getting-the-static-constraint-checking-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the static constraint
+checking behavior (TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-static-constraint-checking)</p>
+</div>
+<div class="section" id="finding-symbols">
+<h3>13.1.19 Finding Symbols<a class="headerlink" href="#finding-symbols" title="Permalink to this headline">¶</a></h3>
+<p>This command displays all symbols currently defined in CLIPS which
+contain a specified substring. This command has no return value.</p>
+<p>Syntax</p>
+<p>(apropos &lt;lexeme&gt;)</p>
+<p>Example</p>
+<p>CLIPS&gt; (apropos pen)</p>
+<p>dependents</p>
+<p>mv-append</p>
+<p>open</p>
+<p>dependencies</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="debugging-commands">
+<h2>13.2 Debugging Commands<a class="headerlink" href="#debugging-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands control the CLIPS debugging features.</p>
+<div class="section" id="generating-trace-files">
+<h3>13.2.1 Generating Trace Files<a class="headerlink" href="#generating-trace-files" title="Permalink to this headline">¶</a></h3>
+<p>Sends all information normally sent to the logical names <strong>wclips</strong>,
+<strong>wdialog</strong>, <strong>wdisplay</strong>, <strong>werror</strong>, <strong>wwarning</strong>, <strong>wtrace</strong>, and
+<strong>stdout</strong> to &lt;file-name&gt; as well as to their normal destination.
+Additionally, all information received from logical name <strong>stdin</strong> is
+also sent to &lt;file-name&gt; as well as being returned by the requesting
+function. This function returns TRUE if the dribble file was
+successfully opened, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(dribble-on &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="closing-trace-files">
+<h3>13.2.2 Closing Trace Files<a class="headerlink" href="#closing-trace-files" title="Permalink to this headline">¶</a></h3>
+<p>Stops sending trace information to the dribble file. This function
+returns TRUE if the dribble file was successfully closed, otherwise
+FALSE is returned.</p>
+<p>Syntax</p>
+<p>(dribble-off)</p>
+</div>
+<div class="section" id="enabling-watch-items">
+<h3>13.2.3 Enabling Watch Items<a class="headerlink" href="#enabling-watch-items" title="Permalink to this headline">¶</a></h3>
+<p>This function causes messages to be displayed when certain CLIPS
+operations take place.</p>
+<p>Syntax</p>
+<p>(watch &lt;watch-item&gt;)</p>
+<p>&lt;watch-item&gt; ::= all |</p>
+<p>compilations |</p>
+<p>statistics |</p>
+<p>focus |</p>
+<p>messages |</p>
+<p>deffunctions &lt;deffunction-name&gt;* |</p>
+<p>globals &lt;global-name&gt;* |</p>
+<p>rules &lt;rule-name&gt;* |</p>
+<p>activations &lt;rule-name&gt;* |</p>
+<p>facts &lt;deftemplate-name&gt;* |</p>
+<p>instances &lt;class-name&gt;* |</p>
+<p>slots &lt;class-name&gt;* |</p>
+<p>message-handlers &lt;handler-spec-1&gt;*</p>
+<p>[&lt;handler-spec-2&gt;]) |</p>
+<p>generic-functions &lt;generic-name&gt;* |</p>
+<p>methods &lt;method-spec-1&gt;* [&lt;method-spec-2&gt;]</p>
+<p>&lt;handler-spec-1&gt; ::= &lt;class-name&gt;</p>
+<p>&lt;handler-name&gt; &lt;handler-type&gt;</p>
+<p>&lt;handler-spec-2&gt; ::= &lt;class-name&gt;</p>
+<p>[&lt;handler-name&gt; [&lt;handler-type&gt;]]</p>
+<p>&lt;method-spec-1&gt; ::= &lt;generic-name&gt; &lt;method-index&gt;</p>
+<p>&lt;method-spec-2&gt; ::= &lt;generic-name&gt; [&lt;method-index&gt;]</p>
+<p>If <strong>compilations</strong> are watched, the progress of construct definitions
+will be displayed.</p>
+<p>If <strong>facts</strong> are watched, all fact assertions and retractions will be
+displayed. Optionally, facts associated with individual deftemplates can
+be watched by specifying one or more deftemplate names.</p>
+<p>If <strong>rules</strong> are watched, all rule firings will be dis?played. If
+<strong>activations</strong> are watched, all rule activations and deactivations will
+be displayed. Optionally, rule firings and activations associated with
+individual defrules can be watched by specifying one or more defrule
+names. If <strong>statistics</strong> are watched, timing information along with
+other information (average number of facts, average number of
+activations, etc.) will be displayed after a run. Note that the number
+of rules fired and timing information is not printed unless this item is
+being watch. If <strong>focus</strong> is watched, then changes to the current focus
+will be displayed.</p>
+<p>If <strong>globals</strong> are watched, variable assignments to globals variables
+will be displayed. Optionally, variable assignments associated with
+individual defglobals can be watched by specifying one or more defglobal
+names. If <strong>deffunctions</strong> are watched, the start and finish of
+deffunctions will be displayed. Optionally, the start and end display
+associated with individual deffunctions can be watched by specifying one
+or more deffunction names.</p>
+<p>If <strong>generic-functions</strong> are watched, the start and finish of generic
+functions will be displayed. Optionally, the start and end display
+associated with individual defgenerics can be watched by specifying one
+or more defgeneric names. If <strong>methods</strong> are watched, the start and
+finish of individual methods within a generic function will be
+displayed. Optionally, individual methods can be watched by specifying
+one or more methods using a defgeneric name and a method index. When the
+method index is not specified, then all methods of the specified
+defgeneric will be watched.</p>
+<p>If <strong>instances</strong> are watched, creation and deletion of instances will be
+displayed. If <strong>slots</strong> are watched, changes to any instance slot values
+will be displayed. Optionally, instances and slots associated with
+individual concrete defclasses can be watched by specifying one or more
+concrete defclass names. If <strong>message-handlers</strong> are watched, the start
+and finish of individual message-handlers within a message will be
+displayed. Optionally, individual message-handlers can be watched by
+specifying one or more message-handlers using a defclass name, a
+message-handler name, and a message-handler type. When the
+message-handler name and message-handler type are not specified, then
+all message-handlers for the specified class will be watched. When the
+message-handler type is not specified, then all message-handlers for the
+specified class with the specified message-handler name will be watched.
+If <strong>messages</strong> are watched, the start and finish of messages will be
+displayed.</p>
+<p>For the watch items that allow individual constructs to be watched, if
+no constructs are specified, then all constructs of that type will be
+watched. If all constructs associated with a watch item are being
+watched, then newly defined constructs of the same type will also be
+watched. A construct retains its old watch state if it is redefined. If
+<strong>all</strong> is watched, then all other watch items will be watched. By
+default, only compilations are watched. The watch function has no return
+value.</p>
+<p>Example</p>
+<p>CLIPS&gt; (watch rules)</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="disabling-watch-items">
+<h3>13.2.4 Disabling Watch Items<a class="headerlink" href="#disabling-watch-items" title="Permalink to this headline">¶</a></h3>
+<p>This function disables the effect of the <strong>watch</strong> command.</p>
+<p>Syntax</p>
+<p>(unwatch &lt;watch-item&gt;)</p>
+<p>This command is identical to the watch command with the exception that
+it disables watch items rather than enabling them. This function has no
+return value.</p>
+<p>Example</p>
+<p>CLIPS&gt; (unwatch all)</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="viewing-the-current-state-of-watch-items">
+<h3>13.2.5 Viewing the Current State of Watch Items<a class="headerlink" href="#viewing-the-current-state-of-watch-items" title="Permalink to this headline">¶</a></h3>
+<p>This command displays the current state of watch items.</p>
+<p>Syntax</p>
+<p>(list-watch-items [&lt;watch-item&gt;])</p>
+<p>This command displays the current state of all watch items. If called
+without the &lt;watch-item&gt; argument, the global watch state of all watch
+items is displayed. If called with the &lt;watch-item&gt; argument, the global
+watch state for that item is displayed followed by the individual watch
+states for each item of the specified type which can be watched. This
+function has no return value.</p>
+<p>Example</p>
+<p>CLIPS&gt; (list-watch-items)</p>
+<p>facts = off</p>
+<p>instances = off</p>
+<p>slots = off</p>
+<p>rules = off</p>
+<p>activations = off</p>
+<p>messages = off</p>
+<p>message-handlers = off</p>
+<p>generic-functions = off</p>
+<p>methods = off</p>
+<p>deffunctions = off</p>
+<p>compilations = on</p>
+<p>statistics = off</p>
+<p>globals = off</p>
+<p>focus = off</p>
+<p>CLIPS&gt; (list-watch-items facts)</p>
+<p>facts = off</p>
+<p>MAIN:</p>
+<p>initial-fact = off</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="deftemplate-commands">
+<h2>13.3 Deftemplate Commands<a class="headerlink" href="#deftemplate-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate deftemplates.</p>
+<div class="section" id="displaying-the-text-of-a-deftemplate">
+<h3>13.3.1 Displaying the Text of a Deftemplate<a class="headerlink" href="#displaying-the-text-of-a-deftemplate" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given deftemplate. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdeftemplate &lt;deftemplate-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-deftemplates">
+<h3>13.3.2 Displaying the List of Deftemplates<a class="headerlink" href="#displaying-the-list-of-deftemplates" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all deftemplates. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(list-deftemplates [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all deftemplates in
+the current module are displayed. If &lt;module-name&gt; is specified, then
+the names of all deftemplates in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all deftemplates in
+all modules are displayed.</p>
+</div>
+<div class="section" id="deleting-a-deftemplate">
+<h3>13.3.3 Deleting a Deftemplate<a class="headerlink" href="#deleting-a-deftemplate" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined deftemplate.</p>
+<p>Syntax</p>
+<p>(undeftemplate &lt;deftemplate-name&gt;)</p>
+<p>If the deftemplate is in use (for example by a fact or a rule), then the
+deletion will fail. Otherwise, no further uses of the deleted
+deftemplate are permitted (unless redefined). If the symbol * is used
+for &lt;deftemplate-name&gt;, then all deftemplates will be deleted (unless
+there is a deftemplate named *). This function has no return value.</p>
+</div>
+</div>
+<div class="section" id="fact-commands">
+<h2>13.4 Fact Commands<a class="headerlink" href="#fact-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands display information about facts.</p>
+<div class="section" id="displaying-the-fact-list">
+<h3>13.4.1 Displaying the Fact-List<a class="headerlink" href="#displaying-the-fact-list" title="Permalink to this headline">¶</a></h3>
+<p>Displays facts stored in the fact-list.</p>
+<p>Syntax</p>
+<p>(facts [&lt;module-name&gt;]</p>
+<p>[&lt;start-integer-expression&gt;</p>
+<p>[&lt;end-integer-expression&gt;</p>
+<p>[&lt;max-integer-expression&gt;]]])</p>
+<p>If &lt;module-name&gt; is not specified, then only facts visible to the
+current module will be displayed. If &lt;module-name&gt; is specified, then
+only facts visible to the specified module are displayed. If the symbol
+* is used for &lt;module-name&gt;, then facts from any module may be
+displayed. If the start argument is speci?fied, only facts with
+fact-indices greater than or equal to this argument are displayed. If
+the end argument is speci?fied, only facts with fact-indices less than
+or equal to this argument are displayed. If the max argument is
+speci?fied, then no facts will be displayed beyond the specified maximum
+number of facts to be displayed. This function has no return value.</p>
+</div>
+<div class="section" id="loading-facts-from-a-file">
+<h3>13.4.2 Loading Facts From a File<a class="headerlink" href="#loading-facts-from-a-file" title="Permalink to this headline">¶</a></h3>
+<p>This function will assert a file of information as facts into the CLIPS
+fact-list. It can read files created with save-facts or any ASCII text
+file. Each fact should begin with a left parenthesis and end with a
+right parenthesis. Facts may span across lines and can be written in
+either ordered or deftemplate format. This function returns TRUE if the
+fact file was successfully loaded, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(load-facts &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="saving-the-fact-list-to-a-file">
+<h3>13.4.3 Saving The Fact-List To A File<a class="headerlink" href="#saving-the-fact-list-to-a-file" title="Permalink to this headline">¶</a></h3>
+<p>This function saves all of the facts in the current fact-list into the
+file specified by &lt;file-name&gt;. External-address and fact-address fields
+are saved as strings. Instance-address fields are converted to
+instance-names. Optionally, the scope of facts to be saved can be
+specified. If &lt;save-scope&gt; is the symbol <strong>visible</strong>, then all facts
+visible to the current module are saved. If &lt;save-scope&gt; is the symbol
+<strong>local</strong>, then only those facts with deftemplates defined in the
+current module are saved. If &lt;save-scope&gt; is not specified, it defaults
+to <strong>local</strong>. If &lt;save-scope&gt; is specified, then one or more deftemplate
+names may also be specified. In this event, only those facts with
+associated with a corresponding deftemplate in the specified list will
+be saved. This function returns TRUE if the fact file was successfully
+saved, otherwise FALSE is returned.</p>
+<p>Syntax</p>
+<p>(save-facts &lt;file-name&gt; [&lt;save-scope&gt; &lt;deftemplate-names&gt;*])</p>
+<p>&lt;save-scope&gt; ::= visible | local</p>
+</div>
+<div class="section" id="setting-the-duplication-behavior-of-facts">
+<h3>13.4.4 Setting the Duplication Behavior of Facts<a class="headerlink" href="#setting-the-duplication-behavior-of-facts" title="Permalink to this headline">¶</a></h3>
+<p>This function sets fact duplication behavior. When this behavior is
+disabled (FALSE by default), asserting a duplicate of a fact already in
+the fact-list produces no effect. When enabled (TRUE), the duplicate
+fact is asserted with a new fact-index. The return value for this
+function is the old value for the behavior.</p>
+<p>Syntax</p>
+<p>(set-fact-duplication &lt;boolean-expression&gt;)</p>
+<p>Example</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (get-fact-duplication)</p>
+<p>FALSE</p>
+<p>CLIPS&gt; (watch facts)</p>
+<p>CLIPS&gt; (assert (a))</p>
+<p>==&gt; f-1 (a)</p>
+<p>&lt;Fact-1&gt;</p>
+<p>CLIPS&gt; (assert (a))</p>
+<p>FALSE</p>
+<p>CLIPS&gt; (set-fact-duplication TRUE)</p>
+<p>FALSE</p>
+<p>CLIPS&gt; (assert (a))</p>
+<p>==&gt; f-2 (a)</p>
+<p>&lt;Fact-2&gt;</p>
+<p>CLIPS&gt; (unwatch facts)</p>
+<p>CLIPS&gt; (set-fact-duplication FALSE)</p>
+<p>TRUE</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="getting-the-duplication-behavior-of-facts">
+<h3>13.4.5 Getting the Duplication Behavior of Facts<a class="headerlink" href="#getting-the-duplication-behavior-of-facts" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the fact duplication behavior
+(TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-fact-duplication)</p>
+</div>
+<div class="section" id="displaying-a-single-fact">
+<h3>13.4.6 Displaying a Single Fact<a class="headerlink" href="#displaying-a-single-fact" title="Permalink to this headline">¶</a></h3>
+<p>Displays a single fact, placing each slot and its value on a separate
+line. Optionally the logical name to which output is sent can be
+specified and slots containing their default values can be excluded from
+the output. If &lt;logical-name&gt; is <strong>t</strong> or unspecified, then output is
+sent to the logical name <strong>stdout</strong>, otherwise it is sent to the
+specified logical name. If &lt;ignore-defaults-flag&gt; is FALSE or
+unspecified, then all of the fact?s slots are displayed, otherwise slots
+with static defaults are only displayed if their current slot value
+differs from their initial default value.</p>
+<p>Syntax</p>
+<p>(ppfact &lt;fact-specifier&gt; [&lt;logical-name&gt; [&lt;ignore-defaults-flag&gt;]])</p>
+<p>Example</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt;</p>
+<p>(deftemplate foo</p>
+<p>(slot x (default 3))</p>
+<p>(slot y)</p>
+<p>(multislot z (default a b)))</p>
+<p>CLIPS&gt; (assert (foo))</p>
+<p>&lt;Fact-1&gt;</p>
+<p>CLIPS&gt; (ppfact 1 t)</p>
+<p>(foo</p>
+<p>(x 3)</p>
+<p>(y nil)</p>
+<p>(z a b))</p>
+<p>CLIPS&gt; (ppfact 1 t TRUE)</p>
+<p>(foo)</p>
+<p>CLIPS&gt; (modify 1 (y 2) (z c))</p>
+<p>&lt;Fact-2&gt;</p>
+<p>CLIPS&gt; (ppfact 2 t TRUE)</p>
+<p>(foo</p>
+<p>(y 2)</p>
+<p>(z c))</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="deffacts-commands">
+<h2>13.5 Deffacts Commands<a class="headerlink" href="#deffacts-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate deffacts.</p>
+<div class="section" id="displaying-the-text-of-a-deffacts">
+<h3>13.5.1 Displaying the Text of a Deffacts<a class="headerlink" href="#displaying-the-text-of-a-deffacts" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given deffacts. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdeffacts &lt;deffacts-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-deffacts">
+<h3>13.5.2 Displaying the List of Deffacts<a class="headerlink" href="#displaying-the-list-of-deffacts" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all deffacts stored in the CLIPS environment.</p>
+<p>Syntax</p>
+<p>(list-deffacts [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all deffacts in the
+current module are displayed. If &lt;module-name&gt; is specified, then the
+names of all deffacts in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all deffacts in all
+modules are displayed. This function has no return value.</p>
+</div>
+<div class="section" id="deleting-a-deffacts">
+<h3>13.5.3 Deleting a Deffacts<a class="headerlink" href="#deleting-a-deffacts" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined deffacts.</p>
+<p>Syntax</p>
+<p>(undeffacts &lt;deffacts-name&gt;)</p>
+<p>All facts listed in the deleted deffacts construct will no longer be
+asserted as part of a reset. If the symbol * is used for
+&lt;deffacts-name&gt;, then all deffacts will be deleted (unless there exists
+a deffacts named *). The <strong>undeffacts</strong> command can be used to remove
+deffacts at any time. Exceptions: When deffacts are being reset as part
+of the <strong>reset</strong> command, they cannot be removed. This function has no
+return value.</p>
+</div>
+</div>
+<div class="section" id="defrule-commands">
+<h2>13.6 Defrule Commands<a class="headerlink" href="#defrule-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate defrules.</p>
+<div class="section" id="displaying-the-text-of-a-rule">
+<h3>13.6.1 Displaying the Text of a Rule<a class="headerlink" href="#displaying-the-text-of-a-rule" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given rule.</p>
+<p>Syntax</p>
+<p>(ppdefrule &lt;rule-name&gt;)</p>
+<p>The <strong>pprule</strong> command can also be used for this purpose. This function
+has no return value.</p>
+</div>
+<div class="section" id="displaying-the-list-of-rules">
+<h3>13.6.2 Displaying the List of Rules<a class="headerlink" href="#displaying-the-list-of-rules" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all rules stored in the CLIPS environment.</p>
+<p>Syntax</p>
+<p>(list-defrules [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all defrules in the
+current module are displayed. If &lt;module-name&gt; is specified, then the
+names of all defrules in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all defrules in all
+modules are displayed. This function has no return value.</p>
+</div>
+<div class="section" id="deleting-a-defrule">
+<h3>13.6.3 Deleting a Defrule<a class="headerlink" href="#deleting-a-defrule" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined defrule.</p>
+<p>Syntax</p>
+<p>(undefrule &lt;defrule-name&gt;)</p>
+<p>If the defrule is in use (for example if it is firing), then the
+deletion will fail. If the symbol * is used for &lt;defrule-name&gt;, then
+all defrule will be deleted (unless there is a defrule named *). This
+function has no return value.</p>
+</div>
+<div class="section" id="displaying-matches-for-a-rule">
+<h3>13.6.4 Displaying Matches for a Rule<a class="headerlink" href="#displaying-matches-for-a-rule" title="Permalink to this headline">¶</a></h3>
+<p>For a specified rule, displays the list of the facts or instances which
+match each pattern in the rule?s LHS, the partial matches for the rule,
+and the activations for the rule. When listed as a partial match, the
+<em>not</em>, <em>exists</em>, and <em>forall</em> CEs are shown as an asterisk. Other CEs
+contained within these CEs are not displayed as part of the information
+shown for a partial match. This function returns FALSE if the specified
+rule does not exist or the function is passed invalid arguments,
+otherwise a multifield value is returned containing three values: the
+combined sum of the matches for each pattern, the combined sum of
+partial matches, and the number of activations.</p>
+<p>Syntax</p>
+<p>(matches &lt;rule-name&gt; [&lt;verbosity&gt;])</p>
+<p>where &lt;verbosity&gt; is either verbose, succinct, or terse. If &lt;verbosity&gt;
+is not specified or &lt;verbosity&gt; is verbose, then output will include
+details for each match, partial match, and activation. If &lt;verbosity&gt; is
+succinct, then output will just include the total number of matches,
+partial matches, and activations. If &lt;verbosity&gt; is terse, no output
+will be displayed.</p>
+<p>Example</p>
+<p>The rule <em>matches-example-1</em> has three patterns and none are added by
+CLIPS. Fact f-1 matches the first pattern, facts f-2 and f-3 match the
+the second pattern, and fact f-4 matches the third pattern. Issuing the
+run command will remove all of the rule?s activations from the agenda.</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt;</p>
+<p>(defrule matches-example-1</p>
+<p>(a ?)</p>
+<p>(b ?)</p>
+<p>(c ?)</p>
+<p>=&gt;)</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt; (assert (a 1) (b 1) (b 2) (c 1))</p>
+<p>&lt;Fact-4&gt;</p>
+<p>CLIPS&gt; (facts)</p>
+<p>f-0 (initial-fact)</p>
+<p>f-1 (a 1)</p>
+<p>f-2 (b 1)</p>
+<p>f-3 (b 2)</p>
+<p>f-4 (c 1)</p>
+<p>For a total of 5 facts.</p>
+<p>CLIPS&gt; (run)</p>
+<p>CLIPS&gt;</p>
+<p>The rule <em>matches-example-2</em> has three patterns. There are no matches
+for the first pattern (since there are no <em>d</em> facts), facts f-2 and f-3
+match the third pattern, and fact f-4 matches the forth pattern.</p>
+<p>CLIPS&gt;</p>
+<p>(defrule matches-example-2</p>
+<p>(not (d ?))</p>
+<p>(exists (b ?x)</p>
+<p>(c ?x))</p>
+<p>=&gt;)</p>
+<p>CLIPS&gt;</p>
+<p>Listing the matches for the rule <em>matches-example-1</em> displays the
+matches for the patterns indicated previously. There are two partial
+matches which satisfy the first two patterns and two partial matches
+which satisfy all three patterns. Since all of the rule?s activations
+were allowed to fire there are none listed.</p>
+<p>CLIPS&gt; (matches matches-example-1)</p>
+<p>Matches for Pattern 1</p>
+<p>f-1</p>
+<p>Matches for Pattern 2</p>
+<p>f-2</p>
+<p>f-3</p>
+<p>Matches for Pattern 3</p>
+<p>f-4</p>
+<p>Partial matches for CEs 1 - 2</p>
+<p>f-1,f-3</p>
+<p>f-1,f-2</p>
+<p>Partial matches for CEs 1 - 3</p>
+<p>f-1,f-2,f-4</p>
+<p>f-1,f-3,f-4</p>
+<p>Activations</p>
+<p>None</p>
+<p>(4 4 0)</p>
+<p>CLIPS&gt;</p>
+<p>Listing the matches for the rule <em>matches-example-2</em> displays the
+matches for the patterns indicated previously. There is one partial
+match which satisfies the first two CEs (the <em>not</em> pattern and the
+<em>exists</em> CE). The * indicates an existential match that is not
+associated with specific facts/instances (e.g. the <em>not</em> CE is satisfied
+because there are no <em>d</em> facts matching the pattern so * is used to
+indicate a match as there?s no specific fact matching that pattern).
+Since none of the rule?s activations were allowed to fire they are
+listed. The list of activations will always be a subset of the partial
+matches for all of the rule?s CEs.</p>
+<p>CLIPS&gt; (matches matches-example-2)</p>
+<p>Matches for Pattern 1</p>
+<p>None</p>
+<p>Matches for Pattern 2</p>
+<p>f-2</p>
+<p>f-3</p>
+<p>Matches for Pattern 3</p>
+<p>f-4</p>
+<p>Partial matches for CEs 1 - 2</p>
+<p>*,f-2</p>
+<p>*,f-3</p>
+<p>Partial matches for CEs 1 - 3</p>
+<p>*,f-2,f-4</p>
+<p>Partial matches for CEs 1 (P1) , 2 (P2 - P3)</p>
+<p>*,*</p>
+<p>Activations</p>
+<p>*,*</p>
+<p>(3 4 1)</p>
+<p>CLIPS&gt;</p>
+<p>If you just want a summary of the partial matches, specify succinct or
+terse as the second argument to the function.</p>
+<p>CLIPS&gt; (matches matches-example-2 succinct)</p>
+<p>Pattern 1: 0</p>
+<p>Pattern 2: 2</p>
+<p>Pattern 3: 1</p>
+<p>CEs 1 - 2: 2</p>
+<p>CEs 1 - 3: 1</p>
+<p>CEs 1 (P1) , 2 (P2 - P3): 1</p>
+<p>Activations: 1</p>
+<p>(3 4 1)</p>
+<p>CLIPS&gt; (matches matches-example-2 terse)</p>
+<p>(3 4 1)</p>
+<p>CLIPS&gt;</p>
+<blockquote>
+<div>13.6.5 Setting a Breakpoint for a Rule</div></blockquote>
+<hr class="docutils" />
+<p>Sets a breakpoint for a given rule.</p>
+<p>Syntax</p>
+<p>(set-break &lt;rule-name&gt;)</p>
+<p>If a breakpoint is set for a given rule, execution will stop prior to
+executing that rule. At least one rule must fire before a break?point
+will stop execution. This function has no return value.</p>
+</div>
+<div class="section" id="removing-a-breakpoint-for-a-rule">
+<h3>13.6.6 Removing a Breakpoint for a Rule<a class="headerlink" href="#removing-a-breakpoint-for-a-rule" title="Permalink to this headline">¶</a></h3>
+<p>Removes a breakpoint for a given rule.</p>
+<p>Syntax</p>
+<p>(remove-break [&lt;defrule-name&gt;])</p>
+<p>If no argument is given, then all breakpoints are removed. This function
+has no return value.</p>
+</div>
+<div class="section" id="displaying-rule-breakpoints">
+<h3>13.6.7 Displaying Rule Breakpoints<a class="headerlink" href="#displaying-rule-breakpoints" title="Permalink to this headline">¶</a></h3>
+<p>This command displays all the rules which have breakpoints set. This
+function has no return value.</p>
+<p>Syntax</p>
+<p>(show-breaks [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all rules having
+breakpoints in the current module are displayed. If &lt;module-name&gt; is
+specified, then the names of all rules having breakpoints in the
+specified module are displayed. If &lt;module-name&gt; is the symbol *, then
+the names of all rules having breakpoints in all modules are displayed.</p>
+</div>
+<div class="section" id="refreshing-a-rule">
+<h3>13.6.8 Refreshing a Rule<a class="headerlink" href="#refreshing-a-rule" title="Permalink to this headline">¶</a></h3>
+<p>Places all current activations of a given rule on the agenda. This
+function has no return value.</p>
+<p>Syntax</p>
+<p>(refresh &lt;rule-name&gt;)</p>
+</div>
+<div class="section" id="setting-the-incremental-reset-behavior">
+<h3>13.6.9 Setting the Incremental Reset Behavior<a class="headerlink" href="#setting-the-incremental-reset-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function sets the incremental reset behavior. When this behavior is
+enabled (TRUE by default), newly defined rules are updated based upon
+the current state of the fact-list. When disabled (FALSE), newly defined
+rules are only updated by facts added after the rule is defined. In
+order to prevent rules from obtaining an inconsistent state, the
+incremental reset behavior can only be changed when there are no rules
+currently defined. The return value for this function is the old value
+for the behavior.</p>
+<p>Syntax</p>
+<p>(set-incremental-reset &lt;boolean-expression&gt;)</p>
+</div>
+<div class="section" id="getting-the-incremental-reset-behavior">
+<h3>13.6.10 Getting the Incremental Reset Behavior<a class="headerlink" href="#getting-the-incremental-reset-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the incremental reset
+behavior (TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-incremental-reset)</p>
+</div>
+<div class="section" id="determining-the-logical-dependencies-of-a-pattern-entity">
+<h3>13.6.11 Determining the Logical Dependencies of a Pattern Entity<a class="headerlink" href="#determining-the-logical-dependencies-of-a-pattern-entity" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>dependencies</strong> function lists the partial matches from which a
+pattern entity receives logical support. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(dependencies &lt;fact-or-instance-specifier&gt;)</p>
+<p>The term &lt;fact-or-instance-specifier&gt; includes variables bound on the
+LHS to fact-addresses or instance-addresses as described in section
+5.4.1.8, the fact-index of the desired fact (e.g. 3 for the fact labeled
+f-3), or the instance-name (e.g. [object]).</p>
+<p>Example</p>
+<div class="line-block">
+<div class="line">(defrule list-dependencies</div>
+<div class="line">?f &lt;- (factoid $?)</div>
+<div class="line">=&gt;</div>
+<div class="line">(dependencies ?f))</div>
+</div>
+</div>
+<div class="section" id="determining-the-logical-dependents-of-a-pattern-entity">
+<h3>13.6.12 Determining the Logical Dependents of a Pattern Entity<a class="headerlink" href="#determining-the-logical-dependents-of-a-pattern-entity" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>dependents</strong> function lists all pattern entities which receive
+logical support from a pattern entity. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(dependents &lt;fact-or-instance-specifier&gt;)</p>
+<p>The term &lt;fact-or-instance-specifier&gt; includes variables bound on the
+LHS to fact-addresses or instance-addresses as described in section
+5.4.1.8, the fact-index of the desired fact (e.g. 3 for the fact labeled
+f-3), or the instance-name (e.g. [object]).</p>
+<p>Example</p>
+<div class="line-block">
+<div class="line">(defrule list-dependents</div>
+<div class="line">?f &lt;- (factoid $?)</div>
+<div class="line">=&gt;</div>
+<div class="line">(dependents ?f))</div>
+</div>
+</div>
+</div>
+<div class="section" id="agenda-commands">
+<h2>13.7 Agenda Commands<a class="headerlink" href="#agenda-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate agenda.</p>
+<div class="section" id="displaying-the-agenda">
+<h3>13.7.1 Displaying the Agenda<a class="headerlink" href="#displaying-the-agenda" title="Permalink to this headline">¶</a></h3>
+<p>Displays all activations on the agenda. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(agenda [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then all activations in the current
+module (not the current focus) are displayed. If &lt;module-name&gt; is
+specified, then all activations on the agenda of the specified module
+are displayed. If &lt;module-name&gt; is the symbol *, then the activations
+on all agendas in all modules are displayed.</p>
+</div>
+<div class="section" id="running-clips">
+<h3>13.7.2 Running CLIPS<a class="headerlink" href="#running-clips" title="Permalink to this headline">¶</a></h3>
+<p>Starts execution of the rules. If the optional first argument is
+positive, execu?tion will cease after the specified number of rule
+firings or when the agenda con?tains no rule activations. If there are
+no arguments or the first argument is a negative integer, execution will
+cease when the agenda contains no rule activations. If the focus stack
+is empty, then the MAIN module is automatically becomes the current
+focus. The <strong>run</strong> command has no additional effect if evaluated while
+rules are executing. Note that the number of rules fired and timing
+information is no longer printed after the completion of the run command
+unless the statistics item is being watched (see section 13.2). If the
+rules item is being watched, then an informational message will be
+printed each time a rule is fired. This function has no return value.</p>
+<p>Syntax</p>
+<p>(run [&lt;integer-expression&gt;])</p>
+</div>
+<div class="section" id="focusing-on-a-group-of-rules">
+<h3>13.7.3 Focusing on a Group of Rules<a class="headerlink" href="#focusing-on-a-group-of-rules" title="Permalink to this headline">¶</a></h3>
+<p>Pushes one or more modules onto the focus stack. The specified modules
+are pushed onto the focus stack in the reverse order they are listed.
+The current module is set to the last module pushed onto the focus
+stack. The current focus is the top module of the focus stack. Thus
+(focus A B C) pushes C, then B, then A unto the focus stack so that A is
+now the current focus. Note that the current focus is different from the
+current module. Focusing on a module implies ?remembering? the current
+module so that it can be returned to later. Setting the current module
+with the <strong>set-current-module</strong> function changes it without remembering
+the old module. Before a rule executes, the current module is changed to
+the module in which the executing rule is defined (the current focus).
+This function returns a boolean value: FALSE if an error occurs,
+otherwise TRUE.</p>
+<p>Syntax</p>
+<p>(focus &lt;module-name&gt;+)</p>
+</div>
+<div class="section" id="stopping-rule-execution">
+<h3>13.7.4 Stopping Rule Execution<a class="headerlink" href="#stopping-rule-execution" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>halt</strong> function may be used on the RHS of a rule to prevent
+further rule firing. It is called without arguments. After <strong>halt</strong> is
+called, control is returned from the <strong>run</strong> command. The agenda is left
+intact, and execution may be continued with a <strong>run</strong> command. This
+function has no return value.</p>
+<p>Syntax</p>
+<p>(halt)</p>
+</div>
+<div class="section" id="setting-the-current-conflict-resolution-strategy">
+<h3>13.7.5 Setting The Current Conflict Resolution Strategy<a class="headerlink" href="#setting-the-current-conflict-resolution-strategy" title="Permalink to this headline">¶</a></h3>
+<p>This function sets the current conflict resolution strategy. The default
+strategy is depth.</p>
+<p>Syntax</p>
+<p>(set-strategy &lt;strategy&gt;)</p>
+<p>where &lt;strategy&gt; is either depth, breadth, simplicity, complexity, lex,
+mea, or random. The old conflict resolution strategy is returned. The
+agenda will be reordered to reflect the new conflict resolution
+strategy.</p>
+</div>
+<div class="section" id="getting-the-current-conflict-resolution-strategy">
+<h3>13.7.6 Getting The Current Conflict Resolution Strategy<a class="headerlink" href="#getting-the-current-conflict-resolution-strategy" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current conflict resolution strategy (depth,
+breadth, simplicity, complexity, lex, mea, or random).</p>
+<p>Syntax</p>
+<p>(get-strategy)</p>
+</div>
+<div class="section" id="listing-the-module-names-on-the-focus-stack">
+<h3>13.7.7 Listing the Module Names on the Focus Stack<a class="headerlink" href="#listing-the-module-names-on-the-focus-stack" title="Permalink to this headline">¶</a></h3>
+<p>The command <strong>list-focus-stack</strong> list all module names on the focus
+stack. The first name listed is the current focus.</p>
+<p>Syntax</p>
+<p>(list-focus-stack)</p>
+</div>
+<div class="section" id="removing-all-module-names-from-the-focus-stack">
+<h3>13.7.8 Removing all Module Names from the Focus Stack<a class="headerlink" href="#removing-all-module-names-from-the-focus-stack" title="Permalink to this headline">¶</a></h3>
+<p>The command <strong>clear-focus-stack</strong> removes all module names from the
+focus stack.</p>
+<p>Syntax</p>
+<p>(clear-focus-stack)</p>
+</div>
+<div class="section" id="setting-the-salience-evaluation-behavior">
+<h3>13.7.9 Setting the Salience Evaluation Behavior<a class="headerlink" href="#setting-the-salience-evaluation-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function sets the salience evaluation behavior. By default,
+salience values are only evaluated when a rule is defined.</p>
+<p>Syntax</p>
+<p>(set-salience-evaluation &lt;value&gt;)</p>
+<p>where &lt;value&gt; is either when-defined, when-activated, or every-cycle.
+The return value for this function is the old value for salience
+evaluation. The value when-defined forces salience evaluation at the
+time of rule definition. The value when-activation forces salience
+evaluation at the time of rule definition and upon being activated. The
+value every-cycle forces evaluation at the time of rule definition, upon
+being activated, and after every rule firing.</p>
+</div>
+<div class="section" id="getting-the-salience-evaluation-behavior">
+<h3>13.7.10 Getting the Salience Evaluation Behavior<a class="headerlink" href="#getting-the-salience-evaluation-behavior" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current salience evaluation behavior
+(when-defined, when-activated, or every-cycle).</p>
+<p>Syntax</p>
+<p>(get-salience-evaluation)</p>
+</div>
+<div class="section" id="refreshing-the-salience-value-of-rules-on-the-agenda">
+<h3>13.7.11 Refreshing the Salience Value of Rules on the Agenda<a class="headerlink" href="#refreshing-the-salience-value-of-rules-on-the-agenda" title="Permalink to this headline">¶</a></h3>
+<p>This function forces reevaluation of saliences of rules on the agenda
+regardless of the current salience evaluation setting. This function has
+no return value.</p>
+<p>Syntax</p>
+<p>(refresh-agenda [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the agenda in the current module
+is refreshed. If &lt;module-name&gt; is specified, then the agenda in the
+specified module is refreshed. If &lt;module-name&gt; is the symbol *, then
+the agenda in every module is refreshed.</p>
+</div>
+</div>
+<div class="section" id="defglobal-commands">
+<h2>13.8 Defglobal Commands<a class="headerlink" href="#defglobal-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate defglobals.</p>
+<div class="section" id="displaying-the-text-of-a-defglobal">
+<h3>13.8.1 Displaying the Text of a Defglobal<a class="headerlink" href="#displaying-the-text-of-a-defglobal" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text required to define a given global variable. Note that
+unlike other constructs such as deffacts and definstances, defglobal
+definitions have no name associated with the entire construct. The
+variable name passed to ppdefglobal should not include the question mark
+or the asterisks (e.g. x is the variable name for the global variable
+?*x*). This function has no return value.</p>
+<p>Syntax</p>
+<p>(ppdefglobal &lt;global-variable-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-defglobals">
+<h3>13.8.2 Displaying the List of Defglobals<a class="headerlink" href="#displaying-the-list-of-defglobals" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all defglobals. This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-defglobals [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all defglobals in the
+current module are displayed. If &lt;module-name&gt; is specified, then the
+names of all defglobals in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all defglobals in all
+modules are displayed.</p>
+</div>
+<div class="section" id="deleting-a-defglobal">
+<h3>13.8.3 Deleting a Defglobal<a class="headerlink" href="#deleting-a-defglobal" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined defglobal.</p>
+<p>Syntax</p>
+<p>(undefglobal &lt;defglobal-name&gt;)</p>
+<p>If the defglobal is in use (for example if it is referred to in a
+deffunction), then the deletion will fail. Otherwise, no further uses of
+the deleted defglobal are permitted (unless redefined). If the symbol *
+is used for &lt;defglobal-name&gt;, then all defglobals will be deleted
+(unless there is a defglobal named *). This function has no return
+value.</p>
+</div>
+<div class="section" id="displaying-the-values-of-global-variables">
+<h3>13.8.4 Displaying the Values of Global Variables<a class="headerlink" href="#displaying-the-values-of-global-variables" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names and current values of all defglobals. This function
+has no return value.</p>
+<p>Syntax</p>
+<p>(show-defglobals [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names and values of all
+defglobals in the current module are displayed. If &lt;module-name&gt; is
+specified, then the names and values of all defglobals in the specified
+module are displayed. If &lt;module-name&gt; is the symbol *, then the names
+and values of all defglobals in all modules are displayed.</p>
+</div>
+<div class="section" id="setting-the-reset-behavior-of-global-variables">
+<h3>13.8.5 Setting the Reset Behavior of Global Variables<a class="headerlink" href="#setting-the-reset-behavior-of-global-variables" title="Permalink to this headline">¶</a></h3>
+<p>This function sets the reset global variables behavior. When this
+behavior is enabled (TRUE by default) global variables are reset to
+their original values when the <strong>reset</strong> command is performed. The
+return value for this function is the old value for the behavior.</p>
+<p>Syntax</p>
+<p>(set-reset-globals &lt;boolean-expression&gt;)</p>
+</div>
+<div class="section" id="getting-the-reset-behavior-of-global-variables">
+<h3>13.8.6 Getting the Reset Behavior of Global Variables<a class="headerlink" href="#getting-the-reset-behavior-of-global-variables" title="Permalink to this headline">¶</a></h3>
+<p>This function returns the current value of the reset global variables
+behavior (TRUE or FALSE).</p>
+<p>Syntax</p>
+<p>(get-reset-globals)</p>
+</div>
+</div>
+<div class="section" id="deffunction-commands">
+<h2>13.9 Deffunction Commands<a class="headerlink" href="#deffunction-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate deffunctions.</p>
+<div class="section" id="displaying-the-text-of-a-deffunction">
+<h3>13.9.1 Displaying the Text of a Deffunction<a class="headerlink" href="#displaying-the-text-of-a-deffunction" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given deffunction. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdeffunction &lt;deffunction-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-deffunctions">
+<h3>13.9.2 Displaying the List of Deffunctions<a class="headerlink" href="#displaying-the-list-of-deffunctions" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all deffunctions stored in the CLIPS environment.
+This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-deffunctions)</p>
+</div>
+<div class="section" id="deleting-a-deffunction">
+<h3>13.9.3 Deleting a Deffunction<a class="headerlink" href="#deleting-a-deffunction" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined deffunction.</p>
+<p>Syntax</p>
+<p>(undeffunction &lt;deffunction-name&gt;)</p>
+<p>If the symbol * is used for &lt;deffunction-name&gt;, then all deffunctions
+will be deleted (unless there exists a deffunction called *). The
+undeffunction command can be used to remove deffunctions at any time.
+Exceptions: A deffunction may not be deleted when it is executing or
+when there is still a reference to it in another loaded construct, such
+as a rule RHS. This function has no return value.</p>
+</div>
+</div>
+<div class="section" id="generic-function-commands">
+<h2>13.10 Generic Function Commands<a class="headerlink" href="#generic-function-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate generic functions.</p>
+<div class="section" id="displaying-the-text-of-a-generic-function-header">
+<h3>13.10.1 Displaying the Text of a Generic Function Header<a class="headerlink" href="#displaying-the-text-of-a-generic-function-header" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given generic function header. This function has
+no return value.</p>
+<p>Syntax</p>
+<p>(ppdefgeneric &lt;generic-function-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-text-of-a-generic-function-method">
+<h3>13.10.2 Displaying the Text of a Generic Function Method<a class="headerlink" href="#displaying-the-text-of-a-generic-function-method" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given method.</p>
+<p>Syntax</p>
+<p>(ppdefmethod &lt;generic-function-name&gt; &lt;index&gt;)</p>
+<p>where &lt;index&gt; is the method index (see section 8.4.2). This function has
+no return value.</p>
+</div>
+<div class="section" id="displaying-the-list-of-generic-functions">
+<h3>13.10.3 Displaying the List of Generic Functions<a class="headerlink" href="#displaying-the-list-of-generic-functions" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all generic functions stored in the CLIPS
+environment.</p>
+<p>Syntax</p>
+<p>(list-defgenerics [&lt;module-name&gt;])</p>
+<p>If &lt;module-name&gt; is unspecified, then the names of all defgenerics in
+the current module are displayed. If &lt;module-name&gt; is specified, then
+the names of all defgenerics in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all defgenerics in all
+modules are displayed. This function has no return value.</p>
+</div>
+<div class="section" id="displaying-the-list-of-methods-for-a-generic-function">
+<h3>13.10.4 Displaying the List of Methods for a Generic Function<a class="headerlink" href="#displaying-the-list-of-methods-for-a-generic-function" title="Permalink to this headline">¶</a></h3>
+<p>If no name is given, this function lists all generic function methods in
+the CLIPS environment. If a name is given, then only the methods for the
+named generic function are listed. The methods are listed in decreasing
+order of precedence (see section 8.5.2) for each generic function.
+Method indices can be seen using this function. This function has no
+return value.</p>
+<p>Syntax</p>
+<p>(list-defmethods [&lt;generic-function-name&gt;])</p>
+</div>
+<div class="section" id="deleting-a-generic-function">
+<h3>13.10.5 Deleting a Generic Function<a class="headerlink" href="#deleting-a-generic-function" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined generic function.</p>
+<p>Syntax</p>
+<p>(undefgeneric &lt;generic-function-name&gt;)</p>
+<p>If the symbol * is used for &lt;generic-function-name&gt;, then all generic
+functions will be deleted (unless there exists a generic function called
+*). This function removes the header and all methods for a generic
+function. The undefgeneric command can be used to remove generic
+functions at any time. Exceptions: A generic function may not be deleted
+when any of its methods are executing or when there is still a reference
+to it in another loaded construct, such as a rule RHS. This function has
+no return value.</p>
+</div>
+<div class="section" id="deleting-a-generic-function-method">
+<h3>13.10.6 Deleting a Generic Function Method<a class="headerlink" href="#deleting-a-generic-function-method" title="Permalink to this headline">¶</a></h3>
+<p>This function deletes a previously defined generic function method.</p>
+<p>Syntax</p>
+<p>(undefmethod &lt;generic-function-name&gt; &lt;index&gt;)</p>
+<p>where &lt;index&gt; is the index of the method to be deleted for the generic
+function. If the symbol * is used for &lt;index&gt;, then all the methods for
+the generic function will be deleted. (This is different from the
+undefgeneric command because the header is not removed.) If * is used
+for &lt;generic-function-name&gt;, then * must also be specified for &lt;index&gt;,
+and all the methods for all generic functions will be removed. This
+function removes the specified method for a generic function, but even
+if the method removed is the last one, the generic function header is
+not removed. The undefmethod command can be used to remove methods at
+any time. Exceptions: A method may not be deleted when it or any of the
+other methods for the same generic function are executing. This function
+has no return value.</p>
+</div>
+<div class="section" id="previewing-a-generic-function-call">
+<h3>13.10.7 Previewing a Generic Function Call<a class="headerlink" href="#previewing-a-generic-function-call" title="Permalink to this headline">¶</a></h3>
+<p>This debugging function lists all <em>applicable</em> methods for a particular
+generic function call in order of decreasing precedence (see section
+8.5.2). The function <strong>list-defmethods</strong> is different in that it lists
+<em>all</em> methods for a generic function.</p>
+<p>Syntax</p>
+<p>(preview-generic &lt;generic-function-name&gt; &lt;expression&gt;*)</p>
+<p>This function does not actually execute any of the methods, but any
+side-effects of evaluating the generic function arguments and any query
+parameter restrictions (see section 8.4.3) in methods do occur. The
+output for the first example in section 8.5.2 would be as follows:</p>
+<p>Example</p>
+<p>CLIPS&gt; (preview-generic + 4 5)</p>
+<ul class="simple">
+<li>#7 (INTEGER &lt;qry&gt;) (INTEGER &lt;qry&gt;)</li>
+<li>#8 (INTEGER &lt;qry&gt;) (NUMBER)</li>
+<li>#3 (INTEGER) (INTEGER)</li>
+<li>#4 (INTEGER) (NUMBER)</li>
+<li>#6 (NUMBER) (INTEGER &lt;qry&gt;)</li>
+<li>#2 (NUMBER) (INTEGER)</li>
+<li>#SYS1 (NUMBER) (NUMBER) ($? NUMBER)</li>
+<li>#5 (NUMBER) (NUMBER) ($? PRIMITIVE)</li>
+</ul>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="clips-object-oriented-language-cool-commands">
+<h2>13.11 CLIPS Object-Oriented Language (COOL) Commands<a class="headerlink" href="#clips-object-oriented-language-cool-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate elements of COOL.</p>
+<div class="section" id="class-commands">
+<h3>13.11.1 Class Commands<a class="headerlink" href="#class-commands" title="Permalink to this headline">¶</a></h3>
+<p>The following commands manipulate defclasses.</p>
+<div class="section" id="displaying-the-text-of-a-defclass">
+<h4>13.11.1.1 Displaying the Text of a Defclass<a class="headerlink" href="#displaying-the-text-of-a-defclass" title="Permalink to this headline">¶</a></h4>
+<p>Displays the text of a given defclass. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdefclass &lt;class-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-defclasses">
+<h4>13.11.1.2 Displaying the List of Defclasses<a class="headerlink" href="#displaying-the-list-of-defclasses" title="Permalink to this headline">¶</a></h4>
+<p>Displays the names of all defclasses stored in the CLIPS environment. If
+&lt;module-name&gt; is unspecified, then the names of all defclasses in the
+current module are displayed. If &lt;module-name&gt; is specified, then the
+names of all defclasses in the specified module are displayed. If
+&lt;module-name&gt; is the symbol *, then the names of all defclasses in all
+modules are displayed. This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-defclasses [&lt;module-name&gt;])</p>
+</div>
+<div class="section" id="deleting-a-defclass">
+<h4>13.11.1.3 Deleting a Defclass<a class="headerlink" href="#deleting-a-defclass" title="Permalink to this headline">¶</a></h4>
+<p>This function deletes a previously defined defclass and all its
+subclasses from the CLIPS environment.</p>
+<p>Syntax</p>
+<p>(undefclass &lt;class-name&gt;)</p>
+<p>If the symbol * is used for &lt;class-name&gt;, then all defclasses will be
+deleted (unless there exists a defclass called *). The undefclass
+command can be used to remove defclasses at any time. Exceptions: A
+defclass may not be deleted if it has any instances or if there is still
+a reference to it in another loaded construct, such as a generic
+function method. This function has no return value.</p>
+</div>
+<div class="section" id="examining-a-class">
+<h4>13.11.1.4 Examining a Class<a class="headerlink" href="#examining-a-class" title="Permalink to this headline">¶</a></h4>
+<p>This function provides a verbose description of a class including:
+abstract role (whether direct instances can be created or not), direct
+superclasses and subclasses, class precedence list, slots with all their
+facets and sources, and all recognized message-handlers. This function
+has no return value.</p>
+<p>Syntax</p>
+<p>(describe-class &lt;class-name&gt;)</p>
+<p>Example</p>
+<p>CLIPS&gt;</p>
+<p>(defclass CHILD (is-a USER)</p>
+<p>(role abstract)</p>
+<p>(multislot parents (cardinality 2 2))</p>
+<p>(slot age (type INTEGER)</p>
+<p>(range 0 18))</p>
+<p>(slot sex (access read-only)</p>
+<p>(type SYMBOL)</p>
+<p>(allowed-symbols male female)</p>
+<p>(storage shared)))</p>
+<p>CLIPS&gt;</p>
+<p>(defclass BOY (is-a CHILD)</p>
+<p>(slot sex (source composite)</p>
+<p>(default male)))</p>
+<p>CLIPS&gt;</p>
+<p>(defmessage-handler BOY play ()</p>
+<p>(printout t “The boy is now playing…” crlf))</p>
+<p>CLIPS&gt; (describe-class CHILD)</p>
+<hr class="docutils" />
+<p>********************************************************************************</p>
+<p>Abstract: direct instances of this class cannot be created.</p>
+<p>Direct Superclasses: USER</p>
+<p>Inheritance Precedence: CHILD USER OBJECT</p>
+<p>Direct Subclasses: BOY</p>
+<hr class="docutils" />
+<p>SLOTS : FLD DEF PRP ACC STO MCH SRC VIS CRT OVRD-MSG SOURCE(S)</p>
+<p>parents : MLT STC INH RW LCL RCT EXC PRV RW put-parents CHILD</p>
+<p>age : SGL STC INH RW LCL RCT EXC PRV RW put-age CHILD</p>
+<p>sex : SGL STC INH R SHR RCT EXC PRV R NIL CHILD</p>
+<p>Constraint information for slots:</p>
+<p>SLOTS : SYM STR INN INA EXA FTA INT FLT</p>
+<p>parents : + + + + + + + + RNG:[-oo..+oo] CRD:[2..2]</p>
+<p>age : + RNG:[0..18]</p>
+<p>sex : #</p>
+<hr class="docutils" />
+<p>Recognized message-handlers:</p>
+<p>init primary in class USER</p>
+<p>delete primary in class USER</p>
+<p>create primary in class USER</p>
+<p>print primary in class USER</p>
+<p>direct-modify primary in class USER</p>
+<p>message-modify primary in class USER</p>
+<p>direct-duplicate primary in class USER</p>
+<p>message-duplicate primary in class USER</p>
+<p>get-parents primary in class CHILD</p>
+<p>put-parents primary in class CHILD</p>
+<p>get-age primary in class CHILD</p>
+<p>put-age primary in class CHILD</p>
+<p>get-sex primary in class CHILD</p>
+<p>********************************************************************************</p>
+<hr class="docutils" />
+<p>CLIPS&gt;</p>
+<p>The following table explains the fields and their possible values in the
+slot descriptions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="18%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Field</strong></th>
+<th class="head"><strong>Values</strong></th>
+<th class="head"><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>FLD</td>
+<td>SGL/MLT</td>
+<td>Field type (single-field or multifield)</td>
+</tr>
+<tr class="row-odd"><td>DEF</td>
+<td>STC/DYN/NIL</td>
+<td>Default value (static, dynamic, or none)</td>
+</tr>
+<tr class="row-even"><td>PRP</td>
+<td>INH/NIL</td>
+<td>Propagation to subclasses (inheritable or not inheritable)</td>
+</tr>
+<tr class="row-odd"><td>ACC</td>
+<td>RW/R/INT</td>
+<td>Access (read-write, read-only, or initialize-only)</td>
+</tr>
+<tr class="row-even"><td>STO</td>
+<td>LCL/SHR</td>
+<td>Storage (local or shared)</td>
+</tr>
+<tr class="row-odd"><td>MCH</td>
+<td>RCT/NIL</td>
+<td>Pattern-match (reactive or non-reactive)</td>
+</tr>
+<tr class="row-even"><td>SRC</td>
+<td>CMP/EXC</td>
+<td>Source type (composite or exclusive)</td>
+</tr>
+<tr class="row-odd"><td>VIS</td>
+<td>PUB/PRV</td>
+<td>Visibility (public or private)</td>
+</tr>
+<tr class="row-even"><td>CRT</td>
+<td>R/W/RW/NIL</td>
+<td>Automatically created accessors (read, write, read-write, or none)</td>
+</tr>
+<tr class="row-odd"><td>OVRD-MSG</td>
+<td>&lt;message-name&gt;</td>
+<td>Name of message sent for slot-overrides in make-instance, etc.</td>
+</tr>
+<tr class="row-even"><td>SOURCE(S)</td>
+<td>&lt;class-name&gt;+</td>
+<td>Source of slot (more than one class for composite)</td>
+</tr>
+</tbody>
+</table>
+<p>In the constraint information summary for the slots, each of the columns
+shows one of the primitive data types . A <em>+</em> in the column means that
+any value of that type is allowed in the slot. A <em>#</em> in the column means
+that some values of that type are allowed in the slot. Range and
+cardinality constraints are displayed to the far right of each slot’s
+row. The following table explains the abbreviations used in the
+constraint information summary for the slots:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Abbreviation</strong></th>
+<th class="head"><strong>Explanation</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SYM</td>
+<td>Symbol</td>
+</tr>
+<tr class="row-odd"><td>STR</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>INN</td>
+<td>Instance Name</td>
+</tr>
+<tr class="row-odd"><td>INA</td>
+<td>Instance Address</td>
+</tr>
+<tr class="row-even"><td>EXA</td>
+<td>External Address</td>
+</tr>
+<tr class="row-odd"><td>FTA</td>
+<td>Fact Address</td>
+</tr>
+<tr class="row-even"><td>INT</td>
+<td>Integer</td>
+</tr>
+<tr class="row-odd"><td>FLT</td>
+<td>Float</td>
+</tr>
+<tr class="row-even"><td>RNG</td>
+<td>Range</td>
+</tr>
+<tr class="row-odd"><td>CRD</td>
+<td>Cardinality</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examining-the-class-hierarchy">
+<h4>13.11.1.5 Examining the Class Hierarchy<a class="headerlink" href="#examining-the-class-hierarchy" title="Permalink to this headline">¶</a></h4>
+<p>This function provides a rudimentary display of the inheritance
+relationships between a class and all its subclasses. Indentation
+indicates a subclass. Because of multiple inheritance, some classes may
+appear more than once. Asterisks mark classes which are direct
+subclasses of more than one class. With no arguments, this function
+starts with the root class OBJECT. This function has no return value.</p>
+<p>Syntax</p>
+<p>(browse-classes [&lt;class-name&gt;])</p>
+<p>Example</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (defclass B (is-a USER))</p>
+<p>CLIPS&gt; (defclass C (is-a A B))</p>
+<p>CLIPS&gt; (defclass D (is-a USER))</p>
+<p>CLIPS&gt; (defclass E (is-a C D))</p>
+<p>CLIPS&gt; (defclass F (is-a E))</p>
+<p>CLIPS&gt; (browse-classes)</p>
+<p>OBJECT</p>
+<p>PRIMITIVE</p>
+<p>NUMBER</p>
+<p>INTEGER</p>
+<p>FLOAT</p>
+<p>LEXEME</p>
+<p>SYMBOL</p>
+<p>STRING</p>
+<p>MULTIFIELD</p>
+<p>ADDRESS</p>
+<p>EXTERNAL-ADDRESS</p>
+<p>FACT-ADDRESS</p>
+<p>INSTANCE-ADDRESS *</p>
+<p>INSTANCE</p>
+<p>INSTANCE-ADDRESS *</p>
+<p>INSTANCE-NAME</p>
+<p>USER</p>
+<p>INITIAL-OBJECT</p>
+<p>A</p>
+<p>C *</p>
+<p>E *</p>
+<p>F</p>
+<p>B</p>
+<p>C *</p>
+<p>E *</p>
+<p>F</p>
+<p>D</p>
+<p>E *</p>
+<p>F</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="message-handler-commands">
+<h3>13.11.2 Message-handler Commands<a class="headerlink" href="#message-handler-commands" title="Permalink to this headline">¶</a></h3>
+<p>The following commands manipulate defmessage-handlers.</p>
+<div class="section" id="displaying-the-text-of-a-defmessage-handler">
+<h4>13.11.2.1 Displaying the Text of a Defmessage-handler<a class="headerlink" href="#displaying-the-text-of-a-defmessage-handler" title="Permalink to this headline">¶</a></h4>
+<p>Displays the text of a given defmessage-handler. This function has no
+return value.</p>
+<p>Syntax</p>
+<p>Defaults are in <strong>bold italics</strong>.</p>
+<p>(ppdefmessage-handler &lt;class-name&gt; &lt;handler-name&gt;</p>
+<p>[&lt;handler-type&gt;])</p>
+<p>&lt;handler-type&gt; ::= around | before | <strong>primary</strong> | after</p>
+</div>
+<div class="section" id="displaying-the-list-of-defmessage-handlers">
+<h4>13.11.2.2 Displaying the List of Defmessage-handlers<a class="headerlink" href="#displaying-the-list-of-defmessage-handlers" title="Permalink to this headline">¶</a></h4>
+<p>With no arguments, this function lists all handlers in the system. With
+one argument, this function lists all handlers for the specified class.
+If the optional argument ?inherit? is given, inherited message-handlers
+are also included. This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-defmessage-handlers [&lt;class-name&gt; [inherit]])</p>
+<p>Example</p>
+<p>List all primary handlers in the system.</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (defclass A (is-a USER))</p>
+<p>CLIPS&gt; (defmessage-handler A foo ())</p>
+<p>CLIPS&gt; (list-defmessage-handlers A)</p>
+<p>foo primary in class A</p>
+<p>For a total of 1 message-handler.</p>
+<p>CLIPS&gt; (list-defmessage-handlers A inherit)</p>
+<p>init primary in class USER</p>
+<p>delete primary in class USER</p>
+<p>create primary in class USER</p>
+<p>print primary in class USER</p>
+<p>direct-modify primary in class USER</p>
+<p>message-modify primary in class USER</p>
+<p>direct-duplicate primary in class USER</p>
+<p>message-duplicate primary in class USER</p>
+<p>foo primary in class A</p>
+<p>For a total of 9 message-handlers.</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="deleting-a-defmessage-handler">
+<h4>13.11.2.3 Deleting a Defmessage-handler<a class="headerlink" href="#deleting-a-defmessage-handler" title="Permalink to this headline">¶</a></h4>
+<p>This function deletes a previously defined message-handler.</p>
+<p>Syntax</p>
+<p>Defaults are in <strong>bold italics</strong>.</p>
+<p>(undefmessage-handler &lt;class-name&gt; &lt;handler-name&gt;</p>
+<p>[&lt;handler-type&gt;])</p>
+<p>&lt;handler-type&gt; ::= around | before | <strong>primary</strong> | after</p>
+<p>An asterisk can be used to specify a wildcard for any of the arguments.
+(Wildcards will not work for the class name or handler name if there is
+a class or handler called *.) The undefmessage-handler command can be
+used to remove handlers at any time. Exceptions: A handler may not be
+deleted when it or any of the other handlers for the same class are
+executing. This function has no return value.</p>
+<p>Example</p>
+<p>Delete all primary handlers in the system.</p>
+<p>CLIPS&gt; (undefmessage-handler * *)</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="previewing-a-message">
+<h4>13.11.2.4 Previewing a Message<a class="headerlink" href="#previewing-a-message" title="Permalink to this headline">¶</a></h4>
+<p>Displays a list of all the applicable message-handlers for a message
+sent to an instance of a particular class. The level of indentation
+indicates the number of times a handler is shadowed, and lines connect
+the beginning and ending portions of the execution of a handler if it
+encloses shadowed handlers. The right double-angle brackets indicate the
+beginning of handler execution, and the left double-angle brackets
+indicate the end of handler execution. Message arguments are not
+necessary for a preview since they do not dictate handler applicability.</p>
+<p>Syntax</p>
+<p>(preview-send &lt;class-name&gt; &lt;message-name&gt;)</p>
+<p>Example</p>
+<p>For the example in section 9.5.3, the output would be:</p>
+<p>CLIPS&gt; (preview-send USER my-message)</p>
+<p>&gt;&gt; my-message around in class USER</p>
+<p>| &gt;&gt; my-message around in class OBJECT</p>
+<p>| | &gt;&gt; my-message before in class USER</p>
+<p>| | &lt;&lt; my-message before in class USER</p>
+<p>| | &gt;&gt; my-message before in class OBJECT</p>
+<p>| | &lt;&lt; my-message before in class OBJECT</p>
+<p>| | &gt;&gt; my-message primary in class USER</p>
+<p>| | | &gt;&gt; my-message primary in class OBJECT</p>
+<p>| | | &lt;&lt; my-message primary in class OBJECT</p>
+<p>| | &lt;&lt; my-message primary in class USER</p>
+<p>| | &gt;&gt; my-message after in class OBJECT</p>
+<p>| | &lt;&lt; my-message after in class OBJECT</p>
+<p>| | &gt;&gt; my-message after in class USER</p>
+<p>| | &lt;&lt; my-message after in class USER</p>
+<p>| &lt;&lt; my-message around in class OBJECT</p>
+<p>&lt;&lt; my-message around in class USER</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+<div class="section" id="definstances-commands">
+<h3>13.11.3 Definstances Commands<a class="headerlink" href="#definstances-commands" title="Permalink to this headline">¶</a></h3>
+<p>The following commands manipulate definstances.</p>
+<div class="section" id="displaying-the-text-of-a-definstances">
+<h4>13.11.3.1 Displaying the Text of a Definstances<a class="headerlink" href="#displaying-the-text-of-a-definstances" title="Permalink to this headline">¶</a></h4>
+<p>Displays the text of a given definstances. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdefinstances &lt;definstances-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-definstances">
+<h4>13.11.3.2 Displaying the List of Definstances<a class="headerlink" href="#displaying-the-list-of-definstances" title="Permalink to this headline">¶</a></h4>
+<p>Displays the names of all definstances stored in the CLIPS environment.
+This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-definstances)</p>
+</div>
+<div class="section" id="deleting-a-definstances">
+<h4>13.11.3.3 Deleting a Definstances<a class="headerlink" href="#deleting-a-definstances" title="Permalink to this headline">¶</a></h4>
+<p>This function deletes a previously defined definstances.</p>
+<p>Syntax</p>
+<p>(undefinstances &lt;definstances-name&gt;)</p>
+<p>If the symbol * is used for &lt;definstances-name&gt;, then all definstances
+will be deleted (unless there exists a definstances called *). The
+undefinstances command can be used to remove definstances at any time.
+Exceptions: A definstances may not be deleted when any of the instances
+in it are being created. This function has no return value.</p>
+</div>
+</div>
+<div class="section" id="instances-commands">
+<h3>13.11.4 Instances Commands<a class="headerlink" href="#instances-commands" title="Permalink to this headline">¶</a></h3>
+<p>The following commands manipulate instances of user-defined classes.</p>
+<div class="section" id="listing-the-instances">
+<h4>13.11.4.1 Listing the Instances<a class="headerlink" href="#listing-the-instances" title="Permalink to this headline">¶</a></h4>
+<p>If no arguments are specified, all instances in scope of the current
+module are listed. If a module name is given, all instances within the
+scope of that module are given. If ?*? is specified (and there is no
+module named ?*?), all instances in all modules are listed (only
+instances which actually belong to classes of a module are listed for
+each module to prevent duplicates). If a class name is specified, only
+the instances for the named class are listed. If a class is specified,
+then the optional keyword <em>inherit</em> causes this function to list
+instances of subclasses of the class as well. This function has no
+return value.</p>
+<p>Syntax</p>
+<p>(instances [&lt;module-name&gt; [&lt;class-name&gt; [inherit]]])</p>
+</div>
+<div class="section" id="printing-an-instance-s-slots-from-a-handler">
+<h4>13.11.4.2 Printing an Instance?s Slots from a Handler<a class="headerlink" href="#printing-an-instance-s-slots-from-a-handler" title="Permalink to this headline">¶</a></h4>
+<p>This function operates implicitly on the active instance (see section
+9.4.1.1) for a message, and thus can only be called from within the body
+of a message-handler. This function directly prints the slots of the
+active instance and is the one used to implement the print handler
+attached to class USER (see section 9.4.4.3). This function has no
+return value.</p>
+<p>Syntax</p>
+<p>(ppinstance)</p>
+</div>
+<div class="section" id="saving-instances-to-a-text-file">
+<h4>13.11.4.3 Saving Instances to a Text File<a class="headerlink" href="#saving-instances-to-a-text-file" title="Permalink to this headline">¶</a></h4>
+<p>This function saves all instances in the CLIPS environment to the
+specified file in the following format:</p>
+<p>(&lt;instance-name&gt; of &lt;class-name&gt; &lt;slot-override&gt;*)</p>
+<p>&lt;slot-override&gt; ::= (&lt;slot-name&gt; &lt;single-field-value&gt;*)</p>
+<p>A slot-override is generated for every slot of every instance,
+regardless of whether the slot currently holds a default value or not.
+External-address and fact-address slot values are saved as strings.
+Instance-address slot values are saved as instance-names. This function
+returns the number of instances saved.</p>
+<p>Syntax</p>
+<p>(save-instances &lt;file-name&gt;</p>
+<p>[local | visible [[inherit] &lt;class&gt;+])</p>
+<p>By default, save-instances saves only the instances of all defclasses in
+the current module. Specifying <strong>visible</strong> saves instances for all
+classes within scope of the current module. Also, particular classes may
+be specified for saving, but they must be in scope according to the
+local or visible option. The inherit keyword can be used to force the
+saving of indirect instances of named classes as well (by default only
+direct instances are saved for named classes). Subclasses must still be
+in local or visible scope in order for their instances to be saved.
+Unless the inherit option is specified, only concrete classes can be
+specified. At least one class is required for the inherit option.</p>
+<p>The file generated by this function can be loaded by either
+<strong>load-instances</strong> or <strong>restore-instances</strong>. save-instances does not
+preserve module information, so the instance file should be loaded into
+the module which was current when it was saved.</p>
+</div>
+<div class="section" id="saving-instances-to-a-binary-file">
+<h4>13.11.4.4 Saving Instances to a Binary File<a class="headerlink" href="#saving-instances-to-a-binary-file" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>bsave-instances</strong> works exactly like <strong>save-instances</strong>
+except that the instances are saved in a binary format which can only be
+loaded with the function <strong>bload-instances</strong>. The advantage to this
+format is that loading binary instances can be much faster than loading
+text instances for large numbers of instances. The disadvantage is that
+the file is not usually portable to other platforms.</p>
+<p>Syntax</p>
+<p>(bsave-instances &lt;file-name&gt;</p>
+<p>[local | visible [[inherit] &lt;class&gt;+])</p>
+</div>
+<div class="section" id="loading-instances-from-a-text-file">
+<h4>13.11.4.5 Loading Instances from a Text File<a class="headerlink" href="#loading-instances-from-a-text-file" title="Permalink to this headline">¶</a></h4>
+<p>This function loads instances from a file into the CLIPS environment. It
+can read files created with save-instances or any ASCII text file. Each
+instance should be in the format described in section 13.11.4.3
+(although the instance name can be left unspecified). Calling
+load-instances is exactly equivalent to a series of make-instance calls
+(in CLIPS version 5.1, slot access restrictions, such as read-only, were
+suspended during calls to load-instances). This function returns the
+number of instances loaded or -1 if it could not access the instance
+file.</p>
+<p>Syntax</p>
+<p>(load-instances &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="loading-instances-from-a-text-file-without-message-passing">
+<h4>13.11.4.6 Loading Instances from a Text File without Message Passing<a class="headerlink" href="#loading-instances-from-a-text-file-without-message-passing" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>restore-instances</strong> loads instances from a file into the
+CLIPS environment. It can read files created with save-instances or any
+ASCII text file. Each instance should be in the format described in
+section 13.11.4.3 (although the instance name can be left unspecified).
+It is similar in operation to load-instances, however, unlike
+load-instances, restore-instances does not use message-passing for
+deletions, initialization, or slot-overrides. Thus in order to preserve
+object encapsulation, it is recommended that restore-instances only be
+used with files generated by save-instances. This function returns the
+number of instances loaded or -1 if it could not access the instance
+file.</p>
+<p>Syntax</p>
+<p>(restore-instances &lt;file-name&gt;)</p>
+</div>
+<div class="section" id="loading-instances-from-a-binary-file">
+<h4>13.11.4.7 Loading Instances from a Binary File<a class="headerlink" href="#loading-instances-from-a-binary-file" title="Permalink to this headline">¶</a></h4>
+<p>This function is similar to <strong>restore-instances</strong> except that it can
+only work with files generated by <strong>bsave-instances</strong>. See section
+13.11.4.4 for a discussion of the merits of using binary instance files.</p>
+<p>Syntax</p>
+<p>(bload-instances &lt;file-name&gt;)</p>
+</div>
+</div>
+</div>
+<div class="section" id="defmodule-commands">
+<h2>13.12 Defmodule Commands<a class="headerlink" href="#defmodule-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands manipulate defmodule constructs.</p>
+<div class="section" id="displaying-the-text-of-a-defmodule">
+<h3>13.12.1 Displaying the Text of a Defmodule<a class="headerlink" href="#displaying-the-text-of-a-defmodule" title="Permalink to this headline">¶</a></h3>
+<p>Displays the text of a given defmodule. This function has no return
+value.</p>
+<p>Syntax</p>
+<p>(ppdefmodule &lt;defmodule-name&gt;)</p>
+</div>
+<div class="section" id="displaying-the-list-of-defmodules">
+<h3>13.12.2 Displaying the List of Defmodules<a class="headerlink" href="#displaying-the-list-of-defmodules" title="Permalink to this headline">¶</a></h3>
+<p>Displays the names of all defmodule constructs stored in the CLIPS
+environment. This function has no return value.</p>
+<p>Syntax</p>
+<p>(list-defmodules)</p>
+</div>
+</div>
+<div class="section" id="memory-management-commands">
+<h2>13.13 Memory Management Commands<a class="headerlink" href="#memory-management-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands display CLIPS memory status information. CLIPS
+memory management is described more fully in the <em>Advanced Pro?gramming
+Guide</em>.</p>
+<div class="section" id="determining-the-amount-of-memory-used-by-clips">
+<h3>13.13.1 Determining the Amount of Memory Used by CLIPS<a class="headerlink" href="#determining-the-amount-of-memory-used-by-clips" title="Permalink to this headline">¶</a></h3>
+<p>Returns an integer representing the number of bytes CLIPS has currently
+in-use or has held for later use. This number does not include operating
+system overhead for allocating memory.</p>
+<p>Syntax</p>
+<p>(mem-used)</p>
+</div>
+<div class="section" id="determining-the-number-of-memory-requests-made-by-clips">
+<h3>13.13.2 Determining the Number of Memory Requests Made by CLIPS<a class="headerlink" href="#determining-the-number-of-memory-requests-made-by-clips" title="Permalink to this headline">¶</a></h3>
+<p>Returns an integer representing the number of times CLIPS has requested
+memory from the operating system. If the operating system overhead for
+allocating memory is known, then the total memory used can be calculated
+by</p>
+<p>(+ (mem-used) (* &lt;overhead-in-bytes&gt; (mem-requests)))</p>
+<p>Syntax</p>
+<p>(mem-requests)</p>
+</div>
+<div class="section" id="releasing-memory-used-by-clips">
+<h3>13.13.3 Releasing Memory Used by CLIPS<a class="headerlink" href="#releasing-memory-used-by-clips" title="Permalink to this headline">¶</a></h3>
+<p>Releases all free memory held internally by CLIPS back to the operating
+system. CLIPS will automatically call this function if it is running low
+on memory to allow the operating system to coalesce smaller memory
+blocks into larger ones. This function generally should not be called
+unless the user knows <em>exactly</em> what he/she is doing (since calling this
+function can prevent CLIPS from reusing memory efficiently and thus slow
+down performance). This function returns an integer representing the
+amount of memory freed to the operating system.</p>
+<p>Syntax</p>
+<p>(release-mem)</p>
+</div>
+<div class="section" id="conserving-memory">
+<h3>13.13.4 Conserving Memory<a class="headerlink" href="#conserving-memory" title="Permalink to this headline">¶</a></h3>
+<p>Turns on or off the storage of information used for <strong>save</strong> and pretty
+print commands. This can save considerable memory in a large system. It
+should be called <em>prior</em> to loading any constructs. This function has no
+return value.</p>
+<p>Syntax</p>
+<p>(conserve-mem &lt;value&gt;)</p>
+<p>where value is either <strong>on</strong> or <strong>off</strong>.</p>
+</div>
+</div>
+<div class="section" id="external-text-manipulation">
+<h2>13.14 External Text Manipulation<a class="headerlink" href="#external-text-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>CLIPS provides a set of functions to build and access a hierarchical
+lookup system for multiple external files. Each file contains a set of
+text entries in a special format that CLIPS can later reference and
+display. The basic concept is that CLIPS retains a ?map? of the text
+file in memory and can easily pull sections of text from the file
+without having to store the whole file in memory and without having to
+sequentially search the file for the appropriate text.</p>
+<div class="section" id="external-text-file-format">
+<h3>13.14.1 External Text File Format<a class="headerlink" href="#external-text-file-format" title="Permalink to this headline">¶</a></h3>
+<p>Each external text file to be loaded into CLIPS must be described in a
+particular way. Each topic entry in each file must be in the format
+shown following.</p>
+<p>Syntax</p>
+<p>&lt;level-num&gt; &lt;entry-type&gt; BEGIN-ENTRY- &lt;topic-name&gt;</p>
+<p>?</p>
+<p>?</p>
+<p>Topic information in form to be displayed when referenced.</p>
+<p>?</p>
+<p>?</p>
+<p>END-ENTRY</p>
+<p>The delimiter strings (lines with BEGIN_ENTRY or END_ENTRY info) must be
+the only things on their lines. Embedded white space between the fields
+of the delimiters is allowed.</p>
+<p>The first parameter, &lt;level-num&gt;, is the level of the hierarchical tree
+to which the entry belongs. The lower the number, the closer to the root
+level the topic is; i.e., the lowest level number indicates the root
+level. Subtopics are indicated by making the level number of the current
+topic larger than the previous entry (which is to be the parent). Thus,
+the tree must be entered in the file sequentially; i.e., a topic with
+all its subtopics must be described before going on to a topic at the
+same level. Entering a number less than that of the previous topic will
+cause the tree to be searched upwards until a level number is found
+which is less than the current one. The current topic then will be
+at?tached as a subtopic at that level. In this manner, multiple root
+trees may be created. Level number and order of entry in a file can
+indicate the order of precedence in which a list of subtopics that are
+all children of the same topic will be searched. Topics with the same
+level number will be searched in the order in which they appear in the
+file. Topics with lower-level numbers will be searched first.</p>
+<p>Example</p>
+<div class="line-block">
+<div class="line">0MBEGIN-ENTRY-ROOT</div>
+<div class="line">– Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">2IBEGIN-ENTRY-SUBTOPIC1</div>
+<div class="line">– Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">1IBEGIN-ENTRY-SUBTOPIC2</div>
+<div class="line">– Text –</div>
+<div class="line">END-ENTRY</div>
+</div>
+<p>In the above example, SUBTOPIC1 and SUBTOPIC2 are children of ROOT.
+However, in searching the children of ROOT, SUBTOPIC2 would be found
+first.</p>
+<p>The second parameter in the format defined above, the &lt;entry-type&gt;, must
+be a single capital letter, either M (for MENU) or I (for INFORMATION).
+Only MENU entries may have subtopics.</p>
+<p>The third parameter defined above, the &lt;topic-name&gt;, can be any
+alphanumeric string of up to 80 characters. No white space can be
+embedded in the name.</p>
+<p>Beginning a line with the delimiter ?$$? forces the loader to treat the
+line as pure text, even if one of the key delimiters is in it. When the
+line is printed, the dollar signs are treated as blanks.</p>
+<p>Example</p>
+<div class="line-block">
+<div class="line">0MBEGIN-ENTRY-ROOT1</div>
+<div class="line">– Root1 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">1MBEGIN-ENTRY-SUBTOPIC1</div>
+<div class="line">– Subtopic1 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">2IBEGIN-ENTRY-SUBTOPIC4</div>
+<div class="line">– Subtopic4 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">1IBEGIN-ENTRY-SUBTOPIC2</div>
+<div class="line">– Subtopic2 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">0IBEGIN-ENTRY-ROOT2</div>
+<div class="line">– Root2 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">-1MBEGIN-ENTRY-ROOT3</div>
+<div class="line">– Root3 Text –</div>
+<div class="line">END-ENTRY</div>
+<div class="line">0IBEGIN-ENTRY-SUBTOPIC3</div>
+<div class="line">– Subtopic3 Text –</div>
+<div class="line">END-ENTRY</div>
+</div>
+<p>Tree Diagram of Above Example :</p>
+<div class="line-block">
+<div class="line">-&gt; ROOT3 ———&gt; ROOT1 ———&gt; ROOT2</div>
+<div class="line">| / \</div>
+</div>
+<div class="line-block">
+<div class="line">| / \</div>
+<div class="line">V V V</div>
+</div>
+<div class="line-block">
+<div class="line">SUBTOPIC3 SUBTOPIC1 SUBTOPIC2</div>
+<div class="line">|</div>
+<div class="line">|</div>
+<div class="line">V</div>
+<div class="line">SUBTOPIC4</div>
+</div>
+</div>
+<div class="section" id="external-text-manipulation-functions">
+<h3>13.14.2 External Text Manipulation Functions<a class="headerlink" href="#external-text-manipulation-functions" title="Permalink to this headline">¶</a></h3>
+<p>The following functions can be used by users to maintain their own
+information system.</p>
+<div class="section" id="fetch">
+<h4>13.14.2.1 Fetch<a class="headerlink" href="#fetch" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>fetch</strong> loads the named file (which must be in the format
+defined in section 13.14.1) into the internal lookup table.</p>
+<p>Syntax</p>
+<p>(fetch &lt;file-name&gt;)</p>
+<p>The function returns the number of entries loaded if the fetch
+succeeded. If the file could not be loaded or was loaded already, the
+function returns the symbol FALSE.</p>
+</div>
+<div class="section" id="print-region">
+<h4>13.14.2.2 Print-region<a class="headerlink" href="#print-region" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>print-region</strong> looks up a specified entry in a particular
+file which has been loaded previously into the lookup table and prints
+the contents of that entry to the specified output.</p>
+<p>Syntax</p>
+<p>(print-region &lt;logical-name&gt; &lt;file-name&gt; &lt;topic-field&gt;*)</p>
+<p>where &lt;logical-name&gt; is a name previously attached to an output device.
+To send the output to stdout, specify t for the logical name.
+&lt;file-name&gt; is the name of the previously loaded file in which the entry
+is to be found, and the optional arguments, &lt;topic-field&gt;*, is the full
+path of the topic entry to be found.</p>
+<p>Each element or field in the path is delimited by white space, and the
+function is not case sensitive. In addition, the entire name of a field
+does not need to be specified. Only enough characters to distinguish the
+field from other choices at the same level of the tree are necessary. If
+there is a conflict, the function will pick the first one in the list. A
+few special fields can be specified.</p>
+<blockquote>
+<div><p>^ Branch up one level.</p>
+<p>? When specified at the end of a path, this forces a display of the
+current menu, even on branch-ups.</p>
+<p>&lt;nil&gt; Giving no topic field will branch up one level.</p>
+</div></blockquote>
+<p>The level of the tree for a file remains constant between calls to
+<strong>print-region</strong>. All levels count from menu only. Information levels do
+not count for branching up or down. To access an entry at the root level
+after branching down several levels in a previous call or series of
+calls, an equal number of branches up must be executed.</p>
+<p>Examples</p>
+<p>To display the entry for ROOT SUBTOPIC from the file foo.lis on the
+screen, type</p>
+<p>(print-region t “foo.lis” ROOT SUBTOPIC)</p>
+<p>or, using less characters,</p>
+<p>(print-region t “foo.lis” roo sub)</p>
+<p>Only one entry can be accessed per <strong>print-region</strong> call. The function
+returns the symbol TRUE if the print-region succeeded. If the entry was
+not found, it returns FALSE.</p>
+<p>CLIPS&gt; (fetch “foo.lis”)</p>
+<p>7</p>
+<p>CLIPS&gt; (print-region t “foo.lis” roo sub)</p>
+<p>– Subtopic3 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (print-region t “foo.lis” “?”)</p>
+<p>– Root3 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (print-region t “foo.lis” ^ root1 sub)</p>
+<p>– Subtopic1 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (print-region t “foo.lis” sub)</p>
+<p>– Subtopic4 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (print-region t “foo.lis” ^ subtopic2)</p>
+<p>– Subtopic2 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (print-region t “foo.lis” ^ root2)</p>
+<p>– Root2 Text –</p>
+<p>TRUE</p>
+<p>CLIPS&gt; (toss “foo.lis”)</p>
+<p>TRUE</p>
+<p>CLIPS&gt;</p>
+</div>
+<div class="section" id="get-region">
+<h4>13.14.2.3 Get-region<a class="headerlink" href="#get-region" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>get-region</strong> looks up a specified entry in a particular
+file which has been loaded previously into the lookup table and returns
+the contents of that entry as a string.</p>
+<p>Syntax</p>
+<p>(get-region &lt;file-name&gt; &lt;topic-field&gt;*)</p>
+<p>where &lt;file-name&gt; is the name of the previously loaded file in which the
+entry is to be found, and the optional arguments, &lt;topic-field&gt;*, is the
+full path of the topic entry to be found. The <strong>get-region</strong> the
+<strong>print-region</strong> functions share the same behavior for the special topic
+fields and maintaining the level of the tree for a file between function
+calls. If an error occurs, this function returns an empty string.</p>
+</div>
+<div class="section" id="toss">
+<h4>13.14.2.4 Toss<a class="headerlink" href="#toss" title="Permalink to this headline">¶</a></h4>
+<p>The function <strong>toss</strong> unloads the named file from the internal lookup
+table and releases the memory back to the system.</p>
+<p>Syntax</p>
+<p>(toss &lt;file-name&gt;)</p>
+<p>The function returns the symbol TRUE if the toss succeeded. If the file
+was not on the lookup table, it returns FALSE.</p>
+</div>
+</div>
+</div>
+<div class="section" id="profiling-commands">
+<h2>13.15 Profiling Commands<a class="headerlink" href="#profiling-commands" title="Permalink to this headline">¶</a></h2>
+<p>The following commands provide the ability to profile CLIPS programs for
+performance.</p>
+<div class="section" id="setting-the-profiling-report-threshold">
+<h3>13.15.1 Setting the Profiling Report Threshold<a class="headerlink" href="#setting-the-profiling-report-threshold" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>set-profile-percent-threshold</strong> command sets the minimum
+percentage of time that must be spent executing a construct or user
+function for it to be displayed by the <strong>profile-info</strong> command. By
+default, the percent threshold is zero, so all constructs or
+user-functions that were profiled and executed at least once will be
+displayed by the <strong>profile-info</strong> command. The return value of this
+function is the old percent threshold.</p>
+<p>Syntax</p>
+<p>(set-profile-percent-threshold &lt;number in the range 0 to 100&gt;)</p>
+</div>
+<div class="section" id="getting-the-profiling-report-threshold">
+<h3>13.15.2 Getting the Profiling Report Threshold<a class="headerlink" href="#getting-the-profiling-report-threshold" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>get-profile-percent-threshold</strong> command returns the current value
+of the profile percent threshold.</p>
+<p>Syntax</p>
+<p>(get-profile-percent-threshold)</p>
+</div>
+<div class="section" id="resetting-profiling-information">
+<h3>13.15.3 Resetting Profiling Information<a class="headerlink" href="#resetting-profiling-information" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>profile-reset</strong> command resets all profiling information currently
+collected for constructs and user functions.</p>
+<p>Syntax</p>
+<p>(profile-reset)</p>
+</div>
+<div class="section" id="displaying-profiling-information">
+<h3>13.15.4 Displaying Profiling Information<a class="headerlink" href="#displaying-profiling-information" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>profile-info</strong> command displays profiling information currently
+collected for constructs or user functions. Profiling information is
+displayed in six columns. The first column contains the name of the
+construct or user function profiled. The second column indicates the
+number of times the construct or user function was executed. The third
+column is the amount of time spent executing the construct or user
+function. The fourth column is the percentage of time spent in the
+construct or user function with respect to the total amount of time
+profiling was enabled. The fifth column is the total amount of time
+spent in the first execution of the construct or user function and all
+subsequent calls to other constructs/user functions. The sixth column is
+the percentage of this time with respect to the total amount of time
+profiling was enabled.</p>
+<p>Syntax</p>
+<p>(profile-info)</p>
+</div>
+<div class="section" id="profiling-constructs-and-user-functions">
+<h3>13.15.5 Profiling Constructs and User Functions<a class="headerlink" href="#profiling-constructs-and-user-functions" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>profile</strong> command is used to enable/disable profiling of
+constructs and user functions. If <strong>constructs</strong> are profiled, then the
+amount of time spent executing deffunctions, generic functions, message
+handlers, and the RHS of defrules is tracked. If <strong>user-functions</strong> are
+profiled, then the time spent executing system and user defined
+functions is tracked. System defined functions include predefined
+functions available for your own use such as the <strong>&lt;</strong> and <strong>numberp</strong>
+functions in addition to low level internal functions which are not
+available for your use (these will usually appear in <strong>profile-info</strong>
+output in all capital letters or surrounded by parentheses). It is not
+possible to profile constructs and user-functions at the same time.
+Enabling one disables the other. The <strong>off</strong> keyword argument disables
+profiling. Profiling can be repeatedly enable and disabled as long as
+only one of <strong>constructs</strong> or <strong>user-functions</strong> is consistently
+enabled. The total amount of time spent with profiling enabled will be
+displayed by the <strong>profile-info</strong> command. If profiling is enabled from
+the command prompt, it is a good idea to place the calls enabling and
+disabling profiling within a single <strong>progn</strong> function call. This will
+prevent the elapsed profiling time from including the amount of time
+needed to type the commands being profiled.</p>
+<p>Syntax</p>
+<p>(profile constructs | user-functions | off)</p>
+<p>Example</p>
+<p>CLIPS&gt; (clear)</p>
+<p>CLIPS&gt; (deffacts start (fact 1))</p>
+<p>CLIPS&gt;</p>
+<p>(deffunction function-1 (?x)</p>
+<p>(bind ?y 1)</p>
+<p>(loop-for-count (* ?x 10)</p>
+<p>(bind ?y (+ ?y ?x))))</p>
+<p>CLIPS&gt;</p>
+<p>(defrule rule-1</p>
+<p>?f &lt;- (fact ?x&amp;:(&lt; ?x 100))</p>
+<p>=&gt;</p>
+<p>(function-1 ?x)</p>
+<p>(retract ?f)</p>
+<p>(assert (fact (+ ?x 1))))</p>
+<p>CLIPS&gt;</p>
+<p>(reset)</p>
+<p>CLIPS&gt;</p>
+<p>(progn (profile constructs)</p>
+<p>(run)</p>
+<p>(profile off))</p>
+<p>CLIPS&gt; (profile-info)</p>
+<p>Profile elapsed time = 0.474921 seconds</p>
+<p>Construct Name Entries Time % Time+Kids %+Kids</p>
+<p>————– ——- —— —– ——— ——</p>
+<p>*** Deffunctions ***</p>
+<p>function-1 99 0.436704 91.92% 0.436704 91.92%</p>
+<p>*** Defrules ***</p>
+<p>rule-1 99 0.027561 5.80% 0.464265 97.72%</p>
+<p>CLIPS&gt; (profile-reset)</p>
+<p>CLIPS&gt; (reset)</p>
+<p>CLIPS&gt;</p>
+<p>(progn (profile user-functions)</p>
+<p>(run)</p>
+<p>(profile off))</p>
+<p>CLIPS&gt; (profile-info)</p>
+<p>Profile elapsed time = 12.0454 seconds</p>
+<p>Function Name Entries Time % Time+Kids %+Kids</p>
+<p>————- ——- —— —– ——— ——</p>
+<p>retract 99 0.007953 0.07% 0.010646 0.09%</p>
+<p>assert 99 0.012160 0.10% 0.032766 0.27%</p>
+<p>run 1 0.047421 0.39% 12.045301 100.00%</p>
+<p>profile 1 0.000049 0.00% 0.000049 0.00%</p>
+<p>* 99 0.005579 0.05% 0.007610 0.06%</p>
+<ul class="simple">
+<li>49599 3.626217 30.10% 5.765490 47.86%</li>
+</ul>
+<p>&lt; 99 0.005234 0.04% 0.007749 0.06%</p>
+<p>progn 49698 2.353003 19.53% 11.997880 99.61%</p>
+<p>loop-for-count 99 1.481078 12.30% 11.910553 98.88%</p>
+<p>PCALL 99 0.020747 0.17% 11.943234 99.15%</p>
+<p>FACT_PN_VAR3 99 0.002515 0.02% 0.002515 0.02%</p>
+<p>FACT_JN_VAR1 99 0.002693 0.02% 0.002693 0.02%</p>
+<p>FACT_JN_VAR3 198 0.004718 0.04% 0.004718 0.04%</p>
+<p>FACT_STORE_MULTIFIELD 99 0.005478 0.05% 0.012857 0.11%</p>
+<p>PROC_PARAM 49599 1.036460 8.60% 1.036460 8.60%</p>
+<p>PROC_GET_BIND 49500 1.102682 9.15% 1.102682 9.15%</p>
+<p>PROC_BIND 49599 2.331363 19.35% 8.089474 67.16%</p>
+<p>CLIPS&gt; (set-profile-percent-threshold 1)</p>
+<p>0.0</p>
+<p>CLIPS&gt; (profile-info)</p>
+<p>Profile elapsed time = 12.0454 seconds</p>
+<p>Function Name Entries Time % Time+Kids %+Kids</p>
+<p>————- ——- —— —– ——— ——</p>
+<ul class="simple">
+<li>49599 3.626217 30.10% 5.765490 47.86%</li>
+</ul>
+<p>progn 49698 2.353003 19.53% 11.997880 99.61%</p>
+<p>loop-for-count 99 1.481078 12.30% 11.910553 98.88%</p>
+<p>PROC_PARAM 49599 1.036460 8.60% 1.036460 8.60%</p>
+<p>PROC_GET_BIND 49500 1.102682 9.15% 1.102682 9.15%</p>
+<p>PROC_BIND 49599 2.331363 19.35% 8.089474 67.16%</p>
+<p>CLIPS&gt; (profile-reset)</p>
+<p>CLIPS&gt; (profile-info)</p>
+<p>CLIPS&gt;</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Section 13: Commands</a><ul>
+<li><a class="reference internal" href="#environment-commands">13.1 Environment Commands</a><ul>
+<li><a class="reference internal" href="#loading-constructs-from-a-file">13.1.1 Loading Constructs From A File</a></li>
+<li><a class="reference internal" href="#loading-constructs-from-a-file-without-progress-information">13.1.2 Loading Constructs From A File without Progress Information</a></li>
+<li><a class="reference internal" href="#saving-all-constructs-to-a-file">13.1.3 Saving All Constructs To A File</a></li>
+<li><a class="reference internal" href="#loading-a-binary-image">13.1.4 Loading a Binary Image</a></li>
+<li><a class="reference internal" href="#saving-a-binary-image">13.1.5 Saving a Binary Image</a></li>
+<li><a class="reference internal" href="#clearing-clips">13.1.6 Clearing CLIPS</a></li>
+<li><a class="reference internal" href="#exiting-clips">13.1.7 Exiting CLIPS</a></li>
+<li><a class="reference internal" href="#resetting-clips">13.1.8 Resetting CLIPS</a></li>
+<li><a class="reference internal" href="#executing-commands-from-a-file">13.1.9 Executing Commands From a File</a></li>
+<li><a class="reference internal" href="#executing-commands-from-a-file-without-replacing-standard-input">13.1.10 Executing Commands From a File Without Replacing Standard Input</a></li>
+<li><a class="reference internal" href="#determining-clips-compilation-options">13.1.11 Determining CLIPS Compilation Options</a></li>
+<li><a class="reference internal" href="#calling-the-operating-system">13.1.12 Calling the Operating System</a></li>
+<li><a class="reference internal" href="#setting-the-auto-float-dividend-behavior">13.1.13 Setting The Auto-Float Dividend Behavior</a></li>
+<li><a class="reference internal" href="#getting-the-auto-float-dividend-behavior">13.1.14 Getting The Auto-Float Dividend Behavior</a></li>
+<li><a class="reference internal" href="#setting-the-dynamic-constraint-checking-behavior">13.1.15 Setting the Dynamic Constraint Checking Behavior</a></li>
+<li><a class="reference internal" href="#getting-the-dynamic-constraint-checking-behavior">13.1.16 Getting the Dynamic Constraint Checking Behavior</a></li>
+<li><a class="reference internal" href="#setting-the-static-constraint-checking-behavior">13.1.17 Setting the Static Constraint Checking Behavior</a></li>
+<li><a class="reference internal" href="#getting-the-static-constraint-checking-behavior">13.1.18 Getting the Static Constraint Checking Behavior</a></li>
+<li><a class="reference internal" href="#finding-symbols">13.1.19 Finding Symbols</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging-commands">13.2 Debugging Commands</a><ul>
+<li><a class="reference internal" href="#generating-trace-files">13.2.1 Generating Trace Files</a></li>
+<li><a class="reference internal" href="#closing-trace-files">13.2.2 Closing Trace Files</a></li>
+<li><a class="reference internal" href="#enabling-watch-items">13.2.3 Enabling Watch Items</a></li>
+<li><a class="reference internal" href="#disabling-watch-items">13.2.4 Disabling Watch Items</a></li>
+<li><a class="reference internal" href="#viewing-the-current-state-of-watch-items">13.2.5 Viewing the Current State of Watch Items</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deftemplate-commands">13.3 Deftemplate Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-deftemplate">13.3.1 Displaying the Text of a Deftemplate</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-deftemplates">13.3.2 Displaying the List of Deftemplates</a></li>
+<li><a class="reference internal" href="#deleting-a-deftemplate">13.3.3 Deleting a Deftemplate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fact-commands">13.4 Fact Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-fact-list">13.4.1 Displaying the Fact-List</a></li>
+<li><a class="reference internal" href="#loading-facts-from-a-file">13.4.2 Loading Facts From a File</a></li>
+<li><a class="reference internal" href="#saving-the-fact-list-to-a-file">13.4.3 Saving The Fact-List To A File</a></li>
+<li><a class="reference internal" href="#setting-the-duplication-behavior-of-facts">13.4.4 Setting the Duplication Behavior of Facts</a></li>
+<li><a class="reference internal" href="#getting-the-duplication-behavior-of-facts">13.4.5 Getting the Duplication Behavior of Facts</a></li>
+<li><a class="reference internal" href="#displaying-a-single-fact">13.4.6 Displaying a Single Fact</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deffacts-commands">13.5 Deffacts Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-deffacts">13.5.1 Displaying the Text of a Deffacts</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-deffacts">13.5.2 Displaying the List of Deffacts</a></li>
+<li><a class="reference internal" href="#deleting-a-deffacts">13.5.3 Deleting a Deffacts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defrule-commands">13.6 Defrule Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-rule">13.6.1 Displaying the Text of a Rule</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-rules">13.6.2 Displaying the List of Rules</a></li>
+<li><a class="reference internal" href="#deleting-a-defrule">13.6.3 Deleting a Defrule</a></li>
+<li><a class="reference internal" href="#displaying-matches-for-a-rule">13.6.4 Displaying Matches for a Rule</a></li>
+<li><a class="reference internal" href="#removing-a-breakpoint-for-a-rule">13.6.6 Removing a Breakpoint for a Rule</a></li>
+<li><a class="reference internal" href="#displaying-rule-breakpoints">13.6.7 Displaying Rule Breakpoints</a></li>
+<li><a class="reference internal" href="#refreshing-a-rule">13.6.8 Refreshing a Rule</a></li>
+<li><a class="reference internal" href="#setting-the-incremental-reset-behavior">13.6.9 Setting the Incremental Reset Behavior</a></li>
+<li><a class="reference internal" href="#getting-the-incremental-reset-behavior">13.6.10 Getting the Incremental Reset Behavior</a></li>
+<li><a class="reference internal" href="#determining-the-logical-dependencies-of-a-pattern-entity">13.6.11 Determining the Logical Dependencies of a Pattern Entity</a></li>
+<li><a class="reference internal" href="#determining-the-logical-dependents-of-a-pattern-entity">13.6.12 Determining the Logical Dependents of a Pattern Entity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agenda-commands">13.7 Agenda Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-agenda">13.7.1 Displaying the Agenda</a></li>
+<li><a class="reference internal" href="#running-clips">13.7.2 Running CLIPS</a></li>
+<li><a class="reference internal" href="#focusing-on-a-group-of-rules">13.7.3 Focusing on a Group of Rules</a></li>
+<li><a class="reference internal" href="#stopping-rule-execution">13.7.4 Stopping Rule Execution</a></li>
+<li><a class="reference internal" href="#setting-the-current-conflict-resolution-strategy">13.7.5 Setting The Current Conflict Resolution Strategy</a></li>
+<li><a class="reference internal" href="#getting-the-current-conflict-resolution-strategy">13.7.6 Getting The Current Conflict Resolution Strategy</a></li>
+<li><a class="reference internal" href="#listing-the-module-names-on-the-focus-stack">13.7.7 Listing the Module Names on the Focus Stack</a></li>
+<li><a class="reference internal" href="#removing-all-module-names-from-the-focus-stack">13.7.8 Removing all Module Names from the Focus Stack</a></li>
+<li><a class="reference internal" href="#setting-the-salience-evaluation-behavior">13.7.9 Setting the Salience Evaluation Behavior</a></li>
+<li><a class="reference internal" href="#getting-the-salience-evaluation-behavior">13.7.10 Getting the Salience Evaluation Behavior</a></li>
+<li><a class="reference internal" href="#refreshing-the-salience-value-of-rules-on-the-agenda">13.7.11 Refreshing the Salience Value of Rules on the Agenda</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defglobal-commands">13.8 Defglobal Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-defglobal">13.8.1 Displaying the Text of a Defglobal</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-defglobals">13.8.2 Displaying the List of Defglobals</a></li>
+<li><a class="reference internal" href="#deleting-a-defglobal">13.8.3 Deleting a Defglobal</a></li>
+<li><a class="reference internal" href="#displaying-the-values-of-global-variables">13.8.4 Displaying the Values of Global Variables</a></li>
+<li><a class="reference internal" href="#setting-the-reset-behavior-of-global-variables">13.8.5 Setting the Reset Behavior of Global Variables</a></li>
+<li><a class="reference internal" href="#getting-the-reset-behavior-of-global-variables">13.8.6 Getting the Reset Behavior of Global Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deffunction-commands">13.9 Deffunction Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-deffunction">13.9.1 Displaying the Text of a Deffunction</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-deffunctions">13.9.2 Displaying the List of Deffunctions</a></li>
+<li><a class="reference internal" href="#deleting-a-deffunction">13.9.3 Deleting a Deffunction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generic-function-commands">13.10 Generic Function Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-generic-function-header">13.10.1 Displaying the Text of a Generic Function Header</a></li>
+<li><a class="reference internal" href="#displaying-the-text-of-a-generic-function-method">13.10.2 Displaying the Text of a Generic Function Method</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-generic-functions">13.10.3 Displaying the List of Generic Functions</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-methods-for-a-generic-function">13.10.4 Displaying the List of Methods for a Generic Function</a></li>
+<li><a class="reference internal" href="#deleting-a-generic-function">13.10.5 Deleting a Generic Function</a></li>
+<li><a class="reference internal" href="#deleting-a-generic-function-method">13.10.6 Deleting a Generic Function Method</a></li>
+<li><a class="reference internal" href="#previewing-a-generic-function-call">13.10.7 Previewing a Generic Function Call</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clips-object-oriented-language-cool-commands">13.11 CLIPS Object-Oriented Language (COOL) Commands</a><ul>
+<li><a class="reference internal" href="#class-commands">13.11.1 Class Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-defclass">13.11.1.1 Displaying the Text of a Defclass</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-defclasses">13.11.1.2 Displaying the List of Defclasses</a></li>
+<li><a class="reference internal" href="#deleting-a-defclass">13.11.1.3 Deleting a Defclass</a></li>
+<li><a class="reference internal" href="#examining-a-class">13.11.1.4 Examining a Class</a></li>
+<li><a class="reference internal" href="#examining-the-class-hierarchy">13.11.1.5 Examining the Class Hierarchy</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#message-handler-commands">13.11.2 Message-handler Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-defmessage-handler">13.11.2.1 Displaying the Text of a Defmessage-handler</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-defmessage-handlers">13.11.2.2 Displaying the List of Defmessage-handlers</a></li>
+<li><a class="reference internal" href="#deleting-a-defmessage-handler">13.11.2.3 Deleting a Defmessage-handler</a></li>
+<li><a class="reference internal" href="#previewing-a-message">13.11.2.4 Previewing a Message</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definstances-commands">13.11.3 Definstances Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-definstances">13.11.3.1 Displaying the Text of a Definstances</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-definstances">13.11.3.2 Displaying the List of Definstances</a></li>
+<li><a class="reference internal" href="#deleting-a-definstances">13.11.3.3 Deleting a Definstances</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instances-commands">13.11.4 Instances Commands</a><ul>
+<li><a class="reference internal" href="#listing-the-instances">13.11.4.1 Listing the Instances</a></li>
+<li><a class="reference internal" href="#printing-an-instance-s-slots-from-a-handler">13.11.4.2 Printing an Instance?s Slots from a Handler</a></li>
+<li><a class="reference internal" href="#saving-instances-to-a-text-file">13.11.4.3 Saving Instances to a Text File</a></li>
+<li><a class="reference internal" href="#saving-instances-to-a-binary-file">13.11.4.4 Saving Instances to a Binary File</a></li>
+<li><a class="reference internal" href="#loading-instances-from-a-text-file">13.11.4.5 Loading Instances from a Text File</a></li>
+<li><a class="reference internal" href="#loading-instances-from-a-text-file-without-message-passing">13.11.4.6 Loading Instances from a Text File without Message Passing</a></li>
+<li><a class="reference internal" href="#loading-instances-from-a-binary-file">13.11.4.7 Loading Instances from a Binary File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defmodule-commands">13.12 Defmodule Commands</a><ul>
+<li><a class="reference internal" href="#displaying-the-text-of-a-defmodule">13.12.1 Displaying the Text of a Defmodule</a></li>
+<li><a class="reference internal" href="#displaying-the-list-of-defmodules">13.12.2 Displaying the List of Defmodules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#memory-management-commands">13.13 Memory Management Commands</a><ul>
+<li><a class="reference internal" href="#determining-the-amount-of-memory-used-by-clips">13.13.1 Determining the Amount of Memory Used by CLIPS</a></li>
+<li><a class="reference internal" href="#determining-the-number-of-memory-requests-made-by-clips">13.13.2 Determining the Number of Memory Requests Made by CLIPS</a></li>
+<li><a class="reference internal" href="#releasing-memory-used-by-clips">13.13.3 Releasing Memory Used by CLIPS</a></li>
+<li><a class="reference internal" href="#conserving-memory">13.13.4 Conserving Memory</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-text-manipulation">13.14 External Text Manipulation</a><ul>
+<li><a class="reference internal" href="#external-text-file-format">13.14.1 External Text File Format</a></li>
+<li><a class="reference internal" href="#external-text-manipulation-functions">13.14.2 External Text Manipulation Functions</a><ul>
+<li><a class="reference internal" href="#fetch">13.14.2.1 Fetch</a></li>
+<li><a class="reference internal" href="#print-region">13.14.2.2 Print-region</a></li>
+<li><a class="reference internal" href="#get-region">13.14.2.3 Get-region</a></li>
+<li><a class="reference internal" href="#toss">13.14.2.4 Toss</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#profiling-commands">13.15 Profiling Commands</a><ul>
+<li><a class="reference internal" href="#setting-the-profiling-report-threshold">13.15.1 Setting the Profiling Report Threshold</a></li>
+<li><a class="reference internal" href="#getting-the-profiling-report-threshold">13.15.2 Getting the Profiling Report Threshold</a></li>
+<li><a class="reference internal" href="#resetting-profiling-information">13.15.3 Resetting Profiling Information</a></li>
+<li><a class="reference internal" href="#displaying-profiling-information">13.15.4 Displaying Profiling Information</a></li>
+<li><a class="reference internal" href="#profiling-constructs-and-user-functions">13.15.5 Profiling Constructs and User Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/envcommand.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">CLIPS-BPG  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kurt Pagani &lt;nilqed@gmail.com&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>
