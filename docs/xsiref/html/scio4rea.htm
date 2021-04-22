@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DEFMESSAGE HANDLER</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="defmessage_handler"></A>DEFMESSAGE HANDLER</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">Objects are manipulated by sending them messages via the function send.  The </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">result of a message is a useful return-value or side-effect.  A </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">defmessage-handler is a construct for specifying the behavior of a class of </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">objects in response to a particular message.  The implementation of a message </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">is made up of pieces of procedural code called message-handlers (or handlers </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">for short).  Each class in the class precedence list of an object's class can </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">have handlers for a message.  In this way, the object's class and all its </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">superclasses share the labor of handling the message.  Each class's handlers </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">handle the part of the message which is appropriate to that class.  Within a </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">class, the handlers for a particular message can be further subdivided into </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">four types or categories: primary, before, after and around.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">A defmessage-handler is comprised of seven elements: 1) a class name to which </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">to attach the handler (the class must have been previously defined), 2) a </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">message name to which the handler will respond, 3) an optional type (the </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">default is primary), 4) an optional comment, 5) a list of parameters that will</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">be passed to the handler during execution, 6) an optional wildcard parameter </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">and 7) a series of expressions which are executed in order when the handler </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">is called.  The return-value of a message-handler is the evaluation of the last </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">expression in the body.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">The syntax of the defmessage-handler construct is:</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">(defmessage-handler &lt;<FONT COLOR="#FF6600">class-name</FONT>&gt; &lt;<FONT COLOR="#FF6600">message-name</FONT>&gt;
+   [&lt;<FONT COLOR="#FF6600">handlertype</FONT>&gt;] [&lt;<FONT COLOR="#FF6600">comment</FONT>&gt;]
+   (&lt;<FONT COLOR="#FF6600">parameter</FONT>&gt;* [&lt;<FONT COLOR="#FF6600">wildcard-parameter</FONT>&gt;])
+   &lt;<FONT COLOR="#FF6600">action</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">handler-type</FONT>&gt;       ::= around | before | primary | after
+
+&lt;<FONT COLOR="#FF6600">parameter</FONT>&gt;          ::= &lt;<FONT COLOR="#FF6600">single-field-variable</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">wildcard-parameter</FONT>&gt; ::= &lt;<FONT COLOR="#FF6600">multifield-variable</FONT>&gt;<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio4rea.htm 35 2009-01-20 15:03:20Z scios $ -->

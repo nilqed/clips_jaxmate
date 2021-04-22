@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DEFINSTANCES</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="definstances"></A>DEFINSTANCES</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">Similar to deffacts, the definstances construct allows the specification of </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">instances which will be created every time the reset command is executed.  </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">On every reset all current instances receive a delete message, and the </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">equivalent of a make-instance function call is made for every instance </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">specified in definstances constructs.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">The syntax of the definstances construct is:</FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">definstances-construct</FONT>&gt; 
+                ::= (definstances &lt;<FONT COLOR="#FF6600">definstances-name</FONT>&gt; [&lt;<FONT COLOR="#FF6600">comment</FONT>&gt;]
+                       &lt;<FONT COLOR="#FF6600">instance-template</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">instance-template</FONT>&gt;   ::= (&lt;<FONT COLOR="#FF6600">instance-definition</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">instance-definition</FONT>&gt; ::= &lt;<FONT COLOR="#FF6600">instance-name-expression</FONT>&gt; of
+                             &lt;<FONT COLOR="#FF6600">class-name-expression</FONT>&gt;
+                             &lt;<FONT COLOR="#FF6600">slot-override</FONT>&gt;*
+
+&lt;<FONT COLOR="#FF6600">slot-override</FONT>&gt;       ::= (&lt;<FONT COLOR="#FF6600">slot-name-expression</FONT>&gt; &lt;<FONT COLOR="#FF6600">expression</FONT>&gt;*)<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio9h6b.htm 35 2009-01-20 15:03:20Z scios $ -->

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>CONSTRAINT ATTRIBUTES</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="constraint_attributes"></A>CONSTRAINT ATTRIBUTES</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">Constraint attributes can be associated with deftemplate and defclass slots so that type checking can be performed on slot values when template facts and instances are created. The constraint information is also analyzed for the patterns on the LHS of a rule to determine if the specified constraints prevent the rule from ever firing.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">The syntax for constraint attributes is:</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">constraint-attribute</FONT>&gt; ::= &lt;<FONT COLOR="#FF6600">type-attribute</FONT>&gt;&nbsp;|
+                           &lt;<FONT COLOR="#FF6600">allowed-constant-attribute</FONT>&gt; |
+                           &lt;<FONT COLOR="#FF6600">range-attribute</FONT>&gt; |
+                           &lt;<FONT COLOR="#FF6600">cardinality-attribute</FONT>&gt;
+                           &lt;<FONT COLOR="#FF6600">default-attribute</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">type-attribute</FONT>&gt;       ::= (type &lt;<FONT COLOR="#FF6600">type-specification</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">type-specification</FONT>&gt;   ::= &lt;<FONT COLOR="#FF6600">allowed-type</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">allowed-type</FONT>&gt;         ::= SYMBOL | STRING | LEXEME |
+                           INTEGER | FLOAT | NUMBER | 
+                           INSTANCE-NAME | INSTANCE-ADDRESS |
+                           INSTANCE |
+                           EXTERNAL-ADDRESS | FACT-ADDRESS
+
+&lt;<FONT COLOR="#FF6600">allowed-constant-attribute</FONT>&gt; 
+                       ::= (allowedsymbols&nbsp;&lt;<FONT COLOR="#FF6600">symbol-list</FONT>&gt;) |
+                           (allowedstrings &lt;<FONT COLOR="#FF6600">string-list</FONT>&gt;) |
+                           (allowed-lexemes &lt;<FONT COLOR="#FF6600">lexeme-list</FONT>&gt; |
+                           (allowedintegers&nbsp;&lt;<FONT COLOR="#FF6600">integer-list</FONT>&gt;) |
+                           (allowedfloats&nbsp;&lt;<FONT COLOR="#FF6600">float-list</FONT>&gt;) |
+                           (allowednumbers&nbsp;&lt;<FONT COLOR="#FF6600">number-list</FONT>&gt;) |
+                           (allowed-instance-names &lt;<FONT COLOR="#FF6600">instance-list</FONT>&gt;) |
+                           (allowedvalues&nbsp;&lt;<FONT COLOR="#FF6600">value-list</FONT>&gt;) |
+
+&lt;<FONT COLOR="#FF6600">symbol-list</FONT>&gt;          ::= &lt;<FONT COLOR="#FF6600">symbol</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">string-list</FONT>&gt;          ::= &lt;<FONT COLOR="#FF6600">string</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">lexeme-list</FONT>&gt;          ::= &lt;<FONT COLOR="#FF6600">lexeme</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">integer-list</FONT>&gt;         ::= &lt;<FONT COLOR="#FF6600">integer</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">float-list</FONT>&gt;           ::= &lt;<FONT COLOR="#FF6600">float</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">number-list</FONT>&gt;          ::= &lt;<FONT COLOR="#FF6600">number</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">instance-name-list</FONT>&gt;   ::= &lt;<FONT COLOR="#FF6600">instance-name</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">value-list</FONT>&gt;           ::= &lt;<FONT COLOR="#FF6600">constant</FONT>&gt;+ | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">range-attribute</FONT>&gt;      ::= (range &lt;<FONT COLOR="#FF6600">range-specification</FONT>&gt; 
+                                  &lt;<FONT COLOR="#FF6600">range-specification</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">range-specification</FONT>&gt;  ::= &lt;<FONT COLOR="#FF6600">number</FONT>&gt; | ?VARIABLE
+
+&lt;<FONT COLOR="#FF6600">cardinality-attribute</FONT>&gt;    
+                    ::= (cardinality &lt;<FONT COLOR="#FF6600">cardinality-specification</FONT>&gt; 
+                                     &lt;<FONT COLOR="#FF6600">cardinality-specification</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">cardinality-specification</FONT>&gt; ::= &lt;<FONT COLOR="#FF6600">integer</FONT>&gt; | ?VARIABLE<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio8htf.htm 35 2009-01-20 15:03:20Z scios $ -->

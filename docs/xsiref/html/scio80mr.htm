@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DEFCLASS</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="defclass"></A>DEFCLASS</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">A defclass is a construct for specifying the properties (slots) of a class of </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">objects.  A defclass consists of four elements: 1) a name, 2) a list of </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">superclasses from which the new class inherits slots and message-handlers, </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">3)  a specifier saying whether or not the creation of direct instances of the </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">new class is allowed and 4) a list of slots specific to the new class.  All </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">user-defined classes must inherit from at least one class, and to this end </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">COOL provides predefined system classes for use as a base in the derivation </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">of new classes.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">Any slots explicitly given in the defclass override those gotten from </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">inheritance.  COOL applies rules to the list of superclasses to generate a </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">class precedence list for the new class.  Facets further describe slots.  </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">Some examples of facets include: default value, cardinality, and types of </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">access allowed.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">The syntax of the defclass construct is:</FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">(defclass &lt;<FONT COLOR="#FF6600">name</FONT>&gt; [&lt;<FONT COLOR="#FF6600">comment</FONT>&gt;]
+  (is-a &lt;<FONT COLOR="#FF6600">superclass-name</FONT>&gt;+)
+  [&lt;<FONT COLOR="#FF6600">role</FONT>&gt;]
+  [&lt;<FONT COLOR="#FF6600">pattern-match-role</FONT>&gt;]
+  &lt;<FONT COLOR="#FF6600">slot</FONT>&gt;*
+  &lt;<FONT COLOR="#FF6600">handler-documentation</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">role</FONT>&gt;  ::= (role concrete | abstract)
+
+&lt;<FONT COLOR="#FF6600">pattern-match-role</FONT>&gt; 
+        ::= (pattern-match reactive | non-reactive)
+
+&lt;<FONT COLOR="#FF6600">slot</FONT>&gt;  ::= (slot &lt;<FONT COLOR="#FF6600">name</FONT>&gt; &lt;<FONT COLOR="#FF6600">facet</FONT>&gt;*) |
+            (single-slot &lt;<FONT COLOR="#FF6600">name</FONT>&gt; &lt;<FONT COLOR="#FF6600">facet</FONT>&gt;*) |
+            (multislot &lt;<FONT COLOR="#FF6600">name</FONT>&gt; &lt;<FONT COLOR="#FF6600">facet</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">facet</FONT>&gt; ::=  &lt;<FONT COLOR="#FF6600">default-facet</FONT>&gt; | &lt;<FONT COLOR="#FF6600">storage-facet</FONT>&gt; |
+             &lt;<FONT COLOR="#FF6600">access-facet</FONT>&gt; | &lt;<FONT COLOR="#FF6600">propagation-facet</FONT>&gt; | 
+             &lt;<FONT COLOR="#FF6600">source-facet</FONT>&gt; | &lt;<FONT COLOR="#FF6600">pattern-match-facet</FONT>&gt; |
+             &lt;<FONT COLOR="#FF6600">visibility-facet</FONT>&gt; | &lt;<FONT COLOR="#FF6600">create-accessor-facet</FONT>&gt;
+             &lt;<FONT COLOR="#FF6600">override-message-facet</FONT>&gt; | &lt;<FONT COLOR="#FF6600">constraint-attributes</FONT>&gt;
+ 
+&lt;<FONT COLOR="#FF6600">default-facet</FONT>&gt; ::= 
+           (default ?DERIVE | ?NONE | &lt;<FONT COLOR="#FF6600">expression</FONT>&gt;*) |
+           (default-dynamic &lt;<FONT COLOR="#FF6600">expression</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">storage-facet</FONT>&gt; ::= (storage local | shared)
+
+&lt;<FONT COLOR="#FF6600">access-facet</FONT>&gt; 
+       ::= (access read-write | read-only | initialize-only)
+
+&lt;<FONT COLOR="#FF6600">propagation-facet</FONT>&gt; ::= (propagation inherit | no-inherit)
+
+&lt;<FONT COLOR="#FF6600">source-facet</FONT>&gt; ::= (source exclusive | composite)
+
+&lt;<FONT COLOR="#FF6600">pattern-match-facet</FONT>&gt; 
+       ::= (pattern-match reactive | non-reactive)
+
+&lt;<FONT COLOR="#FF6600">visibility-facet</FONT>&gt; ::= (visibility private | public)
+
+&lt;<FONT COLOR="#FF6600">create-accessor-facet</FONT>&gt; 
+     ::= (create-accessor ?NONE | read | write | read-write)
+
+&lt;<FONT COLOR="#FF6600">override-message-facet</FONT>&gt; 
+     ::= (override-message ?DEFAULT | &lt;<FONT COLOR="#FF6600">message-name</FONT>&gt;)
+                                           
+&lt;<FONT COLOR="#FF6600">handler-documentation</FONT>&gt; 
+       ::= (message-handler &lt;<FONT COLOR="#FF6600">name</FONT>&gt; [&lt;<FONT COLOR="#FF6600">handler-type</FONT>&gt;])
+
+&lt;<FONT COLOR="#FF6600">handler-type</FONT>&gt; ::= primary | around | before | after<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio80mr.htm 35 2009-01-20 15:03:20Z scios $ -->

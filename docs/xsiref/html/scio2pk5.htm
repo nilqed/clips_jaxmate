@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DEFRULE</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="defrule"></A>DEFRULE</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">One of the primary methods of representing knowledge in XSI is a rule.  </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">A rule is a collection of conditions and the actions to be taken if the </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">conditions are met.  The developer of an expert system defines the rules </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">which describe how to solve a problem.  Rules execute (or fire) based on </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">the existence or non-existence of facts.  XSI provides the mechanism </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">(the inference engine) which attempts to match the rules to the current </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">state of the system (as represented by the fact-list) and applies the </FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">actions.  </FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">(defrule &lt;<FONT COLOR="#FF6600">rule-name</FONT>&gt; [&lt;<FONT COLOR="#FF6600">comment</FONT>&gt;]
+    [&lt;<FONT COLOR="#FF6600">declaration</FONT>&gt;]              
+    &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;*       
+=</FONT>&gt;
+    &lt;<FONT COLOR="#FF6600">action</FONT>&gt;*)  
+<FONT></CODE></PRE>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"><B><U>DECLARATIONS</U></B></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">declaration</FONT>&gt;           ::= (declare &lt;<FONT COLOR="#FF6600">rule-property</FONT>&gt;+)
+
+&lt;<FONT COLOR="#FF6600">rule-property</FONT>&gt;         ::= (salience &lt;<FONT COLOR="#FF6600">integer-expression</FONT>&gt;) |
+                            (auto-focus &lt;<FONT COLOR="#FF6600">boolean-symbol</FONT>&gt;)
+<FONT></CODE></PRE>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"><B><U>CONDITIONAL ELEMENTS</U></B></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;   ::= &lt;<FONT COLOR="#FF6600">pattern-CE</FONT>&gt; | &lt;<FONT COLOR="#FF6600">assigned-pattern-CE</FONT>&gt; | 
+                            &lt;<FONT COLOR="#FF6600">not-CE</FONT>&gt; | &lt;<FONT COLOR="#FF6600">and-CE</FONT>&gt; | &lt;<FONT COLOR="#FF6600">or-CE</FONT>&gt; |
+                            &lt;<FONT COLOR="#FF6600">logical-CE</FONT>&gt; | &lt;<FONT COLOR="#FF6600">test-CE</FONT>&gt; |
+                            &lt;<FONT COLOR="#FF6600">exists-CE</FONT>&gt; | &lt;<FONT COLOR="#FF6600">forall-CE</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">test-CE</FONT>&gt;               ::= (test &lt;<FONT COLOR="#FF6600">function-call</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">not-CE</FONT>&gt;                ::= (not &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;) 
+
+&lt;<FONT COLOR="#FF6600">and-CE</FONT>&gt;                ::= (and &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;+)
+ 
+&lt;<FONT COLOR="#FF6600">or-CE</FONT>&gt;                 ::= (or &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;+)  
+ 
+&lt;<FONT COLOR="#FF6600">exists-CE</FONT>&gt;             ::= (exists &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;+)
+
+&lt;<FONT COLOR="#FF6600">forall-CE</FONT>&gt;             ::= (forall &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;
+                                    &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;+)
+
+&lt;<FONT COLOR="#FF6600">logical-CE</FONT>&gt;            ::= (logical &lt;<FONT COLOR="#FF6600">conditional-element</FONT>&gt;+)
+<FONT></CODE></PRE>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"><B><U>PATTERN CONDITIONAL ELEMENT</U></B></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">assigned-pattern-CE</FONT>&gt;::=    ?&lt;<FONT COLOR="#FF6600">variable-symbol</FONT>&gt; &lt;<FONT COLOR="#FF6600">- &lt;<FONT COLOR="#FF6600">pattern-CE</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">pattern-CE</FONT>&gt;         ::=    &lt;<FONT COLOR="#FF6600">ordered-pattern-CE</FONT>&gt; | 
+                            &lt;<FONT COLOR="#FF6600">template-pattern-CE</FONT>&gt; |
+                            &lt;<FONT COLOR="#FF6600">object-pattern-CE</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">ordered-pattern-CE</FONT>&gt; ::=    (&lt;<FONT COLOR="#FF6600">symbol</FONT>&gt; &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">template-pattern-CE</FONT>&gt;::=    (&lt;<FONT COLOR="#FF6600">deftemplate-name &lt;<FONT COLOR="#FF6600">LHS-slot</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">object-pattern-CE</FONT>&gt;  ::=    (object &lt;<FONT COLOR="#FF6600">attribute-constraint</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">attribute-constraint</FONT>&gt;  ::= (is-a &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;) |
+                            (name &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;) |
+                            (&lt;<FONT COLOR="#FF6600">slot-name</FONT>&gt; &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">LHS-slot</FONT>&gt;              ::= &lt;<FONT COLOR="#FF6600">single-field-LHS-slot</FONT>&gt; | 
+                            &lt;<FONT COLOR="#FF6600">multifield-LHS-slot</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">LHS-slot</FONT>&gt;              ::= &lt;<FONT COLOR="#FF6600">single-field-LHS-slot</FONT>&gt; | 
+                            &lt;<FONT COLOR="#FF6600">multifield-LHS-slot</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">single-field-LHS-slot</FONT>&gt; ::= (&lt;<FONT COLOR="#FF6600">slot-name</FONT>&gt; &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;)
+
+&lt;<FONT COLOR="#FF6600">multifield-LHS-slot</FONT>&gt;   ::= (&lt;<FONT COLOR="#FF6600">slot-name</FONT>&gt; &lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;*)
+<FONT></CODE></PRE>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"><B><U>PATTERN CONSTRAINTS</U></B></FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">constraint</FONT>&gt;            ::= ? | $? | &lt;<FONT COLOR="#FF6600">connected-constraint</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">connected-constraint</FONT>&gt;  
+             ::= &lt;<FONT COLOR="#FF6600">single-constraint</FONT>&gt; |
+                 &lt;<FONT COLOR="#FF6600">single-constraint</FONT>&gt; &amp; &lt;<FONT COLOR="#FF6600">connected-constraint</FONT>&gt; |
+                 &lt;<FONT COLOR="#FF6600">single-constraint</FONT>&gt; | &lt;<FONT COLOR="#FF6600">connected-constraint</FONT>&gt;
+
+&lt;<FONT COLOR="#FF6600">single-constraint</FONT>&gt;     ::= &lt;<FONT COLOR="#FF6600">term</FONT>&gt; | ~&lt;<FONT COLOR="#FF6600">term</FONT>&gt;
+                     
+&lt;<FONT COLOR="#FF6600">term</FONT>&gt;               ::= &lt;<FONT COLOR="#FF6600">constant</FONT>&gt; | 
+                         &lt;<FONT COLOR="#FF6600">single-field-variable</FONT>&gt; |
+                         &lt;<FONT COLOR="#FF6600">multifield-variable</FONT>&gt; |
+                         :&lt;<FONT COLOR="#FF6600">function-call</FONT>&gt; |
+                         =&lt;<FONT COLOR="#FF6600">function-call</FONT>&gt;<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio2pk5.htm 35 2009-01-20 15:03:20Z scios $ -->

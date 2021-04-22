@@ -1,0 +1,1802 @@
+<HTML>
+<!-- Sitemap 1.0 -->
+<!-- $Id: SCIOS-XSI.hhk 35 2009-01-20 15:03:20Z scios $ -->
+<OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="*">
+		<param name="Name" value="*">
+		<param name="Local" value="html/scio5twz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="**">
+		<param name="Name" value="**">
+		<param name="Local" value="html/scio8s6q.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="+">
+		<param name="Name" value="+">
+		<param name="Local" value="html/scio09bh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="-">
+		<param name="Name" value="-">
+		<param name="Local" value="html/scio5ir7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="/">
+		<param name="Name" value="/">
+		<param name="Local" value="html/scio13hh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="&lt;">
+		<param name="Name" value="&lt;">
+		<param name="Local" value="html/scio05f8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="&lt;=">
+		<param name="Name" value="&lt;=">
+		<param name="Local" value="html/scio9n51.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="&lt;&gt;">
+		<param name="Name" value="&lt;&gt;">
+		<param name="Local" value="html/scio9949.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="=">
+		<param name="Name" value="=">
+		<param name="Local" value="html/scio4azw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="&gt;">
+		<param name="Name" value="&gt;">
+		<param name="Local" value="html/scio056c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="&gt;=">
+		<param name="Name" value="&gt;=">
+		<param name="Local" value="html/scio97c5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ABS">
+		<param name="Name" value="ABS">
+		<param name="Local" value="html/scio8nhv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="AGENDA">
+		<param name="Name" value="AGENDA">
+		<param name="Local" value="html/scio4sf5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="AGENDA_COMMANDS">
+		<param name="Name" value="AGENDA COMMANDS">
+		<param name="Local" value="html/scio4rjn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="AGENDA_FUNCTIONS">
+		<param name="Name" value="AGENDA FUNCTIONS">
+		<param name="Local" value="html/scio3svn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="AND">
+		<param name="Name" value="AND">
+		<param name="Local" value="html/scio8o2s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="APROPOS">
+		<param name="Name" value="APROPOS">
+		<param name="Local" value="html/scio42b7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ASSERT">
+		<param name="Name" value="ASSERT">
+		<param name="Local" value="html/scio7t2s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ASSERT-STRING">
+		<param name="Name" value="ASSERT-STRING">
+		<param name="Local" value="html/scio5zl3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BASIC MATH FUNCTIONS">
+		<param name="Name" value="BASIC MATH FUNCTIONS">
+		<param name="Local" value="html/scio6zqr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BATCH">
+		<param name="Name" value="BATCH">
+		<param name="Local" value="html/scio5jfs.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BATCH*">
+		<param name="Name" value="BATCH*">
+		<param name="Local" value="html/scio0002.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BIND">
+		<param name="Name" value="BIND">
+		<param name="Local" value="html/scio9zz8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BLOAD">
+		<param name="Name" value="BLOAD">
+		<param name="Local" value="html/scio6wis.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BREAK">
+		<param name="Name" value="BREAK">
+		<param name="Local" value="html/scio9qjv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BROWSE-CLASSES">
+		<param name="Name" value="BROWSE-CLASSES">
+		<param name="Local" value="html/scio27qr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BSAVE">
+		<param name="Name" value="BSAVE">
+		<param name="Local" value="html/scio517p.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="BUILD">
+		<param name="Name" value="BUILD">
+		<param name="Local" value="html/scio6yjo.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CALL-NEXT-HANDLER">
+		<param name="Name" value="CALL-NEXT-HANDLER">
+		<param name="Local" value="html/scio4wqa.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CALL-NEXT-METHOD">
+		<param name="Name" value="CALL-NEXT-METHOD">
+		<param name="Local" value="html/scio9rxg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CALL-SPECIFIC-METHOD">
+		<param name="Name" value="CALL-SPECIFIC-METHOD">
+		<param name="Local" value="html/scio72ck.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CHECK-SYNTAX">
+		<param name="Name" value="CHECK-SYNTAX">
+		<param name="Local" value="html/scio1s8o.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS">
+		<param name="Name" value="CLASS">
+		<param name="Local" value="html/scio5ak3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-ABSTRACTP">
+		<param name="Name" value="CLASS-ABSTRACTP">
+		<param name="Local" value="html/scio6os0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-EXISTP">
+		<param name="Name" value="CLASS-EXISTP">
+		<param name="Local" value="html/scio2xrk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-REACTIVEP">
+		<param name="Name" value="CLASS-REACTIVEP">
+		<param name="Local" value="html/scio3yy8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-SLOTS">
+		<param name="Name" value="CLASS-SLOTS">
+		<param name="Local" value="html/scio1u9f.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-SUBCLASSES">
+		<param name="Name" value="CLASS-SUBCLASSES">
+		<param name="Local" value="html/scio4zoz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS-SUPERCLASSES">
+		<param name="Name" value="CLASS-SUPERCLASSES">
+		<param name="Local" value="html/scio9u43.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS_COMMANDS">
+		<param name="Name" value="CLASS COMMANDS">
+		<param name="Local" value="html/scio36k3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLASS_FUNCTIONS">
+		<param name="Name" value="CLASS FUNCTIONS">
+		<param name="Local" value="html/scio2ho3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLEAR">
+		<param name="Name" value="CLEAR">
+		<param name="Local" value="html/scio5mb6.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLEAR-FOCUS-STACK">
+		<param name="Name" value="CLEAR-FOCUS-STACK">
+		<param name="Local" value="html/scio68tn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CLOSE">
+		<param name="Name" value="CLOSE">
+		<param name="Local" value="html/scio6isl.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="COMMAND SUMMARY">
+		<param name="Name" value="COMMAND SUMMARY">
+		<param name="Local" value="html/scio6y61.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CONSERVE-MEM">
+		<param name="Name" value="CONSERVE-MEM">
+		<param name="Local" value="html/scio8ca5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CONSTRAINT ATTRIBUTES">
+		<param name="Name" value="CONSTRAINT ATTRIBUTES">
+		<param name="Local" value="html/scio8htf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CONSTRUCT SUMMARY">
+		<param name="Name" value="Construct Summary">
+		<param name="Local" value="html/scio9lrt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="COOL_COMMANDS">
+		<param name="Name" value="COOL COMMANDS">
+		<param name="Local" value="html/scio6upf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="COOL_FUNCTIONS">
+		<param name="Name" value="COOL FUNCTIONS">
+		<param name="Local" value="html/scio7f5f.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="CREATE$">
+		<param name="Name" value="CREATE$">
+		<param name="Local" value="html/scio78bp.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEBUGGING COMMANDS">
+		<param name="Name" value="DEBUGGING COMMANDS">
+		<param name="Local" value="html/scio32lv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFCLASS">
+		<param name="Name" value="DEFCLASS">
+		<param name="Local" value="html/scio80mr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFCLASS-MODULE">
+		<param name="Name" value="DEFCLASS-MODULE">
+		<param name="Local" value="html/scio2wkl.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFACTS">
+		<param name="Name" value="DEFFACTS">
+		<param name="Local" value="html/scio565v.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFACTS COMMANDS">
+		<param name="Name" value="DEFFACTS COMMANDS">
+		<param name="Local" value="html/scio7u5v.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFACTS-MODULE">
+		<param name="Name" value="DEFFACTS-MODULE">
+		<param name="Local" value="html/scio857p.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFACTS_FUNCTIONS">
+		<param name="Name" value="DEFFACTS FUNCTIONS">
+		<param name="Local" value="html/scio0gdv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFUNCTION">
+		<param name="Name" value="DEFFUNCTION">
+		<param name="Local" value="html/scio9t0u.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFUNCTION COMMANDS">
+		<param name="Name" value="DEFFUNCTION COMMANDS">
+		<param name="Local" value="html/scio5wc3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFUNCTION-MODULE">
+		<param name="Name" value="DEFFUNCTION-MODULE">
+		<param name="Local" value="html/scio19lx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFFUNCTION_FUNCTIONS">
+		<param name="Name" value="DEFFUNCTION FUNCTIONS">
+		<param name="Local" value="html/scio6bg3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGENERIC">
+		<param name="Name" value="DEFGENERIC / DEFMETHOD">
+		<param name="Local" value="html/scio5foj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGENERIC-MODULE">
+		<param name="Name" value="DEFGENERIC-MODULE">
+		<param name="Local" value="html/scio9ied.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGLOBAL">
+		<param name="Name" value="DEFGLOBAL">
+		<param name="Local" value="html/scio6bos.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGLOBAL-MODULE">
+		<param name="Name" value="DEFGLOBAL-MODULE">
+		<param name="Local" value="html/scio82ud.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGLOBAL_COMMANDS">
+		<param name="Name" value="DEFGLOBAL COMMANDS">
+		<param name="Local" value="html/scio854j.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFGLOBAL_FUNCTIONS">
+		<param name="Name" value="DEFGLOBAL FUNCTIONS">
+		<param name="Local" value="html/scio9y0j.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFINSTANCES">
+		<param name="Name" value="DEFINSTANCES">
+		<param name="Local" value="html/scio9h6b.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFINSTANCES COMMANDS">
+		<param name="Name" value="DEFINSTANCES COMMANDS">
+		<param name="Local" value="html/scio9l6b.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFINSTANCES-MODULE">
+		<param name="Name" value="DEFINSTANCES-MODULE">
+		<param name="Local" value="html/scio6oo5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFINSTANCES_FUNCTIONS">
+		<param name="Name" value="DEFINSTANCES FUNCTIONS">
+		<param name="Local" value="html/scio2h6b.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFMESSAGE-HANDLER">
+		<param name="Name" value="DEFMESSAGE HANDLER">
+		<param name="Local" value="html/scio4rea.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFMETHOD">
+		<param name="Name" value="DEFGENERIC / DEFMETHOD">
+		<param name="Local" value="html/scio5foj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFMODULE">
+		<param name="Name" value="DEFMODULE">
+		<param name="Local" value="html/scio92ed.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFMODULE COMMANDS">
+		<param name="Name" value="DEFMODULE COMMANDS">
+		<param name="Local" value="html/scio2p9v.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFMODULE_FUNCTIONS">
+		<param name="Name" value="DEFMODULE FUNCTIONS">
+		<param name="Local" value="html/scio1rhv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFRULE">
+		<param name="Name" value="DEFRULE">
+		<param name="Local" value="html/scio2pk5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFRULE COMMANDS">
+		<param name="Name" value="DEFRULE COMMANDS">
+		<param name="Local" value="html/scio64fn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFRULE-MODULE">
+		<param name="Name" value="DEFRULE-MODULE">
+		<param name="Local" value="html/scio5t9h.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFRULE_FUNCTIONS">
+		<param name="Name" value="DEFRULE FUNCTIONS">
+		<param name="Local" value="html/scio0prn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFTEMPLATE">
+		<param name="Name" value="DEFTEMPLATE">
+		<param name="Local" value="html/scio7fmt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFTEMPLATE-MODULE">
+		<param name="Name" value="DEFTEMPLATE-MODULE">
+		<param name="Local" value="html/scio5y05.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFTEMPLATE_COMMANDS">
+		<param name="Name" value="DEFTEMPLATE COMMANDS">
+		<param name="Local" value="html/scio5iib.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEFTEMPLATE_FUNCTIONS">
+		<param name="Name" value="DEFTEMPLATE FUNCTIONS">
+		<param name="Local" value="html/scio1qib.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEG-GRAD">
+		<param name="Name" value="DEG-GRAD">
+		<param name="Local" value="html/scio712c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEG-RAD">
+		<param name="Name" value="DEG-RAD">
+		<param name="Local" value="html/scio59r8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DELETE$">
+		<param name="Name" value="DELETE$">
+		<param name="Local" value="html/scio67dx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DELETE-INSTANCE">
+		<param name="Name" value="DELETE-INSTANCE">
+		<param name="Local" value="html/scio8vj9.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DELETE-MEMBER$">
+		<param name="Name" value="DELETE-MEMBER$">
+		<param name="Local" value="html/scio0z3m.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEPENDENCIES">
+		<param name="Name" value="DEPENDENCIES">
+		<param name="Local" value="html/scio35pv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DEPENDENTS">
+		<param name="Name" value="DEPENDENTS">
+		<param name="Local" value="html/scio3e5v.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DESCRIBE-CLASS">
+		<param name="Name" value="DESCRIBE-CLASS">
+		<param name="Local" value="html/scio4qlv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DIRECT-SLOT-DELETE$">
+		<param name="Name" value="DIRECT-SLOT-DELETE$">
+		<param name="Local" value="html/scio6w6q.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DIRECT-SLOT-INSERT$">
+		<param name="Name" value="DIRECT-SLOT-INSERT$">
+		<param name="Local" value="html/scio4er6.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DIRECT-SLOT-REPLACE$">
+		<param name="Name" value="DIRECT-SLOT-REPLACE$">
+		<param name="Local" value="html/scio06pe.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DIV">
+		<param name="Name" value="DIV">
+		<param name="Local" value="html/scio8xbq.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DRIBBLE-OFF">
+		<param name="Name" value="DRIBBLE-OFF">
+		<param name="Local" value="html/scio1nxi.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DRIBBLE-ON">
+		<param name="Name" value="DRIBBLE-ON">
+		<param name="Local" value="html/scio3xke.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DUPLICATE">
+		<param name="Name" value="DUPLICATE">
+		<param name="Local" value="html/scio1w11.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DYNAMIC-GET">
+		<param name="Name" value="DYNAMIC-GET">
+		<param name="Local" value="html/scio3v04.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="DYNAMIC-PUT">
+		<param name="Name" value="DYNAMIC-PUT">
+		<param name="Local" value="html/scio4o8k.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ENVIRONMENT_COMMANDS">
+		<param name="Name" value="ENVIRONMENT COMMANDS">
+		<param name="Local" value="html/scio8s4z.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EQ">
+		<param name="Name" value="EQ">
+		<param name="Local" value="html/scio052p.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EVAL">
+		<param name="Name" value="EVAL">
+		<param name="Local" value="html/scio7z8s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EVENP">
+		<param name="Name" value="EVENP">
+		<param name="Local" value="html/scio10fk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EXIT">
+		<param name="Name" value="EXIT">
+		<param name="Local" value="html/scio85ys.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EXP">
+		<param name="Name" value="EXP">
+		<param name="Local" value="html/scio9180.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EXPAND$">
+		<param name="Name" value="EXPAND$">
+		<param name="Local" value="html/scio5n76.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EXPLODE$">
+		<param name="Name" value="EXPLODE$">
+		<param name="Local" value="html/scio7jdx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="EXTENDED_MATH_FUNCTIONS">
+		<param name="Name" value="EXTENDED MATH FUNCTIONS">
+		<param name="Local" value="html/scio28ab.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT-EXISTP">
+		<param name="Name" value="FACT-EXISTP">
+		<param name="Local" value="html/scio2q28.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT-INDEX">
+		<param name="Name" value="FACT-INDEX">
+		<param name="Local" value="html/scio233s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT-RELATION">
+		<param name="Name" value="FACT-RELATION">
+		<param name="Local" value="html/scio7vou.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT-SLOT-NAMES">
+		<param name="Name" value="FACT-SLOT-NAMES">
+		<param name="Local" value="html/scio1mib.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT-SLOT-VALUE">
+		<param name="Name" value="FACT-SLOT-VALUE">
+		<param name="Local" value="html/scio8b6t.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT_COMMANDS">
+		<param name="Name" value="FACT COMMANDS">
+		<param name="Local" value="html/scio6o6r.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACT_FUNCTIONS">
+		<param name="Name" value="FACT FUNCTIONS">
+		<param name="Local" value="html/scio5tyr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FACTS">
+		<param name="Name" value="FACTS">
+		<param name="Local" value="html/scio2g37.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FETCH">
+		<param name="Name" value="FETCH">
+		<param name="Local" value="html/scio6e20.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FIRST$">
+		<param name="Name" value="FIRST$">
+		<param name="Local" value="html/scio8pmc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FLOAT">
+		<param name="Name" value="FLOAT">
+		<param name="Local" value="html/scio5a2c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FLOATP">
+		<param name="Name" value="FLOATP">
+		<param name="Local" value="html/scio7w8g.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FOCUS">
+		<param name="Name" value="FOCUS">
+		<param name="Local" value="html/scio13xv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FORMAT">
+		<param name="Name" value="FORMAT">
+		<param name="Local" value="html/scio4k6s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FUNCALL">
+		<param name="Name" value="FUNCALL">
+		<param name="Local" value="html/scio1egc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="FUNCTION_SUMMARY">
+		<param name="Name" value="FUNCTION SUMMARY">
+		<param name="Local" value="html/scio9ke1.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GENERIC_FUNCTION_COMMANDS">
+		<param name="Name" value="GENERIC FUNCTION COMMANDS">
+		<param name="Local" value="html/scio2cxf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GENERIC_FUNCTION_FUNCTIONS">
+		<param name="Name" value="GENERIC FUNCTIONS">
+		<param name="Local" value="html/scio9tdf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GENSYM">
+		<param name="Name" value="GENSYM">
+		<param name="Local" value="html/scio0pwt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GENSYM*">
+		<param name="Name" value="GENSYM*">
+		<param name="Local" value="html/scio62cy.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-AUTO-FLOAT-DIVIDEND">
+		<param name="Name" value="GET-AUTO-FLOAT-DIVIDEND">
+		<param name="Local" value="html/scio2bxg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-CLASS-DEFAULTS-MODE">
+		<param name="Name" value="GET-CLASS-DEFAULTS-MODE">
+		<param name="Local" value="html/scio6yud.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-CURRENT-MODULE">
+		<param name="Name" value="GET-CURRENT-MODULE">
+		<param name="Local" value="html/scio7751.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFCLASS-LIST">
+		<param name="Name" value="GET-DEFCLASS-LIST">
+		<param name="Local" value="html/scio1j90.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFFACTS-LIST">
+		<param name="Name" value="GET-DEFFACTS-LIST">
+		<param name="Local" value="html/scio9v04.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFFUNCTION-LIST">
+		<param name="Name" value="GET-DEFFUNCTION-LIST">
+		<param name="Local" value="html/scio06yc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFGENERIC-LIST">
+		<param name="Name" value="GET-DEFGENERIC-LIST">
+		<param name="Local" value="html/scio992s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFGLOBAL-LIST">
+		<param name="Name" value="GET-DEFGLOBAL-LIST">
+		<param name="Local" value="html/scio0yes.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFINSTANCES-LIST">
+		<param name="Name" value="GET-DEFINSTANCES-LIST">
+		<param name="Local" value="html/scio9rck.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFMESSAGE-HANDLER-LIST">
+		<param name="Name" value="GET-DEFMESSAGE-HANDLER-LIST">
+		<param name="Local" value="html/scio7zqs.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFMETHOD-LIST">
+		<param name="Name" value="GET-DEFMETHOD-LIST">
+		<param name="Local" value="html/scio5o38.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFMODULE-LIST">
+		<param name="Name" value="GET-DEFMODULE-LIST">
+		<param name="Local" value="html/scio1t84.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFRULE-LIST">
+		<param name="Name" value="GET-DEFRULE-LIST">
+		<param name="Local" value="html/scio29pw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DEFTEMPLATE-LIST">
+		<param name="Name" value="GET-DEFTEMPLATE-LIST">
+		<param name="Local" value="html/scio25kk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-DYNAMIC-CONSTRAINT-CHECKING">
+		<param name="Name" value="GET-DYNAMIC-CONSTRAINT-CHECKING">
+		<param name="Local" value="html/scio49nr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-FACT-DUPLICATION">
+		<param name="Name" value="GET-FACT-DUPLICATION">
+		<param name="Local" value="html/scio8x7y.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-FACT-LIST">
+		<param name="Name" value="GET-FACT-LIST">
+		<param name="Local" value="html/scio5qd0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-FOCUS">
+		<param name="Name" value="GET-FOCUS">
+		<param name="Local" value="html/scio8vjn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-FOCUS-STACK">
+		<param name="Name" value="GET-FOCUS-STACK">
+		<param name="Local" value="html/scio2tnv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-FUNCTION-RESTRICTIONS">
+		<param name="Name" value="GET-FUNCTION -RESTRICTIONS">
+		<param name="Local" value="html/scio6bcj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-INCREMENTAL-RESET">
+		<param name="Name" value="GET-INCREMENTAL-RESET">
+		<param name="Local" value="html/scio1qk4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-METHOD-RESTRICTIONS">
+		<param name="Name" value="GET-METHOD-RESTRICTIONS">
+		<param name="Local" value="html/scio169f.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-RESET-GLOBALS">
+		<param name="Name" value="GET-RESET-GLOBALS">
+		<param name="Local" value="html/scio8ltf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-SALIENCE-EVALUATION">
+		<param name="Name" value="GET-SALIENCE-EVALUATION">
+		<param name="Local" value="html/scio3uwe.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-SEQUENCE-OPERATOR-RECOGNITION">
+		<param name="Name" value="GET-SEQUENCE-OPERATOR-RECOGNITION">
+		<param name="Local" value="html/scio6mum.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-STATIC-CONSTRAINT-CHECKING">
+		<param name="Name" value="GET-STATIC-CONSTRAINT-CHECKING">
+		<param name="Local" value="html/scio6auf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET-STRATEGY">
+		<param name="Name" value="GET-STRATEGY">
+		<param name="Local" value="html/scio99rt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GET_PROFILE_PERCENT_THRESHOLD">
+		<param name="Name" value="GET-PROFILE-PERCENT-THRESHOLD">
+		<param name="Local" value="html/scio1sro.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="GRAD-DEG">
+		<param name="Name" value="GRAD-DEG">
+		<param name="Local" value="html/scio4pt3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="HALT">
+		<param name="Name" value="HALT">
+		<param name="Local" value="html/scio308k.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="HELP USAGE">
+		<param name="Name" value="Using (help)">
+		<param name="Local" value="html/scio58v9.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="IF">
+		<param name="Name" value="IF">
+		<param name="Local" value="html/scio059i.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="IMPLODE$">
+		<param name="Name" value="IMPLODE$">
+		<param name="Local" value="html/scio0wdh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INDEX">
+		<param name="Name" value="INDEX">
+		<param name="Local" value="html/scio4c6w.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INIT-SLOTS">
+		<param name="Name" value="INIT-SLOTS">
+		<param name="Local" value="html/scio6ir7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSERT$">
+		<param name="Name" value="INSERT$">
+		<param name="Local" value="html/scio1y44.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE MANIPULATION FUNCTIONS">
+		<param name="Name" value="INSTANCE MANIPULATION FUNCTIONS">
+		<param name="Local" value="html/scio2tpv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE PREDICATE FUNCTIONS">
+		<param name="Name" value="INSTANCE PREDICATE FUNCTIONS">
+		<param name="Local" value="html/scio4po3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-ADDRESS">
+		<param name="Name" value="INSTANCE-ADDRESS">
+		<param name="Local" value="html/scio5037.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-ADDRESSP">
+		<param name="Name" value="INSTANCE-ADDRESSP">
+		<param name="Local" value="html/scio05rk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-EXISTP">
+		<param name="Name" value="INSTANCE-EXISTP">
+		<param name="Local" value="html/scio9t2o.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-NAME">
+		<param name="Name" value="INSTANCE-NAME">
+		<param name="Local" value="html/scio4gpx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-NAME-TO-SYMBOL">
+		<param name="Name" value="INSTANCE-NAME-TO-SYMBOL">
+		<param name="Local" value="html/scio963w.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE-NAMEP">
+		<param name="Name" value="INSTANCE-NAMEP">
+		<param name="Local" value="html/scio5q5s.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCE_SLOT_FUNCTIONS">
+		<param name="Name" value="INSTANCE SLOT FUNCTIONS">
+		<param name="Local" value="html/scio2f03.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCEP">
+		<param name="Name" value="INSTANCEP">
+		<param name="Local" value="html/scio88fk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCES">
+		<param name="Name" value="INSTANCES">
+		<param name="Local" value="html/scio88fn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INSTANCES_COMMANDS">
+		<param name="Name" value="INSTANCES COMMANDS">
+		<param name="Local" value="html/scio9ofn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INTEGER">
+		<param name="Name" value="INTEGER">
+		<param name="Local" value="html/scio399u.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="INTEGERP">
+		<param name="Name" value="INTEGERP">
+		<param name="Local" value="html/scio8hkg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="IO FUNCTIONS">
+		<param name="Name" value="IO FUNCTIONS">
+		<param name="Local" value="html/scio5rar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LENGTH">
+		<param name="Name" value="LENGTH">
+		<param name="Local" value="html/scio9q7c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LENGTH$">
+		<param name="Name" value="LENGTH$">
+		<param name="Local" value="html/scio2l2q.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LEXEMEP">
+		<param name="Name" value="LEXEMEP">
+		<param name="Local" value="html/scio6o4w.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFCLASSES">
+		<param name="Name" value="LIST-DEFCLASSES">
+		<param name="Local" value="html/scio8kkz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFFACTS">
+		<param name="Name" value="LIST-DEFFACTS">
+		<param name="Local" value="html/scio7ng3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFFUNCTIONS">
+		<param name="Name" value="LIST-DEFFUNCTIONS">
+		<param name="Local" value="html/scio4eer.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFGENERICS">
+		<param name="Name" value="LIST-DEFGENERICS">
+		<param name="Local" value="html/scio3rn7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFGLOBALS">
+		<param name="Name" value="LIST-DEFGLOBALS">
+		<param name="Local" value="html/scio3b77.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFINSTANCES">
+		<param name="Name" value="LIST-DEFINSTANCES">
+		<param name="Local" value="html/scio6a0j.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFMESSAGE-HANDLERS">
+		<param name="Name" value="LIST-DEFMESSAGE-HANDLERS">
+		<param name="Local" value="html/scio1gj7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFMETHODS">
+		<param name="Name" value="LIST-DEFMETHODS">
+		<param name="Local" value="html/scio9drn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFMODULES">
+		<param name="Name" value="LIST-DEFMODULES">
+		<param name="Local" value="html/scio8soj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFRULES">
+		<param name="Name" value="LIST-DEFRULES">
+		<param name="Local" value="html/scio5x6b.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-DEFTEMPLATES">
+		<param name="Name" value="LIST-DEFTEMPLATES">
+		<param name="Local" value="html/scio2lgz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-FOCUS-STACK">
+		<param name="Name" value="LIST-FOCUS-STACK">
+		<param name="Local" value="html/scio2fcb.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LIST-WATCH-ITEMS">
+		<param name="Name" value="LIST-WATCH-ITEMS">
+		<param name="Local" value="html/scio44vn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOAD">
+		<param name="Name" value="LOAD">
+		<param name="Local" value="html/scio6p0k.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOAD*">
+		<param name="Name" value="LOAD*">
+		<param name="Local" value="html/scio0001.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOAD-FACTS">
+		<param name="Name" value="LOAD-FACTS">
+		<param name="Local" value="html/scio1r3n.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOAD-INSTANCES">
+		<param name="Name" value="LOAD-INSTANCES">
+		<param name="Local" value="html/scio7ak3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOG">
+		<param name="Name" value="LOG">
+		<param name="Local" value="html/scio9mw7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOG10">
+		<param name="Name" value="LOG10">
+		<param name="Local" value="html/scio8xgw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOOP-FOR-COUNT">
+		<param name="Name" value="LOOP-FOR-COUNT">
+		<param name="Local" value="html/scio6d10.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="LOWCASE">
+		<param name="Name" value="LOWCASE">
+		<param name="Local" value="html/scio4xwl.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MATCHES">
+		<param name="Name" value="MATCHES">
+		<param name="Local" value="html/scio7fw3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MATH_FUNCTIONS">
+		<param name="Name" value="MATH FUNCTIONS">
+		<param name="Local" value="html/scio5ss3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MAX">
+		<param name="Name" value="MAX">
+		<param name="Local" value="html/scio9pdk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MEM-REQUESTS">
+		<param name="Name" value="MEM-REQUESTS">
+		<param name="Local" value="html/scio6zcj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MEM-USED">
+		<param name="Name" value="MEM-USED">
+		<param name="Local" value="html/scio1jms.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MEMBER$">
+		<param name="Name" value="MEMBER$">
+		<param name="Local" value="html/scio7nw2.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MEMORY COMMANDS">
+		<param name="Name" value="MEMORY COMMANDS">
+		<param name="Local" value="html/scio4r8z.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MESSAGE HANDLER COMMANDS">
+		<param name="Name" value="MESSAGE-HANDLER COMMANDS">
+		<param name="Local" value="html/scio71pv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MESSAGE-HANDLER-EXISTP">
+		<param name="Name" value="MESSAGE-HANDLER-EXISTP">
+		<param name="Local" value="html/scio52pc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MESSAGE-HANDLER_FUNCTIONS">
+		<param name="Name" value="MESSAGE-HANDLER FUNCTIONS">
+		<param name="Local" value="html/scio9vxv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MIN">
+		<param name="Name" value="MIN">
+		<param name="Local" value="html/scio9pri.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MISCELLANEOUS_FUNCTIONS">
+		<param name="Name" value="MISCELLANEOUS FUNCTIONS">
+		<param name="Local" value="html/scio588j.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MOD">
+		<param name="Name" value="MOD">
+		<param name="Local" value="html/scio9q1w.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MODIFY">
+		<param name="Name" value="MODIFY">
+		<param name="Local" value="html/scio3ng9.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MULTIFIELD FUNCTIONS">
+		<param name="Name" value="MULTIFIELD FUNCTIONS">
+		<param name="Local" value="html/scio3jar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="MULTIFIELDP">
+		<param name="Name" value="MULTIFIELDP">
+		<param name="Local" value="html/scio25f4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NEQ">
+		<param name="Name" value="NEQ">
+		<param name="Local" value="html/scio9sq9.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NEW FEATURES">
+		<param name="Name" value="New Features">
+		<param name="Local" value="html/scio7ygj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NEXT-HANDLERP">
+		<param name="Name" value="NEXT-HANDLERP">
+		<param name="Local" value="html/scio70fk.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NEXT-METHODP">
+		<param name="Name" value="NEXT-METHODP">
+		<param name="Local" value="html/scio9ai8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NOT">
+		<param name="Name" value="NOT">
+		<param name="Local" value="html/scio9t84.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NTH$">
+		<param name="Name" value="NTH$">
+		<param name="Local" value="html/scio9tgo.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="NUMBERP">
+		<param name="Name" value="NUMBERP">
+		<param name="Local" value="html/scio1kkw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ODDP">
+		<param name="Name" value="ODDP">
+		<param name="Local" value="html/scio2l80.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="OPEN">
+		<param name="Name" value="OPEN">
+		<param name="Local" value="html/scio3n72.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="OPTIONS">
+		<param name="Name" value="OPTIONS">
+		<param name="Local" value="html/scio5qpf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="OR">
+		<param name="Name" value="OR">
+		<param name="Local" value="html/scio05ki.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="OVERRIDE-NEXT-HANDLER">
+		<param name="Name" value="OVERRIDE-NEXT-HANDLER">
+		<param name="Local" value="html/scio50du.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="OVERRIDE-NEXT-METHOD">
+		<param name="Name" value="OVERRIDE-NEXT-METHOD">
+		<param name="Local" value="html/scio8dd0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PI">
+		<param name="Name" value="PI">
+		<param name="Local" value="html/scio05m1.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="POINTERP">
+		<param name="Name" value="POINTERP">
+		<param name="Local" value="html/scio1wq8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="POP-FOCUS">
+		<param name="Name" value="POP-FOCUS">
+		<param name="Local" value="html/scio0oqb.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFCLASS">
+		<param name="Name" value="PPDEFCLASS">
+		<param name="Local" value="html/scio8mcz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFFACTS">
+		<param name="Name" value="PPDEFFACTS">
+		<param name="Local" value="html/scio5rw3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFFUNCTION">
+		<param name="Name" value="PPDEFFUNCTION">
+		<param name="Local" value="html/scio15f2.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFGENERIC">
+		<param name="Name" value="PPDEFGENERIC">
+		<param name="Local" value="html/scio7n6r.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFGLOBAL">
+		<param name="Name" value="PPDEFGLOBAL">
+		<param name="Local" value="html/scio4yb0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFINSTANCES">
+		<param name="Name" value="PPDEFINSTANCES">
+		<param name="Local" value="html/scio5igj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFMESSAGE-HANDLER">
+		<param name="Name" value="PPDEFMESSAGE-HANDLER">
+		<param name="Local" value="html/scio5m0i.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFMETHOD">
+		<param name="Name" value="PPDEFMETHOD">
+		<param name="Local" value="html/scio0ilg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFMODULE">
+		<param name="Name" value="PPDEFMODULE">
+		<param name="Local" value="html/scio7p0l.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFRULE">
+		<param name="Name" value="PPDEFRULE">
+		<param name="Local" value="html/scio0ued.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPDEFTEMPLATE">
+		<param name="Name" value="PPDEFTEMPLATE">
+		<param name="Local" value="html/scio8s11.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PPINSTANCE">
+		<param name="Name" value="PPINSTANCE">
+		<param name="Local" value="html/scio61lx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PREDICATE_FUNCTIONS">
+		<param name="Name" value="PREDICATE FUNCTIONS">
+		<param name="Local" value="html/scio62ur.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PREVIEW-GENERIC">
+		<param name="Name" value="PREVIEW-GENERIC">
+		<param name="Local" value="html/scio96zn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PREVIEW-SEND">
+		<param name="Name" value="PREVIEW-SEND">
+		<param name="Local" value="html/scio6zc4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PRINT-REGION">
+		<param name="Name" value="PRINT-REGION">
+		<param name="Local" value="html/scio97zi.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PRINTOUT">
+		<param name="Name" value="PRINTOUT">
+		<param name="Local" value="html/scio3fas.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROCEDURAL FUNCTIONS">
+		<param name="Name" value="PROCEDURAL FUNCTIONS">
+		<param name="Local" value="html/scio7cab.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROFILE">
+		<param name="Name" value="PROFILE">
+		<param name="Local" value="html/scio5ahx.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROFILE-INFO">
+		<param name="Name" value="PROFILE-INFO">
+		<param name="Local" value="html/scio7t67.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROFILE-RESET">
+		<param name="Name" value="PROFILE-RESET">
+		<param name="Local" value="html/scio6rp0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROFILING COMMANDS">
+		<param name="Name" value="PROFILING COMMANDS">
+		<param name="Local" value="html/scio0lf7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROGN">
+		<param name="Name" value="PROGN">
+		<param name="Local" value="html/scio4xta.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="PROGN$">
+		<param name="Name" value="PROGN$">
+		<param name="Local" value="html/scio6436.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RAD-DEG">
+		<param name="Name" value="RAD-DEG">
+		<param name="Local" value="html/scio5i1z.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RANDOM">
+		<param name="Name" value="RANDOM">
+		<param name="Local" value="html/scio55wt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="READ">
+		<param name="Name" value="READ">
+		<param name="Local" value="html/scio9j1g.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="READLINE">
+		<param name="Name" value="READLINE">
+		<param name="Local" value="html/scio0ulh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REFRESH">
+		<param name="Name" value="REFRESH">
+		<param name="Local" value="html/scio7lt4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REFRESH-AGENDA">
+		<param name="Name" value="REFRESH-AGENDA">
+		<param name="Local" value="html/scio91b5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RELEASE NOTES">
+		<param name="Name" value="New Features and where to get support">
+		<param name="Local" value="html/scio6isz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RELEASE-MEM">
+		<param name="Name" value="RELEASE-MEM">
+		<param name="Local" value="html/scio27jh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REMOVE">
+		<param name="Name" value="REMOVE">
+		<param name="Local" value="html/scio8w9x.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REMOVE-BREAK">
+		<param name="Name" value="REMOVE-BREAK">
+		<param name="Local" value="html/scio5cff.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RENAME">
+		<param name="Name" value="RENAME">
+		<param name="Local" value="html/scio39ut.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REPLACE$">
+		<param name="Name" value="REPLACE$">
+		<param name="Local" value="html/scio9gkl.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REPLACE-MEMBER$">
+		<param name="Name" value="REPLACE-MEMBER$">
+		<param name="Local" value="html/scio3qya.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RESET">
+		<param name="Name" value="RESET">
+		<param name="Local" value="html/scio1flg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="REST$">
+		<param name="Name" value="REST$">
+		<param name="Local" value="html/scio9jxw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RESTORE-INSTANCES">
+		<param name="Name" value="RESTORE-INSTANCES">
+		<param name="Local" value="html/scio4xwz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RETRACT">
+		<param name="Name" value="RETRACT">
+		<param name="Local" value="html/scio1jqs.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RETURN">
+		<param name="Name" value="RETURN">
+		<param name="Local" value="html/scio8qy6.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="ROUND">
+		<param name="Name" value="ROUND">
+		<param name="Local" value="html/scio7t2c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="RUN">
+		<param name="Name" value="RUN">
+		<param name="Local" value="html/scio065q.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SAVE">
+		<param name="Name" value="SAVE">
+		<param name="Local" value="html/scio4tph.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SAVE-FACTS">
+		<param name="Name" value="SAVE-FACTS">
+		<param name="Local" value="html/scio4cqb.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SAVE-INSTANCES">
+		<param name="Name" value="SAVE-INSTANCES">
+		<param name="Local" value="html/scio7aur.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SEED">
+		<param name="Name" value="SEED">
+		<param name="Local" value="html/scio55ic.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SEQUENCE EXPANSION FUNCTIONS">
+		<param name="Name" value="SEQUENCE EXPANSION FUNCTIONS">
+		<param name="Local" value="html/scio01v7.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-AUTO-FLOAT-DIVIDEND">
+		<param name="Name" value="SET-AUTO-FLOAT-DIVIDEND">
+		<param name="Local" value="html/scio44is.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-BREAK">
+		<param name="Name" value="SET-BREAK">
+		<param name="Local" value="html/scio0s2z.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-CLASS-DEFAULTS-MODE">
+		<param name="Name" value="SET-CLASS-DEFAULTS-MODE">
+		<param name="Local" value="html/scio8rfp.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-CURRENT-MODULE">
+		<param name="Name" value="SET-CURRENT-MODULE">
+		<param name="Local" value="html/scio9t2d.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-DYNAMIC-CONSTRAINT-CHECKING">
+		<param name="Name" value="SET-DYNAMIC-CONSTRAINT-CHECKING">
+		<param name="Local" value="html/scio5ox3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-FACT-DUPLICATION">
+		<param name="Name" value="SET-FACT-DUPLICATION">
+		<param name="Local" value="html/scio5lta.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-INCREMENTAL-RESET">
+		<param name="Name" value="SET-INCREMENTAL-RESET">
+		<param name="Local" value="html/scio9ghg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-PROFILE-PERCENT-THRESHOLD">
+		<param name="Name" value="SET-PROFILE-PERCENT-THRESHOLD">
+		<param name="Local" value="html/scio5td0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-RESET-GLOBALS">
+		<param name="Name" value="SET-RESET-GLOBALS">
+		<param name="Local" value="html/scio86er.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-SALIENCE-EVALUATION">
+		<param name="Name" value="SET-SALIENCE-EVALUATION">
+		<param name="Local" value="html/scio5nhq.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-SEQUENCE-OPERATOR-RECOGNITION">
+		<param name="Name" value="SET-SEQUENCE-OPERATOR-RECOGNITION">
+		<param name="Local" value="html/scio8sry.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-STATIC-CONSTRAINT-CHECKING">
+		<param name="Name" value="SET-STATIC-CONSTRAINT-CHECKING">
+		<param name="Local" value="html/scio3crr.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SET-STRATEGY">
+		<param name="Name" value="SET-STRATEGY">
+		<param name="Local" value="html/scio9np5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SETGEN">
+		<param name="Name" value="SETGEN">
+		<param name="Local" value="html/scio1ijy.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SHOW-BREAKS">
+		<param name="Name" value="SHOW-BREAKS">
+		<param name="Local" value="html/scio3z5f.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SHOWS-DEFGLOBALS">
+		<param name="Name" value="SHOWS-DEFGLOBALS">
+		<param name="Local" value="html/scio1i0j.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-ALLOWED-VALUES">
+		<param name="Name" value="SLOT-ALLOWED-VALUES">
+		<param name="Local" value="html/scio7kxf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-CARDINALITY">
+		<param name="Name" value="SLOT-CARDINALITY">
+		<param name="Local" value="html/scio92wp.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-DEFAULT-VALUE">
+		<param name="Name" value="SLOT-DEFAULT-VALUE">
+		<param name="Local" value="html/scio2dk5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-DELETE$">
+		<param name="Name" value="SLOT-DELETE$">
+		<param name="Local" value="html/scio9roy.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-DIRECT-ACCESSP">
+		<param name="Name" value="SLOT-DIRECT-ACCESSP">
+		<param name="Local" value="html/scio7iuo.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-EXISTP">
+		<param name="Name" value="SLOT-EXISTP">
+		<param name="Local" value="html/scio3my8.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-FACETS">
+		<param name="Name" value="SLOT-FACETS">
+		<param name="Local" value="html/scio21rn.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-INITABLEP">
+		<param name="Name" value="SLOT-INITABLEP">
+		<param name="Local" value="html/scio1vlc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-INSERT$">
+		<param name="Name" value="SLOT-INSERT$">
+		<param name="Local" value="html/scio7a9e.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-PUBLICP">
+		<param name="Name" value="SLOT-PUBLICP">
+		<param name="Local" value="html/scio8y40.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-RANGE">
+		<param name="Name" value="SLOT-RANGE">
+		<param name="Local" value="html/scio3mlh.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-REPLACE$">
+		<param name="Name" value="SLOT-REPLACE$">
+		<param name="Local" value="html/scio473m.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-SOURCES">
+		<param name="Name" value="SLOT-SOURCES">
+		<param name="Local" value="html/scio0z03.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-TYPES">
+		<param name="Name" value="SLOT-TYPES">
+		<param name="Local" value="html/scio7u43.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SLOT-WRITABLEP">
+		<param name="Name" value="SLOT-WRITABLEP">
+		<param name="Local" value="html/scio9s1c.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SORT">
+		<param name="Name" value="SORT">
+		<param name="Local" value="html/scio61ro.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SQRT">
+		<param name="Name" value="SQRT">
+		<param name="Local" value="html/scio6838.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STR-CAT">
+		<param name="Name" value="STR_CAT">
+		<param name="Local" value="html/scio2v1w.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STR-COMPARE">
+		<param name="Name" value="STR-COMPARE">
+		<param name="Local" value="html/scio8hyd.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STR-INDEX">
+		<param name="Name" value="STR-INDEX">
+		<param name="Local" value="html/scio4f94.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STR-LENGTH">
+		<param name="Name" value="STR-LENGTH">
+		<param name="Local" value="html/scio565k.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STRING FUNCTIONS">
+		<param name="Name" value="STRING FUNCTIONS">
+		<param name="Local" value="html/scio12pf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STRING-TO-FIELD">
+		<param name="Name" value="STRING-TO-FIELD">
+		<param name="Local" value="html/scio09yc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="STRINGP">
+		<param name="Name" value="STRINGP">
+		<param name="Local" value="html/scio00ts.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUB-STRING">
+		<param name="Name" value="SUB-STRING">
+		<param name="Local" value="html/scio8rtz.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUBCLASSP">
+		<param name="Name" value="SUBCLASSP">
+		<param name="Local" value="html/scio7oz4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUBSEQ$">
+		<param name="Name" value="SUBSEQ$">
+		<param name="Local" value="html/scio4xpt.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUBSETP">
+		<param name="Name" value="SUBSETP">
+		<param name="Local" value="html/scio5y40.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUPERCLASSP">
+		<param name="Name" value="SUPERCLASSP">
+		<param name="Local" value="html/scio2l68.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SUPPORT INFORMATION">
+		<param name="Name" value="Support Information">
+		<param name="Local" value="html/scio1twu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SWITCH">
+		<param name="Name" value="SWITCH">
+		<param name="Local" value="html/scio3jfs.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SYM-CAT">
+		<param name="Name" value="SYM-CAT">
+		<param name="Local" value="html/scio4ylw.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SYMBOL-TO-INSTANCE-NAME">
+		<param name="Name" value="SYMBOL-TO-INSTANCE-NAME">
+		<param name="Local" value="html/scio2bs5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SYMBOLP">
+		<param name="Name" value="SYMBOLP">
+		<param name="Local" value="html/scio2vw0.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SYSTEM">
+		<param name="Name" value="SYSTEM">
+		<param name="Local" value="html/scio8x0t.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TEXT_PROCESSING COMMANDS">
+		<param name="Name" value="TEXT PROCESSING COMMANDS">
+		<param name="Local" value="html/scio90tv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TIME">
+		<param name="Name" value="TIME">
+		<param name="Local" value="html/scio14th.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TIMER">
+		<param name="Name" value="TIMER">
+		<param name="Local" value="html/scio2khe.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TOSS">
+		<param name="Name" value="TOSS">
+		<param name="Local" value="html/scio1o37.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TRIGONOMETRIC_FUNCTIONS">
+		<param name="Name" value="TRIGONOMETRIC FUNCTIONS">
+		<param name="Local" value="html/scio9rsj.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="TYPE">
+		<param name="Name" value="TYPE">
+		<param name="Local" value="html/scio2jj9.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFCLASS">
+		<param name="Name" value="UNDEFCLASS">
+		<param name="Local" value="html/scio5feb.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFFACTS">
+		<param name="Name" value="UNDEFFACTS">
+		<param name="Local" value="html/scio2kxf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFFUNCTION">
+		<param name="Name" value="UNDEFFUNCTION">
+		<param name="Local" value="html/scio6ege.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFGENERIC">
+		<param name="Name" value="UNDEFGENERIC">
+		<param name="Local" value="html/scio7ew3.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFGLOBAL">
+		<param name="Name" value="UNDEFGLOBAL">
+		<param name="Local" value="html/scio0koc.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFINSTANCES">
+		<param name="Name" value="UNDEFINSTANCES">
+		<param name="Local" value="html/scio1ktv.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFMESSAGE-HANDLER">
+		<param name="Name" value="UNDEFMESSAGE-HANDLER">
+		<param name="Local" value="html/scio0kdu.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFMETHOD">
+		<param name="Name" value="UNDEFMETHOD">
+		<param name="Local" value="html/scio64ys.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFRULE">
+		<param name="Name" value="UNDEFRULE">
+		<param name="Local" value="html/scio063p.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNDEFTEMPLATE">
+		<param name="Name" value="UNDEFTEMPLATE">
+		<param name="Local" value="html/scio412d.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNMAKE-INSTANCE">
+		<param name="Name" value="UNMAKE-INSTANCE">
+		<param name="Local" value="html/scio0lk5.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UNWATCH">
+		<param name="Name" value="UNWATCH">
+		<param name="Local" value="html/scio38ko.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="UPCASE">
+		<param name="Name" value="UPCASE">
+		<param name="Local" value="html/scio91ut.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="WATCH">
+		<param name="Name" value="WATCH">
+		<param name="Local" value="html/scio70h4.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="WHILE">
+		<param name="Name" value="WHILE">
+		<param name="Local" value="html/scio5e1x.htm">
+		</OBJECT>
+</UL></HTML>

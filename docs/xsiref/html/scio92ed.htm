@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<TITLE>DEFMODULE</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+
+
+
+<H1><FONT FACE="Arial" SIZE="4" COLOR="#0000AA"><A NAME="defmodule"></A>DEFMODULE</FONT></H1>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600"></FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">XSI provides support for the modular development and execution of knowledge bases with the defmodule construct. XSI modules allow a set of constructs to be grouped together such that explicit control can be maintained over restricting the access of the constructs by other modules. This type of control is similar to global and local scoping used in languages such as C or Ada. By restricting access to deftemplate and defclass constructs, modules can function as blackboards, permitting only certain facts and instances to be seen by other modules. Modules are also used by rules to provide execution control.</FONT></P>
+
+<P><FONT FACE="Arial" SIZE="2" COLOR="#006600">The syntax of the defmodule construct is:</FONT></P>
+
+<PRE><CODE><FONT COLOR="#990000">&lt;<FONT COLOR="#FF6600">defmodule-construct</FONT>&gt; ::= (defmodule &lt;<FONT COLOR="#FF6600">module-name</FONT>&gt; [&lt;<FONT COLOR="#FF6600">comment</FONT>&gt;] 
+                             &lt;<FONT COLOR="#FF6600">port-spec</FONT>&gt;*)
+
+&lt;<FONT COLOR="#FF6600">port-specification</FONT>&gt;  ::= (export &lt;<FONT COLOR="#FF6600">port-item</FONT>&gt;) |
+                          (import &lt;<FONT COLOR="#FF6600">module-name</FONT>&gt; &lt;<FONT COLOR="#FF6600">port-item</FONT>&gt;)
+                
+&lt;<FONT COLOR="#FF6600">port-item</FONT>&gt;           ::= ?ALL |
+                          ?NONE |
+                          &lt;<FONT COLOR="#FF6600">port-construct</FONT>&gt; ?ALL |
+                          &lt;<FONT COLOR="#FF6600">port-construct</FONT>&gt; ?NONE |
+                          &lt;<FONT COLOR="#FF6600">port-construct</FONT>&gt; &lt;<FONT COLOR="#FF6600">construct-name</FONT>&gt;+ 
+
+&lt;<FONT COLOR="#FF6600">port-construct</FONT>&gt;      ::= deftemplate | defclass |
+                          defglobal | deffunction | defgeneric<FONT></CODE></PRE>
+
+</BODY><A HREF="scio4c6w.htm"><FONT FACE="Arial" SIZE="1" COLOR="#585858">Go to start page</FONT></A>
+</HTML> <!-- $Id: scio92ed.htm 35 2009-01-20 15:03:20Z scios $ -->
